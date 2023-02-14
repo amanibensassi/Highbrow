@@ -50,6 +50,16 @@ public class Location {
         this.etat=etat;
     }
 
+    public Location(int idlocation,Date date_debut, Date date_fin, boolean opt_chauffeur, int id_vehicule, int id_utilisateur) {
+        this.idlocation = idlocation;
+        this.id_vehicule = id_vehicule;
+        this.id_chauffeur = id_chauffeur;
+        this.id_utilisateur = id_utilisateur;
+        this.date_debut = date_debut;
+        this.date_fin = date_fin;
+        this.opt_chauffeur = opt_chauffeur;
+        this.etat=etat;
+    }
     public Location(int idlocation) {
         this.idlocation = idlocation;
 
