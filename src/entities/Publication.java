@@ -20,7 +20,20 @@ public class Publication {
     public Publication() {
     }
 
+    public Publication( int id_utilisateur, Date date_publication, String publication) {
+        this.idpublication = idpublication;
+        this.id_utilisateur = id_utilisateur;
+        this.date_publication = date_publication;
+        this.publication = publication;
+    }
 
+    public Publication( int idpublication, int id_utilisateur, Date date_publication, String publication) {
+        this.idpublication = idpublication;
+        this.id_utilisateur = id_utilisateur;
+        this.date_publication = date_publication;
+        this.publication = publication;
+    }
+    
     public int getIdpublication() {
         return idpublication;
     }

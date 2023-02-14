@@ -20,6 +20,24 @@ public class Commentaire {
     public Commentaire() {
     }
 
+    public Commentaire( int id_publication, int id_utilisateur, Date date_commentaire, String commentaire) {
+        this.id_publication = id_publication;
+        this.id_utilisateur = id_utilisateur;
+        this.date_commentaire = date_commentaire;
+        this.commentaire = commentaire;
+    }
+    
+    public Commentaire(int idcommentaire, int id_publication, int id_utilisateur, Date date_commentaire, String commentaire) {
+        this.idcommentaire = idcommentaire;
+        this.id_publication = id_publication;
+        this.id_utilisateur = id_utilisateur;
+        this.date_commentaire = date_commentaire;
+        this.commentaire = commentaire;
+    }
+
+    
+    
+
     public String getCommentaire() {
         return commentaire;
     }
@@ -64,9 +82,8 @@ public class Commentaire {
 
     @Override
     public String toString() {
-        return "Commentaire{" + "idcommentaire=" + idcommentaire + ", id_publication=" + id_publication + ", id_utilisateur=" + id_utilisateur + ", date_commentaire=" + date_commentaire + '}';
+        return "Commentaire{" + "idcommentaire : " + idcommentaire + ", id_publication : " + id_publication + ", id_utilisateur : " + id_utilisateur + ", date_commentaire : " + date_commentaire + ", commentaire : " + commentaire + '}';
     }
-    
     
     
 }
