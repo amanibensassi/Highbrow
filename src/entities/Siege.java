@@ -20,7 +20,7 @@ public class Siege {
     public Siege() {
     }
 
-    public Siege(int idsiege, int num_tel_siege, int id_utilisateur, String nom_siege, String adresse, String mail, Region region) {
+    public Siege(int idsiege,String nom_siege,Region region,String adresse,String mail,int num_tel_siege, int id_utilisateur) {
         this.idsiege = idsiege;
         this.num_tel_siege = num_tel_siege;
         this.id_utilisateur = id_utilisateur;
@@ -89,6 +89,16 @@ public class Siege {
     @Override
     public String toString() {
         return "Siege{" + "idsiege=" + idsiege + ", num_tel_siege=" + num_tel_siege + ", id_utilisateur=" + id_utilisateur + ", nom_siege=" + nom_siege + ", adresse=" + adresse + ", mail=" + mail + ", region=" + region + '}';
+    }
+
+    public int getIdutilisateur() {
+        //return id_utilisateur;
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public void setId_uilisateur(int aInt) {
+        //this.id_utilisateur = id_utilisateur;
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
     

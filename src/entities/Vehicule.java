@@ -5,10 +5,12 @@
  */
 package entities;
 
+import java.time.Year;
 import java.util.Date;
 import typeenumeration.Carburant;
 import typeenumeration.Etat;
 import typeenumeration.NbrPlace;
+import typeenumeration.Region;
 
 /**
  *
@@ -23,11 +25,13 @@ public class Vehicule {
     private NbrPlace nbr_place;
     private Etat etat;
     private Date annee_circulation;
-
+    private String image_vehicule;
     public Vehicule() {
     }
 
-    public Vehicule(int idvehicule, int kilometrage, float prix_vente, int id_siege, float prix_par_jour, String marque, String immatriculation, Carburant carburant, NbrPlace nbr_place, Etat etat, Date annee_circulation) {
+
+    
+    public Vehicule(int idvehicule, String marque, int kilometrage, String immatriculation, Carburant carburant, NbrPlace nbr_place, float prix_par_jour, Etat etat, float prix_vente, int id_siege, Date annee_circulation,String image_vehicule) {
         this.idvehicule = idvehicule;
         this.kilometrage = kilometrage;
         this.prix_vente = prix_vente;
@@ -39,7 +43,12 @@ public class Vehicule {
         this.nbr_place = nbr_place;
         this.etat = etat;
         this.annee_circulation = annee_circulation;
+        this.image_vehicule = image_vehicule;
     }
+
+//    public Vehicule(int i, int i0, Region region, String adresse_7, String mail_6, int i1, int i2) {
+//        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+//    }
 
     public int getIdvehicule() {
         return idvehicule;
@@ -129,10 +138,21 @@ public class Vehicule {
         this.annee_circulation = annee_circulation;
     }
 
+    public String getImage_vehicule() {
+        return image_vehicule;
+    }
+
+    public void setImage_vehicule(String image_vehicule) {
+        this.image_vehicule = image_vehicule;
+    }
+
     @Override
     public String toString() {
-        return "Vehicule{" + "idvehicule=" + idvehicule + ", kilometrage=" + kilometrage + ", prix_vente=" + prix_vente + ", id_siege=" + id_siege + ", prix_par_jour=" + prix_par_jour + ", marque=" + marque + ", immatriculation=" + immatriculation + ", carburant=" + carburant + ", nbr_place=" + nbr_place + ", etat=" + etat + ", annee_circulation=" + annee_circulation + '}';
+        return " Vehicule { " + "idvehicule = " + idvehicule + ", kilometrage = " + kilometrage + ", id_siege = " + id_siege + ", prix_vente = " + prix_vente + ", prix_par_jour = " + prix_par_jour + ", marque = " + marque + ", immatriculation = " + immatriculation + ", carburant = " + carburant + ", nbr_place = " + nbr_place + ", etat = " + etat + ", annee_circulation = " + annee_circulation + ", image_vehicule = " + image_vehicule + "}" + "\n";
     }
+    
+    
+   
     
     
     

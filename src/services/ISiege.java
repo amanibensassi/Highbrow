@@ -7,16 +7,14 @@ package services;
 
 import java.sql.SQLException;
 import java.util.List;
+import typeenumeration.Region;
 
 /**
  *
- * @author anasm
+ * @author Trabelsi Mohamed
  */
-public interface IService<T> {
-    
-    public void ajouter(T t) throws SQLException;
-    public void modifier(T t) throws SQLException;
-    public void supprimer(T t) throws SQLException;
-    public List<T> recuperer() throws SQLException;
+public interface ISiege<T> {
+    public List<T> recupererSiegeByRegion(Region r) throws SQLException;
+    public List<T> recupererVehiculeByUtilisateur(int x) throws SQLException;
     
 }
