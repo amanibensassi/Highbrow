@@ -13,6 +13,10 @@ import typeenumeration.TypeReclamation;
  * @author anasm
  */
 public class Reclamation {
+
+    public static TypeReclamation valueOf(String string) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
     private int idreclamation,id_utilisateur,id_siege;
     private TypeReclamation type_reclamation;
@@ -22,6 +26,35 @@ public class Reclamation {
 
     public Reclamation() {
     }
+
+    public Reclamation(int id_utilisateur, int id_siege, TypeReclamation type_reclamation, Date date_reclamation, String corps) {
+        this.id_utilisateur = id_utilisateur;
+        this.id_siege = id_siege;
+        this.type_reclamation = type_reclamation;
+        this.date_reclamation = date_reclamation;
+        this.etat = etat;
+        this.corps = corps;
+    }
+    
+     public Reclamation( int id_utilisateur,TypeReclamation type_reclamation, Date date_reclamation, String corps) {
+        this.id_utilisateur = id_utilisateur;
+        this.type_reclamation = type_reclamation;
+        this.date_reclamation = date_reclamation;
+        this.etat = etat;
+        this.corps = corps;
+    }
+
+    public Reclamation(int idreclamation, int id_utilisateur, int id_siege, TypeReclamation type_reclamation, Date date_reclamation, boolean etat, String corps) {
+        this.idreclamation = idreclamation;
+        this.id_utilisateur = id_utilisateur;
+        this.id_siege = id_siege;
+        this.type_reclamation = type_reclamation;
+        this.date_reclamation = date_reclamation;
+        this.etat = etat;
+        this.corps = corps;
+    }
+    
+    
 
     public int getIdreclamation() {
         return idreclamation;
