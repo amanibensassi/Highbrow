@@ -11,10 +11,29 @@ package typeenumeration;
  */
 public enum Region {
     
-    tunis,
-    sousse,
+    ariana,
+    beja,
+    ben_Arous,
     bizerte,
-    djerba,
-    nabeul
+    gabes,
+    gafsa,
+    jendouba,
+    kairouan,
+    kasserine,
+    kebili,
+    kef,
+    mahdia,
+    manouba,
+    medenine,
+    monastir,
+    nabeul,
+    sfax,
+    sidi_Bouzid,
+    siliana,
+    sousse,
+    tataouine,
+    tozeur,
+    tunis,
+    zaghouan,
     
 }
