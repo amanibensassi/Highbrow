@@ -79,7 +79,7 @@ public class PublicationService implements IService<Publication> {
     }
 
     @Override
-    public List<Publication> recuperer(Publication t) throws SQLException {
+    public List<Publication> recuperer() throws SQLException {
      List<Publication> publication = new ArrayList<>();
       String req = "SELECT * FROM publication";
       Statement st = cnx.createStatement();
@@ -100,6 +100,28 @@ public class PublicationService implements IService<Publication> {
       
      return publication;
      
+    }
+    
+    public List<Publication> recupererParUtilisateur(int t) throws SQLException {
+     List<Publication> publication = new ArrayList<>();
+      String req = "SELECT * FROM publication WHERE id_utilisateur = " + t;
+      Statement st = cnx.createStatement();
+      ResultSet rs = st.executeQuery(req);
+      while (rs.next()){
+        Publication p = new Publication();
+        //remplissage
+            p.setDate_publication(rs.getTimestamp("date_publication"));
+            p.setId_utilisateur(rs.getInt("id_utilisateur"));
+            p.setIdpublication(rs.getInt("idpublication"));
+            p.setPublication(rs.getString("publication"));
+            p.setNbr_like(rs.getInt("nbr_like"));
+            p.setNbr_dislike(rs.getInt("nbr_dislike"));
+        //ajout    
+        publication.add(p);
+        
+      }
+      
+     return publication;
     }
   
 }

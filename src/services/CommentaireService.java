@@ -61,7 +61,7 @@ Connection  cnx;
     }
 
     @Override
-    public List<Commentaire> recuperer(Commentaire t) throws SQLException {
+    public List<Commentaire> recuperer() throws SQLException {
          List<Commentaire> commentaire = new ArrayList<>();
       String req = "SELECT * FROM commentaire";
       Statement st = cnx.createStatement();
@@ -82,6 +82,24 @@ Connection  cnx;
      
     }
 
-  
+   public List<Commentaire> recupererParpublication(int t) throws SQLException {
+         List<Commentaire> commentaire = new ArrayList<>();
+      String req = "SELECT * FROM commentaire WHERE id_publication = " + t;
+      Statement st = cnx.createStatement();
+      ResultSet rs = st.executeQuery(req);
+      while (rs.next()){
+        Commentaire p = new Commentaire();
+        //remplissage
+           p.setCommentaire(rs.getString("commentaire"));
+           p.setDate_commentaire(rs.getTimestamp("date_commentaire"));
+           p.setId_publication(rs.getInt("id_publication"));
+           p.setId_utilisateur(rs.getInt("id_utilisateur"));
+           p.setIdcommentaire(rs.getInt("idcommentaire"));
+        //ajout    
+        commentaire.add(p);
+        
+      }
+     return commentaire;
+    }
     
 }

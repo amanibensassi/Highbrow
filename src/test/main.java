@@ -5,20 +5,16 @@
  */
 package test;
 
-import static com.sun.org.apache.xalan.internal.lib.ExsltDatetime.date;
 import entities.Commentaire;
 import entities.Publication;
+import entities.Reponse;
 import java.sql.SQLException;
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import services.CommentaireService;
 import services.PublicationService;
+import services.ReponseService;
 
 /**
  *
@@ -34,32 +30,47 @@ public class main {
             
             
        System.out.println("publication");
-           Publication p= new Publication(14,1,date,"a publication is set here");
+           Publication p= new Publication(14,1,date,"a publication");
             PublicationService ps= new PublicationService();
             List<Publication> publication = new ArrayList<>();
-                  ps.AddLike(p);
-                  ps.AddDislike(p);
-                  ps.supprimer(p);
-                  ps.ajouter(p);
-                  ps.modifier(p);
-                  System.out.println(ps.recuperer(p));
+          
+                 System.out.println(ps.recupererParUtilisateur(1));
+                 ps.AddLike(p);
+                 ps.AddDislike(p);
+                 ps.supprimer(p);
+                 ps.ajouter(p);
+                 ps.modifier(p);
+                 System.out.println(ps.recuperer());
             
              
           
           
           
           
-       System.out.println("comentaire");  
+      System.out.println("comentaire");  
              
-          Commentaire cc = new Commentaire(9,1,1,date,"modify git");
-            CommentaireService cs = new CommentaireService();
+          Commentaire cc = new Commentaire(9,1,1,date,"a comment");
+          CommentaireService cs = new CommentaireService();
+           
+                 System.out.println( cs.recupererParpublication(cc.getId_publication()));
+                 cs.ajouter(cc);
+                 cs.modifier(cc);
+                 System.out.println(cs.recuperer()); 
+                 cs.supprimer(cc);
+     
+     
+     
+         System.out.println("Réponse à un commentaire :");
             
-                cs.ajouter(cc);
-                cs.modifier(cc);
-                System.out.println(cs.recuperer(cc)); 
-                cs.supprimer(cc);
-       
-       
+            Reponse r = new Reponse(1,1,1,date,"une réponse ");
+            ReponseService rs = new ReponseService();
+            rs.ajouter(r);
+            rs.modifier(r);
+            System.out.println(rs.recuperer());
+            rs.supprimer(r);
+         
+           System.out.println( rs.recupererParCommentaire(r.getId_commentaire()));
+           System.out.println( rs.recupererParUtilisateur(r.getId_utilisateur()));
         } catch (SQLException ex) {
            ex.getMessage();
     }   
