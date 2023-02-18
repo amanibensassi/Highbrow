@@ -31,16 +31,18 @@ public class VehiculeService implements IService<Vehicule>,IVehicule<Vehicule> {
 
     @Override
     public void ajouter(Vehicule t) throws SQLException {
-        String req = "INSERT INTO vehicule(marque,kilometrage,immatriculation,carburant,nbr_place,prix_par_jour,etat,prix_vente,id_siege,annee_circulation,image_vehicule) VALUES("
+        String req = "INSERT INTO vehicule(marque,kilometrage,immatriculation,carburant,nbr_place,prix_par_jour,etat,prix_vente,id_siege,date_circulation,image_vehicule) VALUES("
                 + "'" + t.getMarque() + "','" + t.getKilometrage() + "','" + t.getImmatriculation()+ "','"
-                + t.getCarburant() + "','" + t.getNbr_place().getValeur() + "','" + t.getPrix_par_jour() +"','" + t.getEtat() + "','"+ t.getPrix_vente() + "','"+ t.getId_siege() + "','" + new Timestamp(t.getAnnee_circulation().getTime())+ "','"+ t.getImage_vehicule()+ "'" + ")";
+                + t.getCarburant() + "','" + t.getNbr_place().getValeur() + "','" + t.getPrix_par_jour() +"','"
+                + t.getEtat() + "','"+ t.getPrix_vente() + "','"+ t.getId_siege() + "','" 
+                + new Timestamp(t.getDate_circulation().getTime())+ "','"+ t.getImage_vehicule()+ "'" + ")";
         Statement st = cnx.createStatement();
         st.executeUpdate(req);
     }
 
     @Override
     public void modifier(Vehicule t) throws SQLException {
-        String req = "UPDATE vehicule SET marque = ?,kilometrage = ?,immatriculation = ?,carburant = ?,nbr_place = ?,prix_par_jour = ?,etat = ?,prix_vente = ?,id_siege = ?,annee_circulation = ?,image_vehicule = ? where idvehicule = ?";
+        String req = "UPDATE vehicule SET marque = ?,kilometrage = ?,immatriculation = ?,carburant = ?,nbr_place = ?,prix_par_jour = ?,etat = ?,prix_vente = ?,id_siege = ?,date_circulation = ?,image_vehicule = ? where idvehicule = ?";
         PreparedStatement ps = cnx.prepareStatement(req);
         ps.setString(1, t.getMarque());
         ps.setInt(2, t.getKilometrage());
@@ -51,7 +53,7 @@ public class VehiculeService implements IService<Vehicule>,IVehicule<Vehicule> {
         ps.setString(7,t.getEtat().toString());
         ps.setFloat(8, t.getPrix_vente());
         ps.setInt(9, t.getId_siege());
-        ps.setTimestamp(10,new Timestamp(t.getAnnee_circulation().getTime()));
+        ps.setTimestamp(10,new Timestamp(t.getDate_circulation().getTime()));
         ps.setString(11, t.getImage_vehicule());
         ps.setInt(12, t.getIdvehicule());
         ps.executeUpdate();
@@ -89,7 +91,7 @@ public class VehiculeService implements IService<Vehicule>,IVehicule<Vehicule> {
             p.setEtat(Etat.valueOf(rs.getString("etat")));
             p.setPrix_vente(rs.getFloat("prix_vente"));
             p.setId_siege(rs.getInt("id_siege"));
-            p.setAnnee_circulation(rs.getDate("annee_circulation"));
+            p.setDate_circulation(rs.getDate("date_circulation"));
             p.setImage_vehicule(rs.getString("image_vehicule"));
             p.setIdvehicule(rs.getInt("idvehicule"));
             
@@ -122,7 +124,7 @@ public class VehiculeService implements IService<Vehicule>,IVehicule<Vehicule> {
             p.setEtat(Etat.valueOf(rs.getString("etat")));
             p.setPrix_vente(rs.getFloat("prix_vente"));
             p.setId_siege(rs.getInt("id_siege"));
-            p.setAnnee_circulation(rs.getDate("annee_circulation"));
+            p.setDate_circulation(rs.getDate("date_circulation"));
             p.setImage_vehicule(rs.getString("image_vehicule"));
             p.setIdvehicule(rs.getInt("idvehicule"));
 
@@ -155,7 +157,7 @@ public class VehiculeService implements IService<Vehicule>,IVehicule<Vehicule> {
             p.setEtat(Etat.valueOf(rs.getString("etat")));
             p.setPrix_vente(rs.getFloat("prix_vente"));
             p.setId_siege(rs.getInt("id_siege"));
-            p.setAnnee_circulation(rs.getDate("annee_circulation"));
+            p.setDate_circulation(rs.getDate("date_circulation"));
             p.setImage_vehicule(rs.getString("image_vehicule"));
             p.setIdvehicule(rs.getInt("idvehicule"));
 
@@ -189,7 +191,7 @@ public class VehiculeService implements IService<Vehicule>,IVehicule<Vehicule> {
             p.setEtat(Etat.valueOf(rs.getString("etat")));
             p.setPrix_vente(rs.getFloat("prix_vente"));
             p.setId_siege(rs.getInt("id_siege"));
-            p.setAnnee_circulation(rs.getDate("annee_circulation"));
+            p.setDate_circulation(rs.getDate("date_circulation"));
             p.setImage_vehicule(rs.getString("image_vehicule"));
             p.setIdvehicule(rs.getInt("idvehicule"));
 
@@ -230,7 +232,7 @@ public class VehiculeService implements IService<Vehicule>,IVehicule<Vehicule> {
             p.setEtat(Etat.valueOf(rs.getString("etat")));
             p.setPrix_vente(rs.getFloat("prix_vente"));
             p.setId_siege(rs.getInt("id_siege"));
-            p.setAnnee_circulation(rs.getDate("annee_circulation"));
+            p.setDate_circulation(rs.getDate("date_circulation"));
             p.setImage_vehicule(rs.getString("image_vehicule"));
             p.setIdvehicule(rs.getInt("idvehicule"));
 

@@ -104,7 +104,7 @@ public class SiegeService implements IService<Siege>,ISiege<Siege> {
     }
 
     @Override
-    public List<Siege> recupererVehiculeByUtilisateur(int x) throws SQLException {
+    public List<Siege> recupererSiegeByUtilisateur(int x) throws SQLException {
         List<Siege> sieges = new ArrayList<>();
         String s = "select * from siege WHERE id_utilisateur = ?";
         PreparedStatement ps = cnx.prepareStatement(s);
@@ -124,6 +124,5 @@ public class SiegeService implements IService<Siege>,ISiege<Siege> {
         }
         return sieges;
     }    
-
 
 }

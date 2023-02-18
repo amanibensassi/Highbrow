@@ -15,6 +15,6 @@ import typeenumeration.Region;
  */
 public interface ISiege<T> {
     public List<T> recupererSiegeByRegion(Region r) throws SQLException;
-    public List<T> recupererVehiculeByUtilisateur(int x) throws SQLException;
+    public List<T> recupererSiegeByUtilisateur(int x) throws SQLException;
     
 }

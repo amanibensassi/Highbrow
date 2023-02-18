@@ -24,14 +24,14 @@ public class Vehicule {
     private Carburant carburant;
     private NbrPlace nbr_place;
     private Etat etat;
-    private Date annee_circulation;
+    private Date date_circulation;
     private String image_vehicule;
     public Vehicule() {
     }
 
 
     
-    public Vehicule(int idvehicule, String marque, int kilometrage, String immatriculation, Carburant carburant, NbrPlace nbr_place, float prix_par_jour, Etat etat, float prix_vente, int id_siege, Date annee_circulation,String image_vehicule) {
+    public Vehicule(int idvehicule, String marque, int kilometrage, String immatriculation, Carburant carburant, NbrPlace nbr_place, float prix_par_jour, Etat etat, float prix_vente, int id_siege, Date date_circulation,String image_vehicule) {
         this.idvehicule = idvehicule;
         this.kilometrage = kilometrage;
         this.prix_vente = prix_vente;
@@ -42,7 +42,7 @@ public class Vehicule {
         this.carburant = carburant;
         this.nbr_place = nbr_place;
         this.etat = etat;
-        this.annee_circulation = annee_circulation;
+        this.date_circulation = date_circulation;
         this.image_vehicule = image_vehicule;
     }
 
@@ -130,12 +130,12 @@ public class Vehicule {
         this.etat = etat;
     }
 
-    public Date getAnnee_circulation() {
-        return annee_circulation;
+    public Date getDate_circulation() {
+        return date_circulation;
     }
 
-    public void setAnnee_circulation(Date annee_circulation) {
-        this.annee_circulation = annee_circulation;
+    public void setDate_circulation(Date date_circulation) {
+        this.date_circulation = date_circulation;
     }
 
     public String getImage_vehicule() {
@@ -148,7 +148,7 @@ public class Vehicule {
 
     @Override
     public String toString() {
-        return " Vehicule { " + "idvehicule = " + idvehicule + ", kilometrage = " + kilometrage + ", id_siege = " + id_siege + ", prix_vente = " + prix_vente + ", prix_par_jour = " + prix_par_jour + ", marque = " + marque + ", immatriculation = " + immatriculation + ", carburant = " + carburant + ", nbr_place = " + nbr_place + ", etat = " + etat + ", annee_circulation = " + annee_circulation + ", image_vehicule = " + image_vehicule + "}" + "\n";
+        return " Vehicule { " + "idvehicule = " + idvehicule + ", kilometrage = " + kilometrage + ", id_siege = " + id_siege + ", prix_vente = " + prix_vente + ", prix_par_jour = " + prix_par_jour + ", marque = " + marque + ", immatriculation = " + immatriculation + ", carburant = " + carburant + ", nbr_place = " + nbr_place + ", etat = " + etat + ", date_circulation = " + date_circulation + ", image_vehicule = " + image_vehicule + "}" + "\n";
     }
     
     
