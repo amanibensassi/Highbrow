@@ -5,6 +5,8 @@
  */
 package entities;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import typeenumeration.Region;
 
 /**
@@ -22,10 +24,21 @@ public class Siege {
 
     public Siege(int idsiege,String nom_siege,Region region,String adresse,String mail,int num_tel_siege, int id_utilisateur) {
         this.idsiege = idsiege;
+        Pattern p = Pattern.compile("^\\d{8}$");
+        Matcher m= p.matcher(Integer.toString(num_tel_siege));
+        if (!m.matches()) {
+            throw new IllegalArgumentException("Le contact doit être composé de 8 chiffres.");
+        }
+        
         this.num_tel_siege = num_tel_siege;
         this.id_utilisateur = id_utilisateur;
         this.nom_siege = nom_siege;
         this.adresse = adresse;
+        Pattern pattern = Pattern.compile("^[A-Za-z0-9+_.-]+@.+\\..+$");
+        Matcher matcher = pattern.matcher(mail);
+        if (!matcher.matches()) {
+            throw new IllegalArgumentException("L'adresse e-mail saisie n'est pas valide.");
+        }
         this.mail = mail;
         this.region = region;
     }
@@ -74,7 +87,13 @@ public class Siege {
         return mail;
     }
 
-    public void setMail(String mail) {
+    public void setMail(String mail) throws IllegalArgumentException {
+        // Utilisation d'une expression régulière pour vérifier que le mail est au format valide
+        Pattern pattern = Pattern.compile("^[A-Za-z0-9+_.-]+@(.+)$");
+        Matcher matcher = pattern.matcher(mail);
+        if (!matcher.matches()) {
+            throw new IllegalArgumentException("L'adresse e-mail saisie n'est pas valide.");
+        }
         this.mail = mail;
     }
 

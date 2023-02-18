@@ -5,8 +5,12 @@
  */
 package entities;
 
+import java.sql.Timestamp;
+import java.time.LocalDate;
 import java.time.Year;
 import java.util.Date;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import typeenumeration.Carburant;
 import typeenumeration.Etat;
 import typeenumeration.NbrPlace;
@@ -38,10 +42,18 @@ public class Vehicule {
         this.id_siege = id_siege;
         this.prix_par_jour = prix_par_jour;
         this.marque = marque;
+        Pattern pattern = Pattern.compile("^\\d{3}TUN\\d{4}$");
+        Matcher matcher = pattern.matcher(immatriculation);
+        if (!matcher.matches()) {
+            throw new IllegalArgumentException("L'immatriculation saisie n'est pas valide. Elle doit être sous la forme ***TUN**** (les étoiles doivent être des chiffres).");
+        }
         this.immatriculation = immatriculation;
         this.carburant = carburant;
         this.nbr_place = nbr_place;
         this.etat = etat;
+                // Vérification que la date de circulation est valide
+        int annéeActuelle = LocalDate.now().getYear();
+        int minAnnee = 1970;
         this.date_circulation = date_circulation;
         this.image_vehicule = image_vehicule;
     }
@@ -103,6 +115,11 @@ public class Vehicule {
     }
 
     public void setImmatriculation(String immatriculation) {
+                Pattern pattern = Pattern.compile("^\\d{3}TUN\\d{4}$");
+        Matcher matcher = pattern.matcher(immatriculation);
+        if (!matcher.matches()) {
+            throw new IllegalArgumentException("L'immatriculation saisie n'est pas valide. Elle doit être sous la forme ***TUN**** (les étoiles doivent être des chiffres).");
+        }
         this.immatriculation = immatriculation;
     }
 
