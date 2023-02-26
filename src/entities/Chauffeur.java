@@ -5,6 +5,8 @@
  */
 package entities;
 
+import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
 import typeenumeration.Region;
 
 /**
@@ -53,6 +55,8 @@ public class Chauffeur {
 
     public Chauffeur() {
     }
+
+
 
     public String getPermis_arriere() {
         return permis_arriere;

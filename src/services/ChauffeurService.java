@@ -39,6 +39,8 @@ public class ChauffeurService implements IService<Chauffeur>, IChauffeur<Chauffe
     @Override
 
     public void ajouter(Chauffeur c) throws SQLException {
+        
+        System.out.println(c);
         String req = "INSERT INTO chauffeur(region,contact,cin,adresse,permis,image,prix_par_jour,nom,prenom,permis_arriere,id_siege)VALUES(?,?,?,?,?,?,?,?,?,?,?)";
         PreparedStatement ps = cnx.prepareStatement(req);
         ps.setString(1, c.getRegion().toString());
@@ -52,13 +54,17 @@ public class ChauffeurService implements IService<Chauffeur>, IChauffeur<Chauffe
         ps.setString(9, c.getPrenom());
         ps.setString(10, c.getPermis_arriere());
         ps.setInt(11, c.getId_siege());
+       
         ps.executeUpdate();
+       
 
     }
 
     @Override
     public void modifier(Chauffeur c) throws SQLException {
-        String req = "UPDATE chauffeur SET region=?,contact=?,cin=?,adresse=?,permis=?,image=?,prix_par_jour=?,nom=?,prenom=?,permis_arriere =?,id_siege =? where Idchauffeur = ?";
+        String req = "UPDATE chauffeur SET region=?,contact=?,cin=?,adresse=?,"
+                + "permis=?,image=?,prix_par_jour=?,nom=?,"
+                + "prenom=?,permis_arriere =?,id_siege =? where Idchauffeur = ?";
         PreparedStatement ps = cnx.prepareStatement(req);
         ps.setString(1, c.getRegion().toString());
         ps.setInt(2, c.getContact());

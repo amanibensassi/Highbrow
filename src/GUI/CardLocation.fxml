@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.HBox?>
+
+<HBox id="car-details" fx:id="hbox" spacing="30.0" stylesheets="@../styles/CardLocation.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.CardLocationController">
+      
+    <Label id="car-label" text="Véhicule:" />
+   <Label id="car-label1" fx:id="nomVeh" text="nomVeh" />
+        <Label id="start-date-label" text="Date de début:" />
+   <Label id="start-date-label1" fx:id="db" text="db" />
+        <Label id="end-date-label" text="Date de fin: " />
+   <Label id="end-date-label1" fx:id="df" text="df" />
+            <Button id="cancel-button" fx:id="annuler" onAction="#annuler" text="Annuler" />
+   <Button id="cancel-button" fx:id="Modifier" onAction="#ModifierLocation" text="Modifier" />
+   
+    </HBox>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+
+<AnchorPane id="AnchorPane" prefHeight="500.0" prefWidth="900.0" stylesheets="@../styles/calendrier.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.CalendrierController">
+   <children>
+            <GridPane fx:id="daysGrid" layoutX="37.0" layoutY="85.0" prefHeight="500.0" prefWidth="900.0">
+         <columnConstraints>
+            <ColumnConstraints />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints />
+         </rowConstraints>
+            </GridPane>
+
+       <Button fx:id="next" layoutX="338.0" layoutY="23.0" mnemonicParsing="false" onAction="#next" text="next" />
+      <Button fx:id="prev" layoutX="77.0" layoutY="23.0" mnemonicParsing="false" onAction="#prev" text="prev" />
+      <Label fx:id="localDate" layoutX="210.0" layoutY="23.0" prefHeight="40.0" prefWidth="142.0" text="localDate" />
+   </children>
+</AnchorPane>

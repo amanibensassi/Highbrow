@@ -85,7 +85,6 @@ public class LocationService implements IService<Location>, ILocation<Location> 
     public void supprimerLocation(int l) throws SQLException {
         String req1 = "select id_chauffeur from location where idlocation = ?";
         String req = "DELETE FROM location WHERE idlocation = ?";
-
         PreparedStatement ps = cnx.prepareStatement(req);
         PreparedStatement ps1 = cnx.prepareStatement(req1);
         ps1.setInt(1, l);
@@ -104,11 +103,12 @@ public class LocationService implements IService<Location>, ILocation<Location> 
 
     @Override
     public void modifier(Location l) throws SQLException {
-        String req = "UPDATE location SET date_debut=?,date_fin=? where idlocation = ?";
+        String req = "UPDATE location SET date_debut=?,date_fin=?,opt_chauffeur=? where idlocation = ?";
         PreparedStatement ps = cnx.prepareStatement(req);
         ps.setTimestamp(1, new Timestamp(l.getDate_debut().getTime()));
         ps.setTimestamp(2, new Timestamp(l.getDate_fin().getTime()));
-        ps.setInt(3, l.getIdlocation());
+        ps.setBoolean(3, l.isOpt_chauffeur());
+        ps.setInt(4, l.getIdlocation());
         System.out.println(ps);
         ps.executeUpdate();
     }
@@ -127,7 +127,8 @@ public class LocationService implements IService<Location>, ILocation<Location> 
             l.setId_chauffeur(rs.getInt("Id_chauffeur"));
             l.setId_utilisateur(rs.getInt("Id_utilisateur"));
             l.setDate_debut(rs.getDate("date_debut"));
-            l.setDate_fin(rs.getDate("date_fin"));
+            l.setDate_fin(rs.getDate("date_fin"));           
+            l.setOpt_chauffeur(rs.getBoolean("opt_chauffeur"));
             Locations.add(l);
         }
 
