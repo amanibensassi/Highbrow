@@ -3,8 +3,6 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/xampp/htdocs/Highbrow/src/GUI/FormLouerVehiculeController.java</file>
-            <file>file:/C:/xampp/htdocs/Highbrow/src/GUI/AddChauffeurController.java</file>
             <file>file:/C:/xampp/htdocs/Highbrow/src/services/LocationService.java</file>
             <file>file:/C:/xampp/htdocs/Highbrow/src/GUI/DetailChauffeurController.java</file>
             <file>file:/C:/xampp/htdocs/Highbrow/src/GUI/ChauffeurController.java</file>
@@ -12,9 +10,12 @@
             <file>file:/C:/xampp/htdocs/Highbrow/src/GUI/ListeMesLocationsController.java</file>
             <file>file:/C:/xampp/htdocs/Highbrow/src/entities/Location.java</file>
             <file>file:/C:/xampp/htdocs/Highbrow/src/GUI/ModifierLocationController.java</file>
+            <file>file:/C:/xampp/htdocs/Highbrow/src/GUI/CalendrierController.java</file>
+            <file>file:/C:/xampp/htdocs/Highbrow/src/GUI/FormLouerVehiculeController.java</file>
+            <file>file:/C:/xampp/htdocs/Highbrow/src/GUI/AddChauffeurController.java</file>
+            <file>file:/C:/xampp/htdocs/Highbrow/src/GUI/CardLocation.fxml</file>
             <file>file:/C:/xampp/htdocs/Highbrow/src/GUI/ListeChauffeurController.java</file>
             <file>file:/C:/xampp/htdocs/Highbrow/src/test/Test.java</file>
-            <file>file:/C:/xampp/htdocs/Highbrow/src/GUI/CalendrierController.java</file>
         </group>
     </open-files>
 </project-private>

@@ -116,7 +116,7 @@ public class LocationService implements IService<Location>, ILocation<Location> 
     @Override
     public List<Location> recupererAllByIdUser(int t) throws SQLException {
         List<Location> Locations = new ArrayList<>();
-        String req = "select * from location where id_utilisateur= ? ";
+        String req = "select * from location where id_utilisateur= ? and etat='confirmer'";
         PreparedStatement ps = cnx.prepareStatement(req);
         ps.setInt(1, t);
         ResultSet rs = ps.executeQuery();

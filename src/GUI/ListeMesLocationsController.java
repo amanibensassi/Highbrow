@@ -16,9 +16,12 @@ import java.util.logging.Logger;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.Pane;
+import javafx.scene.layout.VBox;
 import services.LocationService;
 
 /**
@@ -35,6 +38,10 @@ public class ListeMesLocationsController implements Initializable {
      * Initializes the controller class.
      */
     LocationService ls = new LocationService();
+    @FXML
+    private Pane modalPane;
+    @FXML
+    private VBox modalBox;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -69,6 +76,10 @@ public class ListeMesLocationsController implements Initializable {
         } catch (IOException ex) {
             Logger.getLogger(ListeChauffeurController.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+
+    @FXML
+    private void modal(MouseEvent event) {
     }
 
 }
