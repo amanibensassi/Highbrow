@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="927.0" prefWidth="1259.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.Interface_reponseController">
+   <children>
+      <AnchorPane id="AnchorPane" layoutX="10.0" layoutY="10.0" prefHeight="800.0" prefWidth="1200.0">
+         <children>
+            <AnchorPane layoutX="-12.0" layoutY="8.0" prefHeight="800.0" prefWidth="346.0" style="-fx-background-color: #0E2132;">
+               <children>
+                  <Button alignment="TOP_LEFT" layoutX="-2.0" layoutY="439.0" mnemonicParsing="false" prefHeight="62.0" prefWidth="342.0" style="-fx-background-color: transparent;" text=" Modifier profil" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font name="Arial" size="16.0" />
+                     </font>
+                  </Button>
+                  <Button alignment="TOP_LEFT" layoutX="-3.0" layoutY="519.0" mnemonicParsing="false" prefHeight="62.0" prefWidth="342.0" style="-fx-background-color: transparent;" text="Affecter une réclamation" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font name="Arial" size="16.0" />
+                     </font>
+                  </Button>
+                  <Button alignment="TOP_LEFT" layoutX="2.0" layoutY="602.0" mnemonicParsing="false" prefHeight="62.0" prefWidth="342.0" style="-fx-background-color: transparent;" text="Chercher une voiture ou un mécanicien" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font name="Arial" size="16.0" />
+                     </font>
+                  </Button>
+                  <Button alignment="TOP_LEFT" layoutX="2.0" layoutY="688.0" mnemonicParsing="false" prefHeight="62.0" prefWidth="342.0" style="-fx-background-color: transparent;" text="Consulter le forum" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font name="Arial" size="16.0" />
+                     </font>
+                  </Button>
+                  <Button alignment="TOP_LEFT" layoutX="2.0" layoutY="769.0" mnemonicParsing="false" prefHeight="62.0" prefWidth="341.0" style="-fx-background-color: transparent;" text="Paramètres" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font name="Arial" size="16.0" />
+                     </font>
+                  </Button>
+                  <Button alignment="TOP_LEFT" layoutX="2.0" layoutY="851.0" mnemonicParsing="false" prefHeight="62.0" prefWidth="342.0" style="-fx-background-color: transparent;" text="Deconnexion" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font name="Arial" size="16.0" />
+                     </font>
+                  </Button>
+                  <Circle fill="WHITE" layoutX="186.0" layoutY="174.0" radius="71.0" stroke="#08bf79" strokeType="INSIDE" />
+                  <Label alignment="CENTER" layoutX="71.0" layoutY="260.0" prefHeight="46.0" prefWidth="218.0" text="Anas MAGHRBI" textAlignment="CENTER" textFill="WHITE" textOverrun="WORD_ELLIPSIS">
+                     <font>
+                        <Font size="30.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="anchor_id" layoutX="342.0" layoutY="63.0" prefHeight="851.0" prefWidth="948.0" style="-fx-background-color: #F5F6FA;" AnchorPane.leftAnchor="342.0" AnchorPane.rightAnchor="0.40000000000009095">
+               <children>
+                  <Pane layoutX="12.0" layoutY="40.0" prefHeight="122.0" prefWidth="883.0" style="-fx-background-color: FFFFFF; -fx-background-radius: 15;" AnchorPane.leftAnchor="12.0" AnchorPane.rightAnchor="39.0" AnchorPane.topAnchor="40.0">
+                     <children>
+                        <Label fx:id="username_id" layoutX="103.0" layoutY="2.0" prefHeight="46.0" prefWidth="151.0" style="-fx-background-color: transparent;" text="USER_NAME">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="dateid" layoutX="109.0" layoutY="35.0" prefHeight="25.0" prefWidth="151.0" style="-fx-background-color: transparent;" text="date_time" textFill="#666666">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="commentaireid" alignment="TOP_LEFT" layoutX="17.0" layoutY="75.0" lineSpacing="1.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="47.0" prefWidth="870.0" text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis quis venenatis libero. In eu sagittis sapien, nec porta nisi. Nam sed &#10;massa quis lorem pulvinar mattis rutrum ultrices purus. Vivamus ut tortor ut nunc imperdiet vestibulum." textFill="#666666">
+                           <font>
+                              <Font name="Arial" size="15.0" />
+                           </font>
+                        </Label>
+                        <Circle fill="DODGERBLUE" layoutX="53.0" layoutY="42.0" radius="32.0" stroke="BLACK" strokeType="INSIDE" />
+                        <ImageView fitHeight="46.0" fitWidth="54.0" layoutX="832.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../media/reponse.png" />
+                           </image>
+                        </ImageView>
+                        <Label fx:id="nbrcomment_id" alignment="CENTER_RIGHT" layoutX="783.0" layoutY="25.0" text="100" visible="false">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="nbr_reponse" alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="798.0" layoutY="21.0" text="Label" textAlignment="RIGHT" wrapText="true">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </Pane>
+                  <ScrollPane fx:id="scrollbarid" hbarPolicy="NEVER" layoutX="48.0" layoutY="224.0" prefHeight="516.0" prefWidth="846.0" style="-fx-border-color: transparent; -fx-border-width: 0;">
+                     <content>
+                        <AnchorPane prefHeight="526.0" prefWidth="842.0">
+                           <children>
+                              <VBox fx:id="vboxcommentid" alignment="TOP_RIGHT" fillWidth="false" layoutX="-7.0" prefHeight="526.0" prefWidth="844.0" spacing="10.0" style="-fx-background-color: #F5F6FA;" AnchorPane.leftAnchor="-0.0" AnchorPane.rightAnchor="0.0">
+                                 <padding>
+                                    <Insets left="20.0" right="10.0" top="30.0" />
+                                 </padding>
+                              </VBox>
+                           </children>
+                        </AnchorPane>
+                     </content>
+                  </ScrollPane>
+                  <Pane layoutY="769.0" prefHeight="81.0" prefWidth="928.0" style="-fx-background-color: transparent;">
+                     <children>
+                        <TextField fx:id="txtf_partagerpub1" layoutX="27.0" layoutY="9.0" prefHeight="62.0" prefWidth="890.0" promptText="Comment vous vous sentez aujourd'hui?" style="-fx-background-color: FFFFFF; -fx-background-radius: 15;">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </TextField>
+                        <ImageView fitHeight="61.0" fitWidth="93.0" layoutX="830.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../media/send_text.png" />
+                           </image>
+                        </ImageView>
+                        <Button fx:id="ajoutercommentair" layoutX="820.0" layoutY="7.0" mnemonicParsing="false" onAction="#ajouterReponse" prefHeight="68.0" prefWidth="93.0" style="-fx-background-color: transparent;" />
+                     </children>
+                  </Pane>
+               </children>
+            </AnchorPane>
+            <AnchorPane layoutX="-10.0" layoutY="-10.0" prefHeight="71.0" prefWidth="1286.0" style="-fx-background-color: #378217;">
+               <children>
+                  <Label alignment="CENTER" layoutX="102.0" layoutY="13.0" prefHeight="34.0" prefWidth="330.0" text="Espace des réponses " textAlignment="CENTER" textFill="WHITE" textOverrun="WORD_ELLIPSIS">
+                     <font>
+                        <Font name="Arial Bold Italic" size="29.0" />
+                     </font>
+                  </Label>
+                  <ImageView fitHeight="34.0" fitWidth="49.0" layoutX="1230.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../media/menu_bar.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="35.0" fitWidth="37.0" layoutX="26.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../media/back_icon.png" />
+                     </image>
+                  </ImageView>
+                  <Button fx:id="backButton_id" layoutX="-1.0" layoutY="1.0" mnemonicParsing="false" onAction="#backButton" prefHeight="68.0" prefWidth="106.0" style="-fx-background-color: transparent;" />
+               </children>
+            </AnchorPane>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

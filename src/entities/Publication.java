@@ -13,7 +13,7 @@ import java.util.Date;
  */
 public class Publication {
     
-    private int idpublication,nbr_like,nbr_dislike,id_utilisateur;
+    private int idpublication,id_utilisateur;
     private Date date_publication;
     private String publication;
 
@@ -41,23 +41,6 @@ public class Publication {
     public void setIdpublication(int idpublication) {
         this.idpublication = idpublication;
     }
-
-    public int getNbr_like() {
-        return nbr_like;
-    }
-
-    public void setNbr_like(int nbr_like) {
-        this.nbr_like = nbr_like;
-    }
-
-    public int getNbr_dislike() {
-        return nbr_dislike;
-    }
-
-    public void setNbr_dislike(int nbr_dislike) {
-        this.nbr_dislike = nbr_dislike;
-    }
-
     public int getId_utilisateur() {
         return id_utilisateur;
     }
@@ -78,13 +61,13 @@ public class Publication {
         return publication;
     }
 
-    public void setPublication(String publication) {
+    public void setPublication(String publication) {  
         this.publication = publication;
     }
 
     @Override
     public String toString() {
-        return "Publication{" + "idpublication=" + idpublication + ", nbr_like=" + nbr_like + ", nbr_dislike=" + nbr_dislike + ", id_utilisateur=" + id_utilisateur + ", date_publication=" + date_publication + ", publication=" + publication + '}';
+        return "Publication{" + "idpublication=" + idpublication +", id_utilisateur=" + id_utilisateur + ", date_publication=" + date_publication + ", publication=" + publication + '}'+'\n';
     }
     
     

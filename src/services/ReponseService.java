@@ -13,6 +13,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import utils.MyDB;
 
@@ -22,7 +23,7 @@ import utils.MyDB;
  */
 public class ReponseService implements IService<Reponse>{
     Connection  cnx; 
-  
+  Date d = new Date();
   public ReponseService () {
         cnx = MyDB.getInstance().getCnx();
     }
@@ -31,7 +32,7 @@ public class ReponseService implements IService<Reponse>{
     public void ajouter(Reponse t) throws SQLException {
         String req = "INSERT INTO reponse(date_reponse,reponse,id_utilisateur,id_commentaire) VALUES (?,?,?,?)";
         PreparedStatement st = cnx.prepareStatement(req);
-        st.setTimestamp(1,new Timestamp(t.getDate_reponse().getTime()));
+        st.setTimestamp(1,new Timestamp(d.getTime()));
         st.setString(2,t.getReponse());
         st.setInt(3,t.getId_utilisateur());
         st.setInt(4,t.getId_commentaire());
@@ -43,7 +44,7 @@ public class ReponseService implements IService<Reponse>{
     public void modifier(Reponse t) throws SQLException {
        String req = "UPDATE reponse SET date_reponse=?,reponse=? where	id_reponse = ?";
         PreparedStatement ps = cnx.prepareStatement(req);
-        ps.setTimestamp(1,new Timestamp(t.getDate_reponse().getTime()));
+        ps.setTimestamp(1,new Timestamp(d.getTime()));
         ps.setString(2, t.getReponse());
         ps.setInt(3, t.getIdreponse());
         ps.executeUpdate();
@@ -85,11 +86,8 @@ public class ReponseService implements IService<Reponse>{
      public List<Reponse> recupererParCommentaire(int t) throws SQLException {
          List<Reponse> Reponse = new ArrayList<>();
       String req = "SELECT * FROM reponse WHERE id_commentaire ="+t;
-         System.out.println("a");
      PreparedStatement st = cnx.prepareStatement(req);
-         System.out.println("b");
       ResultSet rs = st.executeQuery(req);
-         System.out.println("d");
       while (rs.next()){
         Reponse p = new Reponse();
         //remplissage
@@ -107,11 +105,8 @@ public class ReponseService implements IService<Reponse>{
      public List<Reponse> recupererParUtilisateur(int t) throws SQLException {
          List<Reponse> Reponse = new ArrayList<>();
       String req = "SELECT * FROM reponse WHERE id_utilisateur ="+t;
-         System.out.println("a");
      PreparedStatement st = cnx.prepareStatement(req);
-         System.out.println("b");
       ResultSet rs = st.executeQuery(req);
-         System.out.println("d");
       while (rs.next()){
         Reponse p = new Reponse();
         //remplissage
@@ -126,4 +121,19 @@ public class ReponseService implements IService<Reponse>{
      return Reponse;
     }
      
+        public int countCommentaire (int id) throws SQLException {
+
+            int count =0;
+            String req = "SELECT COUNT(*) FROM reponse WHERE id_commentaire = ?";
+            PreparedStatement pstmt = cnx.prepareStatement(req);
+            pstmt.setInt(1, id);
+            ResultSet rs = pstmt.executeQuery();
+            while (rs.next()) {
+                  count = rs.getInt(1);
+            }
+            return count;
+                }
+        
+        
+        
 }

@@ -71,7 +71,7 @@ public class Reponse {
 
     @Override
     public String toString() {
-        return "Reponse{" + "idreponse=" + idreponse + ", id_commentaire=" + id_commentaire + ", id_utilisateur=" + id_utilisateur + ", date_reponse=" + date_reponse + ", reponse=" + reponse + '}';
+        return "Reponse{" + "idreponse=" + idreponse + ", id_commentaire=" + id_commentaire + ", id_utilisateur=" + id_utilisateur + ", date_reponse=" + date_reponse + ", reponse=" + reponse + '}'+'\n';
     }
   
     
