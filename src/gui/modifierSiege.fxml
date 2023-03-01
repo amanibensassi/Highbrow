@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="650.0" prefWidth="860.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.ModifierSiegeController">
+   <children>
+      <TextField fx:id="nomsiegetf" alignment="CENTER" layoutX="316.0" layoutY="119.0" prefHeight="54.0" prefWidth="246.0" promptText="nom du siege" styleClass="labelTitreSieges" stylesheets="@../values/values.css" />
+      <TextField fx:id="emailtf" alignment="CENTER" layoutX="314.0" layoutY="257.0" prefHeight="54.0" prefWidth="246.0" promptText="email" styleClass="labelTitreSieges" stylesheets="@../values/values.css" />
+      <TextField fx:id="adressetf" alignment="CENTER" layoutX="314.0" layoutY="190.0" prefHeight="54.0" prefWidth="246.0" promptText="adresse" styleClass="labelTitreSieges" stylesheets="@../values/values.css" />
+      <TextField fx:id="numerodeteltf" alignment="CENTER" layoutX="314.0" layoutY="327.0" prefHeight="54.0" prefWidth="246.0" promptText="numero telephone" styleClass="labelTitreSieges" stylesheets="@../values/values.css" />
+      <ComboBox fx:id="regiontf" layoutX="314.0" layoutY="394.0" prefHeight="54.0" prefWidth="246.0" promptText="region" styleClass="labelTitreSieges" stylesheets="@../values/values.css">
+         <opaqueInsets>
+            <Insets left="15.0" />
+         </opaqueInsets>
+         <padding>
+            <Insets left="94.0" />
+         </padding></ComboBox>
+      <Button fx:id="validerbtn" contentDisplay="CENTER" layoutX="513.0" layoutY="499.0" mnemonicParsing="false" onAction="#valider" prefHeight="43.0" prefWidth="138.0" styleClass="affichervehiculesbtn" stylesheets="@../values/values.css" text="Valider " textAlignment="CENTER" textFill="WHITE">
+         <font>
+            <Font size="16.0" />
+         </font></Button>
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="226.0" layoutY="42.0" prefHeight="35.0" prefWidth="426.0" styleClass="labelTitreSieges" stylesheets="@../values/values.css" text="Vous pouvez modifier votre siege ! " textAlignment="CENTER" textFill="#37894a">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <Button fx:id="annulerbtn" alignment="CENTER" contentDisplay="CENTER" layoutX="226.0" layoutY="499.0" mnemonicParsing="false" onAction="#annuler" prefHeight="43.0" prefWidth="138.0" styleClass="btnsupprimer" stylesheets="@../values/values.css" text="Annuler" textFill="WHITE">
+         <font>
+            <Font size="15.0" />
+         </font></Button>
+   </children>
+</AnchorPane>

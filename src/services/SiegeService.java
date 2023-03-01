@@ -35,6 +35,7 @@ public class SiegeService implements IService<Siege>,ISiege<Siege> {
                 + t.getMail() + "','" + t.getNum_tel_siege()+ "','" + t.getId_utilisateur() +"'" + ")";
         Statement st = cnx.createStatement();
         st.executeUpdate(req);        
+        System.out.println("siege ajouté avec succés");
     }
 
     @Override
@@ -48,16 +49,20 @@ public class SiegeService implements IService<Siege>,ISiege<Siege> {
         ps.setInt(5, t.getNum_tel_siege());
         ps.setInt(6, t.getId_utilisateur());
         ps.setInt(7, t.getIdsiege());
-        ps.executeUpdate();      
+        ps.executeUpdate();     
+         System.out.println("siege modifié avec succés");
     }
     
 
     @Override
-    public void supprimer(Siege t) throws SQLException {
+    public boolean supprimer(Siege t) throws SQLException {
         String req = "DELETE FROM siege where idsiege = ?";
         PreparedStatement ps = cnx.prepareStatement(req);
         ps.setInt(1,t.getIdsiege());
         ps.executeUpdate();
+        System.out.println("siege supprimé avec succés");
+        return true;
+        
     }
 
     @Override

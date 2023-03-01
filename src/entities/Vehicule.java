@@ -42,25 +42,47 @@ public class Vehicule {
         this.id_siege = id_siege;
         this.prix_par_jour = prix_par_jour;
         this.marque = marque;
-        Pattern pattern = Pattern.compile("^\\d{3}TUN\\d{4}$");
-        Matcher matcher = pattern.matcher(immatriculation);
-        if (!matcher.matches()) {
-            throw new IllegalArgumentException("L'immatriculation saisie n'est pas valide. Elle doit être sous la forme ***TUN**** (les étoiles doivent être des chiffres).");
-        }
+//        Pattern pattern = Pattern.compile("^\\d{3}TUN\\d{4}$");
+//        Matcher matcher = pattern.matcher(immatriculation);
+//        if (!matcher.matches()) {
+//            throw new IllegalArgumentException("L'immatriculation saisie n'est pas valide. Elle doit être sous la forme ***TUN**** (les étoiles doivent être des chiffres).");
+//        }
         this.immatriculation = immatriculation;
         this.carburant = carburant;
         this.nbr_place = nbr_place;
         this.etat = etat;
-                // Vérification que la date de circulation est valide
-        int annéeActuelle = LocalDate.now().getYear();
-        int minAnnee = 1970;
+
         this.date_circulation = date_circulation;
         this.image_vehicule = image_vehicule;
     }
 
-//    public Vehicule(int i, int i0, Region region, String adresse_7, String mail_6, int i1, int i2) {
-//        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-//    }
+    public Vehicule(int idvehicule) {
+        this.idvehicule = idvehicule;
+    }
+
+    public Vehicule(int kilometrage, int id_siege, float prix_vente, float prix_par_jour, String marque, String immatriculation, Carburant carburant, NbrPlace nbr_place, Etat etat, Date date_circulation, String image_vehicule) {
+        this.kilometrage = kilometrage;
+        this.id_siege = id_siege;
+        this.prix_vente = prix_vente;
+        this.prix_par_jour = prix_par_jour;
+        this.marque = marque;
+//        Pattern pattern = Pattern.compile("^\\d{3}TUN\\d{4}$");
+//        Matcher matcher = pattern.matcher(immatriculation);
+//        if (!matcher.matches()) {
+//            throw new IllegalArgumentException("L'immatriculation saisie n'est pas valide. Elle doit être sous la forme ***TUN**** (les étoiles doivent être des chiffres).");
+//        }
+        this.immatriculation = immatriculation;
+        this.carburant = carburant;
+        this.nbr_place = nbr_place;
+        this.etat = etat;
+        this.date_circulation = date_circulation;
+        this.image_vehicule = image_vehicule;
+    }
+    
+    
+    
+
+
 
     public int getIdvehicule() {
         return idvehicule;
@@ -115,11 +137,11 @@ public class Vehicule {
     }
 
     public void setImmatriculation(String immatriculation) {
-                Pattern pattern = Pattern.compile("^\\d{3}TUN\\d{4}$");
-        Matcher matcher = pattern.matcher(immatriculation);
-        if (!matcher.matches()) {
-            throw new IllegalArgumentException("L'immatriculation saisie n'est pas valide. Elle doit être sous la forme ***TUN**** (les étoiles doivent être des chiffres).");
-        }
+//                Pattern pattern = Pattern.compile("^\\d{3}TUN\\d{4}$");
+//        Matcher matcher = pattern.matcher(immatriculation);
+//        if (!matcher.matches()) {
+//            throw new IllegalArgumentException("L'immatriculation saisie n'est pas valide. Elle doit être sous la forme ***TUN**** (les étoiles doivent être des chiffres).");
+//        }
         this.immatriculation = immatriculation;
     }
 

@@ -38,6 +38,7 @@ public class VehiculeService implements IService<Vehicule>,IVehicule<Vehicule> {
                 + new Timestamp(t.getDate_circulation().getTime())+ "','"+ t.getImage_vehicule()+ "'" + ")";
         Statement st = cnx.createStatement();
         st.executeUpdate(req);
+        System.out.println("siege ajouté avec succés");
     }
 
     @Override
@@ -57,20 +58,23 @@ public class VehiculeService implements IService<Vehicule>,IVehicule<Vehicule> {
         ps.setString(11, t.getImage_vehicule());
         ps.setInt(12, t.getIdvehicule());
         ps.executeUpdate();
+        System.out.println("siege modifié avec succés");
     }
 
     @Override
-    public void supprimer(Vehicule t) throws SQLException {
+    public boolean supprimer(Vehicule t) throws SQLException {
                 String req = "DELETE FROM vehicule where idvehicule = ?";
         PreparedStatement ps = cnx.prepareStatement(req);
         ps.setInt(1,t.getIdvehicule());
 
         ps.executeUpdate();
+        System.out.println("siege supprimé avec succés");
+        return true;
     }
 
     @Override
     public List<Vehicule> recuperer() throws SQLException {
-                List<Vehicule> vehicules = new ArrayList<>();
+        List<Vehicule> vehicules = new ArrayList<>();
         String s = "select * from vehicule";
         PreparedStatement st = cnx.prepareStatement(s);
         ResultSet rs =  st.executeQuery();
