@@ -9,11 +9,11 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<AnchorPane id="AnchorPane" prefHeight="500.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.ListeChauffeurController">
+<AnchorPane id="AnchorPane" prefHeight="910.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.ListeChauffeurController">
    <children>
-      <ScrollPane layoutX="21.0" layoutY="62.0" prefHeight="434.0" prefWidth="874.0">
+      <ScrollPane layoutX="21.0" layoutY="62.0" prefHeight="842.0" prefWidth="974.0">
          <content>
-            <GridPane fx:id="us" prefHeight="457.0" prefWidth="869.0">
+            <GridPane fx:id="us" prefHeight="457.0" prefWidth="965.0">
               <columnConstraints>
                   <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />

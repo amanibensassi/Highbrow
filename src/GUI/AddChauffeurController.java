@@ -18,16 +18,25 @@ import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Insets;
 import javafx.scene.Parent;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
+import javafx.scene.effect.InnerShadow;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.Pane;
+import javafx.scene.paint.Color;
 import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import services.ChauffeurService;
@@ -209,38 +218,241 @@ public class AddChauffeurController implements Initializable {
 
     @FXML
     private void AjouterCh(ActionEvent event) throws FileNotFoundException, IOException, SQLException {
-        String Nom = nom.getText();
-        String Prenom = prenom.getText();
-        int contact = Integer.parseInt(numtel.getText());
-        String email = emailField.getText();
-        int Cin = Integer.parseInt(cin.getText());
-        float Prix = Float.parseFloat(prix.getText());
+        if (nom.getText().isEmpty()
+                || prenom.getText().isEmpty() || prix.getText().isEmpty() || cin.getText().isEmpty()
+                || emailField.getText().isEmpty() || numtel.getText().isEmpty()) {
 
-        FileInputStream fl = new FileInputStream(file2);
-        byte[] data = new byte[(int) file2.length()];
-        String iamge = file2.getName();
-        fl.read(data);
-        fl.close();
+            InnerShadow in = new InnerShadow();
+            in.setColor(Color.web("#f80000"));
+            if (nom.getText().isEmpty()) {
+                nom.setEffect(in);
+            }
+            if (prenom.getText().isEmpty()) {
+                prenom.setEffect(in);
+            }
+            if (prix.getText().isEmpty()) {
+                prix.setEffect(in);
+            }
+            if (cin.getText().isEmpty()) {
+                cin.setEffect(in);
+            }
+            if (emailField.getText().isEmpty()) {
+                emailField.setEffect(in);
+            }
+            if (numtel.getText().isEmpty()) {
+                numtel.setEffect(in);
+            }
+            //txtnom.setStyle("-fx-border-color: red " );
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Erreur");
+            alert.setHeaderText(null);
+            alert.setContentText("Il faut remplir les champs obligatoires ");
+            alert.showAndWait();
 
-        FileInputStream f2 = new FileInputStream(file);
-        byte[] data1 = new byte[(int) file.length()];
-        String permis = file.getName();
-        f2.read(data1);
-        f2.close();
+        } else if (TestPrix() & TestText(nom.getText()) & TestText(prenom.getText()) & TestEmail()
+                & TestCin(cin.getText()) & TestCin(numtel.getText())) {
 
-        FileInputStream f3 = new FileInputStream(file1);
-        byte[] data2 = new byte[(int) file1.length()];
-        String permisBack = file1.getName();
-        f3.read(data2);
-        f3.close();
+            String Nom = nom.getText();
+            String Prenom = prenom.getText();
+            int contact = Integer.parseInt(numtel.getText());
+            String email = emailField.getText();
+            int Cin = Integer.parseInt(cin.getText());
+            float Prix = Float.parseFloat(prix.getText());
 
-        Chauffeur chauf = new Chauffeur(Region.valueOf(combobox.getValue()), contact, Cin, email, permis, iamge, Prix, Nom, Prenom, permisBack, 2);
+            FileInputStream fl = new FileInputStream(file2);
+            byte[] data = new byte[(int) file2.length()];
+            String iamge = file2.getName();
+            fl.read(data);
+            fl.close();
 
-        chaufService.ajouter(chauf);
-        showAlert();
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("ListeChauffeur.fxml"));
-        Parent root = loader.load();
+            FileInputStream f2 = new FileInputStream(file);
+            byte[] data1 = new byte[(int) file.length()];
+            String permis = file.getName();
+            f2.read(data1);
+            f2.close();
 
-        ajouterch.getScene().setRoot(root);
+            FileInputStream f3 = new FileInputStream(file1);
+            byte[] data2 = new byte[(int) file1.length()];
+            String permisBack = file1.getName();
+            f3.read(data2);
+            f3.close();
+
+            Chauffeur chauf = new Chauffeur(Region.valueOf(combobox.getValue()), contact, Cin, email, permis, iamge, Prix, Nom, Prenom, permisBack, 2);
+
+            chaufService.ajouter(chauf);
+            showAlert();
+             FXMLLoader loader = new FXMLLoader(getClass().getResource("SideBarUser.fxml"));
+        Parent root1 = loader.load();
+        BorderPane borderPane = new BorderPane();
+       FXMLLoader loader1 = new FXMLLoader(getClass().getResource("ListeChauffeur.fxml"));
+            Parent root2 = loader1.load();
+      
+            HBox hbox = new HBox(root1, new Pane(), root2);
+            hbox.setSpacing(20);
+
+            borderPane.setRight(hbox);
+       
+            borderPane.setLeft(root1);
+        
+
+        borderPane.setPadding(new Insets(10, 10, 30, 10));
+//        Scene scene = new Scene(borderPane);
+//        Stage stage = new Stage();
+//        stage.setScene(scene);
+//        stage.show();
+        
+        ajouterch.getScene().setRoot(borderPane);
+        }
+    }
+
+    private boolean TestText(String cha) {
+        boolean test = false;
+        Pattern p = Pattern.compile("[a-zA-Z]*");
+        Matcher m1 = p.matcher(cha);
+        if (m1.find() && m1.group().equals(cha) || m1.find() && m1.group().equals(cha)) {
+            test = true;
+        }
+        return test;
+    }
+
+    private boolean TestPrix() {
+        boolean test = false;
+        Pattern p = Pattern.compile("[0-9]+");
+        Matcher m = p.matcher(prix.getText());
+        if (m.find() && m.group().equals(prix.getText())) {
+            test = true;
+        }
+        return test;
+    }
+
+    private boolean TestCin(String cin) {
+        boolean test = false;
+        Pattern p = Pattern.compile("[0-9]+");
+        Matcher m = p.matcher(cin);
+        if (m.find() && m.group().equals(cin)) {
+            test = true;
+        }
+        return test;
+    }
+
+    private boolean TestEmail() {
+        boolean test = false;
+        Pattern p = Pattern.compile("^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$");
+        Matcher m = p.matcher(emailField.getText());
+        if (m.find() && m.group().equals(emailField.getText())) {
+            test = true;
+        }
+        return test;
+    }
+
+    @FXML
+    private void testNom(KeyEvent event) {
+        if (TestText(nom.getText()) & nom.getText().isEmpty() == false) {
+
+            InnerShadow in = new InnerShadow();
+            in.setColor(Color.web("#52FF00"));
+
+            nom.setEffect(in);
+        } else {
+
+            InnerShadow in = new InnerShadow();
+            in.setColor(Color.web("#f80000"));
+
+            nom.setEffect(in);
+        }
+    }
+
+    @FXML
+    private void testprix(KeyEvent event) {
+        if (prix.getText().isEmpty() == false) {
+            if (TestPrix()) {
+
+                InnerShadow in = new InnerShadow();
+                in.setColor(Color.web("#52FF00"));
+
+                prix.setEffect(in);
+            } else {
+                InnerShadow in = new InnerShadow();
+                in.setColor(Color.web("#f80000"));
+
+                prix.setEffect(in);
+            }
+
+        }
+    }
+
+    @FXML
+    private void testPrenom(KeyEvent event) {
+        if (TestText(prenom.getText()) & prenom.getText().isEmpty() == false) {
+
+            InnerShadow in = new InnerShadow();
+            in.setColor(Color.web("#52FF00"));
+
+            prenom.setEffect(in);
+        } else {
+
+            InnerShadow in = new InnerShadow();
+            in.setColor(Color.web("#f80000"));
+
+            prenom.setEffect(in);
+        }
+    }
+
+    @FXML
+    private void testEmail(KeyEvent event) {
+
+        if (TestEmail() & emailField.getText().isEmpty() == false) {
+
+            InnerShadow in = new InnerShadow();
+            in.setColor(Color.web("#52FF00"));
+
+            emailField.setEffect(in);
+        } else {
+
+            InnerShadow in = new InnerShadow();
+            in.setColor(Color.web("#f80000"));
+
+            emailField.setEffect(in);
+        }
+
+    }
+
+    @FXML
+    private void testCin(KeyEvent event) {
+        if (cin.getText().isEmpty() == false) {
+            if (TestCin(cin.getText()) && cin.getText().length() == 7) {
+
+                InnerShadow in = new InnerShadow();
+                in.setColor(Color.web("#52FF00"));
+
+                cin.setEffect(in);
+            } else {
+                InnerShadow in = new InnerShadow();
+                in.setColor(Color.web("#f80000"));
+
+                cin.setEffect(in);
+            }
+
+        }
+    }
+
+    @FXML
+    private void testTel(KeyEvent event) {
+        if (numtel.getText().isEmpty() == false) {
+            if (TestCin(numtel.getText()) && numtel.getText().length() == 7) {
+
+                InnerShadow in = new InnerShadow();
+                in.setColor(Color.web("#52FF00"));
+
+                numtel.setEffect(in);
+            } else {
+                InnerShadow in = new InnerShadow();
+                in.setColor(Color.web("#f80000"));
+
+                numtel.setEffect(in);
+            }
+
+        }
+
     }
 }

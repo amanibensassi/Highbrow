@@ -6,6 +6,7 @@
 package GUI;
 
 import entities.Location;
+import java.io.IOException;
 import java.net.URL;
 import java.sql.Date;
 import java.sql.SQLException;
@@ -16,12 +17,18 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Insets;
+import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DateCell;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.Pane;
 import javafx.util.Callback;
 import services.LocationService;
 
@@ -65,7 +72,7 @@ public class FormLouerVehiculeController implements Initializable {
     }
 
     @FXML
-    private void reserverVehicule(ActionEvent event) {
+    private void reserverVehicule(ActionEvent event) throws IOException {
         
         Date ddebut = Date.valueOf(datedebut.getValue());
         Date dfin = Date.valueOf(datefin.getValue());
@@ -77,6 +84,26 @@ public class FormLouerVehiculeController implements Initializable {
        Location l = new Location(ddebut,dfin,opch, 2,1); 
         try {
             ls.ajouter(l);
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("SideBarUser.fxml"));
+            Parent root1 = loader.load();
+            BorderPane borderPane = new BorderPane();
+            FXMLLoader loader1 = new FXMLLoader(getClass().getResource("ListeMesLocations.fxml"));
+            Parent root2 = loader1.load();
+
+            HBox hbox = new HBox(root1, new Pane(), root2);
+            hbox.setSpacing(20);
+
+            borderPane.setRight(hbox);
+
+            borderPane.setLeft(root1);
+
+            borderPane.setPadding(new Insets(10, 10, 30, 10));
+//        Scene scene = new Scene(borderPane);
+//        Stage stage = new Stage();
+//        stage.setScene(scene);
+//        stage.show();
+
+            reserverVehicule.getScene().setRoot(borderPane);
         } catch (SQLException ex) {
             Logger.getLogger(FormLouerVehiculeController.class.getName()).log(Level.SEVERE, null, ex);
         }

@@ -5,22 +5,23 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox stylesheets="@../styles/profilCh.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.DetailChProfilController">
+<VBox spacing="10.0" stylesheets="@../styles/profilCh.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.DetailChProfilController">
+   <Label contentDisplay="CENTER" prefHeight="20.0" prefWidth="140.0" text=" Votre Chauffeur" />
     <ImageView id="profileImage" fx:id="profileImage" fitHeight="145.0" fitWidth="154.0" preserveRatio="true" styleClass="profileImage">
       </ImageView>
-    <HBox>
+    <HBox spacing="10.0">
         <Label text="Name:" />
         <Label fx:id="nom" />
     </HBox>
-    <HBox>
+    <HBox spacing="10.0">
         <Label text="prenom" />
         <Label fx:id="prenom" />
     </HBox>
-    <HBox>
+    <HBox spacing="10.0">
         <Label text="Email:" />
         <Label fx:id="email" />
     </HBox>
-   <HBox>
+   <HBox spacing="10.0">
       <children>
          <Label text="num_tel:" />
          <Label fx:id="numtel" />

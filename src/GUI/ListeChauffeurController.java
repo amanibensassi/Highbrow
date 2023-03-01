@@ -16,11 +16,15 @@ import java.util.logging.Logger;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Insets;
 import javafx.scene.Parent;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.Pane;
 import services.ChauffeurService;
 
 /**
@@ -78,9 +82,26 @@ public class ListeChauffeurController implements Initializable {
 
     @FXML
     private void loadToAjoutCh(MouseEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("AddChauffeur.fxml"));
-        Parent root = loader.load();
+          FXMLLoader loader = new FXMLLoader(getClass().getResource("SideBarUser.fxml"));
+        Parent root1 = loader.load();
+        BorderPane borderPane = new BorderPane();
+       FXMLLoader loader1 = new FXMLLoader(getClass().getResource("AddChauffeur.fxml"));
+            Parent root2 = loader1.load();
+      
+            HBox hbox = new HBox(root1, new Pane(), root2);
+            hbox.setSpacing(20);
 
-        loadToAjoutCh.getScene().setRoot(root);
+            borderPane.setRight(hbox);
+       
+            borderPane.setLeft(root1);
+        
+
+        borderPane.setPadding(new Insets(10, 10, 30, 10));
+//        Scene scene = new Scene(borderPane);
+//        Stage stage = new Stage();
+//        stage.setScene(scene);
+//        stage.show();
+        
+        loadToAjoutCh.getScene().setRoot(borderPane);
     }
 }

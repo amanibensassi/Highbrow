@@ -6,7 +6,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.HBox?>
 
-<HBox id="car-details" fx:id="hbox" spacing="20.0" stylesheets="@../styles/CardLocation.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.CardLocationController">
+<HBox id="car-details" fx:id="hbox" prefHeight="84.0" prefWidth="741.0" spacing="20.0" stylesheets="@../styles/CardLocation.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.CardLocationController">
      
     <ImageView fx:id="img" fitHeight="36.0" fitWidth="46.0" onMouseEntered="#afficherChDetail" pickOnBounds="true" preserveRatio="true">
       <image>
@@ -20,7 +20,7 @@
    <Label id="start-date-label1" fx:id="db" text="db" />
         <Label id="end-date-label" text="Date de fin: " />
    <Label id="end-date-label1" fx:id="df" text="df" />
-            <Button id="cancel-button" fx:id="annuler" onAction="#annuler" text="Annuler" />
-   <Button id="cancel-button" fx:id="Modifier" onAction="#ModifierLocation" text="Modifier" />
+            <Button id="cancel-button" fx:id="annuler" onAction="#annuler" style="-fx-border-radius: 50;" text="Annuler" />
+   <Button id="modifier-button" fx:id="Modifier" onAction="#ModifierLocation" text="Modifier" />
    
     </HBox>

@@ -30,8 +30,12 @@ import javafx.scene.layout.RowConstraints;
 import services.LocationService;
 import java.util.Date;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Insets;
 import javafx.scene.Parent;
 import javafx.scene.control.DatePicker;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.Pane;
 
 /**
  * FXML Controller class
@@ -74,7 +78,7 @@ public class CalendrierController implements Initializable {
                 DayOfWeek dayOfWeek = yearMonth.atDay(day).getDayOfWeek();
 
                 Label label = new Label(String.valueOf(day));
-                label.setStyle("-fx-font-size: 14pt; -fx-text-fill: #333333; -fx-font-weight: bold;");
+                label.setStyle("-fx-font-size: 12pt; -fx-text-fill: #333333; -fx-font-weight: bold;");
                 /**
                  * *************************
                  */
@@ -82,14 +86,13 @@ public class CalendrierController implements Initializable {
                 String[] parts5 = moissss.split("-");
                 String month11 = parts5[1];
                 String yearsss = parts5[0];
-int month11fet =Integer.parseInt(month11);
-int ammfet =Integer.parseInt(yearsss);
+                int month11fet = Integer.parseInt(month11);
+                int ammfet = Integer.parseInt(yearsss);
                 AnchorPane button = new AnchorPane();
                 //button.setDisable(true);
                 LocalDate today = LocalDate.now();
-               
-               
-                String curentdatee=today.toString();
+
+                String curentdatee = today.toString();
                 String[] splitCurrentDate = curentdatee.split("-");
                 String chhar = splitCurrentDate[1];
                 String nhar = splitCurrentDate[2];
@@ -97,16 +100,14 @@ int ammfet =Integer.parseInt(yearsss);
                 int nhar2 = Integer.parseInt(nhar);
                 int chhar2 = Integer.parseInt(chhar);
                 int nharat = Integer.parseInt(label.getText());
-               int ammtw = Integer.parseInt(aam);
-                System.out.println("aam parcour"+month11fet);
-              
-                System.out.println("aam tw"+chhar2);
-                if( chhar2>month11fet || ammfet<ammtw)
-                    
-                {  button.setDisable(true);}
-                    if( month11.equals(chhar) && aam.equals(yearsss)&& nharat<nhar2){
+                int ammtw = Integer.parseInt(aam);
+
+                if (chhar2 > month11fet || ammfet < ammtw) {
+                    button.setDisable(true);
+                }
+                if (month11.equals(chhar) && aam.equals(yearsss) && nharat < nhar2) {
                     System.out.println("sdfvfd");
-                button.setDisable(true);
+                    button.setDisable(true);
                 }
 //            
                 button.setOnMouseClicked(e -> {
@@ -132,19 +133,32 @@ int ammfet =Integer.parseInt(yearsss);
                         //  datePicker.setValue(datezzz);
                     }
 
-                    System.out.println(datezzz1);
-                    FXMLLoader loader = new FXMLLoader(getClass().getResource("formLouerVehicule.fxml"));
-                    Parent root;
                     try {
-                        root = loader.load();
-                        FormLouerVehiculeController chauffeurr = loader.getController();
+                        FXMLLoader loader = new FXMLLoader(getClass().getResource("SideBarUser.fxml"));
+                        Parent root1;
+                        root1 = loader.load();
+                        BorderPane borderPane = new BorderPane();
+                        FXMLLoader loader1 = new FXMLLoader(getClass().getResource("formLouerVehicule.fxml"));
+                        Parent root2 = loader1.load();
+                        FormLouerVehiculeController chauffeurr = loader1.getController();
                         chauffeurr.setdatedebut(datezzz1);
+                        HBox hbox = new HBox(root1, new Pane(), root2);
+                        hbox.setSpacing(20);
 
-                        button.getScene().setRoot(root);
+                        borderPane.setRight(hbox);
+
+                        borderPane.setLeft(root1);
+                        button.getScene().setRoot(borderPane);
+
+                        borderPane.setPadding(new Insets(10, 10, 30, 10));
                     } catch (IOException ex) {
                         Logger.getLogger(CalendrierController.class.getName()).log(Level.SEVERE, null, ex);
                     }
 
+//        Scene scene = new Scene(borderPane);
+//        Stage stage = new Stage();
+//        stage.setScene(scene);
+//        stage.show();
                     //modifier.getScene().setRoot(root);
                     //System.out.println(datePicker);
                     // Ajouter le code que vous souhaitez exécuter ici
@@ -154,7 +168,7 @@ int ammfet =Integer.parseInt(yearsss);
                 // button.setPrefSize(200, 200);
                 // button.setId("list-anchor-pane");
                 // button.setStyle("-fx-background-color: #F5F5F5; -fx-border-color: black;");
-                button.setStyle("-fx-background-color: #F5F5F5; -fx-border-color: black; -fx-padding: 10px;");
+                button.setStyle("-fx-background-color: #F5F5F5; -fx-padding: 10px;");
                 button.getChildren().add(label);
                 buttons.add(button);
                 // button.setPrefSize(200, 200);
@@ -208,7 +222,7 @@ int ammfet =Integer.parseInt(yearsss);
 
                             if (khra.equals(label.getText()) && moisString.equals(moisL)) {
                                 label.setStyle("-fx-font-size: 14pt; -fx-text-fill: #FF0000;; -fx-font-weight: bold;");
-
+                                button.setDisable(true);
                                 //   label.setTextFill(Color.RED);
                             }
 
@@ -222,6 +236,7 @@ int ammfet =Integer.parseInt(yearsss);
 
                             if (khra.equals(label.getText()) && moisL.equals(moisString)) {
                                 label.setStyle("-fx-font-size: 14pt; -fx-text-fill: #FF0000;; -fx-font-weight: bold;");
+                                button.setDisable(true);
                             }
 
                         }
@@ -231,6 +246,7 @@ int ammfet =Integer.parseInt(yearsss);
                             String khra = x + "";
 
                             if (khra.equals(label.getText()) && moisL2.equals(moisString)) {
+                                button.setDisable(true);
                                 label.setStyle("-fx-font-size: 14pt; -fx-text-fill: #FF0000;; -fx-font-weight: bold;");
                             }
 
@@ -246,6 +262,7 @@ int ammfet =Integer.parseInt(yearsss);
                             for (int c = 1; c <= daysInMonth; c++) {
                                 String ff = c + "";
                                 if (ff.equals(label.getText()) && month1 > month && month1 < month3) {
+                                    button.setDisable(true);
                                     label.setStyle("-fx-font-size: 14pt; -fx-text-fill: #FF0000;; -fx-font-weight: bold;");
                                 }
 
@@ -265,10 +282,11 @@ int ammfet =Integer.parseInt(yearsss);
 //                    }
                     if (dayEnString.equals(label.getText()) && moisString.equals(moisL)) {
 
+                        button.setDisable(true);
                         label.setStyle("-fx-font-size: 14pt; -fx-text-fill: #FF0000;; -fx-font-weight: bold;");
                     }
                     if (dayEnString3.equals(label.getText()) && moisString.equals(moisL2)) {
-
+                        button.setDisable(true);
                         label.setStyle("-fx-font-size: 14pt; -fx-text-fill: #FF0000;; -fx-font-weight: bold;");
                     }
 

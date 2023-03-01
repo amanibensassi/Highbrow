@@ -50,7 +50,7 @@ public class LocationService implements IService<Location>, ILocation<Location> 
     @Override
     public List<Location> recupererAllByIdVehicule(int t) throws SQLException {
         List<Location> Locations = new ArrayList<>();
-        String req = "select * from location where id_vehicule = ? ";
+        String req = "select * from location where id_vehicule = ? and etat ='confirmer'";
         PreparedStatement ps = cnx.prepareStatement(req);
         ps.setInt(1, t);
         ResultSet rs = ps.executeQuery();
@@ -71,9 +71,7 @@ public class LocationService implements IService<Location>, ILocation<Location> 
     @Override
     public void AffecterUnchauffeur(int t, int idChauffeur) throws SQLException {
         String req = "UPDATE location SET id_chauffeur=? where idlocation= ?";
-
         PreparedStatement ps = cnx.prepareStatement(req);
-
         ps.setInt(1, idChauffeur);
         ps.setInt(2, t);
 
@@ -102,7 +100,7 @@ public class LocationService implements IService<Location>, ILocation<Location> 
     }
 
     @Override
-    public void modifier(Location l) throws SQLException {
+    public boolean modifierch(Location l) throws SQLException {
         String req = "UPDATE location SET date_debut=?,date_fin=?,opt_chauffeur=? where idlocation = ?";
         PreparedStatement ps = cnx.prepareStatement(req);
         ps.setTimestamp(1, new Timestamp(l.getDate_debut().getTime()));
@@ -111,6 +109,7 @@ public class LocationService implements IService<Location>, ILocation<Location> 
         ps.setInt(4, l.getIdlocation());
         System.out.println(ps);
         ps.executeUpdate();
+        return true;
     }
 
     @Override
@@ -134,7 +133,27 @@ public class LocationService implements IService<Location>, ILocation<Location> 
 
         return Locations;
     }
+  
+    public List<Location> getLocationConfirmer() throws SQLException {
+        List<Location> Locations = new ArrayList<>();
+        String req = "select * from location where etat='confirmer'&& opt_chauffeur=false || etat='confirmer' && id_chauffeur is not null ";
+        PreparedStatement ps = cnx.prepareStatement(req);
+      
+        ResultSet rs = ps.executeQuery();
+        while (rs.next()) {
+            Location l = new Location();
+            l.setIdlocation(rs.getInt("Idlocation"));
+            l.setId_vehicule(rs.getInt("Id_vehicule"));
+            l.setId_chauffeur(rs.getInt("Id_chauffeur"));
+            l.setId_utilisateur(rs.getInt("Id_utilisateur"));
+            l.setDate_debut(rs.getDate("date_debut"));
+            l.setDate_fin(rs.getDate("date_fin"));           
+            l.setOpt_chauffeur(rs.getBoolean("opt_chauffeur"));
+            Locations.add(l);
+        }
 
+        return Locations;
+    }
     @Override
     public List<Location> recupererAllByIdChauffeur(int t) throws SQLException {
         List<Location> Locations = new ArrayList<>();
@@ -155,7 +174,44 @@ public class LocationService implements IService<Location>, ILocation<Location> 
 
         return Locations;
     }
+  public List<Location> recupererListeDemandech() throws SQLException {
+        List<Location> Locations = new ArrayList<>();
+        String req = "select * from location where id_chauffeur is null and etat ='confirmer' and opt_chauffeur=true";
+        PreparedStatement ps = cnx.prepareStatement(req);
+       
+        ResultSet rs = ps.executeQuery();
+        while (rs.next()) {
+            Location l = new Location();
+            l.setIdlocation(rs.getInt("Idlocation"));
+            l.setId_vehicule(rs.getInt("Id_vehicule"));
+            l.setId_chauffeur(rs.getInt("Id_chauffeur"));
+            l.setId_utilisateur(rs.getInt("Id_utilisateur"));
+            l.setDate_debut(rs.getDate("date_debut"));
+            l.setDate_fin(rs.getDate("date_fin"));
+            Locations.add(l);
+        }
 
+        return Locations;
+    }
+   public List<Location> getLocationAnnuler() throws SQLException {
+        List<Location> Locations = new ArrayList<>();
+        String req = "select * from location where etat ='annuler' ";
+        PreparedStatement ps = cnx.prepareStatement(req);
+       
+        ResultSet rs = ps.executeQuery();
+        while (rs.next()) {
+            Location l = new Location();
+            l.setIdlocation(rs.getInt("Idlocation"));
+            l.setId_vehicule(rs.getInt("Id_vehicule"));
+            l.setId_chauffeur(rs.getInt("Id_chauffeur"));
+            l.setId_utilisateur(rs.getInt("Id_utilisateur"));
+            l.setDate_debut(rs.getDate("date_debut"));
+            l.setDate_fin(rs.getDate("date_fin"));
+            Locations.add(l);
+        }
+
+        return Locations;
+    }
     @Override
     public void AnnulerLocation(int i) throws SQLException {
         String req = "UPDATE location SET etat= ?  where idlocation = ?";
@@ -179,6 +235,11 @@ public class LocationService implements IService<Location>, ILocation<Location> 
 
     @Override
     public void supprimer(Location t) throws SQLException {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void modifier(Location t) throws SQLException {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 

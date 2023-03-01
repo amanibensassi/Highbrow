@@ -52,7 +52,7 @@ public class Test {
             /**
              * *********************** TESTER LOCATION ************************
              */
-          //  ls.ajouter(l1);
+            ls.ajouter(l1);
             //ls.AffecterUnchauffeur(46,178);
             // ls.supprimerLocation(45);
             ls.modifier(l2);

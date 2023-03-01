@@ -10,48 +10,48 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="500.0" prefWidth="900.0" stylesheets="@../styles/detail.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.AddChauffeurController">
+<AnchorPane id="AnchorPane" prefHeight="710.0" prefWidth="1000.0" stylesheets="@../styles/AjouterChauffeur.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.AddChauffeurController">
    <children>
-      <TextField fx:id="nom" layoutX="45.0" layoutY="93.0" prefHeight="46.0" prefWidth="200" promptText="nom" />
-      <TextField fx:id="prenom" layoutX="302.0" layoutY="93.0" prefHeight="46.0" prefWidth="200" promptText="prenom" />
-      <Button fx:id="ajouterch" alignment="BOTTOM_RIGHT" contentDisplay="RIGHT" layoutX="354.0" layoutY="384.0" onAction="#AjouterCh" prefHeight="52.0" prefWidth="160.0" text="Ajouter" />
-      <TextField fx:id="emailField" layoutX="45.0" layoutY="186.0" prefHeight="46.0" prefWidth="200" promptText="E-mail" />
-      <TextField fx:id="cin" layoutX="302.0" layoutY="186.0" prefHeight="46.0" prefWidth="200" promptText="Cin" />
-      <TextField fx:id="numtel" layoutX="45.0" layoutY="276.0" prefHeight="46.0" prefWidth="200" promptText="numtel" />
-      <TextField fx:id="prix" layoutX="302.0" layoutY="276.0" prefHeight="46.0" prefWidth="200" promptText="prix_par_Jour" />
-      <ComboBox fx:id="combobox" layoutX="25.0" layoutY="400.0" prefHeight="31.0" prefWidth="212.0" promptText="region" />
-      <ImageView fitHeight="46.0" fitWidth="67.0" layoutX="308.0" layoutY="387.0" pickOnBounds="true" preserveRatio="true">
+      <TextField fx:id="nom" layoutX="51.0" layoutY="253.0" onKeyPressed="#testNom" prefHeight="46.0" prefWidth="268.0" promptText="nom" />
+      <TextField fx:id="prenom" layoutX="383.0" layoutY="255.0" onKeyPressed="#testPrenom" prefHeight="46.0" prefWidth="268.0" promptText="prenom" />
+      <Button fx:id="ajouterch" alignment="BOTTOM_RIGHT" contentDisplay="RIGHT" layoutX="443.0" layoutY="544.0" onAction="#AjouterCh" prefHeight="52.0" prefWidth="186.0" text="Ajouter" />
+      <TextField fx:id="emailField" layoutX="51.0" layoutY="353.0" onKeyPressed="#testEmail" prefHeight="46.0" prefWidth="268.0" promptText="E-mail" />
+      <TextField fx:id="cin" layoutX="383.0" layoutY="353.0" onKeyPressed="#testCin" prefHeight="46.0" prefWidth="268.0" promptText="Cin" />
+      <TextField fx:id="numtel" layoutX="45.0" layoutY="446.0" onKeyPressed="#testTel" prefHeight="46.0" prefWidth="268.0" promptText="numtel" />
+      <TextField fx:id="prix" layoutX="383.0" layoutY="446.0" onKeyPressed="#testprix" prefHeight="46.0" prefWidth="268.0" promptText="prix_par_Jour" />
+      <ComboBox fx:id="combobox" layoutX="46.0" layoutY="547.0" prefHeight="46.0" prefWidth="268.0" promptText="region" />
+      <ImageView fitHeight="89.0" fitWidth="85.0" layoutX="358.0" layoutY="532.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/chauffeur.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="65.0" fitWidth="80.0" layoutX="66.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="147.0" fitWidth="113.0" layoutX="39.0" layoutY="55.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/customer.png" />
          </image>
       </ImageView>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#bfc9c426" height="147.0" layoutX="603.0" layoutY="185.0" stroke="BLACK" strokeType="INSIDE" width="212.0" />
-      <Label layoutX="636.0" layoutY="197.0" text="Ajouter permis ici" />
-      <ImageView fitHeight="46.0" fitWidth="65.0" layoutX="633.0" layoutY="245.0" onMouseClicked="#AjouterPermisAvant" pickOnBounds="true" preserveRatio="true">
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#bfc9c426" height="210.0" layoutX="697.0" layoutY="328.0" stroke="BLACK" strokeType="INSIDE" width="284.0" />
+      <Label layoutX="771.0" layoutY="356.0" text="Ajouter permis ici" />
+      <ImageView fitHeight="75.0" fitWidth="75.0" layoutX="734.0" layoutY="404.0" onMouseClicked="#AjouterPermisAvant" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/images.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="46.0" fitWidth="65.0" layoutX="732.0" layoutY="245.0" onMouseClicked="#AjouterPermisArriere" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="79.0" fitWidth="75.0" layoutX="878.0" layoutY="404.0" onMouseClicked="#AjouterPermisArriere" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/images.png" />
          </image>
       </ImageView>
-      <Label layoutX="634.0" layoutY="297.0" text="Avant" />
-      <Label layoutX="729.0" layoutY="297.0" text="Arriere" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#bfc9c426" height="58.0" layoutX="603.0" layoutY="72.0" stroke="BLACK" strokeType="INSIDE" width="212.0" />
-      <Label layoutX="614.0" layoutY="91.0" text="Ajouter image ici" />
-      <ImageView fitHeight="46.0" fitWidth="65.0" layoutX="761.0" layoutY="78.0" onMouseClicked="#AjouterImage" pickOnBounds="true" preserveRatio="true">
+      <Label layoutX="749.0" layoutY="492.0" text="Avant" />
+      <Label layoutX="889.0" layoutY="492.0" text="Arriere" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#bfc9c426" height="89.0" layoutX="733.0" layoutY="202.0" stroke="BLACK" strokeType="INSIDE" width="212.0" />
+      <Label layoutX="743.0" layoutY="237.0" text="Ajouter image ici" />
+      <ImageView fitHeight="61.0" fitWidth="61.0" layoutX="877.0" layoutY="217.0" onMouseClicked="#AjouterImage" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/images.png" />
          </image>
       </ImageView>
-      <Label layoutX="167.0" layoutY="14.0" lineSpacing="2.0" prefHeight="40.0" prefWidth="235.0" text="Ajouter un nouveau chauffeur" textAlignment="CENTER">
+      <Label graphicTextGap="12.0" layoutX="180.0" layoutY="40.0" lineSpacing="2.0" prefHeight="128.0" prefWidth="746.0" style="-fx-font-size: 50;" text="Ajouter un nouveau chauffeur" textAlignment="CENTER">
          <font>
             <Font name="Bauhaus 93" size="78.0" />
          </font></Label>

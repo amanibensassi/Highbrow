@@ -20,34 +20,12 @@
 }
 
 #car-label, #start-date-label, #end-date-label {
-    -fx-font-size: 17px;
+    -fx-font-size: 12px;
     -fx-text-fill: #444444;
     -fx-font-weight: bold;
 }
 #car-label1, #start-date-label1, #end-date-label1 {
-    -fx-font-size: 15px;
+    -fx-font-size: 14px;
     -fx-text-fill: #444444;
    
-}
-#cancel-button {
-    -fx-font-size: 16px;
-    -fx-background-color: #E31937;
-    -fx-text-fill: white;
-    -fx-padding: 10px 20px;
-    -fx-border-radius: 20px;
-    -fx-cursor: hand;
-}
-#modifier-button {
-    -fx-font-size: 16px;
-    -fx-background-color: #06C17A;
-    -fx-text-fill: white;
-    -fx-padding: 10px 20px;
-    -fx-border-radius: 20px;
-    -fx-cursor: hand;
-}
-#cancel-button:hover {
-    -fx-background-color: #c0392b;
-}
-#modifier-button:hover {
-    -fx-background-color: #c0392b;
 }

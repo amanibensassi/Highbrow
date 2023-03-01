@@ -18,18 +18,28 @@ import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Insets;
 import javafx.scene.Parent;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.effect.InnerShadow;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.Pane;
+import javafx.scene.paint.Color;
 import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import services.ChauffeurService;
@@ -82,8 +92,8 @@ public class DetailChauffeurController implements Initializable {
     /**
      * Initializes the controller class.
      */
-  ChauffeurService chauffeur = new ChauffeurService();
-    
+    ChauffeurService chauffeur = new ChauffeurService();
+
     String nomPermis;
     String nomPermisBack;
     String img;
@@ -92,7 +102,8 @@ public class DetailChauffeurController implements Initializable {
     File file;
     File file1;
     File file2;
-    public void setChauffeur(Chauffeur c) {
+
+    public void setChauffeur(Chauffeur c) throws IOException {
         nomch.setText(c.getNom());
         prenomch.setText(c.getPrenom());
         nom.setText(c.getNom());
@@ -103,24 +114,24 @@ public class DetailChauffeurController implements Initializable {
         numtel.setText(String.valueOf(c.getContact()));
         prix.setText(String.valueOf(c.getPrix_par_jour()));
         nomImage = "C://xampp//htdocs//img//" + c.getImage();
-
+        String img = c.getImage();
+        String pAvant = c.getPermis();
+        String pBack = c.getPermis_arriere();
         File filee = new File(nomImage);
 
         Image imagee = new Image(filee.toURI().toString());
-       // imageview.setImage(new Image(getClass().getResourceAsStream("/path/to/image.png")));
+        // imageview.setImage(new Image(getClass().getResourceAsStream("/path/to/image.png")));
 
         imageview.setImage(imagee);
         imageview.getStyleClass().add("detail.css");
-        
-            pa = "C://xampp//htdocs//img//" + c.getImage();
-
+        pa = "C://xampp//htdocs//img//" + c.getPermis();
         File file2 = new File(pa);
 
         Image image2 = new Image(file2.toURI().toString());
 
         pavant.setImage(image2);
-        
-            pb = "C://xampp//htdocs//img//" + c.getImage();
+
+        pb = "C://xampp//htdocs//img//" + c.getPermis_arriere();
 
         File file3 = new File(pb);
 
@@ -128,6 +139,9 @@ public class DetailChauffeurController implements Initializable {
 
         pback.setImage(image3);
         idch = c.getIdchauffeur();
+         System.out.println("adresse image"+img);
+         
+
     }
 
     public void initialize(URL url, ResourceBundle rb) {
@@ -136,10 +150,12 @@ public class DetailChauffeurController implements Initializable {
         combobox.getItems().add("djerba");
         combobox.getItems().add("nabeul");
         combobox.getItems().add("sousse");
+       
     }
- @FXML
+
+    @FXML
     private File ModifierImage(MouseEvent event) {
-         Path to1 = null;
+        Path to1 = null;
         String m = null;
         String path = "C:\\xampp\\htdocs\\img";
         JFileChooser chooser = new JFileChooser();
@@ -180,7 +196,7 @@ public class DetailChauffeurController implements Initializable {
 
     @FXML
     private File ModifierPermisAvant(MouseEvent event) {
-         Path to1 = null;
+        Path to1 = null;
         String m = null;
         String path = "C:\\xampp\\htdocs\\img";
         JFileChooser chooser = new JFileChooser();
@@ -221,7 +237,7 @@ public class DetailChauffeurController implements Initializable {
 
     @FXML
     private File ModifierPermisBack(MouseEvent event) {
-         Path to1 = null;
+        Path to1 = null;
         String m = null;
         String path = "C:\\xampp\\htdocs\\img";
         JFileChooser chooser = new JFileChooser();
@@ -266,15 +282,16 @@ public class DetailChauffeurController implements Initializable {
     }
 
     @FXML
-    private void ModifierCh(ActionEvent event)  throws  FileNotFoundException, IOException, SQLException {
-         String Nom = nom.getText();
+    private void ModifierCh(ActionEvent event) throws FileNotFoundException, IOException, SQLException {
+
+        String Nom = nom.getText();
         String Prenom = prenom.getText();
         int Contact = Integer.parseInt(numtel.getText());
         String Email = emailField.getText();
         int Cin = Integer.parseInt(cin.getText());
         float Prix = Float.parseFloat(prix.getText());
         
-         FileInputStream fl = new FileInputStream(file);
+        FileInputStream fl = new FileInputStream(file);
         byte[] data = new byte[(int) file.length()];
         String img = file.getName();
         fl.read(data);
@@ -291,15 +308,177 @@ public class DetailChauffeurController implements Initializable {
         String pBack = file2.getName();
         f3.read(data2);
         f3.close();
+        
         Chauffeur chauf = new Chauffeur(idch, Region.valueOf(combobox.getValue()), Contact, Cin, Email, pAvant, img, Prix, Nom, Prenom, pBack, 2);
         chauffeur.modifier(chauf);
-         FXMLLoader loader = new FXMLLoader(getClass().getResource("ListeChauffeur.fxml"));
-            Parent root =loader.load(); 
+        
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("SideBarUser.fxml"));
+        Parent root1 = loader.load();
+        BorderPane borderPane = new BorderPane();
+        FXMLLoader loader1 = new FXMLLoader(getClass().getResource("ListeChauffeur.fxml"));
+        Parent root2 = loader1.load();
 
-               ModifierCh.getScene().setRoot(root);
+        HBox hbox = new HBox(root1, new Pane(), root2);
+        hbox.setSpacing(20);
+
+        borderPane.setRight(hbox);
+
+        borderPane.setLeft(root1);
+
+        borderPane.setPadding(new Insets(10, 10, 30, 10));
+
+        ModifierCh.getScene().setRoot(borderPane);
 
     }
+
+    private boolean TestText(String cha) {
+        boolean test = false;
+        Pattern p = Pattern.compile("[a-zA-Z]*");
+        Matcher m1 = p.matcher(cha);
+        if (m1.find() && m1.group().equals(cha) || m1.find() && m1.group().equals(cha)) {
+            test = true;
+        }
+        return test;
     }
 
-   
+    private boolean TestPrix() {
+        boolean test = false;
+        Pattern p = Pattern.compile("[0-9]+");
+        Matcher m = p.matcher(prix.getText());
+        if (m.find() && m.group().equals(prix.getText())) {
+            test = true;
+        }
+        return test;
+    }
 
+    private boolean TestCin(String cin) {
+        boolean test = false;
+        Pattern p = Pattern.compile("[0-9]+");
+        Matcher m = p.matcher(cin);
+        if (m.find() && m.group().equals(cin)) {
+            test = true;
+        }
+        return test;
+    }
+
+    private boolean TestEmail() {
+        boolean test = false;
+        Pattern p = Pattern.compile("^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$");
+        Matcher m = p.matcher(emailField.getText());
+        if (m.find() && m.group().equals(emailField.getText())) {
+            test = true;
+        }
+        return test;
+    }
+
+    @FXML
+    private void testNom(KeyEvent event) {
+        if (TestText(nom.getText()) & nom.getText().isEmpty() == false) {
+
+            InnerShadow in = new InnerShadow();
+            in.setColor(Color.web("#52FF00"));
+
+            nom.setEffect(in);
+        } else {
+
+            InnerShadow in = new InnerShadow();
+            in.setColor(Color.web("#f80000"));
+
+            nom.setEffect(in);
+        }
+    }
+
+    @FXML
+    private void testprix(KeyEvent event) {
+        if (prix.getText().isEmpty() == false) {
+            if (TestPrix()) {
+
+                InnerShadow in = new InnerShadow();
+                in.setColor(Color.web("#52FF00"));
+
+                prix.setEffect(in);
+            } else {
+                InnerShadow in = new InnerShadow();
+                in.setColor(Color.web("#f80000"));
+
+                prix.setEffect(in);
+            }
+
+        }
+    }
+
+    @FXML
+    private void testPrenom(KeyEvent event) {
+        if (TestText(prenom.getText()) & prenom.getText().isEmpty() == false) {
+
+            InnerShadow in = new InnerShadow();
+            in.setColor(Color.web("#52FF00"));
+
+            prenom.setEffect(in);
+        } else {
+
+            InnerShadow in = new InnerShadow();
+            in.setColor(Color.web("#f80000"));
+
+            prenom.setEffect(in);
+        }
+    }
+
+    @FXML
+    private void testEmail(KeyEvent event) {
+
+        if (TestEmail() & emailField.getText().isEmpty() == false) {
+
+            InnerShadow in = new InnerShadow();
+            in.setColor(Color.web("#52FF00"));
+
+            emailField.setEffect(in);
+        } else {
+
+            InnerShadow in = new InnerShadow();
+            in.setColor(Color.web("#f80000"));
+
+            emailField.setEffect(in);
+        }
+
+    }
+
+    @FXML
+    private void testCin(KeyEvent event) {
+        if (cin.getText().isEmpty() == false) {
+            if (TestCin(cin.getText()) && cin.getText().length() == 7) {
+
+                InnerShadow in = new InnerShadow();
+                in.setColor(Color.web("#52FF00"));
+
+                cin.setEffect(in);
+            } else {
+                InnerShadow in = new InnerShadow();
+                in.setColor(Color.web("#f80000"));
+
+                cin.setEffect(in);
+            }
+
+        }
+    }
+
+    @FXML
+    private void testTel(KeyEvent event) {
+        if (numtel.getText().isEmpty() == false) {
+            if (TestCin(numtel.getText()) && numtel.getText().length() == 7) {
+
+                InnerShadow in = new InnerShadow();
+                in.setColor(Color.web("#52FF00"));
+
+                numtel.setEffect(in);
+            } else {
+                InnerShadow in = new InnerShadow();
+                in.setColor(Color.web("#f80000"));
+
+                numtel.setEffect(in);
+            }
+
+        }
+
+    }
+}

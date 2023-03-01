@@ -4,12 +4,21 @@
     -fx-border-radius: 5px;
     -fx-padding: 10px;
 }
-.button {
-    -fx-background-color: #4CAF50;
+#button1 {
+    -fx-background-color: #06C17A;
     -fx-text-fill: white;
 }
 
-.button:hover {
+#button1:hover {
+    -fx-background-color: #3e8e41;
+}
+
+#button2 {
+    -fx-background-color: #E31937;
+    -fx-text-fill: white;
+}
+
+#button2:hover {
     -fx-background-color: #3e8e41;
 }
 /* Styles pour l'ensemble de l'application */

@@ -9,11 +9,11 @@
         <ImageView fx:id="userImage" fitHeight="81.0" fitWidth="143.0" layoutX="14.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true" AnchorPane.topAnchor="25.0">
      
         </ImageView>
-        <Label fx:id="nom" layoutX="160.0" layoutY="26.0" prefHeight="20.0" prefWidth="64.0" styleClass="nom" text="nom" />
-        <Label fx:id="prenom" layoutX="157.0" layoutY="68.0" prefHeight="18.0" prefWidth="64.0" styleClass="prenom" text="prenom" />
-        <Button fx:id="supprimer" layoutX="26.0" layoutY="179.0" mnemonicParsing="false" onAction="#supprimerChauffeur" text="supprimer" />
-        <Button fx:id="modifier" layoutX="157.0" layoutY="179.0" mnemonicParsing="false" onAction="#modifierChauffeur" text="modifier" />
-        <Label fx:id="mail" layoutX="26.0" layoutY="129.0" prefHeight="18.0" prefWidth="128.0" styleClass="prenom" text="mail" />
+        <Label fx:id="nom" layoutX="173.0" layoutY="26.0" lineSpacing="5.0" prefHeight="20.0" prefWidth="64.0" styleClass="nom" text="nom" />
+        <Label fx:id="prenom" layoutX="161.0" layoutY="68.0" prefHeight="18.0" prefWidth="64.0" styleClass="prenom" text="prenom" />
+        <Button id="button2" fx:id="supprimer" layoutX="26.0" layoutY="179.0" mnemonicParsing="false" onAction="#supprimerChauffeur" stylesheets="@../styles/style.css" text="supprimer" />
+        <Button id="button1" fx:id="modifier" layoutX="173.0" layoutY="179.0" mnemonicParsing="false" onAction="#modifierChauffeur" stylesheets="@../styles/style.css" text="modifier" />
+        <Label fx:id="mail" layoutX="26.0" layoutY="129.0" prefHeight="18.0" prefWidth="165.0" styleClass="prenom" text="mail" />
         <Label fx:id="numtel" layoutX="26.0" layoutY="154.0" prefWidth="85.0" styleClass="prenom" text="numtel" />
         <ImageView fx:id="icon" fitHeight="39.0" fitWidth="41.0" layoutX="184.0" layoutY="110.0" onMouseClicked="#onClickCalendrier" pickOnBounds="true" preserveRatio="true" />
    
