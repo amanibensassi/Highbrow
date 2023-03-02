@@ -56,6 +56,8 @@ public class Interface_forumController implements Initializable {
     private Pane scrollbar_id;
     @FXML
     private ScrollPane scrollPaneId;
+    @FXML
+    private Button id_button;
 
     /**
      * Initializes the controller class.
@@ -124,4 +126,8 @@ public class Interface_forumController implements Initializable {
             System.out.println("error" + ex.getMessage());
         }} 
 }
+
+    @FXML
+    private void generatePDF(ActionEvent event) {
+    }
 }

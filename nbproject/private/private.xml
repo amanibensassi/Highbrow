@@ -3,18 +3,14 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/xampp/htdocs/pidev/Highbrow/src/gui/ReponsecardController.java</file>
-            <file>file:/C:/xampp/htdocs/pidev/Highbrow/src/gui/CommentairecardController.java</file>
-            <file>file:/C:/xampp/htdocs/pidev/Highbrow/src/gui/PublicationdesignController.java</file>
             <file>file:/C:/xampp/htdocs/pidev/Highbrow/src/gui/Interface_commentairesController.java</file>
             <file>file:/C:/xampp/htdocs/pidev/Highbrow/src/services/CommentaireService.java</file>
             <file>file:/C:/xampp/htdocs/pidev/Highbrow/src/services/ReponseService.java</file>
-            <file>file:/C:/xampp/htdocs/pidev/Highbrow/src/gui/reponsecard.fxml</file>
-            <file>file:/C:/xampp/htdocs/pidev/Highbrow/src/entities/Commentaire.java</file>
             <file>file:/C:/xampp/htdocs/pidev/Highbrow/src/gui/Interface_reponseController.java</file>
+            <file>file:/C:/xampp/htdocs/pidev/Highbrow/src/gui/Interface_forumController.java</file>
+            <file>file:/C:/xampp/htdocs/pidev/Highbrow/src/services/PublicationService.java</file>
             <file>file:/C:/xampp/htdocs/pidev/Highbrow/src/test/main.java</file>
             <file>file:/C:/xampp/htdocs/pidev/Highbrow/src/test/mainajouter.java</file>
-            <file>file:/C:/xampp/htdocs/pidev/Highbrow/src/gui/interface_reponse.fxml</file>
         </group>
     </open-files>
 </project-private>

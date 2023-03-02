@@ -118,7 +118,6 @@ public class PublicationService implements IService<Publication> {
 
       Statement st = cnx.createStatement();
       ResultSet rs = st.executeQuery(req);
-         System.out.println("query is executed"); 
          Publication p = new Publication();
         //remplissage
          System.out.println(rs.first());

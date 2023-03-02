@@ -12,6 +12,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.Date;
+import java.util.List;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -42,7 +43,7 @@ public class PublicationdesignController implements Initializable {
     private Label dateid;
     @FXML
     private Label publicationid;
-    Date d= new Date();
+    Date d = new Date();
     PublicationService ps = new PublicationService();
     CommentaireService cs = new CommentaireService();
     Publication pub = new Publication();
@@ -74,68 +75,115 @@ public class PublicationdesignController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-    }    
-    public void setdesign(Publication p){
-     this.pub=p;
-     this.com.setId_publication(p.getIdpublication());
-     this.com.setId_utilisateur(p.getId_utilisateur());
-     
-//     username_id.set(p.getPublication());
-     dateid.setText(p.getDate_publication().toString());
-     publicationid.setText(p.getPublication());
-     try{
-     this.id_likes.setText(String.valueOf(cs.countLikes(p.getIdpublication())));
-     this.id_dislikes.setText(String.valueOf(cs.countDislikes(p.getIdpublication())));
-     nbr_commentaire.setText(String.valueOf(cs.countCommentaire(com.getId_publication())));
-     }catch(SQLException ex)
-       {System.out.println("erreur modification de la publication");}
-          
-    
+    }
+
+    public void setdesign(Publication p) {
+
+//     username_id.setText(p.getId_utilisateur());
+        dateid.setText(p.getDate_publication().toString());
+        publicationid.setText(p.getPublication());
+        try {
+            this.pub = ps.recupererParUtilisateurDate(p);
+            this.com.setId_publication(pub.getIdpublication());
+            /**********************session id*************/
+            this.com.setId_utilisateur(1);
+            
+            
+            this.id_likes.setText(String.valueOf(cs.countLikes(p.getIdpublication())));
+            this.id_dislikes.setText(String.valueOf(cs.countDislikes(p.getIdpublication())));
+            nbr_commentaire.setText(String.valueOf(cs.countCommentaire(com.getId_publication())));
+            
+            
+                        /*********************session id********************/
+//             if ((com.getId_utilisateur()==1)&&(cs.recupererInteractionUser(com).getNbr_like()==true)){
+//                 
+//            String img = "C:\\xampp\\htdocs\\pidev\\Highbrow\\src\\media\\full_up.png";
+//            File file = new File(img);
+//            Image img1 = new Image(file.toURI().toString());
+//            this.like_image.setImage(img1);
+//            this.like_button.setDisable(true);
+//           
+//           }else if((cs.recupererInteractionUser(com).getId_utilisateur()==1)&&(cs.recupererInteractionUser(com).getNbr_dislike()==true)){
+//               
+//            String img = "C:\\xampp\\htdocs\\pidev\\Highbrow\\src\\media\\full_down.png";
+//            File file = new File(img);
+//            Image img1 = new Image(file.toURI().toString());
+//            this.dislike_image.setImage(img1);
+//            this.dislike_button.setDisable(true);
+//            
+//           }
+            
+        } catch (SQLException ex) {
+            System.out.println("erreur d'initialisation de la publication");
+            
+        }
+       
+
     }
 
     @FXML
     private void addlike(ActionEvent event) {
-        try{
-            String img= "C:\\xampp\\htdocs\\pidev\\Highbrow\\src\\media\\full_up.png";
+        try {
+            
+            
+            //image button change & button disable
+            
+            String img = "C:\\xampp\\htdocs\\pidev\\Highbrow\\src\\media\\full_up.png";
             File file = new File(img);
-            Image img1= new Image(file.toURI().toString());
-        cs.ajouterLike(com);
-        pub=ps.recupererParUtilisateurDate(pub);
-        id_likes.setText(String.valueOf(cs.countLikes(com.getId_publication())));
-        this.like_image.setImage(img1);
-        this.like_button.setDisable(true);
-        }catch (SQLException ex)
-        {System.out.println("erreur modification de la publication");}
+            Image img1 = new Image(file.toURI().toString());
+            this.like_image.setImage(img1);
+            this.like_button.setDisable(true);
+            
+            
+            // database connexion
+            cs.ajouterLike(com);
+            Commentaire c = cs.recupererInteractionUser(com);
+            id_likes.setText(String.valueOf(cs.countLikes(com.getId_publication())));
+            
+        } catch (SQLException ex) {
+            System.out.println("erreur modification de la publication");
+        }
     }
 
     @FXML
     private void adddislike(ActionEvent event) {
-        System.out.println("not supported");
-          try{
-               String img= "C:\\xampp\\htdocs\\pidev\\Highbrow\\src\\media\\full_down.png";	
+        try {
+            
+            
+            // interface part
+            
+            String img = "C:\\xampp\\htdocs\\pidev\\Highbrow\\src\\media\\full_down.png";
             File file = new File(img);
-            Image img1= new Image(file.toURI().toString());
-        cs.ajouterDislike(com);
-        pub=ps.recupererParUtilisateurDate(pub);
-        id_dislikes.setText(String.valueOf(cs.countDislikes(com.getId_publication())));
-        this.dislike_image.setImage(img1);
-        this.dislike_button.setDisable(true);
-        }catch (SQLException ex)
-        {System.out.println("erreur modification de la publication");}
+            Image img1 = new Image(file.toURI().toString());
+            this.dislike_image.setImage(img1);
+            this.dislike_button.setDisable(true);
+            
+
+            //data base part
+            
+            cs.ajouterDislike(com);
+            Commentaire c = cs.recupererInteractionUser(com);
+            id_dislikes.setText(String.valueOf(cs.countDislikes(com.getId_publication())));
+          
+        } catch (SQLException ex) {
+            System.out.println("erreur modification de la publication");
+        }
     }
 
     @FXML
     private void addcomment(ActionEvent event) {
-        try{
-                    Interface_commentairesController cc = new Interface_commentairesController ();
-                    FXMLLoader loader = new FXMLLoader(getClass().getResource("interface_commentaires.fxml"));
-                    Parent root = loader.load();
-                    cc = loader.getController();
-                    cc.dynamicinitialize(pub);
-                    publicationid.getScene().setRoot(root);
-                    
-        }catch (IOException ex)
-        {System.out.println("no entry to the dialog pane");}
+        try {
+            System.out.println("enty cliquit aal commentaire w aandek "+pub);
+            Interface_commentairesController cc = new Interface_commentairesController();
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("interface_commentaires.fxml"));
+            Parent root = loader.load();
+            cc = loader.getController();
+            cc.dynamicinitialize(pub);
+            publicationid.getScene().setRoot(root);
+
+        } catch (IOException ex) {
+            System.out.println("no entry to the dialog pane");
+        }
 //            Parent root = loader.load();
 //            Afficher_publicationController controller = loader.getController();
 //            idmodifypub.getScene().setRoot(root);
@@ -143,46 +191,39 @@ public class PublicationdesignController implements Initializable {
 
     @FXML
     private void modifierPublication(ActionEvent event) {
-    try {
-        Dialog<Void> dialog = new Dialog<>();
-        dialog.setTitle("Modifier la publication");
-         this.pub= ps.recupererParUtilisateurDate(pub);
-        ModifypublicationController mod = new ModifypublicationController();
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("modifypublication.fxml"));
-        Node pane = loader.load();
-        mod = loader.getController();
-        mod.initialize(pub, dialog, pane);
+        try {
+            Dialog<Void> dialog = new Dialog<>();
+            dialog.setTitle("Modifier la publication");
+            this.pub = ps.recupererParUtilisateurDate(pub);
+            ModifypublicationController mod = new ModifypublicationController();
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("modifypublication.fxml"));
+            Node pane = loader.load();
+            mod = loader.getController();
+            mod.initialize(pub, dialog, pane);
 
-        DialogPane dialogPane = dialog.getDialogPane();
-        dialogPane.setContent(pane);
-                
+            DialogPane dialogPane = dialog.getDialogPane();
+            dialogPane.setContent(pane);
 
-       
-                    // les bouttons: necessaires walla il crash
-                    ButtonType okButtonType = new ButtonType("", ButtonBar.ButtonData.OK_DONE);
-                    ButtonType cancelButtonType = new ButtonType("", ButtonBar.ButtonData.CANCEL_CLOSE);
-                    dialogPane.getButtonTypes().addAll(okButtonType, cancelButtonType);
-                    // hiding the buttons
-                    Button okButton = (Button) dialogPane.lookupButton(okButtonType);
-                    okButton.setStyle("-fx-background-color: transparent; -fx-border-color: transparent;");
-                    Button cancelButton = (Button) dialogPane.lookupButton(cancelButtonType);
-                    cancelButton.setStyle("-fx-background-color: transparent; -fx-border-color: transparent;");
+            // les bouttons: necessaires walla il crash
+            ButtonType okButtonType = new ButtonType("", ButtonBar.ButtonData.OK_DONE);
+            ButtonType cancelButtonType = new ButtonType("", ButtonBar.ButtonData.CANCEL_CLOSE);
+            dialogPane.getButtonTypes().addAll(okButtonType, cancelButtonType);
+            // hiding the buttons
+            Button okButton = (Button) dialogPane.lookupButton(okButtonType);
+            okButton.setStyle("-fx-background-color: transparent; -fx-border-color: transparent;");
+            Button cancelButton = (Button) dialogPane.lookupButton(cancelButtonType);
+            cancelButton.setStyle("-fx-background-color: transparent; -fx-border-color: transparent;");
 
-        // lezma for l'affichage mtee dialog pane
-       dialog.showAndWait();
-       pub= ps.recupererParId(pub.getIdpublication());
-        System.out.println("after modif + recupérer"+pub);
-        dateid.setText(pub.getDate_publication().toString());
-        publicationid.setText(pub.getPublication());
-       
-        
-       
-    } catch (IOException | SQLException ex) {
-        System.out.println("Erreur modification de la publication");
+            // lezma for l'affichage mtee dialog pane
+            dialog.showAndWait();
+            pub = ps.recupererParId(pub.getIdpublication());
+            System.out.println("after modif + recupérer" + pub);
+            dateid.setText(pub.getDate_publication().toString());
+            publicationid.setText(pub.getPublication());
+
+        } catch (IOException | SQLException ex) {
+            System.out.println("Erreur modification de la publication");
+        }
     }
-}
 
-
-
-    
 }

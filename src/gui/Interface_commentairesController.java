@@ -89,7 +89,6 @@ import services.PublicationService;
     }  
     
     public void dynamicinitialize(Publication p) {
-        System.out.println(p);
           try{
             this.txtf_partagerpub1.setCursor(Cursor.TEXT);
             this.dateid.setText(p.getDate_publication().toString());
@@ -98,8 +97,7 @@ import services.PublicationService;
             id_dislike.setText(String.valueOf(cs.countDislikes(p.getIdpublication())));
             nbr_commentaire.setText(String.valueOf(cs.countCommentaire(p.getIdpublication())));
 
-      
-            pp =ps.recupererParUtilisateurDate(p);
+            pp =p;
           
          List<Commentaire> pub = cs.recupererParpublication(pp.getIdpublication());
             if (pub.isEmpty())
@@ -137,13 +135,20 @@ import services.PublicationService;
         String img= "C:\\xampp\\htdocs\\pidev\\Highbrow\\src\\media\\full_up.png";
         File file = new File(img);
         Image img1= new Image(file.toURI().toString());
-        System.out.println("user session");
+        this.like_img.setImage(img1);
+        this.like_button.setDisable(true);
+        
+        
+        Commentaire com = new Commentaire();
         c.setId_utilisateur(1);
         c.setId_publication(pp.getIdpublication());
         cs.ajouterLike(c);
         id_like.setText(String.valueOf(cs.countLikes(c.getId_publication())));
-        this.like_img.setImage(img1);
-        this.like_button.setDisable(true);
+             System.out.println("avant récupération"+com);
+              c = cs.recupererInteractionUser(com);
+             System.out.println(c);
+       
+        
         }catch (SQLException ex)
         {System.out.println("erreur modification de la publication");}
     }
@@ -154,16 +159,26 @@ import services.PublicationService;
         String img= "C:\\xampp\\htdocs\\pidev\\Highbrow\\src\\media\\full_down.png";	
         File file = new File(img);
         Image img1= new Image(file.toURI().toString());
+         this.dislike_img.setImage(img1);
+        this.dislike_button.setDisable(true);
+        
+        
         System.out.println("user session");
         c.setId_utilisateur(1);
         c.setId_publication(pp.getIdpublication());
         cs.ajouterDislike(c);
         id_dislike.setText(String.valueOf(cs.countDislikes(c.getId_publication())));
-        this.dislike_img.setImage(img1);
-        this.dislike_button.setDisable(true);
+       
         }catch (SQLException ex)
         {System.out.println("erreur modification de la publication");}
     }
+    
+    
+    
+    
+    
+    
+    
 
     @FXML
     private void ajoutercommentaire(ActionEvent event) {

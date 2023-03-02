@@ -63,8 +63,9 @@ public class main {
 //            System.out.println(cs.countLikes(131));
 //            System.out.println(cs.countDislikes(131));
 //            System.out.println(cs.countDislikes(137));
-            System.out.println(cs.countCommentaire(131));
-            System.out.println(cs.countCommentaire(137));
+//            System.out.println(cs.countCommentaire(131));
+//            System.out.println(cs.countCommentaire(137));
+System.out.println(cs.recuperernocomment());
           //  System.out.println( cs.recupererParUtilisateurDate(cc));
 //            System.out.println( cs.recupererParpublication(cc.getId_publication()));
 //                 cs.ajouter(cc);
