@@ -41,7 +41,13 @@
    <Line endX="180.5" startX="-100.0" style="-fx-stroke: #4CAF50;" />
    <AnchorPane>
       <children>
-         <Button fx:id="reclamer" onAction="#GoToReclamer" styleClass="sidebar-button" text="Reserver vehicule" />
+         <Button fx:id="reclamer1" onAction="#GoToReclamer" styleClass="sidebar-button" text="Reserver vehicule" />
+      </children>
+   </AnchorPane>
+   <Line endX="174.5" startX="-100.0" style="-fx-stroke: #4CAF50;" />
+   <AnchorPane>
+      <children>
+         <Button fx:id="statistique" onAction="#statistique" styleClass="sidebar-button" text="statistique" />
       </children>
    </AnchorPane>
    <Line endX="174.5" startX="-100.0" style="-fx-stroke: #4CAF50;" />

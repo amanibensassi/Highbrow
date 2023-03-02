@@ -41,10 +41,13 @@ public class SideBarUserController implements Initializable {
     private Button sieges;
     @FXML
     private Button HLocation;
-    @FXML
     private Button reclamer;
     @FXML
     private Button deconx;
+    @FXML
+    private Button reclamer1;
+    @FXML
+    private Button statistique;
 
     /**
      * Initializes the controller class.
@@ -90,7 +93,7 @@ public class SideBarUserController implements Initializable {
 //        stage.setScene(scene);
 //        stage.show();
         
-        reclamer.getScene().setRoot(borderPane);
+        reclamer1.getScene().setRoot(borderPane);
     }
 
     @FXML
@@ -167,6 +170,31 @@ public class SideBarUserController implements Initializable {
 //        stage.show();
         
         deconx.getScene().setRoot(borderPane);
+    }
+
+    @FXML
+    private void statistique(ActionEvent event) throws IOException {
+          FXMLLoader loader = new FXMLLoader(getClass().getResource("SideBarUser.fxml"));
+        Parent root1 = loader.load();
+        BorderPane borderPane = new BorderPane();
+       FXMLLoader loader1 = new FXMLLoader(getClass().getResource("Statistiques.fxml"));
+            Parent root2 = loader1.load();
+      
+            HBox hbox = new HBox(root1, new Pane(), root2);
+            hbox.setSpacing(20);
+
+            borderPane.setRight(hbox);
+       
+            borderPane.setLeft(root1);
+        
+
+       // borderPane.setPadding(new Insets(10, 10, 30, 10));
+//        Scene scene = new Scene(borderPane);
+//        Stage stage = new Stage();
+//        stage.setScene(scene);
+//        stage.show();
+        
+        statistique.getScene().setRoot(borderPane);
     }
     
 }

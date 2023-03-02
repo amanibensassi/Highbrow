@@ -4,7 +4,9 @@
  * and open the template in the editor.
  */
 package GUI;
-
+import com.twilio.Twilio;
+import com.twilio.rest.api.v2010.account.Message;
+import com.twilio.type.PhoneNumber;
 import entities.Location;
 import java.io.IOException;
 import java.net.URL;
@@ -98,12 +100,18 @@ public class FormLouerVehiculeController implements Initializable {
             borderPane.setLeft(root1);
 
             borderPane.setPadding(new Insets(10, 10, 30, 10));
+            
 //        Scene scene = new Scene(borderPane);
 //        Stage stage = new Stage();
 //        stage.setScene(scene);
 //        stage.show();
 
             reserverVehicule.getScene().setRoot(borderPane);
+              Twilio.init("AC84ff7691013163d92fc31146ac61b9dc", "edd707b9aca44d01c33f87876d7b0db8");
+        Message message = Message.creator(
+                new com.twilio.type.PhoneNumber("+21653723896"),
+                new com.twilio.type.PhoneNumber("+12762888645"),
+                "Votre reservation au vehicule kethe du a kathe dans le siege kethe a ete effectuer avec succes").create();
         } catch (SQLException ex) {
             Logger.getLogger(FormLouerVehiculeController.class.getName()).log(Level.SEVERE, null, ex);
         }

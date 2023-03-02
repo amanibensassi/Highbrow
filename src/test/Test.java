@@ -47,19 +47,20 @@ public class Test {
             // cs.supprimer(c4);
             //   System.out.println(cs.recuperer());
             //System.out.println( cs.recupererById(77));
-            System.out.println(cs.recupererChauffeursDisponibles(l2));
+            //System.out.println(cs.recupererChauffeursDisponibles(l2));
             //  System.out.println(cs.recupererChauffeurBYidSiege(1));
             /**
              * *********************** TESTER LOCATION ************************
              */
-            ls.ajouter(l1);
+           // ls.ajouter(l1);
             //ls.AffecterUnchauffeur(46,178);
             // ls.supprimerLocation(45);
-            ls.modifier(l2);
+           // ls.modifier(l2);
             // System.out.println(ls.recupererAllByIdUser(1));
             //System.out.println(ls.recupererAllByIdChauffeur(77));
             //   System.out.println(ls.recupererAllByIdVehicule(2));
             // ls.AnnulerLocation(44);
+            System.out.println(ls.nombreLocationParVehicule());
 
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());

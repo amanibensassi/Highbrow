@@ -2,20 +2,6 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group>
-            <file>file:/C:/xampp/htdocs/Highbrow/src/services/LocationService.java</file>
-            <file>file:/C:/xampp/htdocs/Highbrow/src/services/ChauffeurService.java</file>
-            <file>file:/C:/xampp/htdocs/Highbrow/src/GUI/DetailChauffeurController.java</file>
-            <file>file:/C:/xampp/htdocs/Highbrow/src/GUI/SideBarUserController.java</file>
-            <file>file:/C:/xampp/htdocs/Highbrow/src/GUI/ListeMesLocationsController.java</file>
-            <file>file:/C:/xampp/htdocs/Highbrow/src/GUI/ChauffeurDisponibleController.java</file>
-            <file>file:/C:/xampp/htdocs/Highbrow/src/GUI/ListeChauffeurDisponiblesController.java</file>
-            <file>file:/C:/xampp/htdocs/Highbrow/src/GUI/detailChauffeur.fxml</file>
-            <file>file:/C:/xampp/htdocs/Highbrow/src/GUI/AddChauffeurController.java</file>
-            <file>file:/C:/xampp/htdocs/Highbrow/src/GUI/CardLocation.fxml</file>
-            <file>file:/C:/xampp/htdocs/Highbrow/src/GUI/RespoLocationCardController.java</file>
-            <file>file:/C:/xampp/htdocs/Highbrow/src/GUI/ResponsableAgenceLocationController.java</file>
-            <file>file:/C:/xampp/htdocs/Highbrow/src/styles/CardLocation.css</file>
-        </group>
+        <group/>
     </open-files>
 </project-private>

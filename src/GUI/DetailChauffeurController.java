@@ -96,13 +96,17 @@ public class DetailChauffeurController implements Initializable {
 
     String nomPermis;
     String nomPermisBack;
-    String img;
-    String pAvant;
-    String pBack;
+
     File file;
     File file1;
     File file2;
 
+    String pAvant;
+    String pBack;
+    String img;
+    Boolean test =false ;
+    Boolean test1 =false ;
+    Boolean test2 =false ;
     public void setChauffeur(Chauffeur c) throws IOException {
         nomch.setText(c.getNom());
         prenomch.setText(c.getPrenom());
@@ -114,9 +118,9 @@ public class DetailChauffeurController implements Initializable {
         numtel.setText(String.valueOf(c.getContact()));
         prix.setText(String.valueOf(c.getPrix_par_jour()));
         nomImage = "C://xampp//htdocs//img//" + c.getImage();
-        String img = c.getImage();
-        String pAvant = c.getPermis();
-        String pBack = c.getPermis_arriere();
+        img = c.getImage();
+        pAvant = c.getPermis();
+        pBack = c.getPermis_arriere();
         File filee = new File(nomImage);
 
         Image imagee = new Image(filee.toURI().toString());
@@ -139,8 +143,7 @@ public class DetailChauffeurController implements Initializable {
 
         pback.setImage(image3);
         idch = c.getIdchauffeur();
-         System.out.println("adresse image"+img);
-         
+        System.out.println("adresse image" + img);
 
     }
 
@@ -150,11 +153,11 @@ public class DetailChauffeurController implements Initializable {
         combobox.getItems().add("djerba");
         combobox.getItems().add("nabeul");
         combobox.getItems().add("sousse");
-       
+
     }
 
     @FXML
-    private File ModifierImage(MouseEvent event) {
+    private File ModifierImage() {
         Path to1 = null;
         String m = null;
         String path = "C:\\xampp\\htdocs\\img";
@@ -191,11 +194,12 @@ public class DetailChauffeurController implements Initializable {
             }
 
         }
+        test = true ;
         return file;
     }
 
     @FXML
-    private File ModifierPermisAvant(MouseEvent event) {
+    private File ModifierPermisAvant() {
         Path to1 = null;
         String m = null;
         String path = "C:\\xampp\\htdocs\\img";
@@ -232,11 +236,12 @@ public class DetailChauffeurController implements Initializable {
             }
 
         }
+          test1 =true ;
         return file1;
     }
 
     @FXML
-    private File ModifierPermisBack(MouseEvent event) {
+    private File ModifierPermisBack() {
         Path to1 = null;
         String m = null;
         String path = "C:\\xampp\\htdocs\\img";
@@ -273,6 +278,7 @@ public class DetailChauffeurController implements Initializable {
             }
 
         }
+         test2 = true ;
         return file2;
     }
 
@@ -283,35 +289,41 @@ public class DetailChauffeurController implements Initializable {
 
     @FXML
     private void ModifierCh(ActionEvent event) throws FileNotFoundException, IOException, SQLException {
-
+        System.out.println("ancien" + img);
         String Nom = nom.getText();
         String Prenom = prenom.getText();
         int Contact = Integer.parseInt(numtel.getText());
         String Email = emailField.getText();
         int Cin = Integer.parseInt(cin.getText());
         float Prix = Float.parseFloat(prix.getText());
-        
-        FileInputStream fl = new FileInputStream(file);
-        byte[] data = new byte[(int) file.length()];
-        String img = file.getName();
-        fl.read(data);
-        fl.close();
+       
+        if (test==true) {
+            FileInputStream fl = new FileInputStream(file);
+            byte[] data = new byte[(int) file.length()];
+            img = file.getName();
+            fl.read(data);
+            fl.close();
+            System.out.println("new" + img);
+        }
+        if (test1==true) {
+            FileInputStream f2 = new FileInputStream(file1);
+            byte[] data1 = new byte[(int) file1.length()];
+            pAvant = file1.getName();
+            f2.read(data1);
+            f2.close();
+        }
 
-        FileInputStream f2 = new FileInputStream(file1);
-        byte[] data1 = new byte[(int) file1.length()];
-        String pAvant = file1.getName();
-        f2.read(data1);
-        f2.close();
+        if (test2==true) {
+            FileInputStream f3 = new FileInputStream(file2);
+            byte[] data2 = new byte[(int) file2.length()];
+            pBack = file2.getName();
+            f3.read(data2);
+            f3.close();
+        }
 
-        FileInputStream f3 = new FileInputStream(file2);
-        byte[] data2 = new byte[(int) file2.length()];
-        String pBack = file2.getName();
-        f3.read(data2);
-        f3.close();
-        
         Chauffeur chauf = new Chauffeur(idch, Region.valueOf(combobox.getValue()), Contact, Cin, Email, pAvant, img, Prix, Nom, Prenom, pBack, 2);
         chauffeur.modifier(chauf);
-        
+
         FXMLLoader loader = new FXMLLoader(getClass().getResource("SideBarUser.fxml"));
         Parent root1 = loader.load();
         BorderPane borderPane = new BorderPane();

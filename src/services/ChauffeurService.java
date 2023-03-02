@@ -23,6 +23,7 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.util.Date;
+import java.util.TreeMap;
 
 /**
  *
@@ -36,10 +37,27 @@ public class ChauffeurService implements IService<Chauffeur>, IChauffeur<Chauffe
         cnx = MyDB.getInstance().getCnx();
     }
 
+    public TreeMap<Integer, Integer> nombrechauffeurBysiege() throws SQLException {
+
+        TreeMap<Integer, Integer> chauffeurs = new TreeMap<Integer, Integer>();
+        String req = "SELECT id_siege, COUNT(idchauffeur) as nb_chauffeur\n"
+                + "FROM chauffeur\n"
+                + "GROUP BY id_siege;";
+        PreparedStatement ps = cnx.prepareStatement(req);
+
+        ResultSet rs = ps.executeQuery();
+        while (rs.next()) {
+            chauffeurs.put(rs.getInt("id_siege"), rs.getInt("nb_chauffeur"));
+
+        }
+
+        return chauffeurs;
+    }
+
     @Override
 
     public void ajouter(Chauffeur c) throws SQLException {
-        
+
         System.out.println(c);
         String req = "INSERT INTO chauffeur(region,contact,cin,adresse,permis,image,prix_par_jour,nom,prenom,permis_arriere,id_siege)VALUES(?,?,?,?,?,?,?,?,?,?,?)";
         PreparedStatement ps = cnx.prepareStatement(req);
@@ -54,9 +72,8 @@ public class ChauffeurService implements IService<Chauffeur>, IChauffeur<Chauffe
         ps.setString(9, c.getPrenom());
         ps.setString(10, c.getPermis_arriere());
         ps.setInt(11, c.getId_siege());
-       
+
         ps.executeUpdate();
-       
 
     }
 
@@ -202,9 +219,9 @@ public class ChauffeurService implements IService<Chauffeur>, IChauffeur<Chauffe
 
         return Chauffeurs;
     }
-    
-       @Override
-    public List<Chauffeur> recupererChauffeurBYidSiege(int i ) throws SQLException {
+
+    @Override
+    public List<Chauffeur> recupererChauffeurBYidSiege(int i) throws SQLException {
         List<Chauffeur> Chauffeurs = new ArrayList<>();
         String req = "select * from chauffeur where id_siege = ?";
         PreparedStatement ps = cnx.prepareStatement(req);
