@@ -1,0 +1,26 @@
+/* Style pour les onglets */
+.tab-pane .tab-header-background {
+    -fx-background-color: #06C17A;
+}
+
+.tab-pane .tab {
+    -fx-background-color: #A5A5A5;
+    -fx-text-fill: #fff;
+}
+
+.tab-pane .tab:selected {
+    -fx-background-color: #ddd;
+    -fx-text-fill: #333;
+}
+
+/* Style pour les contenus des onglets */
+.tab-pane .tab-content-area {
+    -fx-background-color: #eee;
+}
+
+.tab-pane .tab-pane .content {
+    -fx-padding: 10px;
+    -fx-background-color: #fff;
+    -fx-border-width: 1px;
+    -fx-border-color: #ddd;
+}

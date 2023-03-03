@@ -19,6 +19,31 @@ public class Avis {
     public Avis() {
     }
 
+    public Avis(int idsiege, int id_Utilisateur, Note note) {
+        this.idsiege = idsiege;
+        this.id_Utilisateur = id_Utilisateur;
+        this.note = note;
+    }
+
+   
+       public Avis(int id_Utilisateur, Note note,int id_vehicule) {
+        this.id_vehicule = id_vehicule;
+        this.id_Utilisateur = id_Utilisateur;
+        this.note = note;
+    }
+
+    
+
+    public Avis(int id, int id_vehicule, int idsiege, int id_Utilisateur, Note note) {
+        this.id = id;
+        this.id_vehicule = id_vehicule;
+        this.idsiege = idsiege;
+        this.id_Utilisateur = id_Utilisateur;
+        this.note = note;
+    }
+    
+    
+
     public int getId() {
         return id;
     }
@@ -51,11 +76,21 @@ public class Avis {
         this.note = note;
     }
 
+    public int getId_Utilisateur() {
+        return id_Utilisateur;
+    }
+
+    public void setId_Utilisateur(int id_Utilisateur) {
+        this.id_Utilisateur = id_Utilisateur;
+    }
+
+   
+    
+
     @Override
     public String toString() {
         return "Avis{" + "id=" + id + ", id_vehicule=" + id_vehicule + ", idsiege=" + idsiege + ", note=" + note + '}';
     }
-    
-    
+  
     
 }
