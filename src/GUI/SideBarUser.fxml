@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Line?>
+
+<VBox prefHeight="666.0" prefWidth="333.0" spacing="20.0" style="-fx-background-color: #0E21132;" styleClass="sidebar" stylesheets="@../styles/sidebarUser.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.SideBarUserController">
+   <HBox prefHeight="100.0" prefWidth="200.0" spacing="10.0">
+      <children>
+         <ImageView fitHeight="101.0" fitWidth="105.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+               <Image url="@../images/add-user.png" />
+            </image></ImageView>
+         <VBox prefHeight="200.0" prefWidth="100.0" spacing="10.0">
+            <children>
+               <Label style="-fx-text-fill: #4CAF50;" text="prenom" />
+               <Label style="-fx-text-fill: #4CAF50;" text="nom" />
+               <Label style="-fx-text-fill: #4CAF50;" text="numtel" />
+               <Label style="-fx-text-fill: #4CAF50;" text="role" />
+            </children>
+         </VBox>
+      </children>
+   </HBox>
+   
+    <AnchorPane>
+        <Button fx:id="profil" onAction="#GoToProfil" styleClass="sidebar-button" text="Profil" />
+    </AnchorPane>
+   <Line endX="174.5" startX="-100.0" style="-fx-stroke: #4CAF50;" />
+    <AnchorPane>
+        <Button fx:id="sieges" onAction="#GoToSieges" styleClass="sidebar-button" text="Liste Des Chauffeurs" />
+    </AnchorPane>
+   <Line endX="178.5" startX="-100.0" style="-fx-stroke: #4CAF50;" />
+    <AnchorPane>
+        <Button fx:id="HLocation" onAction="#GoToHistoriqueLocation" styleClass="sidebar-button" text="Historique Location" />
+    </AnchorPane>
+   <Line endX="180.5" startX="-100.0" style="-fx-stroke: #4CAF50;" />
+   <AnchorPane>
+      <children>
+         <Button fx:id="reclamer1" onAction="#GoToReclamer" styleClass="sidebar-button" text="Reserver vehicule" />
+      </children>
+   </AnchorPane>
+   <Line endX="174.5" startX="-100.0" style="-fx-stroke: #4CAF50;" />
+   <AnchorPane>
+      <children>
+         <Button fx:id="statistique" onAction="#statistique" styleClass="sidebar-button" text="statistique" />
+      </children>
+   </AnchorPane>
+   <Line endX="174.5" startX="-100.0" style="-fx-stroke: #4CAF50;" />
+    <AnchorPane>
+        <Button fx:id="deconx" onAction="#deconnecter" styleClass="sidebar-button" text="Gere les locations" />
+    </AnchorPane>
+   <Line endX="183.5" startX="-100.0" style="-fx-stroke: #4CAF50;" />
+    <Label styleClass="sidebar-label" text="fastRent" />
+   <ImageView fitHeight="69.0" fitWidth="148.0" pickOnBounds="true" preserveRatio="true">
+      <image>
+         <Image url="@../images/fastrent.PNG" />
+      </image>
+   </ImageView>
+</VBox>

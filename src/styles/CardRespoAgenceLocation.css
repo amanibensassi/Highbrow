@@ -1,0 +1,28 @@
+/* Style pour l'AnchorPane */
+#AnchorPane {
+    -fx-background-color: #eee;
+    -fx-border-width: 1px;
+    -fx-border-color: #ddd;
+    -fx-padding: 10px;
+}
+
+/* Style pour les DatePickers */
+#dateDebutPicker, #dateFinPicker {
+    -fx-font-size: 14px;
+    -fx-prompt-text-fill: #999;
+    -fx-background-color: #fff;
+}
+
+/* Style pour le Label */
+#nomVehiculeLabel {
+    -fx-font-size: 16px;
+    -fx-text-fill: #333;
+}
+
+/* Style pour le bouton */
+#button {
+    -fx-font-size: 14px;
+    -fx-background-color: #0077cc;
+    -fx-text-fill: #fff;
+    -fx-border-radius: 5px;
+}
