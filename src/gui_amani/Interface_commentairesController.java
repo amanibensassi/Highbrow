@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package gui;
+package gui_amani;
 
 import entities.Commentaire;
 import entities.Publication;
@@ -14,7 +14,6 @@ import java.sql.SQLException;
 import java.util.Date;
 import java.util.List;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -25,12 +24,10 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.ScrollBar;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import services.CommentaireService;
@@ -115,6 +112,26 @@ import services.PublicationService;
                     vboxcommentid.getChildren().add(card); 
                      scrollbarid.setContent(vboxcommentid);     
                       }
+                    
+                    
+                        /*********************session id********************/
+//     if ((com.getId_utilisateur()==1)&&(cs.recupererInteractionUser(com).getNbr_like()==true)){
+//                 
+//            String img = "C:\\xampp\\htdocs\\pidev\\Highbrow\\src\\media\\full_up.png";
+//            File file = new File(img);
+//            Image img1 = new Image(file.toURI().toString());
+//            this.like_img.setImage(img1);
+//            this.like_button.setDisable(true);
+//           
+//           }else if((cs.recupererInteractionUser(com).getId_utilisateur()==1)&&(cs.recupererInteractionUser(com).getNbr_dislike()==true)){
+//               
+//            String img = "C:\\xampp\\htdocs\\pidev\\Highbrow\\src\\media\\full_down.png";
+//            File file = new File(img);
+//            Image img1 = new Image(file.toURI().toString());
+//            this.dislike_img.setImage(img1);
+//            this.dislike_button.setDisable(true);
+//            
+//           }
                    
                 }
 

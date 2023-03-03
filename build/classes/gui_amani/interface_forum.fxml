@@ -97,12 +97,12 @@
                   <Font name="Arial Bold Italic" size="29.0" />
                </font>
             </Label>
-            <ImageView fitHeight="46.0" fitWidth="64.0" layoutX="1184.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="46.0" fitWidth="55.0" layoutX="1200.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../media/menu_bar.png" />
+                  <Image url="@../media/download.png" />
                </image>
             </ImageView>
-            <Button fx:id="id_button" layoutX="1127.0" layoutY="-5.0" mnemonicParsing="false" onAction="#generatePDF" prefHeight="62.0" prefWidth="134.0" style="-fx-background-color: transparent;" />
+            <Button fx:id="id_button" layoutX="1124.0" mnemonicParsing="false" onAction="#generatePDF" prefHeight="62.0" prefWidth="134.0" style="-fx-background-color: transparent;" />
          </children>
       </AnchorPane>
    </children>

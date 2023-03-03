@@ -112,7 +112,8 @@ public class CommentaireService implements IService<Commentaire> {
     }
 
     /**
-     * ********************************** recupération spéciale*******************************************************
+     * ********************************** recupération
+     * spéciale*******************************************************
      */
     public List<Commentaire> recupererParpublication(int t) throws SQLException {
         List<Commentaire> commentaire = new ArrayList<>();
@@ -214,7 +215,8 @@ public class CommentaireService implements IService<Commentaire> {
     }
 
     /**
-     * ********************************** section metier **************************************************************
+     * ********************************** section metier
+     * **************************************************************
      */
     public int countLikes(int id) throws SQLException {
 
@@ -253,7 +255,20 @@ public class CommentaireService implements IService<Commentaire> {
         pstmt.setBoolean(2, false);
         pstmt.setBoolean(3, false);
         ResultSet rs = pstmt.executeQuery();
-        while (rs.next()) {
+        if (rs.first()) {
+            count = rs.getInt(1);
+        }
+        return count;
+    }
+
+    public float countFigure(int id) throws SQLException {
+        float count = 0;
+        String req = "SELECT ((0.5 * COALESCE(SUM(CASE WHEN c.nbr_like = 1 THEN 1 ELSE 0 END), 0)) + (0.3 * COUNT(DISTINCT c.idcommentaire)) + (0.3 * COUNT(DISTINCT r.id_reponse))) AS score "
+                + "FROM publication p LEFT JOIN commentaire c ON p.idpublication = c.id_publication LEFT JOIN reponse r ON c.idcommentaire = r.id_commentaire WHERE p.idpublication = ?";
+        PreparedStatement pstmt = cnx.prepareStatement(req);
+        pstmt.setInt(1, id);
+        ResultSet rs = pstmt.executeQuery();
+        if (rs.first()) {
             count = rs.getInt(1);
         }
         return count;
