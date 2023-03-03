@@ -58,6 +58,7 @@ public class AvisService implements IService<Avis>, IAvis<Avis> {
     }
 
     //@Override
+    @Override
     public void supprimer(Avis t) throws SQLException {
         String req = "DELETE FROM Avis where id = ?";
         PreparedStatement ps = cnx.prepareStatement(req);
@@ -66,6 +67,7 @@ public class AvisService implements IService<Avis>, IAvis<Avis> {
 
     }
 
+    @Override
     public List<Avis> recupererAvisVehicule(int t) throws SQLException {
         List<Avis> avis = new ArrayList<>();
         String s = "select * from avis where id_vehicule = ?";
@@ -84,6 +86,7 @@ public class AvisService implements IService<Avis>, IAvis<Avis> {
         return avis;
     }
 
+    @Override
     public List<Avis> recupererAvisSiege(int t) throws SQLException {
         List<Avis> avis = new ArrayList<>();
         String s = "select * from avis where idsiege = ?";

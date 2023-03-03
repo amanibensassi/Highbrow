@@ -38,6 +38,7 @@ public class ReclamationService implements IService<Reclamation> ,IReclamation<R
         ps.setString(6, t.getCorps());
         ps.executeUpdate();  
     }
+    @Override
  public void ajouterReclamationAdmin(Reclamation t) throws SQLException {
         String req = "INSERT INTO Reclamation (id_utilisateur, type_reclamation, date_reclamation, etat, corps) VALUES(?,?,?,?,?)";
         PreparedStatement ps = cnx.prepareStatement(req);
@@ -48,6 +49,7 @@ public class ReclamationService implements IService<Reclamation> ,IReclamation<R
         ps.setString(5, t.getCorps());
         ps.executeUpdate();  
     }
+    @Override
     public List<Reclamation> recupererReclamationUtilisateur (int t) throws SQLException {
         List<Reclamation> reclamation = new ArrayList<>();
         String s = "select * from reclamation where id_utilisateur = ?";
@@ -67,6 +69,7 @@ public class ReclamationService implements IService<Reclamation> ,IReclamation<R
         }
         return reclamation;
     }
+    @Override
     public List<Reclamation> recupererReclamationdAdmin () throws SQLException {
         List<Reclamation> reclamation = new ArrayList<>();
         String s = "select * from reclamation where id_siege is null";
@@ -85,10 +88,10 @@ public class ReclamationService implements IService<Reclamation> ,IReclamation<R
         }
         return reclamation;
     }
+    @Override
       public List<Reclamation> recupererReclamation_Siege (int idSiege) throws SQLException {
         List<Reclamation> reclamation = new ArrayList<>();
         String s = "select * from reclamation where id_siege =? ";
-       
         PreparedStatement st = cnx.prepareStatement(s);
          st.setInt(1, idSiege);
         ResultSet rs = st.executeQuery();
