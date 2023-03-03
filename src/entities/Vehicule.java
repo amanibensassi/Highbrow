@@ -5,10 +5,16 @@
  */
 package entities;
 
+import java.sql.Timestamp;
+import java.time.LocalDate;
+import java.time.Year;
 import java.util.Date;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import typeenumeration.Carburant;
 import typeenumeration.Etat;
 import typeenumeration.NbrPlace;
+import typeenumeration.Region;
 
 /**
  *
@@ -22,24 +28,61 @@ public class Vehicule {
     private Carburant carburant;
     private NbrPlace nbr_place;
     private Etat etat;
-    private Date annee_circulation;
-
+    private Date date_circulation;
+    private String image_vehicule;
     public Vehicule() {
     }
 
-    public Vehicule(int idvehicule, int kilometrage, float prix_vente, int id_siege, float prix_par_jour, String marque, String immatriculation, Carburant carburant, NbrPlace nbr_place, Etat etat, Date annee_circulation) {
+
+    
+    public Vehicule(int idvehicule, String marque, int kilometrage, String immatriculation, Carburant carburant, NbrPlace nbr_place, float prix_par_jour, Etat etat, float prix_vente, int id_siege, Date date_circulation,String image_vehicule) {
         this.idvehicule = idvehicule;
         this.kilometrage = kilometrage;
         this.prix_vente = prix_vente;
         this.id_siege = id_siege;
         this.prix_par_jour = prix_par_jour;
         this.marque = marque;
+//        Pattern pattern = Pattern.compile("^\\d{3}TUN\\d{4}$");
+//        Matcher matcher = pattern.matcher(immatriculation);
+//        if (!matcher.matches()) {
+//            throw new IllegalArgumentException("L'immatriculation saisie n'est pas valide. Elle doit être sous la forme ***TUN**** (les étoiles doivent être des chiffres).");
+//        }
         this.immatriculation = immatriculation;
         this.carburant = carburant;
         this.nbr_place = nbr_place;
         this.etat = etat;
-        this.annee_circulation = annee_circulation;
+
+        this.date_circulation = date_circulation;
+        this.image_vehicule = image_vehicule;
     }
+
+    public Vehicule(int idvehicule) {
+        this.idvehicule = idvehicule;
+    }
+
+    public Vehicule(int kilometrage, int id_siege, float prix_vente, float prix_par_jour, String marque, String immatriculation, Carburant carburant, NbrPlace nbr_place, Etat etat, Date date_circulation, String image_vehicule) {
+        this.kilometrage = kilometrage;
+        this.id_siege = id_siege;
+        this.prix_vente = prix_vente;
+        this.prix_par_jour = prix_par_jour;
+        this.marque = marque;
+//        Pattern pattern = Pattern.compile("^\\d{3}TUN\\d{4}$");
+//        Matcher matcher = pattern.matcher(immatriculation);
+//        if (!matcher.matches()) {
+//            throw new IllegalArgumentException("L'immatriculation saisie n'est pas valide. Elle doit être sous la forme ***TUN**** (les étoiles doivent être des chiffres).");
+//        }
+        this.immatriculation = immatriculation;
+        this.carburant = carburant;
+        this.nbr_place = nbr_place;
+        this.etat = etat;
+        this.date_circulation = date_circulation;
+        this.image_vehicule = image_vehicule;
+    }
+    
+    
+    
+
+
 
     public int getIdvehicule() {
         return idvehicule;
@@ -94,6 +137,11 @@ public class Vehicule {
     }
 
     public void setImmatriculation(String immatriculation) {
+//                Pattern pattern = Pattern.compile("^\\d{3}TUN\\d{4}$");
+//        Matcher matcher = pattern.matcher(immatriculation);
+//        if (!matcher.matches()) {
+//            throw new IllegalArgumentException("L'immatriculation saisie n'est pas valide. Elle doit être sous la forme ***TUN**** (les étoiles doivent être des chiffres).");
+//        }
         this.immatriculation = immatriculation;
     }
 
@@ -121,18 +169,29 @@ public class Vehicule {
         this.etat = etat;
     }
 
-    public Date getAnnee_circulation() {
-        return annee_circulation;
+    public Date getDate_circulation() {
+        return date_circulation;
     }
 
-    public void setAnnee_circulation(Date annee_circulation) {
-        this.annee_circulation = annee_circulation;
+    public void setDate_circulation(Date date_circulation) {
+        this.date_circulation = date_circulation;
+    }
+
+    public String getImage_vehicule() {
+        return image_vehicule;
+    }
+
+    public void setImage_vehicule(String image_vehicule) {
+        this.image_vehicule = image_vehicule;
     }
 
     @Override
     public String toString() {
-        return "Vehicule{" + "idvehicule=" + idvehicule + ", kilometrage=" + kilometrage + ", prix_vente=" + prix_vente + ", id_siege=" + id_siege + ", prix_par_jour=" + prix_par_jour + ", marque=" + marque + ", immatriculation=" + immatriculation + ", carburant=" + carburant + ", nbr_place=" + nbr_place + ", etat=" + etat + ", annee_circulation=" + annee_circulation + '}';
+        return " Vehicule { " + "idvehicule = " + idvehicule + ", kilometrage = " + kilometrage + ", id_siege = " + id_siege + ", prix_vente = " + prix_vente + ", prix_par_jour = " + prix_par_jour + ", marque = " + marque + ", immatriculation = " + immatriculation + ", carburant = " + carburant + ", nbr_place = " + nbr_place + ", etat = " + etat + ", date_circulation = " + date_circulation + ", image_vehicule = " + image_vehicule + "}" + "\n";
     }
+    
+    
+   
     
     
     

@@ -12,17 +12,37 @@ import java.util.Date;
  * @author anasm
  */
 public class Vente {
-    
-    private int idvente,id_vehicule;
+
+    private int idvente, id_vehicule, id_utilisateur;
     private Date date_rendez_vous;
 
     public Vente() {
+    }
+
+    public Vente(int id_vehicule, Date date_rendez_vous) {
+        this.id_vehicule = id_vehicule;
+        this.date_rendez_vous = date_rendez_vous;
     }
 
     public Vente(int idvente, int id_vehicule, Date date_rendez_vous) {
         this.idvente = idvente;
         this.id_vehicule = id_vehicule;
         this.date_rendez_vous = date_rendez_vous;
+    }
+
+    public Vente(int idvente, int id_vehicule, int id_utilisateur, Date date_rendez_vous) {
+        this.idvente = idvente;
+        this.id_vehicule = id_vehicule;
+        this.id_utilisateur = id_utilisateur;
+        this.date_rendez_vous = date_rendez_vous;
+    }
+
+    public int getId_utilisateur() {
+        return id_utilisateur;
+    }
+
+    public void setId_utilisateur(int id_utilisateur) {
+        this.id_utilisateur = id_utilisateur;
     }
 
     public int getIdvente() {
@@ -51,9 +71,7 @@ public class Vente {
 
     @Override
     public String toString() {
-        return "Vente{" + "idvente=" + idvente + ", id_vehicule=" + id_vehicule + ", date_rendez_vous=" + date_rendez_vous + '}';
+        return "Vente{" + "idvente=" + idvente + ", id_vehicule=" + id_vehicule + ", date_rendez_vous=" + date_rendez_vous + ", id_utilisatuer="+ id_utilisateur +'}' + "\n";
     }
-    
-    
-    
+
 }

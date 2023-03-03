@@ -1,0 +1,47 @@
+.cardpane {
+    -fx-background-color: #f2f2f2;
+    -fx-border-color: #ccc;
+    -fx-border-radius: 5px;
+    -fx-padding: 10px;
+}
+#button1 {
+    -fx-background-color: #06C17A;
+    -fx-text-fill: white;
+}
+
+#button1:hover {
+    -fx-background-color: #3e8e41;
+}
+
+#button2 {
+    -fx-background-color: #E31937;
+    -fx-text-fill: white;
+}
+
+#button2:hover {
+    -fx-background-color: #3e8e41;
+}
+/* Styles pour l'ensemble de l'application */
+.root {
+    -fx-background-color: #f2f2f2;
+}
+
+/* Styles pour la carte utilisateur */
+.user-card {
+    -fx-background-color: white;
+    -fx-border-color: #ccc;
+    -fx-border-radius: 5px;
+    -fx-padding: 10px;
+}
+
+/* Styles pour le nom de l'utilisateur */
+.nom {
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+}
+
+/* Styles pour le nom de famille de l'utilisateur */
+.prenom {
+    -fx-font-size: 14px;
+    -fx-font-style: italic;
+}

@@ -1,0 +1,33 @@
+/* Style the VBox container */
+.vbox {
+    -fx-padding: 20;
+    -fx-spacing: 10;
+    -fx-alignment: center;
+}
+
+#profileImageContainer {
+    -fx-background-color: transparent;
+    -fx-border-color: #ccc;
+    -fx-border-width: 2;
+    -fx-padding: 10;
+    -fx-background-radius: 50%;
+    -fx-shape: "circle()";
+}
+
+/* Style the ImageView */
+#profileImage {
+    -fx-background-color: transparent;
+    -fx-clip-path: circle(50%);
+}
+
+/* Style the HBox elements */
+.hbox {
+    -fx-spacing: 5;
+    -fx-alignment: center-left;
+}
+
+/* Style the Label elements */
+.label {
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+}
