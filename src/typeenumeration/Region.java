@@ -10,8 +10,31 @@ package typeenumeration;
  * @author anasm
  */
 public enum Region {
-    
-    ariana,beja,ben_Arous,bizerte,gabes,gafsa,jendouba,kairouan,kasserine,kebili,kef,mahdia,manouba,medenine,monastir,nabeul,sfax,sidi_Bouzid,siliana,sousse,tataouine,
-    tozeur,tunis,zaghouan
+
+    ariana,
+    beja,
+    ben_Arous,
+    bizerte,
+    gabes,
+    gafsa,
+    jendouba,
+    kairouan,
+    kasserine,
+    kebili,
+    kef,
+    mahdia,
+    manouba,
+    medenine,
+    monastir,
+    nabeul,
+    sfax,
+    sidi_Bouzid,
+    siliana,
+    sousse,
+    tataouine,
+    tozeur,
+    tunis,
+    zaghouan,
+
     
 }
