@@ -6,6 +6,7 @@
 package services;
 
 import java.sql.SQLException;
+import java.sql.Timestamp;
 import java.util.Date;
 import java.util.List;
 
@@ -16,8 +17,8 @@ import java.util.List;
 public interface IMecanicienService <T>{
     
     public T recupererById(T t) throws SQLException;
-    public List<T> recupererMecanicienByRegion(T t) throws SQLException;
-    public List<T> recupererMecanicienBySpecialite(T t) throws SQLException;
-    public List<Date> mecaniciensIsDispo(T t) throws SQLException;
+   // public List<T> recupererMecanicienByRegion(T t) throws SQLException;
+   // public List<T> recupererMecanicienBySpecialite(T t) throws SQLException;
+    public List<Date> mecaniciensIsDispo(T t,Date d) throws SQLException;
     
 }

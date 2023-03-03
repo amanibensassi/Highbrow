@@ -29,13 +29,22 @@ public class EntretienService implements IService<Entretien>,IEntretienService<E
 
     @Override
     public void ajouter(Entretien t) throws SQLException {
+       /* Pattern patternDate = Pattern.compile("^\\\\d{2}/\\\\d{2}/\\\\d{4}$");
+        Matcher matcherDate = patternDate.matcher(String.valueOf(t.getDate_entretien()));
+        
+        if (!matcherDate.matches() ) {
+            System.out.println("Veuillez verifier la date");
+            throw new IllegalArgumentException("Veuillez verifier les données");
+        }
+        else {*/
         String req = "INSERT INTO entretien (date_entretien,id_mecanicien,id_vehicule,etat_entretien) VALUES (?,?,?,?)";
         PreparedStatement ps = cnx.prepareStatement(req);
         ps.setTimestamp(1,new java.sql.Timestamp(t.getDate_entretien().getTime()));
         ps.setInt(2, t.getId_mecanicien());
         ps.setInt(3, t.getId_vehicule());
-        ps.setBoolean(4,t.isEtat_entretien());
+        ps.setBoolean(4,false);
         ps.executeUpdate();
+        //}
     }
 
     @Override
@@ -160,5 +169,40 @@ public class EntretienService implements IService<Entretien>,IEntretienService<E
         ps.executeUpdate();
     }
     
+    public List<Entretien> trieCroissant() throws SQLException {
+        List<Entretien> entretiens = new ArrayList<>();
+        String req = "select * from entretien order by date_entretien";
+        PreparedStatement ps = cnx.prepareStatement(req);
+        ResultSet rs =  ps.executeQuery();
+        while(rs.next()){
+            Entretien e = new Entretien();
+            e.setIdentretien(rs.getInt("identretien"));
+            e.setDate_entretien(rs.getTimestamp("date_entretien"));
+            e.setId_mecanicien(rs.getInt("id_mecanicien"));
+            e.setId_vehicule(rs.getInt("id_vehicule"));
+            e.setEtat_entretien(rs.getBoolean("etat_entretien"));
+            entretiens.add(e);
+            
+        }
+        return entretiens;
+    }
+    
+    public List<Entretien> trieDecroissant() throws SQLException {
+        List<Entretien> entretiens = new ArrayList<>();
+        String req = "select * from entretien order by date_entretien DESC";
+        PreparedStatement ps = cnx.prepareStatement(req);
+        ResultSet rs =  ps.executeQuery();
+        while(rs.next()){
+            Entretien e = new Entretien();
+            e.setIdentretien(rs.getInt("identretien"));
+            e.setDate_entretien(rs.getTimestamp("date_entretien"));
+            e.setId_mecanicien(rs.getInt("id_mecanicien"));
+            e.setId_vehicule(rs.getInt("id_vehicule"));
+            e.setEtat_entretien(rs.getBoolean("etat_entretien"));
+            entretiens.add(e);
+            
+        }
+        return entretiens;
+    }
     
 }

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.AfficherMecanicienController">
+   <children>
+      <TableView fx:id="tabmecaniciens" prefHeight="446.0" prefWidth="826.0">
+        <columns>
+          <TableColumn fx:id="id" prefWidth="75.0" text="ID" />
+          <TableColumn fx:id="nom" prefWidth="75.0" text="Nom" />
+            <TableColumn fx:id="prenom" prefWidth="75.0" text="Prenom" />
+            <TableColumn fx:id="contact" prefWidth="75.0" text="Contact" />
+            <TableColumn fx:id="specialite" prefWidth="75.0" text="Spécialité" />
+            <TableColumn fx:id="region" prefWidth="75.0" text="Région" />
+            <TableColumn fx:id="adresse" prefWidth="75.0" text="Adresse" />
+            <TableColumn fx:id="image" prefWidth="75.0" text="Image" />
+            <TableColumn fx:id="delete" prefWidth="75.0" text="Supprimer" />
+            <TableColumn fx:id="detail" prefWidth="75.0" text="Détail" />
+            <TableColumn fx:id="modifier" prefWidth="75.0" text="Modifier" />
+        </columns>
+      </TableView>
+   </children>
+</AnchorPane>
