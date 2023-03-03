@@ -10,7 +10,7 @@ package typeenumeration;
  * @author anasm
  */
 public enum Region {
-    
+
     ariana,
     beja,
     ben_Arous,
@@ -35,5 +35,6 @@ public enum Region {
     tozeur,
     tunis,
     zaghouan,
+
     
 }
