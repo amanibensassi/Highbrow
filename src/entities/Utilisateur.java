@@ -7,6 +7,8 @@ package entities;
 
 import java.util.Date;
 import java.util.Objects;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import typeenumeration.Role;
 
 /**
@@ -20,6 +22,7 @@ public class Utilisateur {
     private Date date_naissance;
     private Role role;
     private boolean etat;
+    
 
     public Utilisateur() {
     }
@@ -44,7 +47,11 @@ public class Utilisateur {
         this.num_tel = num_tel;
         this.nom = nom;
         this.prenom = prenom;
-        this.mail = mail;
+        
+         this.mail = mail;
+
+
+        //this.mail = mail;
         this.mot_de_passe = mot_de_passe;
         this.photopermis_avant = photopermis_avant;
         this.photopermis_arriere = photopermis_arriere;

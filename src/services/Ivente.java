@@ -14,7 +14,7 @@ import java.sql.SQLException;
  */
 public interface Ivente<T> {
 
-    public void ajouterRendezVous(T t) throws SQLException;
+   // public void ajouterRendezVous(T t) throws SQLException;
 
     public Vente recupererById(int t) throws SQLException;
 

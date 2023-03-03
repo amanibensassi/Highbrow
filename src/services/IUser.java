@@ -22,5 +22,5 @@ public interface IUser<T> {
 
     public void approuver(T t) throws SQLException;
 
-    public boolean authenticate(String mail, String password) throws SQLException;
+    public Utilisateur authenticate(String mail, String password) throws SQLException;
 }

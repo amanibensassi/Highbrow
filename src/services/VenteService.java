@@ -31,7 +31,7 @@ public class VenteService implements IService<Vente>,Ivente<Vente> {
     }
 
     @Override
-    public void ajouterRendezVous(Vente v) throws SQLException {
+    public void ajouter(Vente v) throws SQLException {
 
         String req = "INSERT INTO vente (date_rendez_vous,id_vehicule,id_utilisateur) VALUES (?,?,?)";
         PreparedStatement ps = cnx.prepareCall(req);
@@ -68,9 +68,10 @@ public class VenteService implements IService<Vente>,Ivente<Vente> {
         PreparedStatement ps = cnx.prepareCall(req);
         ps.setInt(1, id);
         ResultSet rs = ps.executeQuery();
-        Vente veh = new Vente();
-
+       
+  Vente veh = new Vente();
         if (rs.next()) {
+           
             veh.setIdvente(rs.getInt("idvente"));
             veh.setDate_rendez_vous(rs.getDate("date_rendez_vous"));
             veh.setId_vehicule(rs.getInt("id_vehicule"));
@@ -81,7 +82,7 @@ public class VenteService implements IService<Vente>,Ivente<Vente> {
     }
 
     @Override
-    public List<Vente> recuperer(Vente v) throws SQLException {
+    public List<Vente> recuperer() throws SQLException {
         List<Vente> Ventes = new ArrayList<>();
         String s = "select * from vente";
         Statement st = cnx.createStatement();
@@ -101,12 +102,12 @@ public class VenteService implements IService<Vente>,Ivente<Vente> {
 
     }
 
-    @Override
+     @Override
     public void modifier(Vente v) throws SQLException {
-        String req = "UPDATE  vente SET date_rendez_vous = ? where idvente = ? ";
+        String req = "UPDATE vente SET date_rendez_vous = ? where idvente = ? ";
         PreparedStatement ps = cnx.prepareCall(req);
         ps.setTimestamp(1, new Timestamp(v.getDate_rendez_vous().getTime()));
-        ps.setInt(2, v.getId_vehicule());
+        ps.setInt(2, v.getIdvente());
        
 
         ps.executeUpdate();
@@ -121,9 +122,6 @@ public class VenteService implements IService<Vente>,Ivente<Vente> {
         ps.executeUpdate();
     }
 
-    @Override
-    public void ajouter(Vente t) throws SQLException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+   
 
 }
