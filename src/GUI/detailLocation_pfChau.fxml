@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Line?>
+
+<VBox prefHeight="362.0" prefWidth="553.0" spacing="20.0" stylesheets="@../styles/profilCh.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.DetailLocation_pfChauController">
+   <Label text="Facture Location" />
+   
+    <HBox spacing="30.0">
+        <Label lineSpacing="30.0" prefHeight="20.0" prefWidth="187.0" text="Marque vehicule" />
+        <Label fx:id="nom" prefHeight="20.0" prefWidth="213.0" text="nombre des jours" />
+      <Label lineSpacing="30.0" prefHeight="20.0" prefWidth="163.0" text="detail prix" />
+    </HBox>
+    <HBox spacing="30.0">
+      <Label fx:id="email" />
+      <Label fx:id="marque" prefHeight="20.0" prefWidth="149.0" text="marque" />
+      <Label fx:id="nbrjour" prefHeight="20.0" prefWidth="207.0" text="nbr" />
+      <Label fx:id="calcule1" prefHeight="20.0" prefWidth="207.0" text="prixparJour*nbrJour" />
+    </HBox>
+   <Line endX="444.29290771484375" endY="-0.621320366859436" startX="999.5858154296875" startY="-0.6211518049240112" />
+   <HBox spacing="30.0">
+      <children>
+         <Label fx:id="email114" prefHeight="20.0" prefWidth="277.0" text="option Chauffeur" />
+         <Label fx:id="oui_non" prefHeight="20.0" prefWidth="178.0" text="oui ou non" />
+           <Label fx:id="calcule2" prefHeight="20.0" prefWidth="265.0" text="prixCh*nbJour" />
+      </children>
+   </HBox>
+   <Line endX="457.29290771484375" endY="-1.7071068286895752" startX="-100.0" />
+   <HBox spacing="30.0">
+      <children>
+         <Label fx:id="email1141" prefHeight="20.0" prefWidth="277.0" text="Somme total" />
+         <Label fx:id="numtel1" prefHeight="20.0" prefWidth="178.0" />
+         <Label fx:id="totaleSomme" prefHeight="20.0" prefWidth="265.0" text="Somme tout" />
+      </children>
+   </HBox>
+   
+</VBox>

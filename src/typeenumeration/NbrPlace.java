@@ -25,5 +25,4 @@ public enum NbrPlace {
    public int getValeur(){
        return valeur;
    }
-    
 }

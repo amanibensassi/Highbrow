@@ -1,0 +1,112 @@
+.datedebut {
+    -fx-background-color: white;
+    -fx-border-color: #ddd;
+    -fx-border-width: 1px;
+    -fx-padding: 5px;
+}
+
+.datedebut > .arrow-button {
+    -fx-background-color: #F0F0F0;
+    -fx-background-radius: 0;
+}
+
+.datedebut > .arrow-button > .arrow {
+    -fx-background-color: #444;
+    -fx-padding: 2px;
+    -fx-shape: "M 0 0 L 4 4 L 8 0 Z";
+}
+
+.datedebut > .text-field {
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-background-color: white;
+    -fx-border-color: transparent;
+    -fx-text-fill: #444;
+}
+
+.datedebut > .text-field > .prompt-text {
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-fill: #888;
+}
+
+.datedebut:disabled > .text-field {
+    -fx-opacity: 0.5;
+}
+
+.datedebut:disabled > .arrow-button > .arrow {
+    -fx-opacity: 0.5;
+}
+
+.date-cell {
+    -fx-background-color: white;
+    -fx-border-color: #ddd;
+    -fx-border-width: 1px;
+}
+
+.date-cell:hover {
+    -fx-background-color: #F0F0F0;
+}
+
+.date-cell:disabled {
+    -fx-opacity: 0.5;
+}
+
+.datedebut-popup {
+    -fx-background-color: white;
+    -fx-border-color: #ddd;
+    -fx-border-width: 1px;
+}
+
+.calendar-grid {
+    -fx-background-color: white;
+}
+
+.calendar-header {
+    -fx-background-color: #F0F0F0;
+}
+
+.calendar-date {
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #444;
+}
+
+.calendar-day-name {
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #888;
+}
+
+.calendar-week-number {
+    -fx-font-size: 12px;
+    -fx-text-fill: #888;
+}
+
+.calendar-cell:hover {
+    -fx-background-color: #F0F0F0;
+}
+
+.calendar-cell:disabled {
+    -fx-opacity: 0.5;
+}
+.button {
+   
+    -fx-text-fill: #fff;
+  
+   
+    -fx-padding: 10px 20px;
+    -fx-border-radius: 50px;
+
+    -fx-cursor: hand;
+}
+.label_modif {
+  -fx-font-size: 14px;
+  -fx-font-weight: bold;
+  -fx-text-fill: #555555;
+  -fx-padding: 4px 8px;
+  -fx-background-color: #f0f0f0;
+  -fx-border-color: #cccccc;
+  -fx-border-radius: 2px;
+  -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.1), 2, 0, 0, 1);
+}

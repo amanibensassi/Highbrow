@@ -5,6 +5,8 @@
  */
 package entities;
 
+import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
 import typeenumeration.Region;
 
 /**
@@ -12,15 +14,73 @@ import typeenumeration.Region;
  * @author anasm
  */
 public class Chauffeur {
-    
-    private int idchauffeur,contact,cin,id_location;
+
+    private int idchauffeur, contact, cin, id_siege;
     private Region region;
-    private String adresse,permis,image;
+    private String adresse, permis, image, nom, prenom, permis_arriere;
     private float prix_par_jour;
+    
+//Constructeur pour modif
+
+    public Chauffeur(int idchauffeur, Region region, int contact, int cin, String adresse, String permis, String image, float prix_par_jour, String nom, String prenom, String permis_arriere, int id_siege) {
+        this.idchauffeur = idchauffeur;
+        this.contact = contact;
+        this.cin = cin;
+        this.id_siege = id_siege;
+        this.region = region;
+        this.adresse = adresse;
+        this.permis = permis;
+        this.image = image;
+        this.nom = nom;
+        this.prenom = prenom;
+        this.permis_arriere = permis_arriere;
+        this.prix_par_jour = prix_par_jour;
+    }
+
+//Constructeur pour ajout
+    public Chauffeur(Region region, int contact, int cin, String adresse, String permis, String image, float prix_par_jour, String nom, String prenom, String permis_arriere, int id_siege) {
+
+        this.contact = contact;
+        this.cin = cin;
+        this.id_siege = id_siege;
+        this.region = region;
+        this.adresse = adresse;
+        this.permis = permis;
+        this.image = image;
+        this.nom = nom;
+        this.prenom = prenom;
+        this.permis_arriere = permis_arriere;
+        this.prix_par_jour = prix_par_jour;
+    }
 
     public Chauffeur() {
     }
 
+
+
+    public String getPermis_arriere() {
+        return permis_arriere;
+    }
+
+    public void setPermis_arriere(String permis_arriere) {
+        this.permis_arriere = permis_arriere;
+    }
+
+    public String getNom() {
+        return nom;
+    }
+
+    public void setNom(String nom) {
+        this.nom = nom;
+    }
+
+    public String getPrenom() {
+        return prenom;
+    }
+
+    public void setPrenom(String prenom) {
+        this.prenom = prenom;
+    }
 
     public int getIdchauffeur() {
         return idchauffeur;
@@ -44,14 +104,6 @@ public class Chauffeur {
 
     public void setCin(int cin) {
         this.cin = cin;
-    }
-
-    public int getId_location() {
-        return id_location;
-    }
-
-    public void setId_location(int id_location) {
-        this.id_location = id_location;
     }
 
     public Region getRegion() {
@@ -94,11 +146,23 @@ public class Chauffeur {
         this.prix_par_jour = prix_par_jour;
     }
 
+    public Chauffeur(int idchauffeur) {
+        this.idchauffeur = idchauffeur;
+    }
+
+  
+
     @Override
     public String toString() {
-        return "Chauffeur{" + "idchauffeur=" + idchauffeur + ", contact=" + contact + ", cin=" + cin + ", id_location=" + id_location + ", region=" + region + ", adresse=" + adresse + ", permis=" + permis + ", image=" + image + ", prix_par_jour=" + prix_par_jour + '}';
+        return "Chauffeur{" + "idchauffeur=" + idchauffeur + ", contact=" + contact + ", cin=" + cin + ", id_siege=" + id_siege + ", region=" + region + ", adresse=" + adresse + ", permis=" + permis + ", image=" + image + ", nom=" + nom + ", prenom=" + prenom + ", permis_arriere=" + permis_arriere + ", prix_par_jour=" + prix_par_jour + '}';
     }
-    
-    
-    
+
+    public int getId_siege() {
+        return id_siege;
+    }
+
+    public void setId_siege(int id_siege) {
+        this.id_siege = id_siege;
+    }
+
 }
