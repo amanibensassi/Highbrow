@@ -3,13 +3,15 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package gui;
+package guitrabelsi;
 
 import entities.Siege;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javafx.collections.FXCollections;
@@ -25,6 +27,7 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javax.mail.MessagingException;
 import services.SiegeService;
 import typeenumeration.Region;
 
@@ -116,6 +119,7 @@ public class AjouterSiegeController implements Initializable {
             
             s.setId_utilisateur(1);
             ps.ajouter(s);
+            //ps.sendWelcomeEmail(emailtf.getText());
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Ajout réussi");
             alert.setHeaderText("Ajout de siège réussi");
@@ -124,6 +128,8 @@ public class AjouterSiegeController implements Initializable {
             System.out.println("Siege ajouter avec succes");
         } catch (SQLException ex) {
             System.out.println("error" + ex.getMessage());
+        } catch (MessagingException ex) {
+            Logger.getLogger(AjouterSiegeController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
         

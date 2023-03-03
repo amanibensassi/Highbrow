@@ -12,9 +12,21 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.List;
+import java.util.Base64;
+import java.util.Properties;
+import javax.mail.Authenticator;
+import javax.mail.Message;
+import javax.mail.MessagingException;
+import javax.mail.PasswordAuthentication;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
+import org.omg.CORBA.NameValuePair;
 import utils.MyDB;
 import typeenumeration.Region;
+import java.util.List;
+
 
 /**
  *
@@ -29,12 +41,52 @@ public class SiegeService implements IService<Siege>,ISiege<Siege> {
     }
     
     @Override
-    public void ajouter(Siege t) throws SQLException {       
+    public void ajouter(Siege t) throws SQLException, MessagingException   {       
         String req = "INSERT INTO siege(nom_siege,region,adresse,mail,num_tel_siege,id_utilisateur) VALUES("
                 + "'" + t.getNom_siege() + "','" + t.getRegion() + "','" + t.getAdresse()+ "','"
                 + t.getMail() + "','" + t.getNum_tel_siege()+ "','" + t.getId_utilisateur() +"'" + ")";
         Statement st = cnx.createStatement();
         st.executeUpdate(req);        
+        
+        final String username = "mouhamedtrabelsi.28@gmail.com"; // Votre adresse e-mail
+    final String password = "vrbbphxzfhhzhxzk"; // Votre mot de passe
+
+    String to = t.getMail(); // Adresse e-mail du destinataire
+    String subject = "Bienvenue chez nous !"; // Sujet de l'e-mail
+    String body = "Bonjour " + t.getNom_siege() + ",\n\nBienvenue chez nous, FastRent ya dawla  !"; // Corps de l'e-mail
+
+    // Configuration des propriétés pour l'envoi de l'e-mail
+    Properties props = new Properties();
+    props.put("mail.smtp.auth", "true");
+    props.put("mail.smtp.starttls.enable", "true");
+    props.put("mail.smtp.host", "smtp.gmail.com");
+    props.put("mail.smtp.port", "465");
+    props.put("mail.smtp.socketFactory.port", "465");
+    props.put("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
+
+    // Création de la session de messagerie avec l'authentification de l'utilisateur
+    Session session = Session.getInstance(props, new Authenticator() {
+        protected PasswordAuthentication getPasswordAuthentication() {
+            return new PasswordAuthentication(username, password);
+        }
+    });
+
+    try {
+        // Création du message de l'e-mail
+        Message message = new MimeMessage(session);
+        message.setFrom(new InternetAddress(username));
+        message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(to));
+        message.setSubject(subject);
+        message.setText(body);
+
+        // Envoi de l'e-mail
+        Transport.send(message);
+
+        System.out.println("L'e-mail de bienvenue a été envoyé à " + to);
+    } catch (MessagingException e) {
+        System.err.println("error" + e.getMessage());
+    }
+
         System.out.println("siege ajouté avec succés");
     }
 
@@ -55,13 +107,13 @@ public class SiegeService implements IService<Siege>,ISiege<Siege> {
     
 
     @Override
-    public boolean supprimer(Siege t) throws SQLException {
+    public void supprimer(Siege t) throws SQLException {
         String req = "DELETE FROM siege where idsiege = ?";
         PreparedStatement ps = cnx.prepareStatement(req);
         ps.setInt(1,t.getIdsiege());
         ps.executeUpdate();
         System.out.println("siege supprimé avec succés");
-        return true;
+        //return true;
         
     }
 
@@ -128,6 +180,13 @@ public class SiegeService implements IService<Siege>,ISiege<Siege> {
             sieges.add(p);           
         }
         return sieges;
-    }    
+    }
+    
 
 }
+    
+
+
+
+
+

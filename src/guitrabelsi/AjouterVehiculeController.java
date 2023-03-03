@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package gui;
+package guitrabelsi;
 
+import entities.Siege;
 import entities.Vehicule;
 import java.io.File;
 import java.io.FileInputStream;
@@ -16,10 +17,15 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
-//import java.sql.Date;
+import java.sql.Date;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -31,22 +37,19 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileNameExtensionFilter;
+import services.SiegeService;
 import services.VehiculeService;
 import typeenumeration.Carburant;
 import typeenumeration.Etat;
 import typeenumeration.NbrPlace;
-import java.time.LocalDate;
-import java.time.Instant;
-import java.time.ZoneId;
-import static java.time.temporal.TemporalQueries.localDate;
-import java.util.Date;
+import typeenumeration.Region;
 
 /**
  * FXML Controller class
  *
  * @author Trabelsi Mohamed
  */
-public class ModifierVehiculeController implements Initializable {
+public class AjouterVehiculeController implements Initializable {
 
     @FXML
     private TextField marqueid;
@@ -59,6 +62,10 @@ public class ModifierVehiculeController implements Initializable {
     @FXML
     private ComboBox<NbrPlace> nombreplaceid;
     @FXML
+    private Button ajouterbtn;
+    @FXML
+    private Button afficherbtn;
+    @FXML
     private TextField prixventeid;
     @FXML
     private ComboBox<Carburant> carburantid;
@@ -66,104 +73,95 @@ public class ModifierVehiculeController implements Initializable {
     private ComboBox<Etat> etatid;
     @FXML
     private DatePicker datecirculationid;
-    @FXML
-    private Button imageid;
-    @FXML
-    private Button validerbtn;
-
+    private TextField imageid;
+    
     VehiculeService ps = new VehiculeService();
-    int idsiege = 0;
-    int idutilisateur = 0;
-    int idvehicule = 0;
     @FXML
-    private Button annulerbtn;
+    private Button image;
+    int id;
+    
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        NbrPlace[] tabplace = {NbrPlace.cinq, NbrPlace.deux, NbrPlace.neuf, NbrPlace.sept};
+    }    
+    
+    public void setVehicule1(int s){
+        this.id=s;
+    NbrPlace[] tabplace={NbrPlace.cinq,NbrPlace.deux,NbrPlace.neuf,NbrPlace.sept};
         nombreplaceid.getItems().setAll(tabplace);
-
-        Carburant[] tabcarburant = {Carburant.diesel, Carburant.essence};
-        carburantid.getItems().setAll(tabcarburant);
-
-        Etat[] tabetat = {Etat.a_louer, Etat.a_vendre, Etat.louer};
-        etatid.getItems().setAll(tabetat);
-    }
-
-    public void setData(Vehicule c) {
-
-        marqueid.setText(c.getMarque());
-
-        Date date = new Date();
-        ZoneId defaultZoneId = ZoneId.systemDefault();
-        Instant instant = date.toInstant();   
-        LocalDate localDate = instant.atZone(defaultZoneId).toLocalDate();
-        datecirculationid.setValue(localDate);
-
         
-        imageid.setText(c.getImage_vehicule());
-        etatid.setValue(c.getEtat());
-        prixjourid.setText(String.valueOf(c.getPrix_par_jour()));
-        prixventeid.setText(String.valueOf(c.getPrix_vente()));
-        kilometrageid.setText(String.valueOf(c.getKilometrage()));
-        carburantid.setValue(c.getCarburant());
-        immatriculationid.setText(c.getImmatriculation());
-        nombreplaceid.setValue(c.getNbr_place());
-        idvehicule = c.getIdvehicule();
-        idsiege = c.getId_siege();
+        Carburant[] tabcarburant={Carburant.diesel,Carburant.essence};
+        carburantid.getItems().setAll(tabcarburant);
+        
+             Etat[] tabetat={Etat.a_louer,Etat.a_vendre,Etat.louer};
+        etatid.getItems().setAll(tabetat);
+    
+    
     }
 
-    @FXML
-    private void validerModification(ActionEvent event) throws FileNotFoundException, IOException {
 
+    
+    @FXML
+    private void ajouter(ActionEvent event) throws FileNotFoundException, IOException {
         try {
             Vehicule s = new Vehicule();
-            s.setIdvehicule(idvehicule);
-            s.setId_siege(idsiege);
+              
             s.setMarque(marqueid.getText());
             s.setKilometrage(Integer.parseInt(kilometrageid.getText()));
             s.setImmatriculation(immatriculationid.getText());
-
-            s.setPrix_par_jour(Float.parseFloat(prixjourid.getText()));
-            s.setPrix_vente(Float.parseFloat(prixventeid.getText()));
-
-            LocalDate localDate = datecirculationid.getValue();
-            Instant instant = localDate.atStartOfDay().atZone(ZoneId.systemDefault()).toInstant();
-            Date date = Date.from(instant);
-            s.setDate_circulation(date);
-
+            
+            s.setPrix_par_jour(Integer.parseInt(prixjourid.getText()));
+            s.setPrix_vente(Integer.parseInt(prixventeid.getText()));
+            s.setDate_circulation(Date.valueOf(datecirculationid.getValue()));
+                    
+            //NbrPlace r = nombreplaceid.getSelectionModel().getSelectedItem();
+            //s.setNbr_place(r.getValeur());
             s.setNbr_place(nombreplaceid.getValue());
             s.setCarburant(carburantid.getValue());
             s.setEtat(etatid.getValue());
-            s.setImage_vehicule(imageid.getText());
-           
-            ps.modifier(s);
+            FileInputStream f2 = new FileInputStream(file1);
+        byte[] data1 = new byte[(int) file1.length()];
+        String img = file1.getName();
+        f2.read(data1);
+        f2.close();
+            s.setImage_vehicule(img);
+            //s.setIdvehicule(0);
+            s.setId_siege(id);
+            ps.ajouter(s);
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("modification réussie");
-            alert.setHeaderText("modification de vehicule réussi");
-            alert.setContentText("Le vehicule a été modifié avec succès !");
+            alert.setTitle("Ajout réussi");
+            alert.setHeaderText("Ajout de vehicule réussi");
+            alert.setContentText("Le vehicule a été ajouté avec succès !");
             alert.showAndWait();
-
-            System.out.println("vehicule modifié avec succes");
+            System.out.println("vehicule ajouter avec succes");
         } catch (SQLException ex) {
             System.out.println("error" + ex.getMessage());
         }
-        try {
 
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("afficherVehiculeBySiege.fxml"));
-            Parent root = loader.load();
-            AfficherVehiculeBySiegeController controller = loader.getController();
-            controller.dynamicinitialize(idsiege);
-            validerbtn.getScene().setRoot(root);
-        } catch (IOException ex) {
-            System.out.println("error" + ex.getMessage());
-        }
     }
-    File file1;
 
+//    @FXML
+//    private void recuperer(ActionEvent event) {
+//        if (afficherbtn.isPressed()){
+//            System.out.println("eee");
+//        }
+//                /*try {
+//                    
+//            FXMLLoader loader = new FXMLLoader(getClass().getResource("afficherVehicule.fxml"));
+//            Parent root = loader.load();
+//            AfficherVehiculeController controller = loader.getController();
+//            
+//            afficherbtn.getScene().setRoot(root);
+//            
+//        } catch (IOException ex) {
+//            System.out.println("error" + ex.getMessage());
+//        }*/
+//    }
+
+    File file1;
     @FXML
     private File ajouterImage(ActionEvent event) {
 
@@ -187,6 +185,7 @@ public class ModifierVehiculeController implements Initializable {
                 try {
                     Path from = Paths.get(chooser.getSelectedFile().toURI());
                     to1 = Paths.get(path + "\\" + fileName);
+               
 
                     CopyOption[] options = new CopyOption[]{
                         StandardCopyOption.REPLACE_EXISTING,
@@ -202,23 +201,27 @@ public class ModifierVehiculeController implements Initializable {
             }
 
         }
-        //imageid.setText(String.valueOf(file1));
         return file1;
     }
 
     @FXML
-    private void annuler(ActionEvent event) {
-
-        try {
-
+    private void Affciher(ActionEvent event) {
+      try {
+                    
+                    
             FXMLLoader loader = new FXMLLoader(getClass().getResource("afficherVehiculeBySiege.fxml"));
             Parent root = loader.load();
             AfficherVehiculeBySiegeController controller = loader.getController();
-            controller.dynamicinitialize(idsiege);
-            validerbtn.getScene().setRoot(root);
+            controller.dynamicinitialize(id);
+            afficherbtn.getScene().setRoot(root);
+            
         } catch (IOException ex) {
             System.out.println("error" + ex.getMessage());
         }
     }
 
+   
+    
+    
+    
 }

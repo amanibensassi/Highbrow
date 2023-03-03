@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package gui;
+package guitrabelsi;
 
 import entities.Siege;
 import entities.Vehicule;
@@ -11,6 +11,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.List;
+import java.util.Optional;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -27,6 +28,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.layout.AnchorPane;
@@ -116,16 +118,32 @@ public class SiegeController implements Initializable {
     @FXML
     private void supprimerSiege(ActionEvent event) throws IOException {
 
+//        try {
+//            ps.supprimer(pe);
+//            FXMLLoader loader = new FXMLLoader(getClass().getResource("afficherSiege.fxml"));
+//            Parent root = loader.load();
+//
+//            siegesLignes.getScene().setRoot(root);
+//
+//        } catch (SQLException ex) {
+//            System.out.println(ex.getMessage());
+//        }
+    Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+    alert.setTitle("Confirmation");
+    alert.setHeaderText(null);
+    alert.setContentText("Voulez-vous vraiment supprimer ce siège ?");
+
+    Optional<ButtonType> result = alert.showAndWait();
+    if (result.get() == ButtonType.OK){
         try {
             ps.supprimer(pe);
             FXMLLoader loader = new FXMLLoader(getClass().getResource("afficherSiege.fxml"));
             Parent root = loader.load();
-
             siegesLignes.getScene().setRoot(root);
-
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
+    }
     }
 
 
