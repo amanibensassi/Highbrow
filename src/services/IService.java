@@ -19,5 +19,4 @@ public interface IService<T> {
     public void modifier(T t) throws SQLException;
     public void supprimer(T t) throws SQLException;
     public List<T> recuperer() throws SQLException;
-
 }

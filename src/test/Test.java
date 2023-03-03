@@ -4,7 +4,6 @@
  * and open the template in the editor.
  */
 package test;
-
 import entities.Chauffeur;
 import entities.Location;
 import java.sql.SQLException;
@@ -21,6 +20,7 @@ import typeenumeration.EtatLocation;
 public class Test {
 
     public static void main(String[] args) {
+
         try {
             ChauffeurService cs = new ChauffeurService();
             LocationService ls = new LocationService();
