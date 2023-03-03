@@ -17,11 +17,31 @@ public class Mecanicien {
     private int idmecanicien,contact;
     private Specialite specialite;
     private Region region;
-    private String adresse,image;
+    private String adresse,image,nom_mecanicien,prenom_mecanicien;
 
     public Mecanicien() {
     }
 
+    public Mecanicien(int contact, Specialite specialite, Region region, String adresse, String image, String nom_mecanicien, String prenom_mecanicien) {
+        this.contact = contact;
+        this.specialite = specialite;
+        this.region = region;
+        this.adresse = adresse;
+        this.image = image;
+        this.nom_mecanicien = nom_mecanicien;
+        this.prenom_mecanicien = prenom_mecanicien;
+    }
+
+    public Mecanicien(int idmecanicien, int contact, Specialite specialite, Region region, String adresse, String image, String nom_mecanicien, String prenom_mecanicien) {
+        this.idmecanicien = idmecanicien;
+        this.contact = contact;
+        this.specialite = specialite;
+        this.region = region;
+        this.adresse = adresse;
+        this.image = image;
+        this.nom_mecanicien = nom_mecanicien;
+        this.prenom_mecanicien = prenom_mecanicien;
+    }
 
     public int getIdmecanicien() {
         return idmecanicien;
@@ -31,6 +51,22 @@ public class Mecanicien {
         this.idmecanicien = idmecanicien;
     }
 
+    public String getNom_mecanicien() {
+        return nom_mecanicien;
+    }
+
+    public void setNom_mecanicien(String nom_mecanicien) {
+        this.nom_mecanicien = nom_mecanicien;
+    }
+
+    public String getPrenom_mecanicien() {
+        return prenom_mecanicien;
+    }
+
+    public void setPrenom_mecanicien(String prenom_mecanicien) {
+        this.prenom_mecanicien = prenom_mecanicien;
+    }
+    
     public int getContact() {
         return contact;
     }
@@ -73,9 +109,8 @@ public class Mecanicien {
 
     @Override
     public String toString() {
-        return "Mecanicien{" + "idmecanicien=" + idmecanicien + ", contact=" + contact + ", specialite=" + specialite + ", region=" + region + ", adresse=" + adresse + ", image=" + image + '}';
+        return "Mecanicien{" + "idmecanicien=" + idmecanicien + ", contact=" + contact + ", specialite=" + specialite + ", region=" + region + ", adresse=" + adresse + ", image=" + image + ", nom_mecanicien=" + nom_mecanicien + ", prenom_mecanicien=" + prenom_mecanicien + '}'+"\n";
     }
-    
     
     
 }

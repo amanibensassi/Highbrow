@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.AfficherDetailMecanicienController">
+   <children>
+      <AnchorPane id="AnchorPane" layoutX="-4.0" prefHeight="1000.0" prefWidth="1900.0" style="-fx-background-color: F5F6FA;">
+         <children>
+            <Label fx:id="lblspecialite" layoutX="1176.0" layoutY="788.0" prefHeight="30.0" prefWidth="127.0" text="Label">
+               <font>
+                  <Font name="System Bold Italic" size="20.0" />
+               </font></Label>
+            <Label fx:id="lblregion" layoutX="1169.0" layoutY="623.0" prefHeight="30.0" prefWidth="110.0" text="Label">
+               <font>
+                  <Font name="System Bold Italic" size="20.0" />
+               </font></Label>
+            <Label fx:id="lblcontact" layoutX="1176.0" layoutY="731.0" prefHeight="30.0" prefWidth="127.0" text="Label">
+               <font>
+                  <Font name="System Bold Italic" size="20.0" />
+               </font></Label>
+            <Label fx:id="lbladresse" layoutX="1176.0" layoutY="677.0" prefHeight="30.0" prefWidth="110.0" text="Label">
+               <font>
+                  <Font name="System Bold Italic" size="20.0" />
+               </font></Label>
+            <Label fx:id="lblprenom" layoutX="1169.0" layoutY="562.0" prefHeight="30.0" prefWidth="110.0" text="Label">
+               <font>
+                  <Font name="System Bold Italic" size="20.0" />
+               </font></Label>
+            <Label fx:id="lblnom" layoutX="1169.0" layoutY="500.0" prefHeight="30.0" prefWidth="110.0" text="Label">
+               <font>
+                  <Font name="System Bold Italic" size="20.0" />
+               </font></Label>
+            <ImageView fx:id="img" fitHeight="121.0" fitWidth="190.0" layoutX="189.0" layoutY="23.0" pickOnBounds="true" preserveRatio="true" />
+            <AnchorPane layoutY="-1.0" prefHeight="1000.0" prefWidth="285.0" style="-fx-background-color: #0F2231;" />
+            <AnchorPane layoutX="286.0" layoutY="-1.0" prefHeight="227.0" prefWidth="1614.0" style="-fx-background-color: #06C17A;">
+               <children>
+                  <Button layoutX="436.0" layoutY="92.0" mnemonicParsing="false" onAction="#afficherListe" style="-fx-background-color: #06C17A;" text="Afficher liste">
+                     <font>
+                        <Font name="System Bold Italic" size="20.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="calendrier" layoutX="807.0" layoutY="92.0" mnemonicParsing="false" onAction="#afficherCalendrier" style="-fx-background-color: #06C17A;" text="Calendrier">
+                     <font>
+                        <Font name="System Bold Italic" size="20.0" />
+                     </font>
+                  </Button>
+                  <ImageView fitHeight="69.0" fitWidth="83.0" layoutX="946.0" layoutY="79.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/programme.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="69.0" fitWidth="69.0" layoutX="589.0" layoutY="79.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/liste.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </AnchorPane>
+            <Label layoutX="887.0" layoutY="500.0" text="Nom :">
+               <font>
+                  <Font name="System Bold Italic" size="20.0" />
+               </font>
+            </Label>
+            <Label layoutX="887.0" layoutY="562.0" text="Prénom :">
+               <font>
+                  <Font name="System Bold Italic" size="20.0" />
+               </font>
+            </Label>
+            <Label layoutX="882.0" layoutY="788.0" text="Spécialité :">
+               <font>
+                  <Font name="System Bold Italic" size="20.0" />
+               </font>
+            </Label>
+            <Label layoutX="887.0" layoutY="623.0" text="Région :">
+               <font>
+                  <Font name="System Bold Italic" size="20.0" />
+               </font>
+            </Label>
+            <Label layoutX="882.0" layoutY="677.0" text="Adresse :">
+               <font>
+                  <Font name="System Bold Italic" size="20.0" />
+               </font>
+            </Label>
+            <Label layoutX="882.0" layoutY="731.0" text="Numéro de téléphone :">
+               <font>
+                  <Font name="System Bold Italic" size="20.0" />
+               </font>
+            </Label>
+            <ImageView fx:id="img" fitHeight="188.0" fitWidth="258.0" layoutX="944.0" layoutY="284.0" pickOnBounds="true" preserveRatio="true" />
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

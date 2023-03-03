@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
+
+<AnchorPane prefHeight="710.0" prefWidth="1000.0" style="-fx-background-color: #F5F6FA;" stylesheets="@../styles/detail.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.DetailChauffeurController">
+
+    <children>
+        
+        <TextField fx:id="nom" layoutX="105.0" layoutY="181.0" onKeyPressed="#testNom" prefHeight="49.0" prefWidth="244.0" promptText="nom" AnchorPane.leftAnchor="105.0" AnchorPane.topAnchor="181.0" />
+        <TextField fx:id="prenom" layoutX="105.0" layoutY="263.0" onKeyPressed="#testPrenom" prefHeight="49.0" prefWidth="244.0" promptText="prenom" AnchorPane.leftAnchor="105.0" AnchorPane.topAnchor="263.0" />
+        <Button fx:id="ModifierCh" alignment="BOTTOM_RIGHT" contentDisplay="RIGHT" layoutX="774.0" layoutY="370.0" onAction="#ModifierCh" prefHeight="58.0" prefWidth="164.0" text="modifier" AnchorPane.leftAnchor="774.0" AnchorPane.topAnchor="370.0" />
+      <TextField fx:id="emailField" layoutX="105.0" layoutY="346.0" onKeyPressed="#testEmail" prefHeight="49.0" prefWidth="244.0" promptText="E-mail" />
+      <TextField fx:id="cin" layoutX="105.0" layoutY="434.0" onKeyPressed="#testCin" prefHeight="49.0" prefWidth="244.0" promptText="Cin" />
+      <Label layoutX="32.0" layoutY="43.0" style="-fx-font-size: 50;" text="Detail du chauffeur " />
+      <TextField fx:id="numtel" layoutX="105.0" layoutY="516.0" onKeyPressed="#testTel" prefHeight="49.0" prefWidth="244.0" promptText="numtel" />
+      <TextField fx:id="prix" layoutX="105.0" layoutY="601.0" onKeyPressed="#testprix" prefHeight="49.0" prefWidth="244.0" promptText="prix_par_Jour" />
+      <ComboBox fx:id="combobox" layoutX="445.0" layoutY="607.0" prefHeight="49.0" prefWidth="266.0" promptText="region" />
+      <Label fx:id="nomch" layoutX="761.0" layoutY="43.0" style="-fx-font-size: 50;" text="nomch" />
+      <Label fx:id="prenomch" layoutX="508.0" layoutY="43.0" onMouseClicked="#aa" style="-fx-font-size: 50;" text="prenomch" />
+      <ImageView fx:id="pback" fitHeight="137.0" fitWidth="242.0" layoutX="457.0" layoutY="162.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView id="pavant" fx:id="pavant" fitHeight="137.0" fitWidth="242.0" layoutX="457.0" layoutY="310.0" pickOnBounds="true" preserveRatio="true" />
+      
+      <ImageView id="image-view" fx:id="imageview" fitHeight="137.0" fitWidth="242.0" layoutX="457.0" layoutY="459.0" pickOnBounds="true" preserveRatio="true" styleClass="image-view-style" />
+      <Line endX="667.0" endY="-40.0" layoutX="318.0" layoutY="176.0" startX="-304.0" startY="-40.0" />
+      <Line endX="11.0" endY="439.0" layoutX="738.0" layoutY="238.0" startX="11.0" startY="-125.0" />
+      <ImageView fx:id="imageupdate" fitHeight="30.0" fitWidth="32.0" layoutX="669.0" layoutY="458.0" onMouseClicked="#ModifierImage" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/telecharger.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="PAvantUpdate" fitHeight="30.0" fitWidth="32.0" layoutX="669.0" layoutY="310.0" onMouseClicked="#ModifierPermisAvant" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/telecharger.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="pArriereUpdate" fitHeight="30.0" fitWidth="32.0" layoutX="669.0" layoutY="166.0" onMouseClicked="#ModifierPermisBack" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/telecharger.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="76.0" fitWidth="77.0" layoutX="13.0" layoutY="206.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/user.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="42.0" fitWidth="49.0" layoutX="29.0" layoutY="349.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/email.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="42.0" fitWidth="49.0" layoutX="30.0" layoutY="437.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/id-card.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="49.0" fitWidth="49.0" layoutX="26.0" layoutY="516.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/telephone-call.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="49.0" fitWidth="49.0" layoutX="26.0" layoutY="601.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/price-tag.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="49.0" fitWidth="42.0" layoutX="774.0" layoutY="378.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/updated.png" />
+         </image>
+      </ImageView>
+    </children>
+</AnchorPane>

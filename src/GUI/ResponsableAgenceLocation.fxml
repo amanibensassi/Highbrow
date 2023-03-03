@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+
+<AnchorPane id="AnchorPane" prefHeight="710.0" prefWidth="1000.0" stylesheets="@../styles/RespoAGENCE.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.ResponsableAgenceLocationController">
+
+   <children>
+      <Label layoutX="118.0" layoutY="22.0" prefHeight="74.0" prefWidth="345.0" style="-fx-font-size: 20; -fx-border-color: #378217;" text="Gérer les location du vehicule XXXX " />
+      <Button id="#roundedButton" fx:id="Demandech" layoutX="76.0" layoutY="139.0" mnemonicParsing="false" onAction="#Demmandechauffeur" prefHeight="43.0" prefWidth="192.0" style="-fx-background-color: #06C17A; -fx-text-fill: #fff; -fx-background-radius: 30; -fx-font-size: 14px; -fx-font-weight: bold;" text="Demande chauffeur" />
+      <Button id="#roundedButton" fx:id="LA" layoutX="754.0" layoutY="145.0" mnemonicParsing="false" onAction="#LocationAnnuler" prefHeight="43.0" prefWidth="192.0" style="-fx-background-color: #06C17A; -fx-text-fill: #fff; -fx-background-radius: 30; -fx-font-size: 14px; -fx-font-weight: bold;" text="Location annulée" />
+      <Button id="#roundedButton" fx:id="LC" layoutX="414.0" layoutY="139.0" mnemonicParsing="false" onAction="#locationConfirmer" prefHeight="43.0" prefWidth="192.0" style="-fx-background-color: #06C17A; -fx-text-fill: #fff; -fx-background-radius: 30; -fx-font-size: 14px; -fx-font-weight: bold;" text="Location confirmée" />
+      <ScrollPane layoutX="16.0" layoutY="203.0" prefHeight="495.0" prefWidth="981.0">
+         <content>
+            <GridPane fx:id="grid" prefHeight="127.0" prefWidth="969.0">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+            </GridPane>
+         </content>
+      </ScrollPane>
+   </children>
+</AnchorPane>
