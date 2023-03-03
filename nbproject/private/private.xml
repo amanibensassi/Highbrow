@@ -2,6 +2,20 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/C:/xampp/htdocs/Highbrow/src/test/mainAjouter.java</file>
+            <file>file:/C:/xampp/htdocs/Highbrow/src/gui/AjouterVehiculeController.java</file>
+            <file>file:/C:/xampp/htdocs/Highbrow/src/gui/SiegeController.java</file>
+            <file>file:/C:/xampp/htdocs/Highbrow/src/services/IVehicule.java</file>
+            <file>file:/C:/xampp/htdocs/Highbrow/src/gui/ajouterVehicule.fxml</file>
+            <file>file:/C:/xampp/htdocs/Highbrow/src/services/VehiculeService.java</file>
+            <file>file:/C:/xampp/htdocs/Highbrow/src/gui/afficherVehiculeBySiege.fxml</file>
+            <file>file:/C:/xampp/htdocs/Highbrow/src/gui/AfficherVehiculeBySiegeController.java</file>
+            <file>file:/C:/xampp/htdocs/Highbrow/src/gui/AfficherSiegeController.java</file>
+            <file>file:/C:/xampp/htdocs/Highbrow/src/test/Test.java</file>
+            <file>file:/C:/xampp/htdocs/Highbrow/src/gui/afficherSiege.fxml</file>
+            <file>file:/C:/xampp/htdocs/Highbrow/src/services/SiegeService.java</file>
+        </group>
+
     </open-files>
 </project-private>

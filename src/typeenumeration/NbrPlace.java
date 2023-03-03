@@ -10,18 +10,19 @@ package typeenumeration;
  * @author anasm
  */
 public enum NbrPlace {
-   UN(1),
-    DEUX(2),
-    TROIS(3);
+    deux(2),
+    cinq(5),
+    sept(7),
+    neuf(9);
 
-    private int valeur;
-
-    NbrPlace(int valeur) {
-        this.valeur = valeur;
-    }
-
-    public int getValeur() {
-        return valeur;
-    }
-    
+   
+   private int valeur;
+   
+   private NbrPlace(int valeur){
+       this.valeur=valeur;
+   }
+   
+   public int getValeur(){
+       return valeur;
+   }
 }
