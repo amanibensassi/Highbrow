@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="266.0" prefWidth="490.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.AjouterAvisController">
+   <children>
+      <HBox layoutX="238.0" layoutY="100.0" prefHeight="100.0" prefWidth="200.0" spacing="5.0">
+         <children>
+            <ImageView fx:id="star1" fitHeight="42.0" fitWidth="51.0" onMouseClicked="#clickstart1" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="star2" fitHeight="42.0" fitWidth="51.0" onMouseClicked="#clickstart2" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="star3" fitHeight="42.0" fitWidth="51.0" onMouseClicked="#clickstart3" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="star4" fitHeight="42.0" fitWidth="51.0" onMouseClicked="#clickstart4" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="star5" fitHeight="42.0" fitWidth="51.0" onMouseClicked="#clickstart5" pickOnBounds="true" preserveRatio="true" />
+         </children>
+      </HBox>
+      <Label layoutX="25.0" layoutY="100.0" prefHeight="30.0" prefWidth="187.0" text="Donner votre avis :">
+         <font>
+            <Font name="System Bold Italic" size="20.0" />
+         </font></Label>
+      <Line endX="100.0" layoutX="129.0" layoutY="131.0" startX="-103.0" />
+      
+   </children>
+</AnchorPane>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="650.0" prefWidth="860.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.ModifierVehiculeController">
+   <children>
+          <TextField fx:id="marqueid" alignment="CENTER" layoutX="106.0" layoutY="121.0" prefHeight="38.0" prefWidth="210.0" promptText="marque" styleClass="labelTitreSieges" stylesheets="@../values/values.css" />
+      <TextField fx:id="kilometrageid" alignment="CENTER" layoutX="527.0" layoutY="121.0" prefHeight="38.0" prefWidth="210.0" promptText="kilometrage" styleClass="labelTitreSieges" stylesheets="@../values/values.css" />
+      <TextField fx:id="prixjourid" alignment="CENTER" layoutX="527.0" layoutY="220.0" prefHeight="38.0" prefWidth="210.0" promptText="prix par jour" styleClass="labelTitreSieges" stylesheets="@../values/values.css" />
+      <TextField fx:id="immatriculationid" alignment="CENTER" layoutX="106.0" layoutY="220.0" prefHeight="38.0" prefWidth="210.0" promptText="immatriculation" styleClass="labelTitreSieges" stylesheets="@../values/values.css" />
+      <ComboBox fx:id="nombreplaceid" layoutX="527.0" layoutY="409.0" prefHeight="38.0" prefWidth="210.0" promptText="nombre de place" styleClass="labelTitreSieges" stylesheets="@../values/values.css">
+         <padding>
+            <Insets left="50.0" />
+         </padding></ComboBox>
+      
+      <Label layoutX="66.0" layoutY="309.0" />
+      <TextField fx:id="prixventeid" alignment="CENTER" layoutX="106.0" layoutY="318.0" prefHeight="38.0" prefWidth="210.0" promptText="prix de vente" styleClass="labelTitreSieges" stylesheets="@../values/values.css" />
+      <ComboBox fx:id="carburantid" layoutX="527.0" layoutY="312.0" prefHeight="38.0" prefWidth="210.0" promptText="carburant" styleClass="labelTitreSieges" stylesheets="@../values/values.css">
+         <padding>
+            <Insets left="70.0" />
+         </padding></ComboBox>
+      <ComboBox fx:id="etatid" layoutX="106.0" layoutY="492.0" prefHeight="38.0" prefWidth="210.0" promptText="etat" styleClass="labelTitreSieges" stylesheets="@../values/values.css">
+         <padding>
+            <Insets left="85.0" />
+         </padding>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets></ComboBox>
+      <DatePicker fx:id="datecirculationid" layoutX="106.0" layoutY="409.0" prefHeight="38.0" prefWidth="210.0" promptText="date de circulation" styleClass="labelTitreSieges" stylesheets="@../values/values.css" />
+      
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="273.0" layoutY="36.0" prefHeight="59.0" prefWidth="314.0" styleClass="labelTitreSieges" stylesheets="@../values/values.css" text="Vous pouvez modifier votre siege ! " textAlignment="CENTER" textFill="#37894a">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+   
+      <Button fx:id="validerbtn" contentDisplay="CENTER" layoutX="479.0" layoutY="579.0" mnemonicParsing="false" onAction="#validerModification" prefHeight="38.0" prefWidth="125.0" styleClass="affichervehiculesbtn" stylesheets="@../values/values.css" text="valider" textAlignment="CENTER" textFill="WHITE" />
+      <Button fx:id="imageid" layoutX="527.0" layoutY="492.0" mnemonicParsing="false" onAction="#ajouterImage" prefHeight="38.0" prefWidth="210.0" styleClass="labelTitreSieges" stylesheets="@../values/values.css" text="ajouter image" />
+      <Button fx:id="annulerbtn" alignment="CENTER" contentDisplay="CENTER" layoutX="254.0" layoutY="579.0" mnemonicParsing="false" onAction="#annuler" prefHeight="38.0" prefWidth="126.0" styleClass="btnsupprimer" stylesheets="@../values/values.css" text="annuler" textAlignment="CENTER" textFill="WHITE" />
+   </children>
+</AnchorPane>

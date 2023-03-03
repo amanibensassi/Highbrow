@@ -20,6 +20,8 @@ import java.sql.SQLException;
 import java.util.ResourceBundle;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -77,11 +79,14 @@ public class AddChauffeurController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        combobox.getItems().add("bizerte");
-        combobox.getItems().add("tunis");
-        combobox.getItems().add("djerba");
-        combobox.getItems().add("nabeul");
-        combobox.getItems().add("sousse");
+//        combobox.getItems().add("bizerte");
+//        combobox.getItems().add("tunis");
+//        combobox.getItems().add("djerba");
+//        combobox.getItems().add("nabeul");
+//        combobox.getItems().add("sousse");
+ ObservableList<String> listRegion = FXCollections.observableArrayList("ariana","beja","ben_Arous","bizerte","gabes","gafsa","jendouba","kairouan","kasserine","kebili","kef","mahdia","manouba","medenine","monastir","nabeul","sfax","sidi_Bouzid","siliana","sousse","tataouine","tozeur","tunis","zaghouan");
+        combobox.setItems(listRegion);
+        
     }
 
     @FXML
@@ -277,7 +282,7 @@ public class AddChauffeurController implements Initializable {
             f3.read(data2);
             f3.close();
 
-            Chauffeur chauf = new Chauffeur(Region.valueOf(combobox.getValue()), contact, Cin, email, permis, iamge, Prix, Nom, Prenom, permisBack, 2);
+            Chauffeur chauf = new Chauffeur(Region.valueOf(combobox.getSelectionModel().getSelectedItem()), contact, Cin, email, permis, iamge, Prix, Nom, Prenom, permisBack,2);
 
             chaufService.ajouter(chauf);
             showAlert();

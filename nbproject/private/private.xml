@@ -2,43 +2,37 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-
         <group>
-            <file>file:/C:/xampp/htdocs/pidev/Highbrow/src/gui/Interface_commentairesController.java</file>
-            <file>file:/C:/xampp/htdocs/pidev/Highbrow/src/services/CommentaireService.java</file>
-            <file>file:/C:/xampp/htdocs/pidev/Highbrow/src/services/ReponseService.java</file>
-            <file>file:/C:/xampp/htdocs/pidev/Highbrow/src/gui/Interface_reponseController.java</file>
-            <file>file:/C:/xampp/htdocs/pidev/Highbrow/src/gui/Interface_forumController.java</file>
-            <file>file:/C:/xampp/htdocs/pidev/Highbrow/src/services/PublicationService.java</file>
-            <file>file:/C:/xampp/htdocs/pidev/Highbrow/src/test/main.java</file>
-            <file>file:/C:/xampp/htdocs/pidev/Highbrow/src/test/mainajouter.java</file>
- 
-            <file>file:/D:/Xampp/htdocs/Highbrow/src/gui/AuthenticateController.java</file>
-            <file>file:/D:/Xampp/htdocs/Highbrow/src/gui/ForgotMDP.fxml</file>
-            <file>file:/D:/Xampp/htdocs/Highbrow/src/services/UserService.java</file>
-            <file>file:/D:/Xampp/htdocs/Highbrow/src/test/FXMain.java</file>
-            <file>file:/D:/Xampp/htdocs/Highbrow/src/test/test.java</file>
-            <file>file:/D:/Xampp/htdocs/Highbrow/src/services/EnvoyerEmail.java</file>
-            <file>file:/D:/Xampp/htdocs/Highbrow/src/gui/NewPwdController.java</file>
-            <file>file:/D:/Xampp/htdocs/Highbrow/src/gui/ForgotMDPController.java</file>
-
-            <file>file:/D:/Anas%20INFO/XAMPP/htdocs/Highbrow/src/guiAnas/AfficherEntretienController.java</file>
-            <file>file:/D:/Anas%20INFO/XAMPP/htdocs/Highbrow/src/services/EntretienService.java</file>
-
-            <file>file:/C:/xampp/htdocs/Highbrow/src/test/mainAjouter.java</file>
-            <file>file:/C:/xampp/htdocs/Highbrow/src/gui/AjouterVehiculeController.java</file>
-            <file>file:/C:/xampp/htdocs/Highbrow/src/gui/SiegeController.java</file>
-            <file>file:/C:/xampp/htdocs/Highbrow/src/services/IVehicule.java</file>
-            <file>file:/C:/xampp/htdocs/Highbrow/src/gui/ajouterVehicule.fxml</file>
-            <file>file:/C:/xampp/htdocs/Highbrow/src/services/VehiculeService.java</file>
-            <file>file:/C:/xampp/htdocs/Highbrow/src/gui/afficherVehiculeBySiege.fxml</file>
-            <file>file:/C:/xampp/htdocs/Highbrow/src/gui/AfficherVehiculeBySiegeController.java</file>
-            <file>file:/C:/xampp/htdocs/Highbrow/src/gui/AfficherSiegeController.java</file>
-            <file>file:/C:/xampp/htdocs/Highbrow/src/test/Test.java</file>
-            <file>file:/C:/xampp/htdocs/Highbrow/src/gui/afficherSiege.fxml</file>
-            <file>file:/C:/xampp/htdocs/Highbrow/src/services/SiegeService.java</file>
-
+            <file>file:/D:/Anas%20INFO/XAMPP/htdocs/Highbrow/src/GUI/Reclamation.fxml</file>
+            <file>file:/D:/Anas%20INFO/XAMPP/htdocs/Highbrow/src/test/Main.java</file>
+            <file>file:/D:/Anas%20INFO/XAMPP/htdocs/Highbrow/src/GUI/NewPwd.fxml</file>
+            <file>file:/D:/Anas%20INFO/XAMPP/htdocs/Highbrow/src/guiadem/AffichelesavisvehiculeController.java</file>
+            <file>file:/D:/Anas%20INFO/XAMPP/htdocs/Highbrow/src/GUI/AuthenticateController.java</file>
+            <file>file:/D:/Anas%20INFO/XAMPP/htdocs/Highbrow/src/guiadem/AfficheravisController.java</file>
+            <file>file:/D:/Anas%20INFO/XAMPP/htdocs/Highbrow/src/GUI/ModifierRendezVous.fxml</file>
+            <file>file:/D:/Anas%20INFO/XAMPP/htdocs/Highbrow/src/GUI/AfficherRendezVousController.java</file>
+            <file>file:/D:/Anas%20INFO/XAMPP/htdocs/Highbrow/src/GUI/RdvCard.fxml</file>
+            <file>file:/D:/Anas%20INFO/XAMPP/htdocs/Highbrow/src/GUI/AfficherSiegeController.java</file>
+            <file>file:/D:/Anas%20INFO/XAMPP/htdocs/Highbrow/src/GUI/ForgotMDP.fxml</file>
+            <file>file:/D:/Anas%20INFO/XAMPP/htdocs/Highbrow/src/GUI/ForgotMDPController.java</file>
+            <file>file:/D:/Anas%20INFO/XAMPP/htdocs/Highbrow/src/GUI/ajouterAvis.fxml</file>
+            <file>file:/D:/Anas%20INFO/XAMPP/htdocs/Highbrow/src/GUI/AjouterAvisVehiculeController.java</file>
+            <file>file:/D:/Anas%20INFO/XAMPP/htdocs/Highbrow/src/GUI/AfficherReclamationUtilisateur.fxml</file>
+            <file>file:/D:/Anas%20INFO/XAMPP/htdocs/Highbrow/src/GUI/AjouterAvisVehicule.fxml</file>
+            <file>file:/D:/Anas%20INFO/XAMPP/htdocs/Highbrow/src/GUI/RdvCardController.java</file>
+            <file>file:/D:/Anas%20INFO/XAMPP/htdocs/Highbrow/src/GUI/AfficherRendezVous.fxml</file>
+            <file>file:/D:/Anas%20INFO/XAMPP/htdocs/Highbrow/src/guiadem/AffichelesavisController.java</file>
+            <file>file:/D:/Anas%20INFO/XAMPP/htdocs/Highbrow/src/GUI/modifierUser.fxml</file>
+            <file>file:/D:/Anas%20INFO/XAMPP/htdocs/Highbrow/src/GUI/AfficherReclamation.fxml</file>
+            <file>file:/D:/Anas%20INFO/XAMPP/htdocs/Highbrow/src/GUI/AjouterAvisController.java</file>
+            <file>file:/D:/Anas%20INFO/XAMPP/htdocs/Highbrow/src/test/Test.java</file>
+            <file>file:/D:/Anas%20INFO/XAMPP/htdocs/Highbrow/src/GUI/PropProfile.fxml</file>
+            <file>file:/D:/Anas%20INFO/XAMPP/htdocs/Highbrow/src/GUI/AjouterRendezVousVente.fxml</file>
+            <file>file:/D:/Anas%20INFO/XAMPP/htdocs/Highbrow/src/services/AvisService.java</file>
+            <file>file:/D:/Anas%20INFO/XAMPP/htdocs/Highbrow/src/GUI/ajouterReclamation.fxml</file>
+            <file>file:/D:/Anas%20INFO/XAMPP/htdocs/Highbrow/src/guiadem/AvisController.java</file>
+            <file>file:/D:/Anas%20INFO/XAMPP/htdocs/Highbrow/src/GUI/AfficherReclamationSiege.fxml</file>
+            <file>file:/D:/Anas%20INFO/XAMPP/htdocs/Highbrow/src/GUI/authenticate.fxml</file>
         </group>
-
     </open-files>
 </project-private>

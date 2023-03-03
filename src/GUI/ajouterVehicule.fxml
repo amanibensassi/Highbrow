@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="650.0" prefWidth="870.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.AjouterVehiculeController">
+   <children>
+      <Label layoutX="183.0" layoutY="43.0" text="Veuillez remplir ce formulaire pour ajouter un vehicule" textAlignment="CENTER" textFill="#2b6b20">
+         <font>
+            <Font size="21.0" />
+         </font></Label>
+      <TextField fx:id="marqueid" alignment="CENTER" layoutX="76.0" layoutY="116.0" prefHeight="42.0" prefWidth="242.0" promptText="marque" styleClass="labelTitreSieges" stylesheets="@../values/values.css" />
+      <TextField fx:id="kilometrageid" alignment="CENTER" layoutX="507.0" layoutY="116.0" prefHeight="42.0" prefWidth="242.0" promptText="kilometrage" styleClass="labelTitreSieges" stylesheets="@../values/values.css" />
+      <TextField fx:id="prixjourid" alignment="CENTER" layoutX="76.0" layoutY="210.0" prefHeight="42.0" prefWidth="242.0" promptText="prix de location par jour " styleClass="labelTitreSieges" stylesheets="@../values/values.css" />
+      <TextField fx:id="immatriculationid" alignment="CENTER" layoutX="76.0" layoutY="304.0" prefHeight="42.0" prefWidth="242.0" promptText="immatriculation" styleClass="labelTitreSieges" stylesheets="@../values/values.css" />
+      <ComboBox fx:id="nombreplaceid" layoutX="76.0" layoutY="401.0" prefHeight="42.0" prefWidth="242.0" promptText="nombre de place" styleClass="labelTitreSieges" stylesheets="@../values/values.css">
+         <padding>
+            <Insets left="65.0" />
+         </padding></ComboBox>
+      <Button fx:id="ajouterbtn" alignment="CENTER" contentDisplay="CENTER" layoutX="264.0" layoutY="585.0" mnemonicParsing="false" onAction="#ajouter" prefHeight="42.0" prefWidth="108.0" stylesheets="@../values/values.css" text="Ajouter" textAlignment="CENTER" textFill="WHITE">
+         <styleClass>
+            <String fx:value="affichervehiculesbtn" />
+            <String fx:value="modifierButton" />
+         </styleClass></Button>
+      <Button fx:id="afficherbtn" layoutX="476.0" layoutY="585.0" mnemonicParsing="false" onAction="#Affciher" prefHeight="42.0" prefWidth="108.0" styleClass="affichervehiculesbtn" stylesheets="@../values/values.css" text="Afficher" textAlignment="CENTER" textFill="WHITE" />
+      <Label layoutX="66.0" layoutY="309.0" />
+      <TextField fx:id="prixventeid" alignment="CENTER" layoutX="507.0" layoutY="210.0" prefHeight="42.0" prefWidth="242.0" promptText="prix de vente " styleClass="labelTitreSieges" stylesheets="@../values/values.css" />
+      <ComboBox fx:id="carburantid" layoutX="507.0" layoutY="309.0" prefHeight="42.0" prefWidth="242.0" promptText="carburant" styleClass="labelTitreSieges" stylesheets="@../values/values.css">
+         <padding>
+            <Insets left="88.0" />
+         </padding></ComboBox>
+      <ComboBox fx:id="etatid" layoutX="507.0" layoutY="410.0" prefHeight="42.0" prefWidth="242.0" promptText="etat" styleClass="labelTitreSieges" stylesheets="@../values/values.css">
+         <padding>
+            <Insets left="100.0" />
+         </padding></ComboBox>
+      <DatePicker fx:id="datecirculationid" layoutX="76.0" layoutY="489.0" prefHeight="42.0" prefWidth="242.0" promptText="date de circulation" styleClass="labelTitreSieges" stylesheets="@../values/values.css" />
+      <Button fx:id="image" layoutX="507.0" layoutY="489.0" mnemonicParsing="false" onAction="#ajouterImage" prefHeight="42.0" prefWidth="242.0" styleClass="labelTitreSieges" stylesheets="@../values/values.css" text="ajouter image" />
+   </children>
+</AnchorPane>

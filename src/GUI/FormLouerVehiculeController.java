@@ -77,13 +77,17 @@ public class FormLouerVehiculeController implements Initializable {
     private void reserverVehicule(ActionEvent event) throws IOException {
         
         Date ddebut = Date.valueOf(datedebut.getValue());
+        System.out.println(ddebut);
         Date dfin = Date.valueOf(datefin.getValue());
+        System.out.println(dfin);
         String txt = optionCH.getValue();
+        System.out.println(txt);
         Boolean opch ;
         if(txt.equals("oui"))
         {opch =true; }
         else {opch =false;}
-       Location l = new Location(ddebut,dfin,opch, 2,1); 
+       Location l = new Location(ddebut,dfin,opch,3,1); 
+        System.out.println(l);
         try {
             ls.ajouter(l);
             FXMLLoader loader = new FXMLLoader(getClass().getResource("SideBarUser.fxml"));

@@ -28,6 +28,53 @@ public class AvisService implements IService<Avis>, IAvis<Avis> {
         cnx = MyDB.getInstance().getCnx();
     }
 
+public List<Avis> testAvisSiege(int idSV, int iduser) throws SQLException {
+        Avis av = new Avis();
+        String req = "select * from avis where idsiege =? and id_Utilisateur =? and id_vehicule is null ";
+        PreparedStatement st = cnx.prepareStatement(req);
+        st.setInt(1, idSV);
+        st.setInt(2, iduser);
+         ResultSet rs = st.executeQuery();
+         System.out.println(rs);
+         List<Avis> avis = new ArrayList<>();
+         while (rs.next()) {
+            Avis a = new Avis();
+            a.setId(rs.getInt("id"));
+            a.setId_vehicule(rs.getInt("id_vehicule"));
+            a.setIdsiege(rs.getInt("idsiege"));
+            a.setId_Utilisateur(rs.getInt("id_utilisateur"));
+            a.setNote(Note.valueOf(rs.getString("note")));
+            avis.add(a);
+        }
+         return avis;
+        
+         
+        
+    }
+    
+     public List<Avis> testAvisVehicule(int idSV, int iduser) throws SQLException {
+        Avis av = new Avis();
+        String req = "select * from avis where id_vehicule =? and id_Utilisateur =? and idsiege is null ";
+        PreparedStatement st = cnx.prepareStatement(req);
+        st.setInt(1, idSV);
+        st.setInt(2, iduser);
+         ResultSet rs = st.executeQuery();
+         System.out.println(rs);
+         List<Avis> avis = new ArrayList<>();
+         while (rs.next()) {
+            Avis a = new Avis();
+            a.setId(rs.getInt("id"));
+            a.setId_vehicule(rs.getInt("id_vehicule"));
+            a.setIdsiege(rs.getInt("idsiege"));
+            a.setId_Utilisateur(rs.getInt("id_utilisateur"));
+            a.setNote(Note.valueOf(rs.getString("note")));
+            avis.add(a);
+        }
+         return avis;
+        
+         
+        
+    }
     @Override
     public void ajouterAvisSiege(Avis t) throws SQLException {
         String req = "INSERT INTO Avis (note,idsiege, id_Utilisateur) VALUES(?,?,?)";
