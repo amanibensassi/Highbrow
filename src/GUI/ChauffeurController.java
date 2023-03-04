@@ -73,6 +73,7 @@ public class ChauffeurController implements Initializable {
 private String pa ;
 private String pb ;
 private String img;
+
     public void setChauffeur(Chauffeur c) {
         ch = c;
         nom.setText(c.getNom());
@@ -107,7 +108,8 @@ private String img;
         BorderPane borderPane = new BorderPane();
        FXMLLoader loader1 = new FXMLLoader(getClass().getResource("ListeChauffeur.fxml"));
             Parent root2 = loader1.load();
-      
+      ListeChauffeurController cn = loader1.getController();
+      cn.affichage(ch.getId_siege());
             HBox hbox = new HBox(root1, new Pane(), root2);
             hbox.setSpacing(20);
 

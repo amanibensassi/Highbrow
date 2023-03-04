@@ -11,6 +11,7 @@ import services.ChauffeurService;
 import typeenumeration.Region;
 import java.util.Date;
 import services.LocationService;
+import services.VehiculeService;
 import typeenumeration.EtatLocation;
 
 /**
@@ -61,6 +62,8 @@ public class Test {
             //   System.out.println(ls.recupererAllByIdVehicule(2));
             // ls.AnnulerLocation(44);
             System.out.println(ls.nombreLocationParVehicule());
+            VehiculeService vs = new VehiculeService();
+            System.out.println("VEHVE"+vs.recuperer());
 
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());

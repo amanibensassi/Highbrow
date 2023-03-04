@@ -17,6 +17,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
@@ -27,6 +28,9 @@ import javafx.scene.control.DialogPane;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.Pane;
 import services.CommentaireService;
 import services.PublicationService;
 
@@ -171,13 +175,31 @@ public class PublicationdesignController implements Initializable {
     @FXML
     private void addcomment(ActionEvent event) {
         try {
-            System.out.println("enty cliquit aal commentaire w aandek "+pub);
-            Interface_commentairesController cc = new Interface_commentairesController();
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("interface_commentaires.fxml"));
-            Parent root = loader.load();
-            cc = loader.getController();
-            cc.dynamicinitialize(pub);
-            publicationid.getScene().setRoot(root);
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("SideBarUser.fxml"));
+            Parent root1 = loader.load();
+            BorderPane borderPane = new BorderPane();
+            FXMLLoader loader1 = new FXMLLoader(getClass().getResource("interface_commentaires.fxml"));
+            Parent root2 = loader1.load();
+              Interface_commentairesController controller = loader1.getController();
+            controller.dynamicinitialize(pub);
+          
+            HBox hbox = new HBox(root1, new Pane(), root2);
+            hbox.setSpacing(20);
+
+            borderPane.setRight(hbox);
+
+            borderPane.setLeft(root1);
+
+            borderPane.setPadding(new Insets(10, 10, 30, 10));
+            publicationid.getScene().setRoot(borderPane); 
+            
+            
+//            Interface_commentairesController cc = new Interface_commentairesController();
+//            FXMLLoader loader = new FXMLLoader(getClass().getResource("interface_commentaires.fxml"));
+//            Parent root = loader.load();
+//            cc = loader.getController();
+//            cc.dynamicinitialize(pub);
+//            publicationid.getScene().setRoot(root);
 
         } catch (IOException ex) {
             System.out.println("no entry to the dialog pane");

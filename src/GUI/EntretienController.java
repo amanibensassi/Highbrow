@@ -79,6 +79,9 @@ public class EntretienController implements Initializable {
 //            }
             String[] parts = String.valueOf(e.getDate_entretien()).split(" ");
         String[] parts1 = parts[1].split(":");
+        if (e.isEtat_entretien()){
+            cbetat.setDisable(true);
+        }
         int heure = Integer.valueOf(parts1[0]);
         lbldate.setText(String.valueOf(parts[0]+" à "+parts1[0]+"H"));
         //lblmec.setText(String.valueOf(e.getId_mecanicien())); 
@@ -148,9 +151,17 @@ public class EntretienController implements Initializable {
     }
 
     @FXML
-    private void changeretat(ActionEvent event) throws SQLException {
-        en.setEtat_entretien(cbetat.isSelected());
-        es.modifierEtat(en);
+    private void changeretat(ActionEvent event) throws SQLException, IOException {
+        try{
+            en.setEtat_entretien(cbetat.isSelected());
+            es.modifierEtat(en);
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("AfficherEntretien.fxml"));
+            Parent root = loader.load();
+            btnsupprimer.getScene().setRoot(root);
+        }
+        catch(SQLException ex){
+            System.out.println(ex.getMessage());
+        }
         
     }
     

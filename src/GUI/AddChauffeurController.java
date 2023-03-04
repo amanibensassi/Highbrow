@@ -73,7 +73,7 @@ public class AddChauffeurController implements Initializable {
     ChauffeurService chaufService = new ChauffeurService();
 
     String reg;
-
+ int idsiege;
     /**
      * Initializes the controller class.
      */
@@ -84,7 +84,15 @@ public class AddChauffeurController implements Initializable {
 //        combobox.getItems().add("djerba");
 //        combobox.getItems().add("nabeul");
 //        combobox.getItems().add("sousse");
- ObservableList<String> listRegion = FXCollections.observableArrayList("ariana","beja","ben_Arous","bizerte","gabes","gafsa","jendouba","kairouan","kasserine","kebili","kef","mahdia","manouba","medenine","monastir","nabeul","sfax","sidi_Bouzid","siliana","sousse","tataouine","tozeur","tunis","zaghouan");
+// ObservableList<String> listRegion = FXCollections.observableArrayList("ariana","beja","ben_Arous","bizerte","gabes","gafsa","jendouba","kairouan","kasserine","kebili","kef","mahdia","manouba","medenine","monastir","nabeul","sfax","sidi_Bouzid","siliana","sousse","tataouine","tozeur","tunis","zaghouan");
+//        combobox.setItems(listRegion);
+        
+    }
+   
+    public void getidsiege(int id){
+      
+    this.idsiege=id;
+     ObservableList<String> listRegion = FXCollections.observableArrayList("ariana","beja","ben_Arous","bizerte","gabes","gafsa","jendouba","kairouan","kasserine","kebili","kef","mahdia","manouba","medenine","monastir","nabeul","sfax","sidi_Bouzid","siliana","sousse","tataouine","tozeur","tunis","zaghouan");
         combobox.setItems(listRegion);
         
     }
@@ -282,7 +290,7 @@ public class AddChauffeurController implements Initializable {
             f3.read(data2);
             f3.close();
 
-            Chauffeur chauf = new Chauffeur(Region.valueOf(combobox.getSelectionModel().getSelectedItem()), contact, Cin, email, permis, iamge, Prix, Nom, Prenom, permisBack,2);
+            Chauffeur chauf = new Chauffeur(Region.valueOf(combobox.getSelectionModel().getSelectedItem()), contact, Cin, email, permis, iamge, Prix, Nom, Prenom, permisBack,idsiege);
 
             chaufService.ajouter(chauf);
             showAlert();
@@ -291,7 +299,8 @@ public class AddChauffeurController implements Initializable {
         BorderPane borderPane = new BorderPane();
        FXMLLoader loader1 = new FXMLLoader(getClass().getResource("ListeChauffeur.fxml"));
             Parent root2 = loader1.load();
-      
+        ListeChauffeurController c= loader1.getController();
+            c.affichage(idsiege);
             HBox hbox = new HBox(root1, new Pane(), root2);
             hbox.setSpacing(20);
 

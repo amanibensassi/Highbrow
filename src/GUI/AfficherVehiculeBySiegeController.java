@@ -22,6 +22,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.HPos;
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.geometry.VPos;
 import javafx.scene.Parent;
@@ -36,7 +37,10 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.Pane;
 import services.SiegeService;
 import services.VehiculeService;
 import typeenumeration.Carburant;
@@ -151,11 +155,26 @@ public class AfficherVehiculeBySiegeController implements Initializable {
     private void retour(ActionEvent event) {
         try {
 
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("afficherSiege.fxml"));
-            Parent root = loader.load();
-            AfficherSiegeController controller = loader.getController();
-            //controller.dynamicinitialize(idsiege);
-            retourbtn.getScene().setRoot(root);
+               FXMLLoader loader = new FXMLLoader(getClass().getResource("SideBarUser.fxml"));
+            Parent root1 = loader.load();
+            BorderPane borderPane = new BorderPane();
+            FXMLLoader loader1 = new FXMLLoader(getClass().getResource("afficherSiege.fxml"));
+            Parent root2 = loader1.load();
+           // AjouterSiegeController controller = loader.getController();
+            HBox hbox = new HBox(root1, new Pane(), root2);
+            hbox.setSpacing(20);
+
+            borderPane.setRight(hbox);
+
+            borderPane.setLeft(root1);
+
+            borderPane.setPadding(new Insets(10, 10, 30, 10));
+            retourbtn.getScene().setRoot(borderPane);
+//            FXMLLoader loader = new FXMLLoader(getClass().getResource("afficherSiege.fxml"));
+//            Parent root = loader.load();
+//            AfficherSiegeController controller = loader.getController();
+//            //controller.dynamicinitialize(idsiege);
+//            retourbtn.getScene().setRoot(root);
         } catch (IOException ex) {
             System.out.println("error" + ex.getMessage());
         }
@@ -166,13 +185,30 @@ public class AfficherVehiculeBySiegeController implements Initializable {
     private void ajouterVehiculeBySiege(ActionEvent event) {
 
         try {
-
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("ajouterVehicule.fxml"));
-            Parent root = loader.load();
-            AjouterVehiculeController controller = loader.getController();
+            
+             FXMLLoader loader = new FXMLLoader(getClass().getResource("SideBarUser.fxml"));
+            Parent root1 = loader.load();
+            BorderPane borderPane = new BorderPane();
+            FXMLLoader loader1 = new FXMLLoader(getClass().getResource("ajouterVehicule.fxml"));
+            Parent root2 = loader1.load();
+            AjouterVehiculeController controller = loader1.getController();
             controller.setVehicule1(id);
-            //controller.dynamicinitialize(idsiege);
-            ajouterbtn.getScene().setRoot(root);
+            HBox hbox = new HBox(root1, new Pane(), root2);
+            hbox.setSpacing(20);
+
+            borderPane.setRight(hbox);
+
+            borderPane.setLeft(root1);
+
+            borderPane.setPadding(new Insets(10, 10, 30, 10));
+            ajouterbtn.getScene().setRoot(borderPane);
+
+//            FXMLLoader loader = new FXMLLoader(getClass().getResource("ajouterVehicule.fxml"));
+//            Parent root = loader.load();
+//            AjouterVehiculeController controller = loader.getController();
+//            controller.setVehicule1(id);
+//            //controller.dynamicinitialize(idsiege);
+//            ajouterbtn.getScene().setRoot(root);
         } catch (IOException ex) {
             System.out.println("error" + ex.getMessage());
         }

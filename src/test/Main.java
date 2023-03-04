@@ -45,9 +45,10 @@ public class Main extends Application {
             //   FXMLLoader loader = new FXMLLoader(getClass().getResource("../GUI/ListeChauffeur.fxml"));
             //FXMLLoader loader = new FXMLLoader(getClass().getResource("../GUI/formLouerVehicule.fxml"));
           //  FXMLLoader loader = new FXMLLoader(getClass().getResource("../GUI/ListeMesLocations.fxml"));
-          FXMLLoader loader = new FXMLLoader(getClass().getResource("../GUI/AjouterMecanicien.fxml"));
+          //FXMLLoader loader = new FXMLLoader(getClass().getResource("../GUI/SideBarUser.fxml"));
             // FXMLLoader loader = new FXMLLoader(getClass().getResource("../GUI/ResponsableAgenceLocation.fxml"));
           // FXMLLoader loader = new FXMLLoader(getClass().getResource("../GUI/Statistiques.fxml"));
+          FXMLLoader loader = new FXMLLoader(getClass().getResource("../GUI/SideBarUser.fxml"));
             Parent root = loader.load();
             Scene sc = new Scene(root, 900, 500);
             primaryStage.setTitle("GestionChauffeurs + Location");

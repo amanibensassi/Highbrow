@@ -38,11 +38,6 @@
                               <Font size="25.0" />
                            </font>
                         </Label>
-                        <Button fx:id="ajouterEntr" layoutX="364.0" layoutY="119.0" mnemonicParsing="false" onAction="#ajouterMecanicien" style="-fx-background-color: #06C17A; -fx-background-radius: 20;" text="Ajouter">
-                           <font>
-                              <Font name="System Bold Italic" size="20.0" />
-                           </font>
-                        </Button>
                         <TextField fx:id="txtrecherche" layoutX="1006.0" layoutY="123.0" onKeyPressed="#rechercheMecanicien" prefHeight="36.0" prefWidth="179.0" style="-fx-background-radius: 20;" />
                         <ImageView fitHeight="26.0" fitWidth="26.0" layoutX="1151.0" layoutY="128.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -54,11 +49,6 @@
                               <Font name="System Bold Italic" size="20.0" />
                            </font>
                         </Button>
-                        <ImageView fitHeight="36.0" fitWidth="38.0" layoutX="450.0" layoutY="124.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../images/plus-removebg-preview.png" />
-                           </image>
-                        </ImageView>
                         <ImageView fitHeight="63.0" fitWidth="58.0" layoutX="850.0" layoutY="99.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../images/liste.png" />

@@ -20,6 +20,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Insets;
 import javafx.scene.Cursor;
 import javafx.scene.Node;
 import javafx.scene.Parent;
@@ -28,6 +29,9 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import services.CommentaireService;
 import services.PublicationService;
@@ -146,15 +150,36 @@ public class Interface_reponseController implements Initializable {
     @FXML
     private void backButton(ActionEvent event) {
         try{
-              PublicationService ps = new PublicationService();
+            
+             PublicationService ps = new PublicationService();
            Publication p =   ps.recupererParId(com.getId_publication());
-        Interface_commentairesController cc = new Interface_commentairesController();
-         FXMLLoader loader = new FXMLLoader(getClass().getResource("interface_commentaires.fxml"));
-                    Parent root = loader.load();
-                    cc = loader.getController();
-                    cc.dynamicinitialize(p);
-                    //you need to reload publication
-                    commentaireid.getScene().setRoot(root);
+             FXMLLoader loader = new FXMLLoader(getClass().getResource("SideBarUser.fxml"));
+            Parent root1 = loader.load();
+            BorderPane borderPane = new BorderPane();
+            FXMLLoader loader1 = new FXMLLoader(getClass().getResource("interface_commentaires.fxml"));
+            Parent root2 = loader1.load();
+              Interface_commentairesController controller = loader1.getController();
+          controller.dynamicinitialize(p);
+            HBox hbox = new HBox(root1, new Pane(), root2);
+            hbox.setSpacing(20);
+
+            borderPane.setRight(hbox);
+
+            borderPane.setLeft(root1);
+
+            borderPane.setPadding(new Insets(10, 10, 30, 10));
+            commentaireid.getScene().setRoot(borderPane); 
+               
+            
+            
+             
+//        Interface_commentairesController cc = new Interface_commentairesController();
+//         FXMLLoader loader = new FXMLLoader(getClass().getResource("interface_commentaires.fxml"));
+//                    Parent root = loader.load();
+//                    cc = loader.getController();
+//                    cc.dynamicinitialize(p);
+//                    //you need to reload publication
+//                    commentaireid.getScene().setRoot(root);
         }catch (IOException | SQLException ex) {
             Logger.getLogger("error"+ex.getMessage());
         }     

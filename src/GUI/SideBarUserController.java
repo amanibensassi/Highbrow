@@ -22,6 +22,7 @@ import javafx.geometry.Insets;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
@@ -38,163 +39,154 @@ public class SideBarUserController implements Initializable {
     @FXML
     private Button profil;
     @FXML
-    private Button sieges;
-    @FXML
     private Button HLocation;
+    @FXML
     private Button reclamer;
     @FXML
     private Button deconx;
-    @FXML
     private Button reclamer1;
-    @FXML
     private Button statistique;
+    @FXML
+    private Label prenom;
+    @FXML
+    private Label nom;
+    @FXML
+    private Label numtel;
+    @FXML
+    private Label role;
+    @FXML
+    private Button siegesDisponible;
+    @FXML
+    private Button forum;
 
     /**
      * Initializes the controller class.
      */
-     public void test() throws IOException {
-      
+    public void test() throws IOException {
+
     }
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-                
-          try {
+
+        try {
             test();
         } catch (IOException ex) {
             System.out.println(ex.getMessage());
         }
-       
-        
-    }    
 
-    @FXML
-    private void GoToProfil(ActionEvent event) {
     }
 
     @FXML
-    private void  GoToReclamer(ActionEvent event) throws IOException {
-         FXMLLoader loader = new FXMLLoader(getClass().getResource("SideBarUser.fxml"));
+    private void GoToProfil(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("SideBarUser.fxml"));
         Parent root1 = loader.load();
         BorderPane borderPane = new BorderPane();
-       FXMLLoader loader1 = new FXMLLoader(getClass().getResource("formLouerVehicule.fxml"));
-            Parent root2 = loader1.load();
-      
-            HBox hbox = new HBox(root1, new Pane(), root2);
-            hbox.setSpacing(20);
+        FXMLLoader loader1 = new FXMLLoader(getClass().getResource("ClientProfile.fxml"));
+        Parent root2 = loader1.load();
+        HBox hbox = new HBox(root1, new Pane(), root2);
+        hbox.setSpacing(20);
+        borderPane.setRight(hbox);
+        borderPane.setLeft(root1);
+        borderPane.setPadding(new Insets(10, 10, 30, 10));
+        profil.getScene().setRoot(borderPane);
+    }
 
-            borderPane.setRight(hbox);
-       
-            borderPane.setLeft(root1);
-        
+    @FXML
+    private void GoToReclamer(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("SideBarUser.fxml"));
+        Parent root1 = loader.load();
+        BorderPane borderPane = new BorderPane();
+        FXMLLoader loader1 = new FXMLLoader(getClass().getResource("ajouterReclamation.fxml"));
+        Parent root2 = loader1.load();
+
+        HBox hbox = new HBox(root1, new Pane(), root2);
+        hbox.setSpacing(20);
+
+        borderPane.setRight(hbox);
+
+        borderPane.setLeft(root1);
 
         borderPane.setPadding(new Insets(10, 10, 30, 10));
-//        Scene scene = new Scene(borderPane);
-//        Stage stage = new Stage();
-//        stage.setScene(scene);
-//        stage.show();
-        
-        reclamer1.getScene().setRoot(borderPane);
+
+        reclamer.getScene().setRoot(borderPane);
     }
 
     @FXML
     private void GoToHistoriqueLocation(ActionEvent event) throws IOException {
-         FXMLLoader loader = new FXMLLoader(getClass().getResource("SideBarUser.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("SideBarUser.fxml"));
         Parent root1 = loader.load();
         BorderPane borderPane = new BorderPane();
-       FXMLLoader loader1 = new FXMLLoader(getClass().getResource("ListeMesLocations.fxml"));
-            Parent root2 = loader1.load();
-      
-            HBox hbox = new HBox(root1, new Pane(), root2);
-            hbox.setSpacing(20);
+        FXMLLoader loader1 = new FXMLLoader(getClass().getResource("ListeMesLocations.fxml"));
+        Parent root2 = loader1.load();
 
-            borderPane.setRight(hbox);
-       
-            borderPane.setLeft(root1);
-        
+        HBox hbox = new HBox(root1, new Pane(), root2);
+        hbox.setSpacing(20);
+
+        borderPane.setRight(hbox);
+
+        borderPane.setLeft(root1);
 
         borderPane.setPadding(new Insets(10, 10, 30, 10));
 //        Scene scene = new Scene(borderPane);
 //        Stage stage = new Stage();
 //        stage.setScene(scene);
 //        stage.show();
-        
+
         HLocation.getScene().setRoot(borderPane);
     }
+
     
-
-    @FXML
-    private void GoToSieges (ActionEvent event) throws IOException {
-          FXMLLoader loader = new FXMLLoader(getClass().getResource("SideBarUser.fxml"));
-        Parent root1 = loader.load();
-        BorderPane borderPane = new BorderPane();
-       FXMLLoader loader1 = new FXMLLoader(getClass().getResource("ListeChauffeur.fxml"));
-            Parent root2 = loader1.load();
-      
-            HBox hbox = new HBox(root1, new Pane(), root2);
-            hbox.setSpacing(20);
-
-            borderPane.setRight(hbox);
-       
-            borderPane.setLeft(root1);
-        
-
-        borderPane.setPadding(new Insets(10, 10, 30, 10));
-//        Scene scene = new Scene(borderPane);
-//        Stage stage = new Stage();
-//        stage.setScene(scene);
-//        stage.show();
-        
-        HLocation.getScene().setRoot(borderPane);
-    }
 
     @FXML
     private void deconnecter(ActionEvent event) throws IOException {
+        
+        FXMLLoader loader1 = new FXMLLoader(getClass().getResource("authenticate.fxml"));
+        Parent root2 = loader1.load();
+
+
+        deconx.getScene().setRoot(root2);
+    }
+
+
+    @FXML
+    private void GoToSiegesDisponibles(ActionEvent event) throws IOException {
          FXMLLoader loader = new FXMLLoader(getClass().getResource("SideBarUser.fxml"));
         Parent root1 = loader.load();
         BorderPane borderPane = new BorderPane();
-       FXMLLoader loader1 = new FXMLLoader(getClass().getResource("ResponsableAgenceLocation.fxml"));
-            Parent root2 = loader1.load();
-      
-            HBox hbox = new HBox(root1, new Pane(), root2);
-            hbox.setSpacing(20);
+        FXMLLoader loader1 = new FXMLLoader(getClass().getResource("afficherSiege.fxml"));
+        Parent root2 = loader1.load();
 
-            borderPane.setRight(hbox);
-       
-            borderPane.setLeft(root1);
-        
+        HBox hbox = new HBox(root1, new Pane(), root2);
+        hbox.setSpacing(20);
+
+        borderPane.setRight(hbox);
+
+        borderPane.setLeft(root1);
 
         borderPane.setPadding(new Insets(10, 10, 30, 10));
-//        Scene scene = new Scene(borderPane);
-//        Stage stage = new Stage();
-//        stage.setScene(scene);
-//        stage.show();
+        siegesDisponible.getScene().setRoot(borderPane);
         
-        deconx.getScene().setRoot(borderPane);
     }
 
     @FXML
-    private void statistique(ActionEvent event) throws IOException {
-          FXMLLoader loader = new FXMLLoader(getClass().getResource("SideBarUser.fxml"));
+    private void GoToForum(ActionEvent event) throws IOException {
+        
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("SideBarUser.fxml"));
         Parent root1 = loader.load();
         BorderPane borderPane = new BorderPane();
-       FXMLLoader loader1 = new FXMLLoader(getClass().getResource("Statistiques.fxml"));
-            Parent root2 = loader1.load();
-      
-            HBox hbox = new HBox(root1, new Pane(), root2);
-            hbox.setSpacing(20);
+        FXMLLoader loader1 = new FXMLLoader(getClass().getResource("interface_forum.fxml"));
+        Parent root2 = loader1.load();
 
-            borderPane.setRight(hbox);
-       
-            borderPane.setLeft(root1);
-        
+        HBox hbox = new HBox(root1, new Pane(), root2);
+        hbox.setSpacing(20);
 
-       // borderPane.setPadding(new Insets(10, 10, 30, 10));
-//        Scene scene = new Scene(borderPane);
-//        Stage stage = new Stage();
-//        stage.setScene(scene);
-//        stage.show();
-        
-        statistique.getScene().setRoot(borderPane);
+        borderPane.setRight(hbox);
+
+        borderPane.setLeft(root1);
+
+        borderPane.setPadding(new Insets(10, 10, 30, 10));
+        deconx.getScene().setRoot(borderPane);
     }
-    
+
 }

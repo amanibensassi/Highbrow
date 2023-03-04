@@ -42,7 +42,8 @@
       </Label>
    
       <Button fx:id="validerbtn" contentDisplay="CENTER" layoutX="479.0" layoutY="579.0" mnemonicParsing="false" onAction="#validerModification" prefHeight="38.0" prefWidth="125.0" styleClass="affichervehiculesbtn" stylesheets="@../values/values.css" text="valider" textAlignment="CENTER" textFill="WHITE" />
-      <Button fx:id="imageid" layoutX="527.0" layoutY="492.0" mnemonicParsing="false" onAction="#ajouterImage" prefHeight="38.0" prefWidth="210.0" styleClass="labelTitreSieges" stylesheets="@../values/values.css" text="ajouter image" />
+      <Button fx:id="imageid" layoutX="671.0" layoutY="492.0" mnemonicParsing="false" onAction="#ajouterImage" prefHeight="38.0" prefWidth="104.0" styleClass="labelTitreSieges" stylesheets="@../values/values.css" text="ajouter image" />
       <Button fx:id="annulerbtn" alignment="CENTER" contentDisplay="CENTER" layoutX="254.0" layoutY="579.0" mnemonicParsing="false" onAction="#annuler" prefHeight="38.0" prefWidth="126.0" styleClass="btnsupprimer" stylesheets="@../values/values.css" text="annuler" textAlignment="CENTER" textFill="WHITE" />
+      <TextField fx:id="img" layoutX="513.0" layoutY="499.0" onAction="#img" />
    </children>
 </AnchorPane>

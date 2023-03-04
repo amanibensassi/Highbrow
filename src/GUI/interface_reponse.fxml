@@ -17,46 +17,6 @@
    <children>
       <AnchorPane id="AnchorPane" layoutX="10.0" layoutY="10.0" prefHeight="800.0" prefWidth="1200.0">
          <children>
-            <AnchorPane layoutX="-12.0" layoutY="8.0" prefHeight="800.0" prefWidth="346.0" style="-fx-background-color: #0E2132;">
-               <children>
-                  <Button alignment="TOP_LEFT" layoutX="-2.0" layoutY="439.0" mnemonicParsing="false" prefHeight="62.0" prefWidth="342.0" style="-fx-background-color: transparent;" text=" Modifier profil" textAlignment="CENTER" textFill="WHITE">
-                     <font>
-                        <Font name="Arial" size="16.0" />
-                     </font>
-                  </Button>
-                  <Button alignment="TOP_LEFT" layoutX="-3.0" layoutY="519.0" mnemonicParsing="false" prefHeight="62.0" prefWidth="342.0" style="-fx-background-color: transparent;" text="Affecter une réclamation" textAlignment="CENTER" textFill="WHITE">
-                     <font>
-                        <Font name="Arial" size="16.0" />
-                     </font>
-                  </Button>
-                  <Button alignment="TOP_LEFT" layoutX="2.0" layoutY="602.0" mnemonicParsing="false" prefHeight="62.0" prefWidth="342.0" style="-fx-background-color: transparent;" text="Chercher une voiture ou un mécanicien" textAlignment="CENTER" textFill="WHITE">
-                     <font>
-                        <Font name="Arial" size="16.0" />
-                     </font>
-                  </Button>
-                  <Button alignment="TOP_LEFT" layoutX="2.0" layoutY="688.0" mnemonicParsing="false" prefHeight="62.0" prefWidth="342.0" style="-fx-background-color: transparent;" text="Consulter le forum" textAlignment="CENTER" textFill="WHITE">
-                     <font>
-                        <Font name="Arial" size="16.0" />
-                     </font>
-                  </Button>
-                  <Button alignment="TOP_LEFT" layoutX="2.0" layoutY="769.0" mnemonicParsing="false" prefHeight="62.0" prefWidth="341.0" style="-fx-background-color: transparent;" text="Paramètres" textAlignment="CENTER" textFill="WHITE">
-                     <font>
-                        <Font name="Arial" size="16.0" />
-                     </font>
-                  </Button>
-                  <Button alignment="TOP_LEFT" layoutX="2.0" layoutY="851.0" mnemonicParsing="false" prefHeight="62.0" prefWidth="342.0" style="-fx-background-color: transparent;" text="Deconnexion" textAlignment="CENTER" textFill="WHITE">
-                     <font>
-                        <Font name="Arial" size="16.0" />
-                     </font>
-                  </Button>
-                  <Circle fill="WHITE" layoutX="186.0" layoutY="174.0" radius="71.0" stroke="#08bf79" strokeType="INSIDE" />
-                  <Label alignment="CENTER" layoutX="71.0" layoutY="260.0" prefHeight="46.0" prefWidth="218.0" text="Anas MAGHRBI" textAlignment="CENTER" textFill="WHITE" textOverrun="WORD_ELLIPSIS">
-                     <font>
-                        <Font size="30.0" />
-                     </font>
-                  </Label>
-               </children>
-            </AnchorPane>
             <AnchorPane fx:id="anchor_id" layoutX="342.0" layoutY="63.0" prefHeight="851.0" prefWidth="948.0" style="-fx-background-color: #F5F6FA;" AnchorPane.leftAnchor="342.0" AnchorPane.rightAnchor="0.40000000000009095">
                <children>
                   <Pane layoutX="12.0" layoutY="40.0" prefHeight="122.0" prefWidth="883.0" style="-fx-background-color: FFFFFF; -fx-background-radius: 15;" AnchorPane.leftAnchor="12.0" AnchorPane.rightAnchor="39.0" AnchorPane.topAnchor="40.0">

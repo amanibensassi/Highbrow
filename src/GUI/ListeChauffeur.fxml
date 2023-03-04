@@ -2,6 +2,7 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -9,7 +10,7 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<AnchorPane id="AnchorPane" prefHeight="910.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.ListeChauffeurController">
+<AnchorPane id="AnchorPane" fx:id="btnrecherche" prefHeight="910.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.ListeChauffeurController">
    <children>
       <ScrollPane layoutX="21.0" layoutY="62.0" prefHeight="842.0" prefWidth="974.0">
          <content>
@@ -38,5 +39,6 @@
             <Image url="@../images/listeChauffeur.PNG" />
          </image>
       </ImageView>
+      <TextField fx:id="rechercher" layoutX="748.0" layoutY="20.0" onKeyPressed="#rechercheChauffeur" onKeyReleased="#rechercherch" text="recherche" />
    </children>
 </AnchorPane>

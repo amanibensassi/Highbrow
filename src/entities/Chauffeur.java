@@ -56,6 +56,19 @@ public class Chauffeur {
     public Chauffeur() {
     }
 
+    public Chauffeur(int idchauffeur, Region region, int contact, int cin, String adresse, String permis, String image, float prix_par_jour, String nom, String prenom, String permis_arriere) {
+   this.contact = contact;
+        this.cin = cin;
+        this.idchauffeur = idchauffeur;
+        this.region = region;
+        this.adresse = adresse;
+        this.permis = permis;
+        this.image = image;
+        this.nom = nom;
+        this.prenom = prenom;
+        this.permis_arriere = permis_arriere;
+        this.prix_par_jour = prix_par_jour;    }
+
 
 
     public String getPermis_arriere() {

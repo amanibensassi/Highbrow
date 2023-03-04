@@ -19,12 +19,16 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Insets;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.Pane;
 
 import services.VehiculeService;
 
@@ -34,7 +38,7 @@ import services.VehiculeService;
  * @author Trabelsi Mohamed
  */
 public class VehiculeController implements Initializable {
-
+    
     Vehicule pe = new Vehicule();
     VehiculeService ps = new VehiculeService();
     @FXML
@@ -71,12 +75,12 @@ public class VehiculeController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-
+        
     }
     private int idVehicule;
-
+    
     public void setVehicule(Vehicule c) {
-
+        idVehicule = c.getIdvehicule();
         marqueLabel.setText(c.getMarque());
         dateLabel.setText(String.valueOf(c.getDate_circulation()));
         kilometrageLabel.setText(String.valueOf(c.getKilometrage()));
@@ -87,9 +91,7 @@ public class VehiculeController implements Initializable {
         prixjourLabel.setText(String.valueOf(c.getPrix_par_jour()));
         carburantLabel.setText(c.getCarburant().toString());
         
-        
-        
-        String nomImage = "C://xampp//htdocs//img//" + c.getImage_vehicule();       
+        String nomImage = "C://xampp//htdocs//img//" + c.getImage_vehicule();
         File file = new File(nomImage);
         Image img = new Image(file.toURI().toString());
         imageLabel.setImage(img);
@@ -106,38 +108,102 @@ public class VehiculeController implements Initializable {
         pe.setNbr_place(c.getNbr_place());
         pe.setKilometrage(c.getKilometrage());
     }
-
+    
     @FXML
     private void supprimerVehicule(ActionEvent event) throws IOException {
-
+        
         try {
+            int id = pe.getId_siege();
             ps.supprimer(pe);
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("afficherVehiculeBySiege.fxml"));
-            Parent root = loader.load();       
-            AfficherVehiculeBySiegeController controller = loader.getController();
-            //controller.dynamicinitialize(id);
-            vehiculesLignes.getScene().setRoot(root);
             
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("SideBarUser.fxml"));
+            Parent root1 = loader.load();
+            BorderPane borderPane = new BorderPane();
+            FXMLLoader loader1 = new FXMLLoader(getClass().getResource("afficherVehiculeBySiege.fxml"));
+            Parent root2 = loader1.load();
+            AfficherVehiculeBySiegeController controller = loader1.getController();
+            controller.dynamicinitialize(id);
+            HBox hbox = new HBox(root1, new Pane(), root2);
+            hbox.setSpacing(20);
+            
+            borderPane.setRight(hbox);
+            
+            borderPane.setLeft(root1);
+            
+            borderPane.setPadding(new Insets(10, 10, 30, 10));
+            vehiculesLignes.getScene().setRoot(borderPane);
 
+//            FXMLLoader loader = new FXMLLoader(getClass().getResource("afficherVehiculeBySiege.fxml"));
+//            Parent root = loader.load();
+//            AfficherVehiculeBySiegeController controller = loader.getController();
+//            //controller.dynamicinitialize(id);
+//            vehiculesLignes.getScene().setRoot(root);
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
     }
-
+    
     @FXML
     private void modifierVehicule(ActionEvent event) {
-
+        
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("modifierVehicule.fxml"));
-            Parent root = loader.load();
-            ModifierVehiculeController controller = loader.getController();
-
+            
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("SideBarUser.fxml"));
+            Parent root1 = loader.load();
+            BorderPane borderPane = new BorderPane();
+            FXMLLoader loader1 = new FXMLLoader(getClass().getResource("modifierVehicule.fxml"));
+            Parent root2 = loader1.load();
+            ModifierVehiculeController controller = loader1.getController();
+            
             controller.setData(pe);
+            HBox hbox = new HBox(root1, new Pane(), root2);
+            hbox.setSpacing(20);
+            
+            borderPane.setRight(hbox);
+            
+            borderPane.setLeft(root1);
+            
+            borderPane.setPadding(new Insets(10, 10, 30, 10));
+            vehiculesLignes.getScene().setRoot(borderPane);
 
-            vehiculesLignes.getScene().setRoot(root);
+//            
+//            FXMLLoader loader = new FXMLLoader(getClass().getResource("modifierVehicule.fxml"));
+//            Parent root = loader.load();
+//            ModifierVehiculeController controller = loader.getController();
+//
+//            controller.setData(pe);
+//
+//            vehiculesLignes.getScene().setRoot(root);
         } catch (IOException ex) {
             System.out.println(ex.getMessage());
         }
     }
+    
+    @FXML
+    private void reserverVehicule(ActionEvent event) throws IOException {
+        
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("SideBarUser.fxml"));
+        Parent root1 = loader.load();
+        BorderPane borderPane = new BorderPane();
+        FXMLLoader loader1 = new FXMLLoader(getClass().getResource("formLouerVehicule.fxml"));
+        Parent root2 = loader1.load();
+        FormLouerVehiculeController fc = loader1.getController();
+        fc.setIdVehicule(idVehicule);
+        HBox hbox = new HBox(root1, new Pane(), root2);
+        hbox.setSpacing(20);
+        
+        borderPane.setRight(hbox);
+        
+        borderPane.setLeft(root1);
+        
+        borderPane.setPadding(new Insets(10, 10, 30, 10));
+        vehiculesLignes.getScene().setRoot(borderPane);
 
+//            
+//        FXMLLoader loader1 = new FXMLLoader(getClass().getResource("formLouerVehicule.fxml"));
+//            Parent root2 = loader1.load();
+//            //controller.dynamicinitialize(id);
+//            vehiculesLignes.getScene().setRoot(root2);
+    }
+    
 }

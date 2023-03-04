@@ -6,7 +6,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.HBox?>
 
-<HBox id="car-details" fx:id="hbox" prefHeight="84.0" prefWidth="741.0" spacing="20.0" stylesheets="@../styles/CardLocation.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.CardLocationController">
+<HBox id="car-details" fx:id="hbox" prefHeight="120.0" prefWidth="1400.0" spacing="45.0" stylesheets="@../styles/CardLocation.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.CardLocationController">
      
     <ImageView fx:id="img" fitHeight="36.0" fitWidth="46.0" onMouseEntered="#afficherChDetail" pickOnBounds="true" preserveRatio="true">
       <image>
@@ -15,11 +15,11 @@
    </ImageView>
       
     <Label id="car-label" text="Véhicule:" />
-   <Label id="car-label1" fx:id="nomVeh" text="nomVeh" />
+   <Label id="car-label1" fx:id="nomVeh" prefHeight="22.0" prefWidth="113.0" text="nomVeh" />
         <Label id="start-date-label" text="Date de début:" />
-   <Label id="start-date-label1" fx:id="db" text="db" />
+   <Label id="start-date-label1" fx:id="db" prefHeight="22.0" prefWidth="183.0" text="db" />
         <Label id="end-date-label" text="Date de fin: " />
-   <Label id="end-date-label1" fx:id="df" text="df" />
+   <Label id="end-date-label1" fx:id="df" prefHeight="22.0" prefWidth="164.0" text="df" />
             <Button id="cancel-button" fx:id="annuler" onAction="#annuler" style="-fx-border-radius: 50;" text="Annuler" />
    <Button id="modifier-button" fx:id="Modifier" onAction="#ModifierLocation" text="Modifier" />
    

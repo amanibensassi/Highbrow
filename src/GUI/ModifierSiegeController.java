@@ -19,11 +19,15 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Insets;
 import javafx.scene.Parent;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.Pane;
 import services.SiegeService;
 import typeenumeration.Region;
 
@@ -99,10 +103,30 @@ public class ModifierSiegeController implements Initializable {
         }
         try {
             
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("afficherSiege.fxml"));
-            Parent root = loader.load();
-            AfficherSiegeController controller = loader.getController();        
-            nomsiegetf.getScene().setRoot(root);           
+               FXMLLoader loader = new FXMLLoader(getClass().getResource("SideBarUser.fxml"));
+            Parent root1 = loader.load();
+            BorderPane borderPane = new BorderPane();
+            FXMLLoader loader1 = new FXMLLoader(getClass().getResource("afficherSiege.fxml"));
+            Parent root2 = loader1.load();
+           // AjouterSiegeController controller = loader.getController();
+            HBox hbox = new HBox(root1, new Pane(), root2);
+            hbox.setSpacing(20);
+
+            borderPane.setRight(hbox);
+
+            borderPane.setLeft(root1);
+
+            borderPane.setPadding(new Insets(10, 10, 30, 10));
+            nomsiegetf.getScene().setRoot(borderPane);
+            
+//            
+//            
+//            
+//            
+//            FXMLLoader loader = new FXMLLoader(getClass().getResource("afficherSiege.fxml"));
+//            Parent root = loader.load();
+//            AfficherSiegeController controller = loader.getController();        
+//            nomsiegetf.getScene().setRoot(root);           
         } catch (IOException ex) {
             System.out.println("error" + ex.getMessage());
         }
@@ -113,10 +137,29 @@ public class ModifierSiegeController implements Initializable {
     private void annuler(ActionEvent event) {
          try {
             
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("afficherSiege.fxml"));
-            Parent root = loader.load();
-            AfficherSiegeController controller = loader.getController();        
-            nomsiegetf.getScene().setRoot(root);           
+              FXMLLoader loader = new FXMLLoader(getClass().getResource("SideBarUser.fxml"));
+            Parent root1 = loader.load();
+            BorderPane borderPane = new BorderPane();
+            FXMLLoader loader1 = new FXMLLoader(getClass().getResource("afficherSiege.fxml"));
+            Parent root2 = loader1.load();
+           // AjouterSiegeController controller = loader.getController();
+            HBox hbox = new HBox(root1, new Pane(), root2);
+            hbox.setSpacing(20);
+
+            borderPane.setRight(hbox);
+
+            borderPane.setLeft(root1);
+
+            borderPane.setPadding(new Insets(10, 10, 30, 10));
+            nomsiegetf.getScene().setRoot(borderPane);
+             
+             
+             
+             
+//            FXMLLoader loader = new FXMLLoader(getClass().getResource("afficherSiege.fxml"));
+//            Parent root = loader.load();
+//            AfficherSiegeController controller = loader.getController();        
+//            nomsiegetf.getScene().setRoot(root);           
         } catch (IOException ex) {
             System.out.println("error" + ex.getMessage());
         }

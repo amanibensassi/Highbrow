@@ -76,7 +76,7 @@ public class CardLocationController implements Initializable {
         System.out.println("tabbb location " + loca);
         idch = c.getId_chauffeur();
         loca.setId_chauffeur(idch);
-
+loca.setDate_fin(c.getDate_fin());
     }
 
     @Override
@@ -133,13 +133,16 @@ public class CardLocationController implements Initializable {
 //        BoxBlur blur = new BoxBlur(5, 5, 2);
 //        hbox.setEffect(blur);
 
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("ModifierLocation.fxml"));
-        Parent root = loader.load();
-        ModifierLocationController md = loader.getController();
-        md.setLocation(loca);
+        
+        FXMLLoader loader2 = new FXMLLoader(getClass().getResource("CalendrierModifierLocation.fxml"));
+        Parent root2 = loader2.load();
+        CalendrierModifierLocationController md1 = loader2.getController();
+        
+       
+        md1.setLocation(loca);
         Stage modalStage = new Stage();
         modalStage.initModality(Modality.APPLICATION_MODAL.APPLICATION_MODAL);
-        modalStage.setScene(new Scene(root));
+        modalStage.setScene(new Scene(root2));
         modalStage.showAndWait();
 
     }

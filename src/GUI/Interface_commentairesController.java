@@ -20,6 +20,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Insets;
 import javafx.scene.Cursor;
 import javafx.scene.Node;
 import javafx.scene.Parent;
@@ -30,6 +31,9 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import services.CommentaireService;
 import services.PublicationService;
@@ -239,11 +243,30 @@ import services.PublicationService;
     @FXML
     private void backbutton(ActionEvent event) {
          try{
-        Interface_forumController cc = new Interface_forumController();
-         FXMLLoader loader = new FXMLLoader(getClass().getResource("interface_forum.fxml"));
-                    Parent root = loader.load();
-                    cc = loader.getController();
-                    this.nbr_commentaire.getScene().setRoot(root);
+             
+              FXMLLoader loader = new FXMLLoader(getClass().getResource("SideBarUser.fxml"));
+            Parent root1 = loader.load();
+            BorderPane borderPane = new BorderPane();
+            FXMLLoader loader1 = new FXMLLoader(getClass().getResource("interface_forum.fxml"));
+            Parent root2 = loader1.load();
+//              Interface_forumController controller = loader1.getController();
+          
+            HBox hbox = new HBox(root1, new Pane(), root2);
+            hbox.setSpacing(20);
+
+            borderPane.setRight(hbox);
+
+            borderPane.setLeft(root1);
+
+            borderPane.setPadding(new Insets(10, 10, 30, 10));
+            nbr_commentaire.getScene().setRoot(borderPane); 
+             
+             
+//        Interface_forumController cc = new Interface_forumController();
+//         FXMLLoader loader = new FXMLLoader(getClass().getResource("interface_forum.fxml"));
+//                    Parent root = loader.load();
+//                    cc = loader.getController();
+//                    this.nbr_commentaire.getScene().setRoot(root);
         }catch (IOException ex) {
             Logger.getLogger("error"+ex.getMessage());
         }  

@@ -13,6 +13,8 @@ import java.sql.SQLException;
 import java.util.List;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
+import javafx.event.EventType;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -97,6 +99,7 @@ public class AfficherEntretienController implements Initializable {
             grid.getScene().setRoot(root);
         
     }
+    
 
     @FXML
     private void trieCroissant(MouseEvent event) throws IOException, SQLException {
@@ -120,9 +123,6 @@ public class AfficherEntretienController implements Initializable {
                     row++;
                 }
             }
-            File file = new File("D:\\Anas INFO\\Esprit\\3A7\\PIDev\\travail momentané projet\\projet\\src\\images\\trier-az.png");
-            Image imagee = new Image(file.toURI().toString());
-            imgtrie.setImage(imagee);
         
     }
         catch (SQLException | IOException ex) {

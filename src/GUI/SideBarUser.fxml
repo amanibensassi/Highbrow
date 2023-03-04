@@ -8,20 +8,33 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
 
-<VBox prefHeight="666.0" prefWidth="333.0" spacing="20.0" style="-fx-background-color: #0E21132;" styleClass="sidebar" stylesheets="@../styles/sidebarUser.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.SideBarUserController">
-   <HBox prefHeight="100.0" prefWidth="200.0" spacing="10.0">
+<VBox prefHeight="1000.0" prefWidth="400.0" spacing="50.0" style="-fx-background-color: #0F2231;" styleClass="sidebar" stylesheets="@../styles/sidebarUser.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.SideBarUserController">
+   <HBox prefHeight="200.0" prefWidth="200.0" spacing="10.0">
       <children>
-         <ImageView fitHeight="101.0" fitWidth="105.0" pickOnBounds="true" preserveRatio="true">
+         <ImageView fitHeight="185.0" fitWidth="161.0" pickOnBounds="true" preserveRatio="true">
             <image>
                <Image url="@../images/add-user.png" />
             </image></ImageView>
-         <VBox prefHeight="200.0" prefWidth="100.0" spacing="10.0">
+         <VBox prefHeight="200.0" prefWidth="184.0" spacing="10.0">
             <children>
-               <Label style="-fx-text-fill: #4CAF50;" text="prenom" />
-               <Label style="-fx-text-fill: #4CAF50;" text="nom" />
-               <Label style="-fx-text-fill: #4CAF50;" text="numtel" />
-               <Label style="-fx-text-fill: #4CAF50;" text="role" />
+               <Label fx:id="prenom" style="-fx-text-fill: #4CAF50;" text="prenom">
+                  <font>
+                     <Font size="19.0" />
+                  </font></Label>
+               <Label fx:id="nom" style="-fx-text-fill: #4CAF50;" text="nom">
+                  <font>
+                     <Font size="19.0" />
+                  </font></Label>
+               <Label fx:id="numtel" style="-fx-text-fill: #4CAF50;" text="numtel">
+                  <font>
+                     <Font size="19.0" />
+                  </font></Label>
+               <Label fx:id="role" style="-fx-text-fill: #4CAF50;" text="role">
+                  <font>
+                     <Font size="19.0" />
+                  </font></Label>
             </children>
          </VBox>
       </children>
@@ -29,36 +42,30 @@
    
     <AnchorPane>
         <Button fx:id="profil" onAction="#GoToProfil" styleClass="sidebar-button" text="Profil" />
+      <Line endX="-15.79998779296875" layoutX="115.0" layoutY="37.0" startX="-104.5999755859375" style="-fx-stroke: #4CAF50;" />
     </AnchorPane>
-   <Line endX="174.5" startX="-100.0" style="-fx-stroke: #4CAF50;" />
     <AnchorPane>
-        <Button fx:id="sieges" onAction="#GoToSieges" styleClass="sidebar-button" text="Liste Des Chauffeurs" />
+        <Button fx:id="siegesDisponible" onAction="#GoToSiegesDisponibles" styleClass="sidebar-button" text="Les siéges disponibles" />
+      <Line endX="109.0" endY="0.8000068664550781" layoutX="115.0" layoutY="36.0" startX="-100.29997253417969" startY="0.8000068664550781" style="-fx-stroke: #4CAF50;" />
     </AnchorPane>
-   <Line endX="178.5" startX="-100.0" style="-fx-stroke: #4CAF50;" />
     <AnchorPane>
-        <Button fx:id="HLocation" onAction="#GoToHistoriqueLocation" styleClass="sidebar-button" text="Historique Location" />
+      <Line endX="121.20002746582031" endY="7.62939453125E-6" layoutX="74.0" layoutY="35.0" startX="-61.70000076293945" startY="7.62939453125E-6" style="-fx-stroke: #4CAF50;" />
+        <Button fx:id="HLocation" onAction="#GoToHistoriqueLocation" styleClass="sidebar-button" text="Historique mes locations" />
     </AnchorPane>
-   <Line endX="180.5" startX="-100.0" style="-fx-stroke: #4CAF50;" />
    <AnchorPane>
       <children>
-         <Button fx:id="reclamer1" onAction="#GoToReclamer" styleClass="sidebar-button" text="Reserver vehicule" />
+         <Line endX="-27.100021362304688" endY="-1.1444091796875E-5" layoutX="101.0" layoutY="36.0" startX="-100.0" style="-fx-stroke: #4CAF50;" />
+         <Button fx:id="forum" onAction="#GoToForum" styleClass="sidebar-button" text="Forum" />
       </children>
    </AnchorPane>
-   <Line endX="174.5" startX="-100.0" style="-fx-stroke: #4CAF50;" />
    <AnchorPane>
       <children>
-         <Button fx:id="statistique" onAction="#statistique" styleClass="sidebar-button" text="statistique" />
+         <Line endX="-17.600021362304688" endY="1.9073486328125E-5" layoutX="104.0" layoutY="36.0" startX="-100.0" style="-fx-stroke: #4CAF50;" />
+         <Button fx:id="reclamer" onAction="#GoToReclamer" styleClass="sidebar-button" text="Reclamer" />
       </children>
    </AnchorPane>
-   <Line endX="174.5" startX="-100.0" style="-fx-stroke: #4CAF50;" />
     <AnchorPane>
-        <Button fx:id="deconx" onAction="#deconnecter" styleClass="sidebar-button" text="Gere les locations" />
+      <Line endX="-3.5999755859375" endY="4.9591064453125E-5" layoutX="114.0" layoutY="36.0" startX="-100.0" style="-fx-stroke: #4CAF50;" />
+        <Button fx:id="deconx" onAction="#deconnecter" styleClass="sidebar-button" text="Deconnecter" />
     </AnchorPane>
-   <Line endX="183.5" startX="-100.0" style="-fx-stroke: #4CAF50;" />
-    <Label styleClass="sidebar-label" text="fastRent" />
-   <ImageView fitHeight="69.0" fitWidth="148.0" pickOnBounds="true" preserveRatio="true">
-      <image>
-         <Image url="@../images/fastrent.PNG" />
-      </image>
-   </ImageView>
 </VBox>

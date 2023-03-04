@@ -367,6 +367,7 @@ public class ModifierEntretienController implements Initializable {
     private void maj(MouseEvent event) throws ParseException, SQLException {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         String daa=sdf.format(da);
+        System.out.println("DAA"+daa);
         Date date = new SimpleDateFormat("yyyy-MM-dd").parse(daa);
         List<Date> date_entr = ms.mecaniciensIsDispo(me,date);
     }

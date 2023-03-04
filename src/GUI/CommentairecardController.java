@@ -14,6 +14,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
@@ -22,6 +23,9 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.control.Dialog;
 import javafx.scene.control.DialogPane;
 import javafx.scene.control.Label;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.Pane;
 import services.ReponseService;
 
 /**
@@ -67,12 +71,33 @@ public class CommentairecardController implements Initializable {
     private void addcomment(ActionEvent event) {
         System.out.println("not supported");
            try{
-                    Interface_reponseController cc = new Interface_reponseController();
-                    FXMLLoader loader = new FXMLLoader(getClass().getResource("interface_reponse.fxml"));
-                    Parent root = loader.load();
-                    cc = loader.getController();
-                    cc.dynamicinitialize(comment);
-                    publicationid.getScene().setRoot(root);
+               
+               FXMLLoader loader = new FXMLLoader(getClass().getResource("SideBarUser.fxml"));
+            Parent root1 = loader.load();
+            BorderPane borderPane = new BorderPane();
+            FXMLLoader loader1 = new FXMLLoader(getClass().getResource("interface_reponse.fxml"));
+            Parent root2 = loader1.load();
+              Interface_reponseController controller = loader1.getController();
+            controller.dynamicinitialize(comment);
+          
+            HBox hbox = new HBox(root1, new Pane(), root2);
+            hbox.setSpacing(20);
+
+            borderPane.setRight(hbox);
+
+            borderPane.setLeft(root1);
+
+            borderPane.setPadding(new Insets(10, 10, 30, 10));
+            publicationid.getScene().setRoot(borderPane); 
+               
+               
+               
+//                    Interface_reponseController cc = new Interface_reponseController();
+//                    FXMLLoader loader = new FXMLLoader(getClass().getResource("interface_reponse.fxml"));
+//                    Parent root = loader.load();
+//                    cc = loader.getController();
+//                    cc.dynamicinitialize(comment);
+//                    publicationid.getScene().setRoot(root);
                     
         }catch (IOException ex)
         {System.out.println("erreur modification de la publication");}

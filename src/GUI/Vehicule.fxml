@@ -33,7 +33,7 @@
          <font>
             <Font size="14.0" />
          </font></Label>
-      <Button fx:id="reserverbtn" alignment="CENTER" contentDisplay="CENTER" layoutX="73.0" layoutY="362.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="114.0" styleClass="affichervehiculesbtn" stylesheets="@../values/values.css" text="Reserver " textAlignment="CENTER" textFill="WHITE" />
+      <Button fx:id="reserverbtn" alignment="CENTER" contentDisplay="CENTER" layoutX="73.0" layoutY="362.0" mnemonicParsing="false" onAction="#reserverVehicule" prefHeight="39.0" prefWidth="114.0" styleClass="affichervehiculesbtn" stylesheets="@../values/values.css" text="Reserver " textAlignment="CENTER" textFill="WHITE" />
       <Text layoutX="349.0" layoutY="280.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Kilometrage :" textAlignment="CENTER">
          <font>
             <Font size="13.0" />

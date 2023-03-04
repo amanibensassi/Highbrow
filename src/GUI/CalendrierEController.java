@@ -10,6 +10,7 @@ import com.twilio.Twilio;
 import com.twilio.rest.api.v2010.account.Message;
 import entities.Entretien;
 import entities.Mecanicien;
+import entities.Vehicule;
 //import static guiAnas.AjouterMecanicienController.ACCOUNT_SID;
 //import static guiAnas.AjouterMecanicienController.AUTH_TOKEN;
 import java.io.IOException;
@@ -27,6 +28,8 @@ import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -49,6 +52,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import services.EntretienService;
 import services.MecanicienService;
+import services.VehiculeService;
 
 /**
  * FXML Controller class
@@ -71,8 +75,6 @@ public class CalendrierEController implements Initializable {
     Mecanicien me = new Mecanicien();
     //Mecanicien m=new Mecanicien(5, 0, Specialite.mecanicien, Region.kebili, "adresse", "image", "nom_mecanicien", "prenom_mecanicien");
     @FXML
-    private GridPane grid;
-    @FXML
     private Button btnConfirmer;
     Entretien t=new Entretien();
     @FXML
@@ -81,12 +83,21 @@ public class CalendrierEController implements Initializable {
     private DatePicker date_entre;
     Date da;
     String [] h={"9","10","11","12","14","15","16","17"};
-    
+    @FXML
+    private ChoiceBox<String> cbvehicules;
+    VehiculeService vs = new VehiculeService();
+    //private ChoiceBox<String> id_vehicule;
+    int id;
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        try {
+            this.listeVehicules();
+        } catch (SQLException ex) {
+            Logger.getLogger(CalendrierEController.class.getName()).log(Level.SEVERE, null, ex);
+        }
         currentDate = LocalDate.now();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern(" MMMM yyyy");
         localDate.setText(currentDate.format(formatter));
@@ -270,19 +281,7 @@ public class CalendrierEController implements Initializable {
         me.setIdmecanicien(m.getIdmecanicien());
     }
     public void getDate(Date d) throws SQLException{
-        grid.getChildren().clear();
-        try {
-            List<Date> date_entr = ms.mecaniciensIsDispo(me,d);
-            System.out.println("FFFFF"+date_entr);
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("HeureEntretien.fxml"));
-                AnchorPane pane = loader.load();
-                grid.add(pane, 0, 0);
-                //passage de parametres
-                HeureEntretienController controller = loader.getController();
-                controller.setPersonne(date_entr);
-            } catch (IOException ex) {
-            System.out.println(ex.getMessage());
-        }
+        List<Date> date_entr = ms.mecaniciensIsDispo(me,d);
     }
 
     @FXML
@@ -323,7 +322,7 @@ public class CalendrierEController implements Initializable {
         Date date = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(dd);
         t.setDate_entretien(date);
         t.setId_mecanicien(me.getIdmecanicien());
-        t.setId_vehicule(1);
+        t.setId_vehicule(id);
         es.ajouter(t);
 //        String bienvenue="Vous avez un rendez-vous d'entretient le "+t.getDate_entretien();
 //            System.out.println("NUMTEL"+ms.recupererById(me));
@@ -358,6 +357,18 @@ public class CalendrierEController implements Initializable {
         List<Date> date_entr = ms.mecaniciensIsDispo(me,date);
     }
     
-    
-    
+    private void listeVehicules() throws SQLException{
+            List<Vehicule> vehicules = vs.recupererVehiculeBySiege(1);
+            System.out.println("VEHIVEHI"+vehicules);
+            for (Vehicule vehicule : vehicules) {
+            System.out.println(vehicule.getMarque());
+            cbvehicules.getItems().add(vehicule.getMarque()+" "+vehicule.getImmatriculation());
+            }
+            cbvehicules.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+            int selectedIndex = cbvehicules.getSelectionModel().getSelectedIndex();
+            System.out.println("Index sélectionné : " + selectedIndex);
+            System.out.println(vehicules.get(selectedIndex));
+            id=vehicules.get(selectedIndex).getIdvehicule();
+        });
+    }  
 }
