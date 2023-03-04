@@ -60,7 +60,7 @@ public class AjouterAvisController implements Initializable {
         try {
             List<Avis> avis = new ArrayList<>();
 
-            avis = as.testAvisSiege(2, 1);
+            avis = as.testAvisSiege(3, 1);
             if (avis.size() == 0) {
 
                 for (int k = 0; k < 5; k++) {
@@ -160,7 +160,7 @@ public class AjouterAvisController implements Initializable {
     private void clickstart1(MouseEvent event) throws IOException {
         try {
             List<Avis> avis = new ArrayList<>();
-            avis = as.testAvisSiege(2, 1);
+            avis = as.testAvisSiege(3, 1);
             if (avis.size() == 0) {
                 for (int k = 0; k < 5; k++) {
                     nom_img = "D:\\Anas INFO\\XAMPP\\htdocs\\Highbrow\\src\\images\\star.png";
@@ -206,7 +206,7 @@ public class AjouterAvisController implements Initializable {
     private void clickstart2(MouseEvent event) {
         try {
             List<Avis> avis = new ArrayList<>();
-            avis = as.testAvisSiege(2, 1);
+            avis = as.testAvisSiege(3, 1);
             if (avis.size() == 0) {
                 Avis a = new Avis();
                 a.setNote(n2);
@@ -244,7 +244,7 @@ public class AjouterAvisController implements Initializable {
     private void clickstart3(MouseEvent event) {
         try {
             List<Avis> avis = new ArrayList<>();
-            avis = as.testAvisSiege(2, 1);
+            avis = as.testAvisSiege(3, 1);
             if (avis.size() == 0) {
                 Avis a = new Avis();
                 a.setNote(n3);
@@ -284,7 +284,7 @@ public class AjouterAvisController implements Initializable {
     private void clickstart4(MouseEvent event) {
         try {
             List<Avis> avis = new ArrayList<>();
-            avis = as.testAvisSiege(2, 1);
+            avis = as.testAvisSiege(3, 1);
             if (avis.size() == 0) {
                 Avis a = new Avis();
                 a.setNote(n4);
@@ -326,7 +326,7 @@ public class AjouterAvisController implements Initializable {
     private void clickstart5(MouseEvent event) {
         try {
             List<Avis> avis = new ArrayList<>();
-            avis = as.testAvisSiege(2, 1);
+            avis = as.testAvisSiege(3, 1);
             if (avis.size() == 0) {
                 Avis a = new Avis();
                 a.setNote(n5);

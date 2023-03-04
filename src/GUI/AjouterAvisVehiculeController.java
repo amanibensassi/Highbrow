@@ -54,17 +54,20 @@ public class AjouterAvisVehiculeController implements Initializable {
     private ImageView star5;
     String nom_img;
     String nom_img1;
+    int idv, user;
 
     /**
      * Initializes the controller class.
      */
     @Override
-    public void initialize(URL url, ResourceBundle rb) {
-
+    public void initialize(URL url, ResourceBundle rb) {}
+          public void setavis(int idv, int user) {
+              this.idv=idv;
+              this.user=user;
         try {
             List<Avis> avis = new ArrayList<>();
 
-            avis = as.testAvisVehicule(3, 1);
+            avis = as.testAvisVehicule(idv, user);
             if (avis.size() == 0) {
 
                 for (int k = 0; k < 5; k++) {
@@ -161,7 +164,7 @@ public class AjouterAvisVehiculeController implements Initializable {
     private void clickstart1(MouseEvent event) throws IOException {
         try {
             List<Avis> avis = new ArrayList<>();
-            avis = as.testAvisVehicule(3, 1);
+            avis = as.testAvisVehicule(idv, user);
             if (avis.size() == 0) {
                 for (int k = 0; k < 5; k++) {
                     nom_img = "D:\\Anas INFO\\XAMPP\\htdocs\\Highbrow\\src\\images\\star.png";
@@ -175,8 +178,8 @@ public class AjouterAvisVehiculeController implements Initializable {
                 }
                 Avis a = new Avis();
                 a.setNote(n1);
-                a.setId_Utilisateur(1);
-                a.setId_vehicule(3);
+                a.setId_Utilisateur(user);
+                a.setId_vehicule(idv);
                 as.ajouterAvisVehicule(a);
                 nom_img = "D:\\Anas INFO\\XAMPP\\htdocs\\Highbrow\\src\\images\\starp.png";
                 File file = new File(nom_img);
@@ -189,8 +192,8 @@ public class AjouterAvisVehiculeController implements Initializable {
                     a.setId(avis.get(i).getId());
                 }
                 a.setNote(n1);
-                a.setId_Utilisateur(1);
-                a.setId_vehicule(3);
+                a.setId_Utilisateur(user);
+                a.setId_vehicule(idv);
 
                 as.modifier(a);
                 nom_img = "D:\\Anas INFO\\XAMPP\\htdocs\\Highbrow\\src\\images\\starp.png";
@@ -207,12 +210,12 @@ public class AjouterAvisVehiculeController implements Initializable {
     private void clickstart2(MouseEvent event) {
         try {
             List<Avis> avis = new ArrayList<>();
-            avis = as.testAvisVehicule(3, 1);
+            avis = as.testAvisVehicule(idv,user);
             if (avis.size() == 0) {
                 Avis a = new Avis();
                 a.setNote(n2);
-                a.setId_Utilisateur(1);
-                a.setId_vehicule(3);
+                a.setId_Utilisateur(user);
+                a.setId_vehicule(idv);
                 as.ajouterAvisVehicule(a);
                 nom_img = "D:\\Anas INFO\\XAMPP\\htdocs\\Highbrow\\src\\images\\starp.png";
                 File file = new File(nom_img);
@@ -225,8 +228,8 @@ public class AjouterAvisVehiculeController implements Initializable {
 
                     a.setId(avis.get(i).getId());
                      a.setNote(n2);
-                a.setId_Utilisateur(1);
-                a.setId_vehicule(3);
+                a.setId_Utilisateur(user);
+                a.setId_vehicule(idv);
                 nom_img = "D:\\Anas INFO\\XAMPP\\htdocs\\Highbrow\\src\\images\\starp.png";
                 File file = new File(nom_img);
                 Image image = new Image(file.toURI().toString());
@@ -246,12 +249,12 @@ public class AjouterAvisVehiculeController implements Initializable {
     private void clickstart3(MouseEvent event) {
         try {
             List<Avis> avis = new ArrayList<>();
-            avis = as.testAvisVehicule(3, 1);
+            avis = as.testAvisVehicule(idv,user);
             if (avis.size() == 0) {
                 Avis a = new Avis();
                 a.setNote(n3);
-                a.setId_Utilisateur(1);
-                a.setId_vehicule(3);
+                a.setId_Utilisateur(user);
+                a.setId_vehicule(idv);
                 as.ajouterAvisVehicule(a);
                 nom_img = "D:\\Anas INFO\\XAMPP\\htdocs\\Highbrow\\src\\images\\starp.png";
                 File file = new File(nom_img);
@@ -266,8 +269,8 @@ public class AjouterAvisVehiculeController implements Initializable {
                     a.setId(avis.get(i).getId());
                 }
                 a.setNote(n3);
-                a.setId_Utilisateur(1);
-                a.setId_vehicule(3);
+                a.setId_Utilisateur(user);
+                a.setId_vehicule(8);
 
                 as.modifier(a);
                 nom_img = "D:\\Anas INFO\\XAMPP\\htdocs\\Highbrow\\src\\images\\starp.png";
@@ -286,12 +289,12 @@ public class AjouterAvisVehiculeController implements Initializable {
     private void clickstart4(MouseEvent event) {
         try {
             List<Avis> avis = new ArrayList<>();
-            avis = as.testAvisVehicule(3, 1);
+            avis = as.testAvisVehicule(idv,user);
             if (avis.size() == 0) {
                 Avis a = new Avis();
                 a.setNote(n4);
-                a.setId_Utilisateur(1);
-                a.setId_vehicule(3);
+                a.setId_Utilisateur(user);
+                a.setId_vehicule(idv);
                 as.ajouterAvisVehicule(a);
                 nom_img = "D:\\Anas INFO\\XAMPP\\htdocs\\Highbrow\\src\\images\\starp.png";
                 File file = new File(nom_img);
@@ -307,8 +310,8 @@ public class AjouterAvisVehiculeController implements Initializable {
                     a.setId(avis.get(i).getId());
                 }
                 a.setNote(n4);
-                a.setId_Utilisateur(1);
-                a.setId_vehicule(3);
+                a.setId_Utilisateur(user);
+                a.setId_vehicule(idv);
 
                 as.modifier(a);
                 nom_img = "D:\\Anas INFO\\XAMPP\\htdocs\\Highbrow\\src\\images\\starp.png";
@@ -328,12 +331,12 @@ public class AjouterAvisVehiculeController implements Initializable {
     private void clickstart5(MouseEvent event) {
         try {
             List<Avis> avis = new ArrayList<>();
-            avis = as.testAvisVehicule(3, 1);
+            avis = as.testAvisVehicule(idv, user);
             if (avis.size() == 0) {
                 Avis a = new Avis();
                 a.setNote(n5);
-                a.setId_Utilisateur(1);
-                a.setId_vehicule(3);
+                a.setId_Utilisateur(user);
+                a.setId_vehicule(idv);
                 as.ajouterAvisVehicule(a);
                 nom_img = "D:\\Anas INFO\\XAMPP\\htdocs\\Highbrow\\src\\images\\starp.png";
                 File file = new File(nom_img);
@@ -351,8 +354,8 @@ public class AjouterAvisVehiculeController implements Initializable {
                     a.setId(avis.get(i).getId());
                 }
                 a.setNote(n5);
-                a.setId_Utilisateur(1);
-                a.setId_vehicule(3);
+                a.setId_Utilisateur(user);
+                a.setId_vehicule(idv);
 
                 as.modifier(a);
                 nom_img = "D:\\Anas INFO\\XAMPP\\htdocs\\Highbrow\\src\\images\\starp.png";

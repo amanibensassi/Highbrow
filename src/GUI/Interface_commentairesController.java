@@ -106,7 +106,6 @@ import services.PublicationService;
                 {System.out.println("no publication found");}
             else {
                 for (Commentaire com : pub) {
-                    System.out.println(com);
                     if (com.getCommentaire().equals("")){}
                     else{
                     CommentairecardController  cc = new CommentairecardController ();
@@ -204,7 +203,7 @@ import services.PublicationService;
 
     @FXML
     private void ajoutercommentaire(ActionEvent event) {
-        
+        System.out.println("clickkk ");
             if (txtf_partagerpub1.getText().isEmpty()){
                 txtf_partagerpub1.setStyle("-fx-border-radius: 15 ; -fx-border-color: #E31937  ; ");
             }else{
@@ -214,7 +213,9 @@ import services.PublicationService;
             c.setDate_commentaire(d);
             c.setId_publication(pp.getIdpublication());
             c.setId_utilisateur(1);
+              System.out.println("the user");
             cs.ajouter(c);
+              System.out.println("done");
             txtf_partagerpub1.setText(null);
             txtf_partagerpub1.setStyle("-fx-border-radius: 15 ; -fx-border-color: transparent ;  -fx-background-radius: 15 ; ");
            //  pp =ps.recupererParUtilisateurDate(pp);

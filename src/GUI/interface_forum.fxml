@@ -12,28 +12,28 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.Interface_forumController">
+<AnchorPane id="AnchorPane" prefHeight="1000.0" prefWidth="1500.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.Interface_forumController">
    <children>
-      <AnchorPane fx:id="anchor_id" layoutX="342.0" layoutY="63.0" prefHeight="851.0" prefWidth="918.0" style="-fx-background-color: #F5F6FA;">
+      <AnchorPane fx:id="anchor_id" layoutX="2.0" layoutY="63.0" prefHeight="942.0" prefWidth="1511.0" style="-fx-background-color: #F5F6FA;">
          <children>
-            <Pane fx:id="scrollbar_id" prefHeight="146.0" prefWidth="920.0" style="-fx-background-color: transparent;">
+            <Pane fx:id="scrollbar_id" layoutX="-353.0" prefHeight="146.0" prefWidth="1502.0" style="-fx-background-color: transparent;">
                <children>
-                  <TextField fx:id="txtf_partagerpub1" layoutX="35.0" layoutY="42.0" prefHeight="62.0" prefWidth="863.0" promptText="Comment vous vous sentez aujourd'hui?" style="-fx-background-color: FFFFFF; -fx-background-radius: 15; -fx-border-radius: 15;">
+                  <TextField fx:id="txtf_partagerpub1" layoutX="422.0" layoutY="25.0" prefHeight="62.0" prefWidth="1389.0" promptText="Comment vous vous sentez aujourd'hui?" style="-fx-background-color: FFFFFF; -fx-background-radius: 15; -fx-border-radius: 15;">
                      <font>
                         <Font size="16.0" />
                      </font>
                   </TextField>
-                  <ImageView fitHeight="56.0" fitWidth="71.0" layoutX="833.0" layoutY="45.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="56.0" fitWidth="71.0" layoutX="1745.0" layoutY="28.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../media/send_text.png" />
                      </image>
                   </ImageView>
-                  <Button fx:id="ajouterpublication" layoutX="831.0" layoutY="40.0" mnemonicParsing="false" onAction="#ajouterpublication" prefHeight="62.0" prefWidth="64.0" style="-fx-background-color: transparent;" />
+                  <Button fx:id="ajouterpublication" layoutX="1713.0" layoutY="17.0" mnemonicParsing="false" onAction="#ajouterpublication" prefHeight="62.0" prefWidth="64.0" style="-fx-background-color: transparent;" />
                </children>
             </Pane>
-            <ScrollPane fx:id="scrollPaneId" layoutY="125.0" prefHeight="730.0" prefWidth="922.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="10.0">
+            <ScrollPane fx:id="scrollPaneId" layoutY="125.0" prefHeight="815.0" prefWidth="1481.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="10.0">
               <content>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="730.0" prefWidth="876.0">
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="820.0" prefWidth="1479.0">
                      <children>
                         <VBox fx:id="vbox_id" accessibleRole="LIST_VIEW" fillWidth="false" layoutX="-336.0" maxHeight="730.4" maxWidth="1212.0" prefHeight="730.0" prefWidth="1212.0" spacing="10.0" style="-fx-background-color: #F5F6FA;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <padding>
@@ -49,19 +49,19 @@
             </ScrollPane>
          </children>
       </AnchorPane>
-      <AnchorPane prefHeight="62.0" prefWidth="1261.0" style="-fx-background-color: #378217;">
+      <AnchorPane prefHeight="62.0" prefWidth="1514.0" style="-fx-background-color: #378217;">
          <children>
             <Label alignment="CENTER" layoutX="25.0" layoutY="11.0" prefHeight="18.0" prefWidth="205.0" text="Espace forum" textAlignment="CENTER" textFill="WHITE" textOverrun="WORD_ELLIPSIS">
                <font>
                   <Font name="Arial Bold Italic" size="29.0" />
                </font>
             </Label>
-            <ImageView fitHeight="46.0" fitWidth="55.0" layoutX="1200.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="46.0" fitWidth="55.0" layoutX="1454.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../media/download.png" />
                </image>
             </ImageView>
-            <Button fx:id="id_button" layoutX="1124.0" mnemonicParsing="false" onAction="#generatePDF" prefHeight="62.0" prefWidth="134.0" style="-fx-background-color: transparent;" />
+            <Button fx:id="id_button" layoutX="1374.0" layoutY="7.0" mnemonicParsing="false" onAction="#generatePDF" prefHeight="62.0" prefWidth="134.0" style="-fx-background-color: transparent;" />
          </children>
       </AnchorPane>
    </children>

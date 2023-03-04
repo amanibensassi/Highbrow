@@ -110,6 +110,10 @@ public class AfficherVehiculeBySiegeController implements Initializable {
                 AnchorPane pane = loader.load();
                 VehiculeController controller = loader.getController();
                 controller.setVehicule(vehicules.get(i));
+                
+//                FXMLLoader load= new FXMLLoader(getClass().getResource("AjouterAvisVehicule.fxml"));
+//                AjouterAvisVehiculeController c = load.getController();
+//                c.setavis(vehicules.get(i).getIdvehicule(), 1);
                 grid.add(pane, column, row);
                 column++;
                 if (column > 0) {

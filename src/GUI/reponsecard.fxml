@@ -6,7 +6,7 @@
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="160.0" prefWidth="800.0" style="-fx-background-color: #F5F6FA; -fx-border-radius: 15;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.ReponsecardController">
+<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="120.0" prefWidth="1416.0" style="-fx-background-color: #F5F6FA; -fx-border-radius: 15;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.ReponsecardController">
    <children>
       <Pane layoutY="2.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="160.0" prefWidth="760.0" style="-fx-background-color: FFFFFF; -fx-background-radius: 15; -fx-border-radius: 15;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -20,7 +20,7 @@
                   <Font size="10.0" />
                </font>
             </Label>
-            <Label fx:id="reponseid" alignment="TOP_LEFT" layoutX="33.0" layoutY="73.0" lineSpacing="3.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="28.0" prefWidth="736.0" text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis quis venenatis libero. " textFill="#666666" wrapText="true">
+            <Label fx:id="reponseid" alignment="TOP_LEFT" layoutX="33.0" layoutY="76.0" lineSpacing="3.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="28.0" prefWidth="1335.0" text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis quis venenatis libero. " textFill="#666666" wrapText="true">
                <font>
                   <Font name="Arial" size="13.0" />
                </font>

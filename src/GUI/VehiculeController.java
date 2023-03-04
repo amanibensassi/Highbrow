@@ -69,6 +69,8 @@ public class VehiculeController implements Initializable {
     private Label kilometrageLabel;
     @FXML
     private Button reserverbtn;
+    @FXML
+    private AnchorPane id_star;
 
     /**
      * Initializes the controller class.
@@ -107,6 +109,10 @@ public class VehiculeController implements Initializable {
         pe.setPrix_vente(c.getPrix_vente());
         pe.setNbr_place(c.getNbr_place());
         pe.setKilometrage(c.getKilometrage());
+//        FXMLLoader loader1 = new FXMLLoader(getClass().getResource("AjouterAvisVehicule.fxml"));
+//        AjouterAvisVehiculeController cc= loader1.getController();
+//        id_star.getChildren().add(id_star);
+//        cc.setavis(c.getIdvehicule(),1);
     }
     
     @FXML
