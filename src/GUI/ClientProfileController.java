@@ -46,8 +46,6 @@ public class ClientProfileController implements Initializable {
     Utilisateur u = new Utilisateur();
     int idclient = 0 ;
     @FXML
-    private ImageView img;
-    @FXML
     private Button logout;
     /**
      * Initializes the controller class.
@@ -58,7 +56,9 @@ public class ClientProfileController implements Initializable {
     @FXML
     private AnchorPane scenePane;
     @FXML
-    private Label listeSiege;
+    private Label nom1;
+    @FXML
+    private Label num1;
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 
@@ -69,7 +69,9 @@ public class ClientProfileController implements Initializable {
         
         nom.setText(ut.getNom());
         prenom.setText(ut.getPrenom());
+        nom1.setText(ut.getNom());
         num.setText(String.valueOf(ut.getNum_tel()));
+        num1.setText(ut.getMail());
        // img.setImage(ut.getImage());
        // u.setPrenom(ut.getPrenom());
         //u.setNum_tel(ut.getNum_tel());
@@ -79,15 +81,8 @@ public class ClientProfileController implements Initializable {
         System.out.println("ut.getnom"+ut.getNom());
         System.out.println("cientprofile"+ut);
         
-    }/*
-    public void afficher() throws SQLException{
-        this.setData(u);
-         nom.setText(u.getNom());
-        System.out.println("uu"+u.getNom());
-        u=us.recupererById(idclient);
-        System.out.println("rr"+u);
-    }*/
-
+    }
+   
     @FXML
     private void logout(ActionEvent event) {
          try {
@@ -112,33 +107,30 @@ public class ClientProfileController implements Initializable {
 //        alert.setTitle("Logout");
 //        alert.setHeaderText("Your about to logout");
 //        if(alert.showAndWait().get() == ButtonType.OK){
-//        stage =(Stage) scenePane.getScene().getWindow();
+//   stage =(Stage) scenePane.getScene().getWindow();
 //        System.out.println("logged out !!");
 //        stage.close();
 //        }
             
     }
 
-//    private void modifier(ActionEvent event) throws SQLException {
-//        
-//         try {
-//                                        
-//                                        System.out.println(u);
-//                                        FXMLLoader loader = new FXMLLoader(getClass().getResource("modifierUser.fxml"));
-//                                        Parent root = loader.load();
-//                                        
-//                                        ModifierUserController controller = loader.getController();
-//                                       
-//                                       // us.modifier(u);
-//                                       controller.setData(u);
-//                                        
-//                                        nom.getScene().setRoot(root);     
-//                                    } catch (IOException ex) {
-//                                        System.out.println("error1" + ex.getMessage());
-//                                    }
-//        
-//        
-//    }
+
+
+    @FXML
+    private void modifier_user(ActionEvent event) throws IOException, SQLException {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("modifierUser.fxml"));
+                Parent root;
+                u = us.recupererById(idclient);
+                System.out.println(u);
+                root = loader.load();
+                ModifierUserController controller = loader.getController();
+                controller.setData(u);
+                nom.getScene().setRoot(root);
+
+
+        
+        
+    }
 
 }
    

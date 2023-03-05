@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="1000.0" prefWidth="1500.0" style="-fx-background-color: #F5F6FA;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.DetailAdminController">
+   <children>
+      <Label fx:id="nom" layoutX="521.0" layoutY="180.0" text="nom" wrapText="true">
+         <font>
+            <Font name="System Bold Italic" size="30.0" />
+         </font></Label>
+      <Label fx:id="prenom" layoutX="553.0" layoutY="79.0" text="prenom" wrapText="true">
+         <font>
+            <Font name="System Bold Italic" size="30.0" />
+         </font></Label>
+      <Label fx:id="mail" layoutX="255.0" layoutY="373.0" text="mail" wrapText="true">
+         <font>
+            <Font name="System Bold Italic" size="30.0" />
+         </font></Label>
+      <Label fx:id="num" layoutX="365.0" layoutY="472.0" text="Num tel" wrapText="true">
+         <font>
+            <Font name="System Bold Italic" size="30.0" />
+         </font></Label>
+      <Label fx:id="role" layoutX="649.0" layoutY="274.0" prefHeight="46.0" prefWidth="208.0" text="role" wrapText="true">
+         <font>
+            <Font name="System Bold Italic" size="30.0" />
+         </font></Label>
+      <ImageView fx:id="photo_permis_avant" fitHeight="276.0" fitWidth="570.0" layoutX="117.0" layoutY="706.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="photo_permis_arriere" fitHeight="294.0" fitWidth="565.0" layoutX="802.0" layoutY="691.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="image" fitHeight="281.0" fitWidth="389.0" layoutX="20.0" layoutY="52.0" pickOnBounds="true" preserveRatio="true" />
+      <Label fx:id="date_de_naissance" layoutX="326.0" layoutY="565.0" text="Date De Naissance" wrapText="true">
+         <font>
+            <Font name="System Bold Italic" size="30.0" />
+         </font></Label>
+      <Label layoutX="422.0" layoutY="276.0" text="Type de compte :" wrapText="true">
+         <font>
+            <Font name="System Bold Italic" size="25.0" />
+         </font>
+      </Label>
+      <Label layoutX="64.0" layoutY="377.0" text="Adresse mail :" wrapText="true">
+         <font>
+            <Font name="System Bold Italic" size="25.0" />
+         </font>
+      </Label>
+      <Label layoutX="423.0" layoutY="83.0" text="Prènom :" wrapText="true">
+         <font>
+            <Font name="System Bold Italic" size="25.0" />
+         </font>
+      </Label>
+      <Label layoutX="429.0" layoutY="184.0" text="Nom :" wrapText="true">
+         <font>
+            <Font name="System Bold Italic" size="25.0" />
+         </font>
+      </Label>
+      <Label layoutX="59.0" layoutY="475.0" text="Numéro de téléphone :" wrapText="true">
+         <font>
+            <Font name="System Bold Italic" size="25.0" />
+         </font>
+      </Label>
+      <Label layoutX="59.0" layoutY="570.0" text="Date de naissance :" wrapText="true">
+         <font>
+            <Font name="System Bold" size="25.0" />
+         </font>
+      </Label>
+      <Label layoutX="116.0" layoutY="650.0" text="Photo de permis de profile :" wrapText="true">
+         <font>
+            <Font name="System Bold" size="25.0" />
+         </font>
+      </Label>
+      <Label layoutX="801.0" layoutY="649.0" text="Photo de permis de derriére :" wrapText="true">
+         <font>
+            <Font name="System Bold" size="25.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

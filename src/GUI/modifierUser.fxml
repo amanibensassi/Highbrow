@@ -10,29 +10,61 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.ModifierUserController">
+<AnchorPane id="AnchorPane" prefHeight="1000.0" prefWidth="1500.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.ModifierUserController">
    <children>
-      <AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: #d6e0d8;">
+      <AnchorPane id="AnchorPane" prefHeight="1000.0" prefWidth="1500.0" style="-fx-background-color: #F5F6FA;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <AnchorPane layoutX="102.0" layoutY="96.0" prefHeight="424.0" prefWidth="696.0" style="-fx-background-color: #536b55; -fx-background-radius: 20;" />
-            <TextField id="1" fx:id="nom" layoutX="170.0" layoutY="159.0" prefHeight="26.0" prefWidth="94.0" promptText="Nom" style="-fx-background-color: #d6e0d8; -fx-background-radius: 25;" />
-            <TextField id="2" fx:id="prenom" layoutX="272.0" layoutY="159.0" prefHeight="26.0" prefWidth="94.0" promptText="Prenom" style="-fx-background-color: #d6e0d8; -fx-background-radius: 25;" />
-            <TextField id="3" fx:id="mail" layoutX="170.0" layoutY="209.0" prefHeight="26.0" prefWidth="192.0" promptText="mail" style="-fx-background-color: #d6e0d8; -fx-background-radius: 25;" />
-            <TextField id="4" fx:id="num_tel" layoutX="168.0" layoutY="263.0" prefHeight="26.0" prefWidth="192.0" promptText="num_tel" style="-fx-background-color: #d6e0d8; -fx-background-radius: 25;" />
-            <PasswordField id="6" fx:id="password" layoutX="170.0" layoutY="365.0" prefHeight="26.0" prefWidth="192.0" promptText="password" style="-fx-background-color: #d6e0d8; -fx-background-radius: 25;" />
-            <ChoiceBox id="7" fx:id="role" layoutX="464.0" layoutY="159.0" prefWidth="150.0" style="-fx-background-color: #d6e0d8;" />
-            <Button id="8" fx:id="modifier" layoutX="392.0" layoutY="451.0" mnemonicParsing="false" onAction="#modifier" prefHeight="40.0" prefWidth="102.0" style="-fx-background-color: #154312; -fx-background-radius: 25;" text="modifier" textFill="WHITE">
+            <TextField id="1" fx:id="nom" layoutX="151.0" layoutY="126.0" prefHeight="57.0" prefWidth="498.0" promptText="Nom" style="-fx-background-color: #ffffff; -fx-background-radius: 15;">
                <font>
-                  <Font name="System Bold Italic" size="12.0" />
+                  <Font size="25.0" />
+               </font></TextField>
+            <TextField id="2" fx:id="prenom" layoutX="880.0" layoutY="132.0" prefHeight="57.0" prefWidth="498.0" promptText="Prenom" style="-fx-background-radius: 15; -fx-background-color: #FFFFFF;">
+               <font>
+                  <Font size="25.0" />
+               </font></TextField>
+            <TextField id="3" fx:id="mail" layoutX="152.0" layoutY="252.0" prefHeight="57.0" prefWidth="498.0" promptText="mail" style="-fx-background-radius: 15; -fx-background-color: #ffffff;">
+               <font>
+                  <Font size="25.0" />
+               </font></TextField>
+            <TextField id="4" fx:id="num_tel" layoutX="152.0" layoutY="381.0" prefHeight="57.0" prefWidth="498.0" promptText="num_tel" style="-fx-background-radius: 15; -fx-background-color: #FFFFFF;">
+               <font>
+                  <Font size="25.0" />
+               </font></TextField>
+            <PasswordField id="6" fx:id="password" layoutX="153.0" layoutY="517.0" prefHeight="57.0" prefWidth="498.0" promptText="password" style="-fx-background-radius: 15; -fx-background-color: #FFFFFF;">
+               <font>
+                  <Font size="25.0" />
+               </font></PasswordField>
+            <ChoiceBox id="7" fx:id="role" layoutX="877.0" layoutY="262.0" prefHeight="57.0" prefWidth="498.0" style="-fx-background-radius: 15; -fx-background-color: ffffff;" />
+            <Button id="8" fx:id="modifier" layoutX="1237.0" layoutY="889.0" mnemonicParsing="false" onAction="#modifier" prefHeight="78.0" prefWidth="214.0" style="-fx-background-color: #06C17A; -fx-background-radius: 25;" text="valider" textFill="WHITE">
+               <font>
+                  <Font name="System Bold Italic" size="25.0" />
                </font>
             </Button>
-            <DatePicker fx:id="date_de_naissance" layoutX="168.0" layoutY="319.0" prefHeight="26.0" prefWidth="192.0" style="-fx-background-color: #d6e0d8;" />
-            <TextField fx:id="photo_permis_avant" layoutX="465.0" layoutY="210.0" promptText="photo_permis_avant" style="-fx-background-color: #d6e0d8; -fx-background-radius: 25;" />
-            <TextField fx:id="photo_permis_arriere" layoutX="466.0" layoutY="264.0" promptText="photo_permis_arriere" style="-fx-background-color: #d6e0d8; -fx-background-radius: 25;" />
-            <TextField fx:id="image" layoutX="465.0" layoutY="320.0" promptText="image" style="-fx-background-color: #d6e0d8; -fx-background-radius: 25;" />
-            <Button layoutX="638.0" layoutY="210.0" mnemonicParsing="false" onAction="#AjouterImage" prefHeight="26.0" prefWidth="94.0" style="-fx-background-color: #d6e0d8;" text="ajouter_image" />
-            <Button layoutX="636.0" layoutY="264.0" mnemonicParsing="false" onAction="#AjouterImage" prefHeight="26.0" prefWidth="94.0" style="-fx-background-color: #d6e0d8;" text="ajouter_image" />
-            <Button layoutX="638.0" layoutY="320.0" mnemonicParsing="false" onAction="#AjouterImage" prefHeight="26.0" prefWidth="94.0" style="-fx-background-color: #d6e0d8;" text="ajouter_image" />
+            <DatePicker fx:id="date_de_naissance" layoutX="880.0" layoutY="446.0" prefHeight="57.0" prefWidth="498.0" style="-fx-background-radius: 15; -fx-background-color: #FFFFFF;" />
+            <TextField fx:id="photo_permis_avant" layoutX="599.0" layoutY="633.0" prefHeight="66.0" prefWidth="327.0" promptText="photo_permis_avant" style="-fx-background-radius: 15; -fx-background-color: #FFFFFF;">
+               <font>
+                  <Font size="25.0" />
+               </font></TextField>
+            <TextField fx:id="photo_permis_arriere" layoutX="1051.0" layoutY="633.0" prefHeight="66.0" prefWidth="327.0" promptText="photo_permis_arriere" style="-fx-background-radius: 15; -fx-background-color: #FFFFFF;">
+               <font>
+                  <Font size="25.0" />
+               </font></TextField>
+            <TextField fx:id="image" layoutX="173.0" layoutY="631.0" prefHeight="66.0" prefWidth="327.0" promptText="image" style="-fx-background-radius: 15; -fx-background-color: #FFFFFF;">
+               <font>
+                  <Font size="25.0" />
+               </font></TextField>
+            <Button layoutX="231.0" layoutY="735.0" mnemonicParsing="false" onAction="#AjouterImage" prefHeight="77.0" prefWidth="237.0" style="-fx-background-color: #d6e0d8;" text="ajouter_image">
+               <font>
+                  <Font size="30.0" />
+               </font></Button>
+            <Button layoutX="636.0" layoutY="737.0" mnemonicParsing="false" onAction="#AjouterImage" prefHeight="77.0" prefWidth="237.0" style="-fx-background-color: #d6e0d8;" text="ajouter_image">
+               <font>
+                  <Font size="30.0" />
+               </font></Button>
+            <Button layoutX="1110.0" layoutY="728.0" mnemonicParsing="false" onAction="#AjouterImage" prefHeight="77.0" prefWidth="237.0" style="-fx-background-color: #d6e0d8;" text="ajouter_image">
+               <font>
+                  <Font size="30.0" />
+               </font></Button>
             <ImageView fitHeight="72.0" fitWidth="130.0" layoutX="760.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../image/logo.png" />

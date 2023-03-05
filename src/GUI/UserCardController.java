@@ -45,10 +45,6 @@ public class UserCardController implements Initializable {
     @FXML
     private Label date_naissance;
     @FXML
-    private ImageView photo_permis_avant;
-    @FXML
-    private ImageView photo_permis_arriere;
-    @FXML
     private Button delete;
     Utilisateur u = new Utilisateur();
     UserService us = new UserService();
@@ -58,6 +54,12 @@ public class UserCardController implements Initializable {
     private ImageView image;
     @FXML
     private Label role;
+    @FXML
+    private Button approuved;
+    @FXML
+    private Button desactiver;
+    @FXML
+    private Label etat;
     @FXML
     private Button detail;
     /**
@@ -76,7 +78,6 @@ public class UserCardController implements Initializable {
         
         
         
-        
         nom.setText(ut.getNom());
         prenom.setText(ut.getPrenom());
         num.setText(String.valueOf(ut.getNum_tel()));
@@ -88,6 +89,12 @@ public class UserCardController implements Initializable {
         role.setText(String.valueOf(ut.getRole()));
         u.setImage(ut.getImage());
         image.setImage(imagee);
+     
+        if (ut.getetat()==true){
+       etat.setText("approuvé");
+        }else{ 
+            etat.setText("désactivé");
+        }
         System.out.println("Imageee"+imagee.toString());
         iduser=ut.getIdutilisateur();
         u=ut;
@@ -112,9 +119,9 @@ public class UserCardController implements Initializable {
     private void Userdetails(ActionEvent event) {
         try {
                                         System.out.println(u);
-                                        FXMLLoader loader = new FXMLLoader(getClass().getResource("ModifierUser.fxml"));
+                                        FXMLLoader loader = new FXMLLoader(getClass().getResource("DetailAdmin.fxml"));
                                         Parent root = loader.load();
-                                        ModifierUserController controller = loader.getController();
+                                        DetailAdminController controller = loader.getController();
                                         controller.setData(u);
                                         nom.getScene().setRoot(root);     
                                     } catch (IOException ex) {
@@ -122,6 +129,32 @@ public class UserCardController implements Initializable {
                                     }
         
         
+    }
+
+    @FXML
+    private void approuvez(ActionEvent event) throws IOException {
+        try{
+           us.approuver(u);
+           FXMLLoader loader = new FXMLLoader(getClass().getResource("afficherUtilisateur.fxml"));
+           Parent root = loader.load();
+           approuved.getScene().setRoot(root);
+        }
+        catch(SQLException ex){
+            System.out.println(ex.getMessage());
+        }
+    }
+
+    @FXML
+    private void desactiver(ActionEvent event) throws IOException {
+        try{
+           us.desactiver(u);
+           FXMLLoader loader = new FXMLLoader(getClass().getResource("afficherUtilisateur.fxml"));
+           Parent root = loader.load();
+           desactiver.getScene().setRoot(root);
+        }
+        catch(SQLException ex){
+            System.out.println(ex.getMessage());
+        }
     }
     
 }

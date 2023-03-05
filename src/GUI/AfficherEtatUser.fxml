@@ -9,18 +9,18 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1000.0" prefWidth="1500.0" spacing="30.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.AfficherUtilisateurController">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1000.0" prefWidth="1500.0" spacing="30.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.AfficherEtatUserController">
    <children>
-      <Label prefHeight="46.0" prefWidth="350.0" text="Liste des Utilisateurs :">
-         <VBox.margin>
-            <Insets top="20.0" />
-         </VBox.margin>
+      <Label text="Liste Utilisateurs a approuver :">
          <font>
             <Font name="System Bold" size="25.0" />
-         </font></Label>
-      <ScrollPane prefHeight="908.0" prefWidth="1500.0">
+         </font>
+         <VBox.margin>
+            <Insets top="20.0" />
+         </VBox.margin></Label>
+      <ScrollPane prefHeight="911.0" prefWidth="1500.0">
          <content>
-            <GridPane fx:id="grid" prefHeight="70.0" prefWidth="1500.0">
+            <GridPane fx:id="grid" prefHeight="70.0" prefWidth="1499.0">
                <columnConstraints>
                   <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                </columnConstraints>
@@ -29,6 +29,9 @@
                </rowConstraints>
             </GridPane>
          </content>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
       </ScrollPane>
    </children>
 </VBox>

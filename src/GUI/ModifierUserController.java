@@ -131,9 +131,10 @@ public class ModifierUserController implements Initializable {
     
 
     @FXML
-    private void modifier(ActionEvent event) throws FileNotFoundException, IOException {
-          try {
-            Utilisateur u = new Utilisateur();
+    private void modifier(ActionEvent event) throws FileNotFoundException, IOException, SQLException {
+        Utilisateur u = new Utilisateur();  
+        try {
+            
             u.setIdutilisateur(iduser);
             u.setNom(nom.getText());
             u.setPrenom(prenom.getText());
@@ -160,16 +161,25 @@ public class ModifierUserController implements Initializable {
         } catch (SQLException ex) {
             System.out.println("error" + ex.getMessage());
         }
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("afficherUtilisateur.fxml"));
+
+        if((us.role_selection(mail.getText())).equals("client")){
+
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("ClientProfile.fxml"));
             Parent root = loader.load();
-            AfficherUtilisateurController controller = loader.getController();
+            ClientProfileController controller = loader.getController();
+             controller.setData(u);
             //controller.setData(txtNom.getText() + " " + txtPrenom.getText());
             nom.getScene().setRoot(root);
-            
-        } catch (IOException ex) {
-            System.out.println("error" + ex.getMessage());
         }
+         if((us.role_selection(mail.getText())).equals("proprietaire_agence")){
+
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("PropProfile.fxml"));
+            Parent root = loader.load();
+            PropProfileController controller = loader.getController();
+            controller.setData(u);
+            nom.getScene().setRoot(root);
+        }
+        
         
     }
         
@@ -181,7 +191,7 @@ public class ModifierUserController implements Initializable {
         photo_permis_avant.setText(u.getPhotopermis_avant());
         photo_permis_arriere.setText(u.getPhotopermis_arriere());
 
-       date_de_naissance.setValue(LocalDate.parse(String.valueOf(u.getDate_naissance())));
+        date_de_naissance.setValue(LocalDate.parse(String.valueOf(u.getDate_naissance())));
         mail.setText(u.getMail());
         role.setValue(u.getRole());
         iduser=u.getIdutilisateur();

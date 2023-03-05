@@ -48,6 +48,7 @@ import javafx.scene.layout.RowConstraints;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import services.SiegeService;
+import services.UserConn;
 import services.VehiculeService;
 
 /**
@@ -113,6 +114,7 @@ public class SiegeController implements Initializable {
     private void modifierSiege(ActionEvent event) {
 
         try {
+            System.out.println("NIK ZIBIIIIIIIII"+UserConn.role);
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("SideBarUser.fxml"));
             Parent root1 = loader.load();
             BorderPane borderPane = new BorderPane();

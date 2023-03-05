@@ -24,17 +24,24 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Insets;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
+import services.UserConn;
 import services.UserService;
 import utils.MyDB;
 
@@ -45,6 +52,9 @@ import utils.MyDB;
  *
  */
 public class AuthenticateController implements Initializable {
+
+    Stage Stage1;
+    Stage Stage;
 
     @FXML
     private TextField mail;
@@ -67,55 +77,118 @@ public class AuthenticateController implements Initializable {
         // TODO
 
     }
-    
-    
-    
 
     @FXML
-    private void authenticate(ActionEvent event) throws SQLException {
+    private void authenticate(ActionEvent event) throws SQLException, IOException {
+
         if (us.authenticate(mail.getText(), mot_de_passe.getText()).getIdutilisateur() != 0) {
-            if((us.role_selection(mail.getText())).equals("client")){
-                
-            
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("ClientProfile.fxml"));
-            Parent root;
-            try {
+            System.out.println("LOOOOOOOOOOOOOOOOOOOOGIIIIIIIIIIIIN" + u);
+            if ((us.role_selection(mail.getText())).equals("client")) {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("SideBarUser.fxml"));
+                Parent root1 = loader.load();
+                SideBarUserController sb = loader.getController();
+
+                sb.setRole(us.role_selection(mail.getText()));
+                BorderPane borderPane = new BorderPane();
+                FXMLLoader loader1 = new FXMLLoader(getClass().getResource("ClientProfile.fxml"));
+                Parent root2 = loader1.load();
+//      
+//            FXMLLoader loader = new FXMLLoader(getClass().getResource("ClientProfile.fxml"));
+//            Parent root;
+                System.out.println("auth" + us.authenticate(mail.getText(), mot_de_passe.getText()));
+                u = us.authenticate(mail.getText(), mot_de_passe.getText());
+                //UserConn.role = u.getRole();
+                System.out.println("isEtat" + u.isEtat());
+                if (!u.isEtat()) {
+                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.setTitle("Attention");
+                    alert.setHeaderText("Votre compte est desactivé");
+                    alert.setContentText("votre compte est desactivé du des actions inderdites ");
+                    alert.show();
+                    System.out.println("Alerte votre compte est désactivé");
+                } else {
+                    //UserConn.role=u.getRole();
+                    System.out.println("authenticaaaate" + UserConn.role);
+                    ClientProfileController controller = loader1.getController();
+                    controller.setData(u);
+                    HBox hbox = new HBox(root1, new Pane(), root2);
+                    hbox.setSpacing(20);
+
+                    borderPane.setRight(hbox);
+
+                    borderPane.setLeft(root1);
+
+                    borderPane.setPadding(new Insets(10, 10, 30, 10));
+
+                    mail.getScene().setRoot(borderPane);
+//                root = loader.load();
+//                         
+//                mail.getScene().setRoot(root);
+                }
+            } else if ((us.role_selection(mail.getText())).equals("proprietaire_agence")) {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("SideBarUser.fxml"));
+                Parent root1 = loader.load();
+                SideBarUserController sb = loader.getController();
+
+                sb.setRole(us.role_selection(mail.getText()));
+                BorderPane borderPane = new BorderPane();
+                FXMLLoader loader1 = new FXMLLoader(getClass().getResource("PropProfile.fxml"));
+                Parent root2 = loader1.load();
+                //UserConn.role = u.getRole();
+                System.out.println("auth" + us.authenticate(mail.getText(), mot_de_passe.getText()));
+                u = us.authenticate(mail.getText(), mot_de_passe.getText());
+                System.out.println(u);
+                System.out.println("isEtat" + u.isEtat());
+                if (!u.isEtat()) {
+
+                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.setTitle("Attention");
+                    alert.setHeaderText("Votre compte est desactivé");
+                    alert.setContentText("votre compte est desactivé du des actions inderdites ");
+                    alert.show();
+                    System.out.println("Alerte votre compte est désactivé");
+                } else {
+                   // UserConn.role = u.getRole();
+
+                    PropProfileController controller = loader1.getController();
+                    controller.setData(u);
+                    HBox hbox = new HBox(root1, new Pane(), root2);
+                    hbox.setSpacing(20);
+
+                    borderPane.setRight(hbox);
+
+                    borderPane.setLeft(root1);
+
+                    borderPane.setPadding(new Insets(10, 10, 30, 10));
+
+                    mail.getScene().setRoot(borderPane);
+
+                }
+            } else if ((us.role_selection(mail.getText())).equals("administrateur")) {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("SideBarUser.fxml"));
+                Parent root1 = loader.load();
+                SideBarUserController sb = loader.getController();
+
+                sb.setRole(us.role_selection(mail.getText()));
+                BorderPane borderPane = new BorderPane();
+                FXMLLoader loader1 = new FXMLLoader(getClass().getResource("AdminProfile.fxml"));
+                Parent root2 = loader1.load();
 
                 System.out.println("auth" + us.authenticate(mail.getText(), mot_de_passe.getText()));
                 u = us.authenticate(mail.getText(), mot_de_passe.getText());
                 System.out.println(u);
-                root = loader.load();
-                ClientProfileController controller = loader.getController();
+                AdminProfileController controller = loader1.getController();
                 controller.setData(u);
-                //controller.setData(txtNom.getText() + " " + txtPrenom.getText());
-                mail.getScene().setRoot(root);
-            } catch (IOException ex) {
-                Logger.getLogger(AuthenticateController.class.getName()).log(Level.SEVERE, null, ex);
+                HBox hbox = new HBox(root1, new Pane(), root2);
+                hbox.setSpacing(20);
+                borderPane.setRight(hbox);
+                borderPane.setLeft(root1);
+                borderPane.setPadding(new Insets(10, 10, 30, 10));
+                mail.getScene().setRoot(borderPane);
             }
-        }
-            
-          else if((us.role_selection(mail.getText())).equals("proprietaire_agence")){
-                
-            
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("PropProfile.fxml"));
-            Parent root;
-            try {
 
-                System.out.println("auth" + us.authenticate(mail.getText(), mot_de_passe.getText()));
-                u = us.authenticate(mail.getText(), mot_de_passe.getText());
-                System.out.println(u);
-                root = loader.load();
-                PropProfileController controller = loader.getController();
-                controller.setData(u);
-                //controller.setData(txtNom.getText() + " " + txtPrenom.getText());
-                mail.getScene().setRoot(root);
-            } catch (IOException ex) {
-                Logger.getLogger(AuthenticateController.class.getName()).log(Level.SEVERE, null, ex);
-            }
         }
-            
     }
-}
 //    public String cryptage(String password) throws NoSuchAlgorithmException {
 //        MessageDigest m = MessageDigest.getInstance("MD5");
 //        m.reset();
@@ -132,5 +205,21 @@ public class AuthenticateController implements Initializable {
 
     @FXML
     private void mdp_oublie(MouseEvent event) {
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("ForgotMdp.fxml"));
+            Stage1 = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            root.setOnMousePressed(pressEvent -> {
+                root.setOnMouseDragged(dragEvent -> {
+                    Stage1.setX(dragEvent.getScreenX() - pressEvent.getSceneX());
+                    Stage1.setY(dragEvent.getScreenY() - pressEvent.getSceneY());
+                });
+            });
+            Scene scene = new Scene(root);
+            Stage1.setScene(scene);
+            Stage1.show();
+
+        } catch (IOException ex) {
+            System.out.println(ex.getMessage());
+        }
     }
 }

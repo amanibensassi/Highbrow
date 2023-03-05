@@ -14,7 +14,7 @@ import java.sql.SQLException;
  */
 public interface IUser<T> {
 
-    public void modifierPassword(T t) throws SQLException;
+    public void modifierPassword(String mail , String pwd) throws SQLException;
 
     public Utilisateur recupererById(int t) throws SQLException;
 
