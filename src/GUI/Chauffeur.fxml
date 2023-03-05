@@ -4,17 +4,20 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="cardPane" layoutX="-11.0" layoutY="-6.0" maxHeight="231.0" maxWidth="300.0" prefHeight="231.0" prefWidth="251.0" styleClass="user-card" stylesheets="@../styles/style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.ChauffeurController">
-        <ImageView fx:id="userImage" fitHeight="81.0" fitWidth="143.0" layoutX="14.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true" AnchorPane.topAnchor="25.0">
+<AnchorPane fx:id="cardPane" layoutX="-11.0" layoutY="-6.0" maxHeight="384.0" maxWidth="530.0" prefHeight="379.0" prefWidth="420.0" styleClass="user-card" stylesheets="@../styles/style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.ChauffeurController">
+        <ImageView fx:id="userImage" fitHeight="162.0" fitWidth="184.0" layoutX="21.0" layoutY="43.0" pickOnBounds="true" preserveRatio="true" AnchorPane.topAnchor="29.0">
      
         </ImageView>
-        <Label fx:id="nom" layoutX="173.0" layoutY="26.0" lineSpacing="5.0" prefHeight="20.0" prefWidth="64.0" styleClass="nom" text="nom" />
-        <Label fx:id="prenom" layoutX="161.0" layoutY="68.0" prefHeight="18.0" prefWidth="64.0" styleClass="prenom" text="prenom" />
-        <Button id="button2" fx:id="supprimer" layoutX="26.0" layoutY="179.0" mnemonicParsing="false" onAction="#supprimerChauffeur" stylesheets="@../styles/style.css" text="supprimer" />
-        <Button id="button1" fx:id="modifier" layoutX="173.0" layoutY="179.0" mnemonicParsing="false" onAction="#modifierChauffeur" stylesheets="@../styles/style.css" text="modifier" />
-        <Label fx:id="mail" layoutX="26.0" layoutY="129.0" prefHeight="18.0" prefWidth="165.0" styleClass="prenom" text="mail" />
-        <Label fx:id="numtel" layoutX="26.0" layoutY="154.0" prefWidth="85.0" styleClass="prenom" text="numtel" />
-        <ImageView fx:id="icon" fitHeight="39.0" fitWidth="41.0" layoutX="184.0" layoutY="110.0" onMouseClicked="#onClickCalendrier" pickOnBounds="true" preserveRatio="true" />
+        <Label fx:id="nom" layoutX="222.0" layoutY="63.0" lineSpacing="5.0" prefHeight="46.0" prefWidth="161.0" styleClass="nom" text="nom">
+      <font>
+         <Font size="30.0" />
+      </font></Label>
+        <Label fx:id="prenom" layoutX="214.0" layoutY="106.0" prefHeight="46.0" prefWidth="192.0" styleClass="prenom" text="prenom" />
+        <Button id="button2" fx:id="supprimer" layoutX="47.0" layoutY="300.0" mnemonicParsing="false" onAction="#supprimerChauffeur" prefHeight="50.0" prefWidth="130.0" style="-fx-font-size: 17;" stylesheets="@../styles/style.css" text="supprimer" />
+        <Button id="button1" fx:id="modifier" layoutX="246.0" layoutY="300.0" mnemonicParsing="false" onAction="#modifierChauffeur" prefHeight="50.0" prefWidth="130.0" style="-fx-font-size: 17;" stylesheets="@../styles/style.css" text="modifier" />
+        <Label fx:id="mail" layoutX="30.0" layoutY="205.0" prefHeight="46.0" prefWidth="366.0" styleClass="prenom" text="mail" />
+        <Label fx:id="numtel" layoutX="30.0" layoutY="240.0" prefHeight="46.0" prefWidth="233.0" styleClass="prenom" text="numtel" />
    
     </AnchorPane>

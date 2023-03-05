@@ -90,10 +90,10 @@ public class VenteService implements IService<Vente>,Ivente<Vente> {
         while (rs.next()) {
             Vente ve = new Vente();
             ve.setIdvente(rs.getInt(1));
-            ve.setDate_rendez_vous(rs.getDate("date_rendez_vous"));
+            ve.setDate_rendez_vous(rs.getTimestamp("date_rendez_vous"));
             ve.setId_vehicule(rs.getInt("id_vehicule"));
             ve.setId_utilisateur(rs.getInt("id_utilisateur"));
-
+           
             Ventes.add(ve);
 
         }

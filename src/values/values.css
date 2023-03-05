@@ -21,8 +21,16 @@
 
 
 .affichervehiculesbtn{
-    -fx-background-color:#A5A5A5;
-    -fx-background-radius: 15;
+     -fx-background-color: #4CAF50;
+    -fx-text-fill: #fff;
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-padding: 10px 20px;
+    -fx-border-radius: 50px;
+    -fx-border-width: 0;
+    -fx-cursor: hand;
+/*    -fx-background-color:#A5A5A5;
+    -fx-background-radius: 15;*/
 }
 
 .modifierButton{
@@ -46,8 +54,16 @@
 }
 
 .btnsupprimer{
-    -fx-background-color:#e31937;
-    -fx-background-radius: 15;
+ -fx-background-color: #e31937;
+    -fx-text-fill: #fff;
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-padding: 10px 20px;
+    -fx-border-radius: 50px;
+    -fx-border-width: 0;
+    -fx-cursor: hand;
+/*    -fx-background-color:#e31937;
+    -fx-background-radius: 15;*/
 }
 
 .labelTitreSieges{

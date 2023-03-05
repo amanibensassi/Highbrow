@@ -219,7 +219,7 @@ public class AfficherVehiculeBySiegeController implements Initializable {
     }
 
     @FXML
-    private void filtrage(ActionEvent event) {
+    private void filtrage(ActionEvent event) throws SQLException {
 
         Carburant c = carburant.getValue();
         NbrPlace p = place.getValue();

@@ -16,13 +16,12 @@ import typeenumeration.Role;
  * @author anasm
  */
 public class Utilisateur {
-    
-    private int idutilisateur,num_tel;
-    private String nom,prenom,mail,mot_de_passe,photopermis_avant,photopermis_arriere,image;
+
+    private int idutilisateur, num_tel;
+    private String nom, prenom, mail, mot_de_passe, photopermis_avant, photopermis_arriere, image;
     private Date date_naissance;
     private Role role;
     private boolean etat;
-    
 
     public Utilisateur() {
     }
@@ -47,9 +46,8 @@ public class Utilisateur {
         this.num_tel = num_tel;
         this.nom = nom;
         this.prenom = prenom;
-        
-         this.mail = mail;
 
+        this.mail = mail;
 
         //this.mail = mail;
         this.mot_de_passe = mot_de_passe;
@@ -59,9 +57,6 @@ public class Utilisateur {
         this.date_naissance = date_naissance;
         this.role = role;
     }
-    
-
- 
 
     public Utilisateur(int num_tel, String nom, String prenom, String mail, String mot_de_passe, String photopermis_avant, String photopermis_arriere, String image, Date date_naissance, Role role) {
         this.num_tel = num_tel;
@@ -79,7 +74,6 @@ public class Utilisateur {
     public Utilisateur(int i, String _Mrabet, String mohamed, String mohamedmrabetesprittn, String string, String e, String string0) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-
 
     public int getIdutilisateur() {
         return idutilisateur;
@@ -145,8 +139,6 @@ public class Utilisateur {
         this.photopermis_arriere = photopermis_arriere;
     }
 
-   
-
     public String getImage() {
         return image;
     }
@@ -171,8 +163,6 @@ public class Utilisateur {
         this.role = role;
     }
 
-    
-    
     public boolean isEtat() {
         return etat;
     }
@@ -183,12 +173,11 @@ public class Utilisateur {
 
     @Override
     public String toString() {
-        return "Utilisateur{" + "idutilisateur=" + idutilisateur + ", num_tel=" + num_tel + ", nom=" + nom + ", prenom=" + prenom + ", mail=" + mail + ", mot_de_passe=" + mot_de_passe + ", photopermis_avant=" + photopermis_avant + ", photopermis_arriere=" + photopermis_arriere + ", image=" + image + ", date_naissance=" + date_naissance + ", role=" + role + ", etat=" + etat + '}' +"\n";
+        return "Utilisateur{" + "idutilisateur=" + idutilisateur + ", num_tel=" + num_tel + ", nom=" + nom + ", prenom=" + prenom + ", mail=" + mail + ", mot_de_passe=" + mot_de_passe + ", photopermis_avant=" + photopermis_avant + ", photopermis_arriere=" + photopermis_arriere + ", image=" + image + ", date_naissance=" + date_naissance + ", role=" + role + ", etat=" + etat + '}' + "\n";
     }
-    
 
     public boolean getetat() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return this.etat;
     }
 
     @Override
@@ -223,7 +212,4 @@ public class Utilisateur {
         return true;
     }
 
- 
-    
-    
 }

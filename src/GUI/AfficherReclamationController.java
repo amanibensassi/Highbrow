@@ -49,7 +49,8 @@ public class AfficherReclamationController implements Initializable {
     
     private void getData() throws ParseException{
         try {
-            List<Reclamation> reclamations = rs.recupererReclamationdAdmin();
+           // List<Reclamation> reclamations = rs.recupererReclamationdAdmin();
+           List<Reclamation> reclamations = rs.recupererReclamationUtilisateur(1);
             System.out.println("aa"+reclamations);
             int row = 1;
             int column = 0;

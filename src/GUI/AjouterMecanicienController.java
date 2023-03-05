@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package GUI;
+
 import com.twilio.Twilio;
 import com.twilio.rest.api.v2010.account.Message;
 import com.twilio.type.PhoneNumber;
@@ -22,10 +23,14 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Insets;
 import javafx.scene.Parent;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.Pane;
 import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import services.MecanicienService;
@@ -56,15 +61,16 @@ public class AjouterMecanicienController implements Initializable {
     private ChoiceBox<Specialite> cbspecialite;
     @FXML
     private ChoiceBox<Region> cbregion;
-    
+
     public static final String ACCOUNT_SID = "AC7d1624d5b32d2d9755497c1eeb0635c7";
     public static final String AUTH_TOKEN = "5b8a7cd1f222fe17ea103d236541f312";
-    
-    Specialite tabspes []={electricien,mecanicien,tolier};
-    Region tabreg []={Region.ariana,Region.beja,Region.ben_Arous,Region.bizerte,Region.gabes,Region.gafsa,Region.jendouba,Region.kairouan,Region.kasserine,Region.kebili,Region.kef,Region.mahdia,Region.manouba,Region.medenine,Region.monastir,Region.monastir,Region.nabeul,Region.sfax,Region.sidi_Bouzid,Region.siliana,Region.sousse,Region.tataouine,Region.tozeur,Region.tunis,Region.zaghouan};
-    MecanicienService ms=new MecanicienService();
+
+    Specialite tabspes[] = {electricien, mecanicien, tolier};
+    Region tabreg[] = {Region.ariana, Region.beja, Region.ben_Arous, Region.bizerte, Region.gabes, Region.gafsa, Region.jendouba, Region.kairouan, Region.kasserine, Region.kebili, Region.kef, Region.mahdia, Region.manouba, Region.medenine, Region.monastir, Region.monastir, Region.nabeul, Region.sfax, Region.sidi_Bouzid, Region.siliana, Region.sousse, Region.tataouine, Region.tozeur, Region.tunis, Region.zaghouan};
+    MecanicienService ms = new MecanicienService();
     File file = null;
     File file2 = null;
+
     /**
      * Initializes the controller class.
      */
@@ -73,34 +79,29 @@ public class AjouterMecanicienController implements Initializable {
         cbspecialite.getItems().addAll(tabspes);
         cbregion.getItems().addAll(tabreg);
         txtImage.setEditable(false);
-    }    
+    }
 
     @FXML
-    private void ajouterMecanicien(ActionEvent event) throws IOException {
-        
+    private void ajouterMecanicien(ActionEvent event) throws IOException, SQLException {
+
         if (txtNom.getText().isEmpty() || txtPrenom.getText().isEmpty() || txtContact.getText().isEmpty() || txtAdresse.getText().isEmpty() || txtImage.getText().isEmpty() || cbregion.getValue() == null || cbspecialite.getValue() == null) {
             //JOptionPane.showMessageDialog(null, "Remplir les champs vides");
             Alert al = new Alert(Alert.AlertType.ERROR);
             al.setHeaderText(null);
             al.setContentText("Veuillez remplir les champs vides ! ");
             al.showAndWait();
-        }
-        else if (!txtContact.getText().matches("\\d{8}")){
+        } else if (!txtContact.getText().matches("\\d{8}")) {
             Alert a3 = new Alert(Alert.AlertType.ERROR);
             a3.setHeaderText(null);
             a3.setContentText("Veuillez saisir un numéro de téléphone valide ! ");
             a3.showAndWait();
-        }
-        else if (!txtNom.getText().matches("[a-zA-Z]+") || !txtPrenom.getText().matches("[a-zA-Z]+")) {
+        } else if (!txtNom.getText().matches("[a-zA-Z]+") || !txtPrenom.getText().matches("[a-zA-Z]+")) {
             Alert a2 = new Alert(Alert.AlertType.ERROR);
             a2.setHeaderText(null);
             a2.setContentText("Veuillez saisir uniquement des lettres ! ");
             a2.showAndWait();
-        }
-        
-        else{
-        
-        try {
+        } else {
+
             Mecanicien m = new Mecanicien();
             m.setNom_mecanicien(txtNom.getText());
             m.setPrenom_mecanicien(txtPrenom.getText());
@@ -109,33 +110,35 @@ public class AjouterMecanicienController implements Initializable {
             m.setRegion(cbregion.getValue());
             m.setSpecialite(cbspecialite.getValue());
             m.setImage(String.valueOf(file2));
-            
-            System.out.println("personne ajouter avec succes");
-            System.out.println(m);
+            /////////////////////////////////////
             ms.ajouter(m);
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("AfficherMecaniciensProf.fxml"));
-            Parent root = loader.load();
-            AfficherMecaniciensProfController controller = loader.getController();
-            txtAdresse.getScene().setRoot(root);
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("SideBarUser.fxml"));
+            Parent root1 = loader.load();
+            BorderPane borderPane = new BorderPane();
+            FXMLLoader loader1 = new FXMLLoader(getClass().getResource("AfficherMecaniciensProf.fxml"));
+            Parent root2 = loader1.load();
+            AfficherMecaniciensProfController fc = loader1.getController();
+        fc.setIdVehicule(2);
+            HBox hbox = new HBox(root1, new Pane(), root2);
+            hbox.setSpacing(20);
+            borderPane.setRight(hbox);
+            borderPane.setLeft(root1);
+            borderPane.setPadding(new Insets(10, 10, 30, 10));
+            txtNom.getScene().setRoot(borderPane);
             //controller.setData(txtNom.getText() + " " + txtPrenom.getText());
-            String bienvenue="Monsieur "+txtNom.getText()+" "+txtPrenom.getText()+" vous etes désormais membre dans notre plateforme";
+            String bienvenue = "Monsieur " + txtNom.getText() + " " + txtPrenom.getText() + " vous etes désormais membre dans notre plateforme";
             Twilio.init(ACCOUNT_SID, AUTH_TOKEN);
             Message message = Message.creator(
-                    new com.twilio.type.PhoneNumber("+216"+txtContact.getText()),
+                    new com.twilio.type.PhoneNumber("+216" + txtContact.getText()),
                     new com.twilio.type.PhoneNumber("+13157918497"), bienvenue).create();
-
             System.out.println(message.getSid());
-    }
-     catch (SQLException ex) {
-            System.out.println("error" + ex.getMessage());
         }
-        }
-        
+
     }
 
     @FXML
     private void afficherMecaniciens(ActionEvent event) {
-        
+
         try {
             //FXMLLoader loader = new FXMLLoader(getClass().getResource("AfficherMecanicien.fxml"));
             FXMLLoader loader = new FXMLLoader(getClass().getResource("AfficherMecaniciensProf.fxml"));
@@ -144,16 +147,16 @@ public class AjouterMecanicienController implements Initializable {
             AfficherMecaniciensProfController controller = loader.getController();
             //controller.setData(txtNom.getText() + " " + txtPrenom.getText());
             txtNom.getScene().setRoot(root);
-            
+
         } catch (IOException ex) {
             System.out.println("error" + ex.getMessage());
         }
-        
+
     }
 
     @FXML
     private File AjouterImage(ActionEvent event) {
-        
+
         Path to1 = null;
         String m = null;
         String path = "C:\\xampp\\htdocs\\img";
@@ -191,7 +194,7 @@ public class AjouterMecanicienController implements Initializable {
         }
         txtImage.setText(String.valueOf(file2));
         return file2;
-        
+
     }
 
 }

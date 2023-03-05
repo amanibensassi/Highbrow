@@ -9,7 +9,7 @@
 
 <AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.AfficherDetailEntretienController">
    <children>
-      <AnchorPane id="AnchorPane" prefHeight="1000.0" prefWidth="1900.0">
+      <AnchorPane id="AnchorPane" prefHeight="1000.0" prefWidth="1500.0">
          <children>
             <Label fx:id="lbldate" layoutX="1248.0" layoutY="488.0" text="Label">
                <font>
@@ -27,8 +27,7 @@
                <font>
                   <Font name="System Bold Italic" size="20.0" />
                </font></Label>
-            <AnchorPane prefHeight="1000.0" prefWidth="310.0" style="-fx-background-color: #0F2231;" />
-            <AnchorPane layoutX="310.0" prefHeight="210.0" prefWidth="1590.0" style="-fx-background-color: #06C17A;">
+            <AnchorPane layoutX="-1.0" prefHeight="210.0" prefWidth="1901.0" style="-fx-background-color: #06C17A;">
                <children>
                   <Button layoutX="682.0" layoutY="83.0" mnemonicParsing="false" onAction="#lister" style="-fx-background-color: #06C17A;" text="Afficher les entretients">
                      <font>

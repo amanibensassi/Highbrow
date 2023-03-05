@@ -9,6 +9,7 @@ import entities.Location;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -93,13 +94,14 @@ public class SideBarUserController implements Initializable {
     }
 
     @FXML
-    private void GoToReclamer(ActionEvent event) throws IOException {
+    private void GoToReclamer(ActionEvent event) throws IOException, ParseException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("SideBarUser.fxml"));
         Parent root1 = loader.load();
         BorderPane borderPane = new BorderPane();
-        FXMLLoader loader1 = new FXMLLoader(getClass().getResource("ajouterReclamation.fxml"));
+        FXMLLoader loader1 = new FXMLLoader(getClass().getResource("AfficherReclamationUtilisateur.fxml"));
         Parent root2 = loader1.load();
-
+        AfficherReclamationUtilisateurController md = loader1.getController();
+        md.getData();
         HBox hbox = new HBox(root1, new Pane(), root2);
         hbox.setSpacing(20);
 
@@ -136,22 +138,18 @@ public class SideBarUserController implements Initializable {
         HLocation.getScene().setRoot(borderPane);
     }
 
-    
-
     @FXML
     private void deconnecter(ActionEvent event) throws IOException {
-        
+
         FXMLLoader loader1 = new FXMLLoader(getClass().getResource("authenticate.fxml"));
         Parent root2 = loader1.load();
-
 
         deconx.getScene().setRoot(root2);
     }
 
-
     @FXML
     private void GoToSiegesDisponibles(ActionEvent event) throws IOException {
-         FXMLLoader loader = new FXMLLoader(getClass().getResource("SideBarUser.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("SideBarUser.fxml"));
         Parent root1 = loader.load();
         BorderPane borderPane = new BorderPane();
         FXMLLoader loader1 = new FXMLLoader(getClass().getResource("afficherSiege.fxml"));
@@ -166,12 +164,12 @@ public class SideBarUserController implements Initializable {
 
         borderPane.setPadding(new Insets(10, 10, 30, 10));
         siegesDisponible.getScene().setRoot(borderPane);
-        
+
     }
 
     @FXML
     private void GoToForum(ActionEvent event) throws IOException {
-        
+
         FXMLLoader loader = new FXMLLoader(getClass().getResource("SideBarUser.fxml"));
         Parent root1 = loader.load();
         BorderPane borderPane = new BorderPane();

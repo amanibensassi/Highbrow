@@ -16,7 +16,7 @@
     -fx-border-color: #ddd;
     -fx-border-radius: 5px;
     -fx-padding: 5px;
-    -fx-font-size: 16px;
+    -fx-font-size: 25px;
 }
 
 .text-field:focused {

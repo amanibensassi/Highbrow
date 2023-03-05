@@ -3,34 +3,8 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/Anas%20INFO/XAMPP/htdocs/Highbrow/src/test/Main.java</file>
-            <file>file:/D:/Anas%20INFO/XAMPP/htdocs/Highbrow/src/GUI/AjouterMecanicienController.java</file>
-            <file>file:/D:/Anas%20INFO/XAMPP/htdocs/Highbrow/src/GUI/RespoLocationCardController.java</file>
-            <file>file:/D:/Anas%20INFO/XAMPP/htdocs/Highbrow/src/GUI/VehiculeController.java</file>
-            <file>file:/D:/Anas%20INFO/XAMPP/htdocs/Highbrow/src/GUI/PublicationdesignController.java</file>
-            <file>file:/D:/Anas%20INFO/XAMPP/htdocs/Highbrow/src/GUI/Interface_commentairesController.java</file>
-            <file>file:/D:/Anas%20INFO/XAMPP/htdocs/Highbrow/src/GUI/AjouterAvisVehiculeController.java</file>
             <file>file:/D:/Anas%20INFO/XAMPP/htdocs/Highbrow/src/GUI/AfficherMecaniciensProfController.java</file>
-            <file>file:/D:/Anas%20INFO/XAMPP/htdocs/Highbrow/src/typeenumeration/Specialite.java</file>
-            <file>file:/D:/Anas%20INFO/XAMPP/htdocs/Highbrow/src/services/ReclamationService.java</file>
-            <file>file:/D:/Anas%20INFO/XAMPP/htdocs/Highbrow/src/GUI/Interface_forumController.java</file>
-            <file>file:/D:/Anas%20INFO/XAMPP/htdocs/Highbrow/src/services/LocationService.java</file>
-            <file>file:/D:/Anas%20INFO/XAMPP/htdocs/Highbrow/src/GUI/EntretienController.java</file>
-            <file>file:/D:/Anas%20INFO/XAMPP/htdocs/Highbrow/src/GUI/AfficherDetailMecanicienController.java</file>
-            <file>file:/D:/Anas%20INFO/XAMPP/htdocs/Highbrow/src/GUI/AjouterAvisController.java</file>
-            <file>file:/D:/Anas%20INFO/XAMPP/htdocs/Highbrow/src/test/Test.java</file>
-            <file>file:/D:/Anas%20INFO/XAMPP/htdocs/Highbrow/src/GUI/AjouterSiegeController.java</file>
-            <file>file:/D:/Anas%20INFO/XAMPP/htdocs/Highbrow/src/services/ChauffeurService.java</file>
             <file>file:/D:/Anas%20INFO/XAMPP/htdocs/Highbrow/src/GUI/Vehicule.fxml</file>
-            <file>file:/D:/Anas%20INFO/XAMPP/htdocs/Highbrow/src/GUI/CalendrierEController.java</file>
-            <file>file:/D:/Anas%20INFO/XAMPP/htdocs/Highbrow/src/GUI/AjouterReclamationController.java</file>
-            <file>file:/D:/Anas%20INFO/XAMPP/htdocs/Highbrow/src/entities/Location.java</file>
-            <file>file:/D:/Anas%20INFO/XAMPP/htdocs/Highbrow/src/GUI/AfficherEntretienController.java</file>
-            <file>file:/D:/Anas%20INFO/XAMPP/htdocs/Highbrow/src/services/EntretienService.java</file>
-            <file>file:/D:/Anas%20INFO/XAMPP/htdocs/Highbrow/src/GUI/Siege.fxml</file>
-            <file>file:/D:/Anas%20INFO/XAMPP/htdocs/Highbrow/src/services/AvisService.java</file>
-            <file>file:/D:/Anas%20INFO/XAMPP/htdocs/Highbrow/src/GUI/ModifierEntretienController.java</file>
-            <file>file:/D:/Anas%20INFO/XAMPP/htdocs/Highbrow/src/GUI/SiegeController.java</file>
         </group>
     </open-files>
 </project-private>

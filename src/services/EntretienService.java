@@ -47,15 +47,24 @@ public class EntretienService implements IService<Entretien>,IEntretienService<E
         //}
     }
 
+//    @Override
+//    public void modifier(Entretien t) throws SQLException {
+//        String req = "UPDATE entretien SET date_entretien = ?,id_mecanicien = ?,id_vehicule = ?,etat_entretien = ? where identretien = ?";
+//        PreparedStatement ps = cnx.prepareStatement(req);
+//        ps.setTimestamp(1,new java.sql.Timestamp(t.getDate_entretien().getTime()));
+//        ps.setInt(2, t.getId_mecanicien());
+//        ps.setInt(3, t.getId_vehicule());
+//        ps.setBoolean(4,t.isEtat_entretien());
+//        ps.setInt(5, t.getIdentretien());
+//        ps.executeUpdate();
+//    }
+    
     @Override
     public void modifier(Entretien t) throws SQLException {
-        String req = "UPDATE entretien SET date_entretien = ?,id_mecanicien = ?,id_vehicule = ?,etat_entretien = ? where identretien = ?";
+        String req = "UPDATE entretien SET date_entretien = ? where identretien = ?";
         PreparedStatement ps = cnx.prepareStatement(req);
         ps.setTimestamp(1,new java.sql.Timestamp(t.getDate_entretien().getTime()));
-        ps.setInt(2, t.getId_mecanicien());
-        ps.setInt(3, t.getId_vehicule());
-        ps.setBoolean(4,t.isEtat_entretien());
-        ps.setInt(5, t.getIdentretien());
+        ps.setInt(2, t.getIdentretien());
         ps.executeUpdate();
     }
 

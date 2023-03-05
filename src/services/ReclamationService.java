@@ -32,7 +32,7 @@ public class ReclamationService implements IService<Reclamation> ,IReclamation<R
         PreparedStatement ps = cnx.prepareStatement(req);
         ps.setInt(1, t.getId_utilisateur() );
         ps.setInt(2, t.getId_siege());
-        ps.setString(3, t.getType_reclamation() .toString());
+        ps.setString(3, TypeReclamation.siege.toString());
         ps.setTimestamp(4, new Timestamp(t.getDate_reclamation().getTime()));
         ps.setBoolean(5,false);
         ps.setString(6, t.getCorps());
@@ -43,7 +43,7 @@ public class ReclamationService implements IService<Reclamation> ,IReclamation<R
         String req = "INSERT INTO Reclamation (id_utilisateur, type_reclamation, date_reclamation, etat, corps) VALUES(?,?,?,?,?)";
         PreparedStatement ps = cnx.prepareStatement(req);
         ps.setInt(1, t.getId_utilisateur() );
-        ps.setString(2, t.getType_reclamation() .toString());
+        ps.setString(2, TypeReclamation.administrateur.toString());
         ps.setTimestamp(3, new Timestamp(t.getDate_reclamation().getTime()));
         ps.setBoolean(4, false);
         ps.setString(5, t.getCorps());

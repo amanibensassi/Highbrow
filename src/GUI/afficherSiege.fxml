@@ -11,16 +11,16 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="682.0" prefWidth="975.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.AfficherSiegeController">
+<AnchorPane id="AnchorPane" prefHeight="1000.0" prefWidth="1500.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.AfficherSiegeController">
    <children>
-      <Label fx:id="labelTitreSieges" alignment="CENTER" contentDisplay="CENTER" layoutX="324.0" layoutY="24.0" prefHeight="46.0" prefWidth="327.0" stylesheets="@../values/values.css" text="La liste des sieges" textAlignment="CENTER">
+      <Label fx:id="labelTitreSieges" alignment="CENTER" contentDisplay="CENTER" layoutX="462.0" layoutY="23.0" prefHeight="64.0" prefWidth="441.0" stylesheets="@../values/values.css" text="La liste des sieges" textAlignment="CENTER">
          <font>
-            <Font size="31.0" />
+            <Font size="43.0" />
          </font>
       </Label>
-      <ScrollPane fx:id="scrollPane" layoutX="11.0" layoutY="173.0" prefHeight="476.0" prefWidth="954.0" style="-fx-background-color: F5F6FA;" AnchorPane.bottomAnchor="33.0" AnchorPane.leftAnchor="11.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="173.0">
+      <ScrollPane fx:id="scrollPane" layoutX="11.0" layoutY="173.0" prefHeight="823.0" prefWidth="1379.0" style="-fx-background-color: F5F6FA;" AnchorPane.bottomAnchor="4.0" AnchorPane.leftAnchor="11.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="173.0">
          <content>
-            <GridPane fx:id="grid" alignment="CENTER" hgap="20.0" layoutX="100.0" layoutY="100.0" prefHeight="386.0" prefWidth="894.0" style="-fx-alignment: center; -fx-padding: 20;" vgap="20.0">
+            <GridPane fx:id="grid" alignment="CENTER" hgap="20.0" layoutX="100.0" layoutY="100.0" prefHeight="764.0" prefWidth="1437.0" style="-fx-alignment: center; -fx-padding: 20;" vgap="20.0">
               <rowConstraints>
                 <RowConstraints maxHeight="14.400003814697257" minHeight="0.0" prefHeight="0.0" vgrow="SOMETIMES" />
               </rowConstraints>
@@ -33,16 +33,19 @@
             <Insets bottom="20.0" left="30.0" right="30.0" top="10.0" />
          </padding>
       </ScrollPane>
-      <Button fx:id="filtrebtn" alignment="CENTER" contentDisplay="CENTER" layoutX="836.0" layoutY="117.0" onAction="#filtrerParRegion" prefHeight="26.0" prefWidth="74.0" styleClass="affichervehiculesbtn" stylesheets="@../values/values.css" text="Filtrer " textAlignment="CENTER" />
-      <ComboBox fx:id="champRegion" layoutX="798.0" layoutY="66.0" prefWidth="150.0" promptText="Region" styleClass="labelTitreSieges" stylesheets="@../values/values.css">
+      <Button fx:id="filtrebtn" alignment="CENTER" contentDisplay="CENTER" layoutX="1025.0" layoutY="115.0" onAction="#filtrerParRegion" prefHeight="46.0" prefWidth="166.0" styleClass="affichervehiculesbtn" stylesheets="@../values/values.css" text="Filtrer " textAlignment="CENTER" />
+      <ComboBox fx:id="champRegion" layoutX="1012.0" layoutY="63.0" prefHeight="43.0" prefWidth="190.0" promptText="Region" styleClass="labelTitreSieges" stylesheets="@../values/values.css">
          <opaqueInsets>
             <Insets left="50.0" />
          </opaqueInsets>
          <padding>
             <Insets left="47.0" />
          </padding></ComboBox>
-      <Button fx:id="retourbtn" alignment="CENTER" contentDisplay="CENTER" layoutX="18.0" layoutY="78.0" mnemonicParsing="false" onAction="#retour" prefHeight="26.0" prefWidth="74.0" styleClass="btnsupprimer" stylesheets="@../values/values.css" text="Retour" textAlignment="CENTER" />
-      <TextField fx:id="barreRecherche" alignment="CENTER" layoutX="376.0" layoutY="78.0" onKeyPressed="#BrreRechercheSiege" prefHeight="26.0" prefWidth="222.0" promptText="rechercher" />
-      <Button fx:id="ajouterbtn" layoutX="18.0" layoutY="117.0" mnemonicParsing="false" onAction="#ajouterSiege" prefHeight="26.0" prefWidth="169.0" styleClass="affichervehiculesbtn" stylesheets="@../values/values.css" text="ajouter un siege " />
+      <Button fx:id="retourbtn" alignment="CENTER" contentDisplay="CENTER" layoutX="36.0" layoutY="46.0" mnemonicParsing="false" onAction="#retour" prefHeight="46.0" prefWidth="170.0" styleClass="btnsupprimer" stylesheets="@../values/values.css" text="Retour" textAlignment="CENTER" />
+      <TextField fx:id="barreRecherche" alignment="CENTER" layoutX="497.0" layoutY="98.0" onKeyPressed="#BrreRechercheSiege" prefHeight="58.0" prefWidth="350.0" promptText="rechercher">
+         <font>
+            <Font size="28.0" />
+         </font></TextField>
+      <Button fx:id="ajouterbtn" layoutX="36.0" layoutY="105.0" mnemonicParsing="false" onAction="#ajouterSiege" prefHeight="26.0" prefWidth="169.0" styleClass="affichervehiculesbtn" stylesheets="@../values/values.css" text="ajouter un siege " />
    </children>
 </AnchorPane>

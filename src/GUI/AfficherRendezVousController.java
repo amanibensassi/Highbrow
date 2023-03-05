@@ -37,13 +37,15 @@ public class AfficherRendezVousController implements Initializable {
      */
     Vente v = new Vente();
     VenteService vs = new VenteService();
-    
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        
-        
-         int rowIndex = 1;
-          int columnIndex = 0;
+
+    }
+
+    public void setdata(int id) {
+        int rowIndex = 1;
+        int columnIndex = 0;
         try {
             List<Vente> Ventes = vs.recuperer();
             System.out.println(Ventes);
@@ -54,7 +56,7 @@ public class AfficherRendezVousController implements Initializable {
                 RdvCardController controllerch = loader.getController();
 
                 controllerch.setRdv(Ventes.get(i));
-                System.out.println("Liste"+Ventes.get(i));
+                System.out.println("Liste" + Ventes.get(i));
                 System.out.println(Ventes.get(i));
                 grid.add(AnchorPane, columnIndex, rowIndex);
                 columnIndex++;
@@ -62,10 +64,10 @@ public class AfficherRendezVousController implements Initializable {
                     columnIndex = 0;
                     rowIndex = rowIndex + 2;
                 }
-        // TODO
-    }    
-    
-}       catch (SQLException ex) {
+                // TODO
+            }
+
+        } catch (SQLException ex) {
             Logger.getLogger(AfficherRendezVousController.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException ex) {
             Logger.getLogger(AfficherRendezVousController.class.getName()).log(Level.SEVERE, null, ex);
@@ -73,4 +75,5 @@ public class AfficherRendezVousController implements Initializable {
             Logger.getLogger(AfficherRendezVousController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+
 }

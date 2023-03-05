@@ -61,7 +61,9 @@ public class RdvCardController implements Initializable {
          ve=v ;
          SimpleDateFormat sdf=new SimpleDateFormat("yyyy/MM/dd hh:mm:ss");
          String dateString=sdf.format(v.getDate_rendez_vous());
-         date_rendez_vous.setText(dateString); 
+         System.out.println(dateString);
+        
+         date_rendez_vous.setText(v.getDate_rendez_vous().toString()); 
 
     }
 
@@ -94,6 +96,7 @@ public class RdvCardController implements Initializable {
         }
         
     }
+
         
     }
     

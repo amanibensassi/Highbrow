@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="1000.0" prefWidth="1900.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.AfficherMecaniciensProfController">
+<AnchorPane id="AnchorPane" prefHeight="1000.0" prefWidth="1500.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.AfficherMecaniciensProfController">
    <children>
       <AnchorPane id="AnchorPane" layoutX="-7.0" prefHeight="1000.0" prefWidth="1900.0" style="-fx-background-color: #A5A5A;">
          <children>
@@ -29,7 +29,6 @@
                   </GridPane>
                </content>
             </ScrollPane>
-            <AnchorPane layoutX="6.0" layoutY="-1.0" prefHeight="1000.0" prefWidth="282.0" style="-fx-background-color: #0F2231;" />
             <AnchorPane layoutX="288.0" prefHeight="200.0" prefWidth="1612.0" style="-fx-background-color: #06C17A;">
                <children>
                   <TextField fx:id="txtrecherche" layoutX="930.0" layoutY="125.0" onKeyPressed="#rechercheMecanicien" prefHeight="38.0" prefWidth="188.0" promptText="Chercher" style="-fx-background-radius: 20;" />

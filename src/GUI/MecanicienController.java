@@ -16,6 +16,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Insets;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -23,6 +24,9 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.Pane;
 import services.MecanicienService;
 
 /**
@@ -50,17 +54,24 @@ public class MecanicienController implements Initializable{
     private ImageView img;
     //String role="user";
     String role="Administrateur";
+    private int id;
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        
+        // TODO
+    }   
+    
+         
+    public void setIdVehicule(int id_v){
+        this.id=id_v;
         if (role=="user"){
             btnmodifier.setVisible(false);
             btnsupprimer.setVisible(false);
         }
-        // TODO
-    }    
+    }
     
     public void setPersonne(Mecanicien m) {
         nomPrenomLabel.setText(m.getNom_mecanicien());
@@ -84,12 +95,23 @@ public class MecanicienController implements Initializable{
     @FXML
     private void detailMeca(MouseEvent event) {
                                 try {
-                                        System.out.println(me);
-                                        FXMLLoader loader = new FXMLLoader(getClass().getResource("AfficherDetailMecanicien.fxml"));
-                                        Parent root = loader.load();
-                                        AfficherDetailMecanicienController controller = loader.getController();
+                                        FXMLLoader loader = new FXMLLoader(getClass().getResource("SideBarUser.fxml"));
+                                        Parent root1 = loader.load();
+                                        BorderPane borderPane = new BorderPane();
+                                        FXMLLoader loader1 = new FXMLLoader(getClass().getResource("AfficherDetailMecanicien.fxml"));
+                                        Parent root2 = loader1.load();
+                                        AfficherDetailMecanicienController controller = loader1.getController();
                                         controller.setData(me);
-                                        mec.getScene().setRoot(root);     
+                                        controller.setIdVehicule(id);
+                                        HBox hbox = new HBox(root1, new Pane(), root2);
+                                        hbox.setSpacing(20);
+
+                                        borderPane.setRight(hbox);
+
+                                        borderPane.setLeft(root1);
+
+                                        borderPane.setPadding(new Insets(10, 10, 30, 10));
+                                        mec.getScene().setRoot(borderPane);  
                                     } catch (IOException ex) {
                                         System.out.println("error1" + ex.getMessage());
                                     }
@@ -100,11 +122,23 @@ public class MecanicienController implements Initializable{
     private void modifier(ActionEvent event) {
         System.out.println("click");
         try {
-                                        FXMLLoader loader = new FXMLLoader(getClass().getResource("ModifierMecanicien.fxml"));
-                                        Parent root = loader.load();
-                                        ModifierMecanicienController controller = loader.getController();
+                                        FXMLLoader loader = new FXMLLoader(getClass().getResource("SideBarUser.fxml"));
+                                        Parent root1 = loader.load();
+                                        BorderPane borderPane = new BorderPane();
+                                        FXMLLoader loader1 = new FXMLLoader(getClass().getResource("ModifierMecanicien.fxml"));
+                                        Parent root2 = loader1.load();
+                                        ModifierMecanicienController controller = loader1.getController();
                                         controller.setData(me);
-                                        mec.getScene().setRoot(root);
+                                        HBox hbox = new HBox(root1, new Pane(), root2);
+                                        hbox.setSpacing(20);
+
+                                        borderPane.setRight(hbox);
+
+                                        borderPane.setLeft(root1);
+
+                                        borderPane.setPadding(new Insets(10, 10, 30, 10));
+                                        mec.getScene().setRoot(borderPane);  
+                                        ///
                                         
                                     } catch (IOException ex) {
                                         System.out.println("error" + ex.getMessage());
@@ -116,14 +150,28 @@ public class MecanicienController implements Initializable{
     private void supprimer(ActionEvent event) throws IOException{
         try{
            ms.supprimer(me);
-           FXMLLoader loader = new FXMLLoader(getClass().getResource("AfficherMecaniciensProf.fxml"));
-           Parent root = loader.load();
-           btnsupprimer.getScene().setRoot(root);
+           FXMLLoader loader = new FXMLLoader(getClass().getResource("SideBarUser.fxml"));
+        Parent root1 = loader.load();
+        BorderPane borderPane = new BorderPane();
+        FXMLLoader loader1 = new FXMLLoader(getClass().getResource("AfficherMecaniciensProf.fxml"));
+        Parent root2 = loader1.load();
+        AfficherMecaniciensProfController fc = loader1.getController();
+        fc.setIdVehicule(id);
+        HBox hbox = new HBox(root1, new Pane(), root2);
+        hbox.setSpacing(20);
+
+        borderPane.setRight(hbox);
+
+        borderPane.setLeft(root1);
+
+        borderPane.setPadding(new Insets(10, 10, 30, 10));
+        mec.getScene().setRoot(borderPane);
         }
         catch(SQLException ex){
             System.out.println(ex.getMessage());
         }
         
     }
+   
     
 }

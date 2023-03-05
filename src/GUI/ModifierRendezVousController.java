@@ -15,6 +15,7 @@ import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+import static java.time.format.DateTimeFormatter.ISO_LOCAL_DATE;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -22,6 +23,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import services.VenteService;
@@ -40,8 +42,10 @@ public class ModifierRendezVousController implements Initializable {
     @FXML
     private Button mod;
     @FXML
-    private TextField heure;
-
+    private ChoiceBox<String> heure;
+    @FXML
+    private Button annuler_id;
+    String lsheures[]={"9","10","11","12","14","15","16","17","18"};
     /**
      * Initializes the controller class.
      */
@@ -49,13 +53,25 @@ public class ModifierRendezVousController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }    
-
+ public void setData(Vente v) {
+        heure.getItems().setAll(lsheures);
+       System.out.println("entered");
+       String[] parts = String.valueOf(v.getDate_rendez_vous()).split(" ");
+        String[] parts1 = parts[1].split(":");
+        int heure = Integer.valueOf(parts1[0]);
+        date_rendezvous.setValue(LocalDate.parse(parts[0], ISO_LOCAL_DATE));
+        idvente=v.getIdvente();
+        this.heure.setValue(String.valueOf(heure));
+        
+        
+        
+    }
     @FXML
     private void modifier(ActionEvent event) throws ParseException {
         try {
                    Vente v = new Vente();
 
-            String dd=date_rendezvous.getValue()+" "+heure.getText()+":00:00.0";
+            String dd=date_rendezvous.getValue()+" "+heure.getValue()+":00:00.0";
            SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-DD HH:mm:ss");
            format.parse(dd);
              v.setDate_rendez_vous(format.parse(dd));
@@ -84,13 +100,15 @@ public class ModifierRendezVousController implements Initializable {
         }
         
     }
-    public void setData(Vente v) {
-       
-        date_rendezvous.setValue(LocalDate.parse(String.valueOf(v.getDate_rendez_vous())));
-        idvente=v.getIdvente();
-        
-        
-        
+   
+
+    @FXML
+    private void annulerModif(ActionEvent event) throws IOException {
+          FXMLLoader loader = new FXMLLoader(getClass().getResource("AfficherRendezVous.fxml"));
+            Parent root = loader.load();
+            AfficherRendezVousController controller = loader.getController();
+            //controller.setData(txtNom.getText() + " " + txtPrenom.getText());
+            mod.getScene().setRoot(root);
     }
     }
     

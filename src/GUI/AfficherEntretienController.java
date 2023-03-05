@@ -18,6 +18,7 @@ import javafx.event.EventType;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Insets;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
@@ -26,7 +27,10 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.Pane;
 import services.EntretienService;
 
 /**
@@ -39,12 +43,8 @@ public class AfficherEntretienController implements Initializable {
     @FXML
     private GridPane grid;
     @FXML
-    private Button ajouterEntr;
-    @FXML
     private TextField txtrecherche;
     EntretienService es = new EntretienService();
-    @FXML
-    private Button btnlister;
     @FXML
     private ImageView imgtrie;
 
@@ -55,9 +55,9 @@ public class AfficherEntretienController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         this.getData();
         // TODO
-    }  
-    
-    private void getData(){
+    }
+
+    private void getData() {
         try {
             List<Entretien> entretiens = es.recuperer();
             int row = 1;
@@ -82,24 +82,30 @@ public class AfficherEntretienController implements Initializable {
         }
     }
 
-    @FXML
-    private void ajouterMecanicien(ActionEvent event) {
-    }
 
     @FXML
     private void rechercheMecanicien(KeyEvent event) {
     }
 
-    @FXML
     private void listerMecaniciens(ActionEvent event) throws IOException {
-        
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("AfficherMecaniciensProf.fxml"));
-            Parent root = loader.load();
-            AfficherMecaniciensProfController controller = loader.getController();
-            grid.getScene().setRoot(root);
-        
+
+       FXMLLoader loader = new FXMLLoader(getClass().getResource("SideBarUser.fxml"));
+        Parent root1 = loader.load();
+        BorderPane borderPane = new BorderPane();
+        FXMLLoader loader1 = new FXMLLoader(getClass().getResource("AfficherMecaniciensProf.fxml"));
+        Parent root2 = loader1.load();
+        AfficherMecaniciensProfController fc = loader1.getController();
+        fc.setIdVehicule(5);
+        HBox hbox = new HBox(root1, new Pane(), root2);
+        hbox.setSpacing(20);
+
+        borderPane.setRight(hbox);
+
+        borderPane.setLeft(root1);
+
+        borderPane.setPadding(new Insets(10, 10, 30, 10));
+        grid.getScene().setRoot(borderPane);
     }
-    
 
     @FXML
     private void trieCroissant(MouseEvent event) throws IOException, SQLException {
@@ -123,11 +129,10 @@ public class AfficherEntretienController implements Initializable {
                     row++;
                 }
             }
-        
-    }
-        catch (SQLException | IOException ex) {
+
+        } catch (SQLException | IOException ex) {
             System.out.println(ex.getMessage());
         }
-        
-}
+
+    }
 }

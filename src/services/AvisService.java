@@ -13,6 +13,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.TreeMap;
 import typeenumeration.Note;
 import utils.MyDB;
 
@@ -160,6 +161,27 @@ public List<Avis> testAvisSiege(int idSV, int iduser) throws SQLException {
     @Override
     public List<Avis> recuperer() throws SQLException {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    public void calculMoyenne(){
+        /*
+        SELECT SUM(CASE note WHEN 'n1' THEN 1 WHEN 'n2' THEN 2 WHEN 'n3' THEN 3 WHEN 'n4' THEN 4 WHEN 'n5' THEN 5 END) as total_etoiles, COUNT(*)*5 as nbr_avis FROM avis WHERE id_vehicule = 1 GROUP BY id_vehicule;
+        */
+    }
+    public TreeMap<Integer,Integer> nombreAvisVehicule(int id) throws SQLException {
+
+        TreeMap<Integer, Integer> Avis = new TreeMap<Integer, Integer>();
+        String req = "SELECT SUM(CASE note WHEN 'n1' THEN 1 WHEN 'n2' THEN 2 WHEN 'n3' THEN 3 "
+                + "WHEN 'n4' THEN 4 WHEN 'n5' THEN 5 END) as total_etoiles, COUNT(*)*5 as nbr_avis "
+                + "FROM avis WHERE id_vehicule = ? GROUP BY id_vehicule;\n" ;
+        PreparedStatement ps = cnx.prepareStatement(req);
+        ps.setInt(1, id);
+        ResultSet rs = ps.executeQuery();
+        while (rs.next()) {
+            Avis.put(rs.getInt("total_etoiles"), rs.getInt("nbr_avis"));
+
+        }
+
+        return Avis;
     }
 
 }

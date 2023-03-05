@@ -34,6 +34,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Insets;
 import javafx.scene.Parent;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
@@ -45,8 +46,11 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.RowConstraints;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
@@ -86,19 +90,16 @@ public class CalendrierEController implements Initializable {
     @FXML
     private ChoiceBox<String> cbvehicules;
     VehiculeService vs = new VehiculeService();
+    private int id_vehicule;
     //private ChoiceBox<String> id_vehicule;
     int id;
+    private int id_mec;
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        try {
-            this.listeVehicules();
-        } catch (SQLException ex) {
-            Logger.getLogger(CalendrierEController.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        currentDate = LocalDate.now();
+       currentDate = LocalDate.now();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern(" MMMM yyyy");
         localDate.setText(currentDate.format(formatter));
 
@@ -109,8 +110,18 @@ public class CalendrierEController implements Initializable {
         } catch (ParseException ex) {
             Logger.getLogger(CalendrierEController.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }    
-    
+    }
+
+//    public void setIdVehicule(int id_v){
+//        this.id_vehicule=id_v;
+//         try {
+//            this.listeVehicules();
+//        } catch (SQLException ex) {
+//            Logger.getLogger(CalendrierEController.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+//        
+//    }
+//    
     private void updateDaysGrid() throws ParseException {
 
         
@@ -277,8 +288,10 @@ public class CalendrierEController implements Initializable {
         
     }
     
-     public void setData(Mecanicien m){
+     public void setData(Mecanicien m ,int id ){
         me.setIdmecanicien(m.getIdmecanicien());
+        id_mec = m.getIdmecanicien();
+        this.id_vehicule=id;
     }
     public void getDate(Date d) throws SQLException{
         List<Date> date_entr = ms.mecaniciensIsDispo(me,d);
@@ -322,7 +335,10 @@ public class CalendrierEController implements Initializable {
         Date date = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(dd);
         t.setDate_entretien(date);
         t.setId_mecanicien(me.getIdmecanicien());
-        t.setId_vehicule(id);
+            System.out.println("ffffffffffff"+id_mec);
+        //t.setId_vehicule(id);
+        t.setId_vehicule(id_vehicule);
+            System.out.println("yyyyy"+id_vehicule);
         es.ajouter(t);
 //        String bienvenue="Vous avez un rendez-vous d'entretient le "+t.getDate_entretien();
 //            System.out.println("NUMTEL"+ms.recupererById(me));
@@ -332,21 +348,48 @@ public class CalendrierEController implements Initializable {
 //                    new com.twilio.type.PhoneNumber("+13157918497"), bienvenue).create();
 //
 //            System.out.println(message.getSid());
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("AfficherEntretien.fxml"));
-        Parent root = loader.load();
-        localDate.getScene().setRoot(root);
+        /////////////////////
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("SideBarUser.fxml"));
+        Parent root1 = loader.load();
+        BorderPane borderPane = new BorderPane();
+        FXMLLoader loader1 = new FXMLLoader(getClass().getResource("AfficherEntretien.fxml"));
+        Parent root2 = loader1.load();
+        HBox hbox = new HBox(root1, new Pane(), root2);
+        hbox.setSpacing(20);
+
+        borderPane.setRight(hbox);
+
+        borderPane.setLeft(root1);
+
+        borderPane.setPadding(new Insets(10, 10, 30, 10));
+        next.getScene().setRoot(borderPane);
+        
+        
+        
+        
         }
     }
 
     @FXML
     private void retourner(ActionEvent event) throws IOException, SQLException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("AfficherDetailMecanicien.fxml"));
-        Parent root = loader.load();
-        AfficherDetailMecanicienController controller = loader.getController();
+         FXMLLoader loader = new FXMLLoader(getClass().getResource("SideBarUser.fxml"));
+        Parent root1 = loader.load();
+        BorderPane borderPane = new BorderPane();
+        FXMLLoader loader1 = new FXMLLoader(getClass().getResource("AfficherDetailMecanicien.fxml"));
+        Parent root2 = loader1.load();
+        AfficherDetailMecanicienController controller = loader1.getController();
         System.out.println(me);
         me=ms.recupererById(me);
         controller.setData(me);
-        next.getScene().setRoot(root);
+        HBox hbox = new HBox(root1, new Pane(), root2);
+        hbox.setSpacing(20);
+
+        borderPane.setRight(hbox);
+
+        borderPane.setLeft(root1);
+
+        borderPane.setPadding(new Insets(10, 10, 30, 10));
+        next.getScene().setRoot(borderPane);
     }
 
     @FXML

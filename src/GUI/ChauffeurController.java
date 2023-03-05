@@ -66,9 +66,7 @@ public class ChauffeurController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        Image image = new Image(getClass().getResourceAsStream("../images/programme.png"));
-//ImageView icon = new ImageView(image);
-        icon.setImage(image);
+       
     }
 private String pa ;
 private String pb ;

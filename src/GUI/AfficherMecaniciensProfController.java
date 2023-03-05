@@ -22,6 +22,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Insets;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
@@ -29,7 +30,10 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.Pane;
 import services.MecanicienService;
 import typeenumeration.Region;
 import typeenumeration.Specialite;
@@ -63,7 +67,7 @@ public class AfficherMecaniciensProfController implements Initializable {
     private ChoiceBox<String> cbspecialite;
     Specialite tabspes []={electricien,mecanicien,tolier};
     Region tabreg []={Region.ariana,Region.beja,Region.ben_Arous,Region.bizerte,Region.gabes,Region.gafsa,Region.jendouba,Region.kairouan,Region.kasserine,Region.kebili,Region.kef,Region.mahdia,Region.manouba,Region.medenine,Region.monastir,Region.monastir,Region.nabeul,Region.sfax,Region.sidi_Bouzid,Region.siliana,Region.sousse,Region.tataouine,Region.tozeur,Region.tunis,Region.zaghouan};
-    
+    private int id;
     /**
      * Initializes the controller class.
      */
@@ -78,7 +82,24 @@ public class AfficherMecaniciensProfController implements Initializable {
 //        cbregion.setItems(listRegion);
 //        ObservableList<String> listSpecialite = FXCollections.observableArrayList("mecanicien","tolier","electricien");
 //        cbspecialite.setItems(listSpecialite);
-        try {
+//        try {
+//            personnes = ms.recuperer();
+//        } catch (SQLException ex) {
+//            Logger.getLogger(AfficherMecaniciensProfController.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+//        this.getData();
+//        if (role=="User"){
+//            ajouterMec.setVisible(false);
+//        }
+//        this.trie();
+        
+    }
+    
+        
+        
+    public void setIdVehicule(int id_v){
+        this.id=id_v;
+         try {
             personnes = ms.recuperer();
         } catch (SQLException ex) {
             Logger.getLogger(AfficherMecaniciensProfController.class.getName()).log(Level.SEVERE, null, ex);
@@ -88,8 +109,8 @@ public class AfficherMecaniciensProfController implements Initializable {
             ajouterMec.setVisible(false);
         }
         this.trie();
-        
     }
+    
     
     private void getData(){
         try {
@@ -103,7 +124,7 @@ public class AfficherMecaniciensProfController implements Initializable {
                 //passage de parametres
                 MecanicienController controller = loader.getController();
                 controller.setPersonne(personnes.get(i));
-
+                controller.setIdVehicule(id);
                 grid.add(pane, column, row);
                 column++;
                 if (column > 0) {
@@ -111,6 +132,7 @@ public class AfficherMecaniciensProfController implements Initializable {
                     row++;
                 }
             }
+            System.out.println("ID"+id);
         } catch (SQLException | IOException ex) {
             System.out.println(ex.getMessage());
         }
@@ -118,11 +140,21 @@ public class AfficherMecaniciensProfController implements Initializable {
 
     @FXML
     private void ajouterMecanicien(ActionEvent event) throws IOException {
-        
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("AjouterMecanicien.fxml"));
-            Parent root = loader.load();
-            AjouterMecanicienController controller = loader.getController();
-            grid.getScene().setRoot(root);
+
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("SideBarUser.fxml"));
+        Parent root1 = loader.load();
+        BorderPane borderPane = new BorderPane();
+        FXMLLoader loader1 = new FXMLLoader(getClass().getResource("AjouterMecanicien.fxml"));
+        Parent root2 = loader1.load();
+        HBox hbox = new HBox(root1, new Pane(), root2);
+        hbox.setSpacing(20);
+
+        borderPane.setRight(hbox);
+
+        borderPane.setLeft(root1);
+
+        borderPane.setPadding(new Insets(10, 10, 30, 10));
+        grid.getScene().setRoot(borderPane);
         
     }
 /*
@@ -139,11 +171,21 @@ public class AfficherMecaniciensProfController implements Initializable {
 
     @FXML
     private void listerEntretiens(ActionEvent event) throws IOException {
-        
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("AfficherEntretien.fxml"));
-            Parent root = loader.load();
-            AfficherEntretienController controller = loader.getController();
-            grid.getScene().setRoot(root);
+ 
+           FXMLLoader loader = new FXMLLoader(getClass().getResource("SideBarUser.fxml"));
+        Parent root1 = loader.load();
+        BorderPane borderPane = new BorderPane();
+        FXMLLoader loader1 = new FXMLLoader(getClass().getResource("AfficherEntretien.fxml"));
+        Parent root2 = loader1.load();
+        HBox hbox = new HBox(root1, new Pane(), root2);
+        hbox.setSpacing(20);
+
+        borderPane.setRight(hbox);
+
+        borderPane.setLeft(root1);
+
+        borderPane.setPadding(new Insets(10, 10, 30, 10));
+        grid.getScene().setRoot(borderPane);
         
     }
 
@@ -236,5 +278,4 @@ public class AfficherMecaniciensProfController implements Initializable {
             }
         });
     }
-    
 }

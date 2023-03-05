@@ -28,6 +28,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Insets;
 import javafx.scene.Parent;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
@@ -39,8 +40,11 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.RowConstraints;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
@@ -320,14 +324,24 @@ public class ModifierEntretienController implements Initializable {
         else {
         Date date = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(dd);
         t.setDate_entretien(date);
-        t.setId_mecanicien(me.getIdmecanicien());
-        t.setId_vehicule(1);
+        //t.setId_mecanicien(me.getIdmecanicien());
         t.setIdentretien(id_entr);
         System.out.println("modification"+t);
         es.modifier(t);
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("AfficherEntretien.fxml"));
-        Parent root = loader.load();
-        localDate.getScene().setRoot(root);
+         FXMLLoader loader = new FXMLLoader(getClass().getResource("SideBarUser.fxml"));
+        Parent root1 = loader.load();
+        BorderPane borderPane = new BorderPane();
+        FXMLLoader loader1 = new FXMLLoader(getClass().getResource("AfficherEntretien.fxml"));
+        Parent root2 = loader1.load();
+        HBox hbox = new HBox(root1, new Pane(), root2);
+        hbox.setSpacing(20);
+
+        borderPane.setRight(hbox);
+
+        borderPane.setLeft(root1);
+
+        borderPane.setPadding(new Insets(10, 10, 30, 10));
+        localDate.getScene().setRoot(borderPane);
         }
     }
 
@@ -357,10 +371,20 @@ public class ModifierEntretienController implements Initializable {
 
     @FXML
     private void retourner(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("AfficherEntretien.fxml"));
-        Parent root = loader.load();
-        AfficherEntretienController controller = loader.getController();
-        next.getScene().setRoot(root);
+         FXMLLoader loader = new FXMLLoader(getClass().getResource("SideBarUser.fxml"));
+        Parent root1 = loader.load();
+        BorderPane borderPane = new BorderPane();
+        FXMLLoader loader1 = new FXMLLoader(getClass().getResource("CalendrierE.fxml"));
+        Parent root2 = loader1.load();
+        HBox hbox = new HBox(root1, new Pane(), root2);
+        hbox.setSpacing(20);
+
+        borderPane.setRight(hbox);
+
+        borderPane.setLeft(root1);
+
+        borderPane.setPadding(new Insets(10, 10, 30, 10));
+        next.getScene().setRoot(borderPane);
     }
 
     @FXML

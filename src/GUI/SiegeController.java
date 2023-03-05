@@ -12,9 +12,12 @@ import entities.Vehicule;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
+import java.text.ParseException;
 import java.util.List;
 import java.util.Optional;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -33,6 +36,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.ColumnConstraints;
@@ -40,6 +45,7 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.RowConstraints;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 import services.SiegeService;
 import services.VehiculeService;
@@ -76,15 +82,18 @@ public class SiegeController implements Initializable {
     private Button affichervehiculesbtn;
     @FXML
     private Button idVoirChauffeur;
+    @FXML
+    private ImageView btnreclamation;
     
-    
+    int ids ;
+    String role="User";
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 
     }
     
     public void setSiege(Siege c) {
-
+        ids=c.getIdsiege();
         nomsiegeLabel.setText(c.getNom_siege());
         mailLabel.setText(c.getMail());
         adresseLabel.setText(c.getAdresse());
@@ -202,7 +211,7 @@ public class SiegeController implements Initializable {
             alert.showAndWait();
                            try {
                                
-                                   FXMLLoader loader = new FXMLLoader(getClass().getResource("SideBarUser.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("SideBarUser.fxml"));
             Parent root1 = loader.load();
             BorderPane borderPane = new BorderPane();
             FXMLLoader loader1 = new FXMLLoader(getClass().getResource("afficherVehiculeBySiege.fxml"));
@@ -322,6 +331,36 @@ public class SiegeController implements Initializable {
             borderPane.setPadding(new Insets(10, 10, 30, 10));
             idVoirChauffeur.getScene().setRoot(borderPane);   
         
+        
+    }
+
+    @FXML
+    private void AjouterReclamation(MouseEvent event) throws IOException, ParseException {
+        
+        if (role=="User"){
+        FXMLLoader loader2 = new FXMLLoader(getClass().getResource("ajouterReclamation.fxml"));
+        Parent root2 = loader2.load();
+        AjouterReclamationController md1 = loader2.getController();
+        md1.setIdSiege(ids);
+           
+        Stage modalStage = new Stage();
+        modalStage.initModality(Modality.APPLICATION_MODAL.APPLICATION_MODAL);
+        modalStage.setScene(new Scene(root2));
+        modalStage.showAndWait();
+        }
+        if (role=="proprietaire_agence"){
+            
+        FXMLLoader loader2 = new FXMLLoader(getClass().getResource("AfficherReclamationUtilisateur.fxml"));
+        Parent root2 = loader2.load();
+        System.out.println("IIIIDIDIDIDIDI"+ids);
+        AfficherReclamationUtilisateurController md1 = loader2.getController();
+        md1.setIds(ids);
+      md1.getData();
+        Stage modalStage = new Stage();
+        modalStage.initModality(Modality.APPLICATION_MODAL.APPLICATION_MODAL);
+        modalStage.setScene(new Scene(root2));
+        modalStage.showAndWait();
+        }
         
     }
 

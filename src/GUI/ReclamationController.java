@@ -6,6 +6,7 @@
 package GUI;
 
 import entities.Reclamation;
+import entities.Siege;
 import java.io.File;
 import java.net.URL;
 import java.sql.SQLException;
@@ -21,6 +22,7 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.layout.HBox;
 import services.ReclamationService;
+import services.SiegeService;
 
 /**
  * FXML Controller class
@@ -39,8 +41,12 @@ public class ReclamationController implements Initializable {
     private Label date;
     Reclamation re = new Reclamation();
     ReclamationService rs = new ReclamationService();
+    SiegeService siegeservice = new SiegeService();
     @FXML
     private HBox grid;
+    String role="Administrateur";
+    @FXML
+    private Label lbltypereclamation;
     
     /**
      * Initializes the controller class.
@@ -50,7 +56,7 @@ public class ReclamationController implements Initializable {
         // TODO
     }    
     
-     public void setReclamation(Reclamation r) throws ParseException {
+     public void setReclamation(Reclamation r) throws ParseException, SQLException {
         type_rec.setText(r.getType_reclamation().toString());
         corp.setText(r.getCorps());
         etat.setSelected(r.isEtat());
@@ -60,6 +66,26 @@ public class ReclamationController implements Initializable {
         //Date datee = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(r.getDate_reclamation().toString());
         //re.setDate_reclamation(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(r.getDate_reclamation()));
         re.setEtat(r.isEtat());
+        if (role=="User"){
+            //if (re.isEtat()) {
+            etat.setDisable(true);
+        //}
+        }
+        if (role=="Administrateur" && r.getId_siege()!=0){
+            etat.setDisable(true);
+        }
+         System.out.println("id siege ggggggg"+re.getId_siege());
+        if(r.getId_siege()==0)
+        {
+        lbltypereclamation.setText("Administrateur");
+        
+        }
+        else{
+           Siege s = siegeservice.recupererById(r.getId_siege());
+            String nomsiege = s.getNom_siege();
+            lbltypereclamation.setText(nomsiege);
+        
+        }
         re.setIdreclamation(r.getIdreclamation());
          System.out.println("rrrr"+re);
     }
