@@ -87,9 +87,13 @@ public class SiegeController implements Initializable {
     private ImageView btnreclamation;
     
     int ids ;
-    String role="User";
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        if (UserConn.role.toString().equals("client")){
+            modifierButton.setVisible(false);
+            btnsupprimer.setVisible(false);
+            idVoirChauffeur.setVisible(false);
+        }
 
     }
     
@@ -339,7 +343,7 @@ public class SiegeController implements Initializable {
     @FXML
     private void AjouterReclamation(MouseEvent event) throws IOException, ParseException {
         
-        if (role=="User"){
+        if (UserConn.role.toString().equals("client")){
         FXMLLoader loader2 = new FXMLLoader(getClass().getResource("ajouterReclamation.fxml"));
         Parent root2 = loader2.load();
         AjouterReclamationController md1 = loader2.getController();
@@ -350,14 +354,14 @@ public class SiegeController implements Initializable {
         modalStage.setScene(new Scene(root2));
         modalStage.showAndWait();
         }
-        if (role=="proprietaire_agence"){
+        if (UserConn.role.toString().equals("proprietaire_agence")){
             
         FXMLLoader loader2 = new FXMLLoader(getClass().getResource("AfficherReclamationUtilisateur.fxml"));
         Parent root2 = loader2.load();
         System.out.println("IIIIDIDIDIDIDI"+ids);
         AfficherReclamationUtilisateurController md1 = loader2.getController();
         md1.setIds(ids);
-      md1.getData();
+        md1.getData();
         Stage modalStage = new Stage();
         modalStage.initModality(Modality.APPLICATION_MODAL.APPLICATION_MODAL);
         modalStage.setScene(new Scene(root2));

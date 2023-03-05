@@ -4,6 +4,7 @@ import entities.Siege;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
@@ -32,6 +33,7 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import services.SiegeService;
+import services.UserConn;
 import typeenumeration.Region;
 
 public class AfficherSiegeController implements Initializable {
@@ -60,11 +62,19 @@ public class AfficherSiegeController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        
         ObservableList<String> listRegion = FXCollections.observableArrayList("ariana", "beja", "ben_Arous", "bizerte", "gabes", "gafsa", "jendouba", "kairouan", "kasserine", "kebili", "kef", "mahdia", "manouba", "medenine", "monastir", "nabeul", "sfax", "sidi_Bouzid", "siliana", "sousse", "tataouine", "tozeur", "tunis", "zaghouan");
         champRegion.setItems(listRegion);
-
+        List<Siege> sieges =new ArrayList<>();
         try {
-            List<Siege> sieges = ps.recuperer();
+            if (UserConn.role.toString().equals("client")) {
+                ajouterbtn.setVisible(false);
+           sieges = ps.recuperer();
+            }
+            if (UserConn.role.toString().equals("proprietaire_agence")) {
+           sieges = ps.recupererSiegeByUtilisateur(UserConn.idutilisateur);
+            }
+            
             int row = 1;
             int column = 0;
             for (int i = 0; i < sieges.size(); i++) {
@@ -90,7 +100,7 @@ public class AfficherSiegeController implements Initializable {
             System.out.println("Erreur de chargement de l'interface utilisateur : " + ex.getMessage());
         }
 
-    }
+    }   
 
     @FXML
     private void filtrerParRegion(ActionEvent event) {
@@ -142,7 +152,6 @@ public class AfficherSiegeController implements Initializable {
             BorderPane borderPane = new BorderPane();
             FXMLLoader loader1 = new FXMLLoader(getClass().getResource("afficherSiege.fxml"));
             Parent root2 = loader1.load();
-            AjouterSiegeController controller = loader.getController();
             HBox hbox = new HBox(root1, new Pane(), root2);
             hbox.setSpacing(20);
 

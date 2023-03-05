@@ -42,6 +42,7 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import services.SiegeService;
+import services.UserConn;
 import services.VehiculeService;
 import typeenumeration.Carburant;
 import typeenumeration.Etat;
@@ -93,6 +94,9 @@ public class AfficherVehiculeBySiegeController implements Initializable {
 
         Etat[] tabetat = {Etat.a_louer, Etat.a_vendre, Etat.louer};
         etat.getItems().setAll(tabetat);
+        if (UserConn.role.toString().equals("client")){
+            ajouterbtn.setVisible(false);
+        }
     }
 
     public void dynamicinitialize(int id) {

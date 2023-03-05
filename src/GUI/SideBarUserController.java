@@ -6,6 +6,7 @@
 package GUI;
 
 import entities.Location;
+import entities.Utilisateur;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
@@ -67,7 +68,7 @@ public class SideBarUserController implements Initializable {
     private AnchorPane consulter;
     @FXML
     private Button id_entretient;
-
+    String rr = UserConn.role.toString();
     /**
      * Initializes the controller class.
      */
@@ -89,11 +90,14 @@ public class SideBarUserController implements Initializable {
 //        }
 
     }
-
+    Utilisateur usercnnecter = new Utilisateur();
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         System.out.println("role intiliazeeeee +" + UserConn.role);
-        String rr = UserConn.role.toString();
+        usercnnecter.setNom(UserConn.nom);
+        usercnnecter.setPrenom(UserConn.prenom);
+        usercnnecter.setMail(UserConn.mail);
+        usercnnecter.setNum_tel(UserConn.num_tel);
         if (rr.equals("proprietaire_agence")) {
             System.out.println("west if side bar" + rr);
             siegesDisponible.setText("mes sieges");
@@ -110,7 +114,7 @@ public class SideBarUserController implements Initializable {
     @FXML
     private void GoToProfil(ActionEvent event) throws IOException {
 
-        if (roleUser.equals("administrateur")) {
+        if (rr.equals("administrateur")) {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("SideBarUser.fxml"));
             Parent root1 = loader.load();
             SideBarUserController cc = loader.getController();
@@ -118,6 +122,8 @@ public class SideBarUserController implements Initializable {
             BorderPane borderPane = new BorderPane();
             FXMLLoader loader1 = new FXMLLoader(getClass().getResource("AdminProfile.fxml"));
             Parent root2 = loader1.load();
+            AdminProfileController ac = loader1.getController();
+            ac.setData(usercnnecter);
             HBox hbox = new HBox(root1, new Pane(), root2);
             hbox.setSpacing(20);
             borderPane.setRight(hbox);
@@ -126,7 +132,7 @@ public class SideBarUserController implements Initializable {
             profil.getScene().setRoot(borderPane);
         }
 
-        if (roleUser.equals("client")) {
+        if (rr.equals("client")) {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("SideBarUser.fxml"));
             Parent root1 = loader.load();
             SideBarUserController cc = loader.getController();
@@ -134,6 +140,8 @@ public class SideBarUserController implements Initializable {
             BorderPane borderPane = new BorderPane();
             FXMLLoader loader1 = new FXMLLoader(getClass().getResource("ClientProfile.fxml"));
             Parent root2 = loader1.load();
+             ClientProfileController ac = loader1.getController();
+            ac.setData(usercnnecter);
             HBox hbox = new HBox(root1, new Pane(), root2);
             hbox.setSpacing(20);
             borderPane.setRight(hbox);
@@ -142,7 +150,7 @@ public class SideBarUserController implements Initializable {
             profil.getScene().setRoot(borderPane);
         }
 
-        if (roleUser.equals("proprietaire_agence")) {
+        if (rr.equals("proprietaire_agence")) {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("SideBarUser.fxml"));
             Parent root1 = loader.load();
             SideBarUserController cc = loader.getController();
@@ -150,6 +158,8 @@ public class SideBarUserController implements Initializable {
             BorderPane borderPane = new BorderPane();
             FXMLLoader loader1 = new FXMLLoader(getClass().getResource("PropProfile.fxml"));
             Parent root2 = loader1.load();
+              PropProfileController ac = loader1.getController();
+            ac.setData(usercnnecter);
             HBox hbox = new HBox(root1, new Pane(), root2);
             hbox.setSpacing(20);
             borderPane.setRight(hbox);
@@ -221,11 +231,11 @@ public class SideBarUserController implements Initializable {
 
     @FXML
     private void GoToSiegesDisponibles(ActionEvent event) throws IOException {
-        if (roleUser.equals("proprietaire_agence")) {
+    
             FXMLLoader loader = new FXMLLoader(getClass().getResource("SideBarUser.fxml"));
             Parent root1 = loader.load();
-            SideBarUserController cc = loader.getController();
-            cc.setRole(roleUser);
+         
+       
             BorderPane borderPane = new BorderPane();
             FXMLLoader loader1 = new FXMLLoader(getClass().getResource("afficherSiege.fxml"));
             Parent root2 = loader1.load();
@@ -239,7 +249,7 @@ public class SideBarUserController implements Initializable {
 
             borderPane.setPadding(new Insets(10, 10, 30, 10));
             siegesDisponible.getScene().setRoot(borderPane);
-        }
+        
     }
 
     @FXML

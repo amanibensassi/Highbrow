@@ -33,6 +33,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javax.mail.MessagingException;
 import services.SiegeService;
+import services.UserConn;
 import typeenumeration.Region;
 
 /**
@@ -121,7 +122,7 @@ public class AjouterSiegeController implements Initializable {
             s.setRegion(Region.valueOf(r));
             
             
-            s.setId_utilisateur(1);
+            s.setId_utilisateur(UserConn.idutilisateur );
             ps.ajouter(s);
             //ps.sendWelcomeEmail(emailtf.getText());
             Alert alert = new Alert(Alert.AlertType.INFORMATION);

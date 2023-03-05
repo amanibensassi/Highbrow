@@ -38,6 +38,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import services.AvisService;
+import services.UserConn;
 
 import services.VehiculeService;
 import typeenumeration.Note;
@@ -106,12 +107,28 @@ public class VehiculeController implements Initializable {
     private ImageView rendezvousVente;
     @FXML
     private ImageView voirRendezVous;
+    @FXML
+    private HBox hboxavis;
+    @FXML
+    private Label lblavis;
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        if (UserConn.role.toString().equals("client")){
+            supprimerbtn.setVisible(false);
+            modifierbtn.setVisible(false);
+            id_entretient.setVisible(false);
+            voirRendezVous.setVisible(false);
+            lblnbretoiles.setVisible(false);
+        }
+        if (UserConn.role.toString().equals("proprietaire_agence")){
+            reserverbtn.setVisible(false);
+            hboxavis.setVisible(false);
+            lblavis.setVisible(false);
+        }
 
     }
     private int idVehicule;

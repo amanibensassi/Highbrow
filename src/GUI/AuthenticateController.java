@@ -96,7 +96,8 @@ public class AuthenticateController implements Initializable {
 //            FXMLLoader loader = new FXMLLoader(getClass().getResource("ClientProfile.fxml"));
 //            Parent root;
                 System.out.println("auth" + us.authenticate(mail.getText(), mot_de_passe.getText()));
-                u = us.authenticate(mail.getText(), mot_de_passe.getText());
+                u=us.authenticate(mail.getText(), mot_de_passe.getText());
+
                 //UserConn.role = u.getRole();
                 System.out.println("isEtat" + u.isEtat());
                 if (!u.isEtat()) {
