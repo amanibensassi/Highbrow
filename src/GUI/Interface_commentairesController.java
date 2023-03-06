@@ -125,17 +125,20 @@ import services.UserService;
                         /*********************session id********************/
      if (cs.recupererInteractionUser(com).getNbr_like()==true){
                  
-            String img = "C:\\xampp\\htdocs\\pidev\\Highbrow\\src\\media\\full_up.png";
-            File file = new File(img);
-            Image img1 = new Image(file.toURI().toString());
+           
+            
+              String imagePath = "/media/full_up.png";
+            URL imageURL = getClass().getResource(imagePath);
+            Image img1 = new Image(imageURL.toString());  
             this.like_img.setImage(img1);
             this.like_button.setDisable(true);
              this.dislike_button.setDisable(true);
            }else if(cs.recupererInteractionUser(com).getNbr_dislike()==true){
                
-            String img = "C:\\xampp\\htdocs\\pidev\\Highbrow\\src\\media\\full_down.png";
-            File file = new File(img);
-            Image img1 = new Image(file.toURI().toString());
+            
+             String imagePath = "/media/full_down.png";
+            URL imageURL = getClass().getResource(imagePath);
+            Image img1 = new Image(imageURL.toString());  
             this.dislike_img.setImage(img1);
             this.dislike_button.setDisable(true);
               this.like_button.setDisable(true);
