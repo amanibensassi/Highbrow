@@ -137,7 +137,7 @@ public class AjouterReclamationController implements Initializable {
         SystemTray tray = SystemTray.getSystemTray();
         try {
             tray.add(trayIcon);
-            trayIcon.displayMessage("Notification Message", "Notification Content", MessageType.INFO);
+            trayIcon.displayMessage("Votre réclamation a bien été ajouté", "Nous allons bientot traitée votre réclamation", MessageType.INFO);
         } catch (AWTException e) {
             System.err.println("Could not add TrayIcon to SystemTray");}
         

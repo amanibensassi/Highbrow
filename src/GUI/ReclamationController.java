@@ -9,6 +9,7 @@ import entities.Reclamation;
 import entities.Siege;
 import entities.Utilisateur;
 import java.io.File;
+import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.text.ParseException;
@@ -17,12 +18,17 @@ import java.util.Date;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Insets;
+import javafx.scene.Parent;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.Pane;
 import services.ReclamationService;
 import services.SiegeService;
 import services.UserConn;
@@ -102,10 +108,10 @@ public class ReclamationController implements Initializable {
     }
 
     @FXML
-    private void changeretat(ActionEvent event) throws SQLException {
+    private void changeretat(ActionEvent event) throws SQLException, IOException {
         re.setEtat(etat.isSelected());
         System.out.println("re"+re);
-        rs.modifier(re);
+        rs.modifier(re);      
     }
     
     

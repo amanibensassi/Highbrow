@@ -65,13 +65,12 @@ public class AjouterUserController implements Initializable {
     private Button ajouter;
     @FXML
     private DatePicker date_de_naissance;
-    @FXML
     private TextField photo_permis_avant;
-    @FXML
     private TextField photo_permis_arriere;
-    @FXML
     private TextField image;
+        File file;
     File file1;
+    File file2;
 
     /**
      * Initializes the controller class.
@@ -82,11 +81,13 @@ public class AjouterUserController implements Initializable {
             
             Role tabrole []= {client,proprietaire_agence} ;
             
-            
-            File file = null ;
-            File file2=null;
+           
     @FXML
-    private Button AjouterImage;
+    private Button img;
+    @FXML
+    private Button imagearrire;
+    @FXML
+    private Button imageavant;
             
    @FXML
     private File AjouterImage(ActionEvent event) {
@@ -128,7 +129,87 @@ public class AjouterUserController implements Initializable {
          return file2;
      }
 
-    
+      @FXML
+    private File ajoutarrire(ActionEvent event) {
+         Path to1 = null;
+        String m = null;
+        String path = "C:\\xampp\\htdocs\\img";
+        JFileChooser chooser = new JFileChooser();
+
+        FileNameExtensionFilter filter = new FileNameExtensionFilter(
+                "JPG & PNG Images", "jpg", "jpeg", "PNG");
+        chooser.setFileFilter(filter);
+        int returnVal = chooser.showOpenDialog(null);
+        if (returnVal == JFileChooser.APPROVE_OPTION) {
+            m = chooser.getSelectedFile().getAbsolutePath();
+
+            file1 = chooser.getSelectedFile();
+            String fileName = file1.getName();
+
+            if (chooser.getSelectedFile() != null) {
+
+                try {
+                    Path from = Paths.get(chooser.getSelectedFile().toURI());
+                    to1 = Paths.get(path + "\\" + fileName);
+                    //           to2 = Paths.get("src\\"+path+"\\"+file.getName()+".png");
+
+                    CopyOption[] options = new CopyOption[]{
+                        StandardCopyOption.REPLACE_EXISTING,
+                        StandardCopyOption.COPY_ATTRIBUTES
+                    };
+                    Files.copy(from, to1, options);
+                    System.out.println("added");
+                    System.out.println(file1);
+
+                } catch (IOException ex) {
+                    System.out.println();
+                }
+            }
+
+        }
+        return file1;
+    }
+
+    @FXML
+    private File ajouterimageavant(ActionEvent event) {
+         Path to1 = null;
+        String m = null;
+        String path = "C:\\xampp\\htdocs\\img";
+        JFileChooser chooser = new JFileChooser();
+
+        FileNameExtensionFilter filter = new FileNameExtensionFilter(
+                "JPG & PNG Images", "jpg", "jpeg", "PNG");
+        chooser.setFileFilter(filter);
+        int returnVal = chooser.showOpenDialog(null);
+        if (returnVal == JFileChooser.APPROVE_OPTION) {
+            m = chooser.getSelectedFile().getAbsolutePath();
+
+            file = chooser.getSelectedFile();
+            String fileName = file.getName();
+
+            if (chooser.getSelectedFile() != null) {
+
+                try {
+                    Path from = Paths.get(chooser.getSelectedFile().toURI());
+                    to1 = Paths.get(path + "\\" + fileName);
+                    //           to2 = Paths.get("src\\"+path+"\\"+file.getName()+".png");
+
+                    CopyOption[] options = new CopyOption[]{
+                        StandardCopyOption.REPLACE_EXISTING,
+                        StandardCopyOption.COPY_ATTRIBUTES
+                    };
+                    Files.copy(from, to1, options);
+                    System.out.println("added");
+                    System.out.println(file);
+
+                } catch (IOException ex) {
+                    System.out.println();
+                }
+            }
+
+        }
+        return file;
+    }
        
     
     @Override
@@ -158,7 +239,9 @@ public class AjouterUserController implements Initializable {
 //        f3.close();
 //
 //        u.setImage(img);
-        if (nom.getText()==null || prenom.getText() ==null || mail.getText()==null || role.getValue()==null || num_tel.getText()==null || date_de_naissance.getValue()==null  || password.getText()==null  || photo_permis_arriere.getText()==null || photo_permis_avant.getText()==null || image.getText()==null)      
+        if (nom.getText()==null || prenom.getText() ==null || mail.getText()==null || role.getValue()==null
+                || num_tel.getText()==null || date_de_naissance.getValue()==null  || password.getText()==null 
+               )      
         {   Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Failed");
             alert.setHeaderText("Attention !!");
@@ -190,17 +273,31 @@ public class AjouterUserController implements Initializable {
         u.setDate_naissance(Date.valueOf(date_de_naissance.getValue()));
         u.setMot_de_passe(pss.crypterPassword(password.getText()));
         u.setRole(role.getValue());
-        u.setPhotopermis_avant(photo_permis_avant.getText());
-        u.setPhotopermis_arriere(photo_permis_arriere.getText());
-       
+//        u.setPhotopermis_avant(photo_permis_avant.getText());
+//        u.setPhotopermis_arriere(photo_permis_arriere.getText());
+//       
 
-        FileInputStream f3 = new FileInputStream(file2);
-        byte[] data2 = new byte[(int) file2.length()];
-        String img = file2.getName();
-        f3.read(data2);
-        f3.close();
+       FileInputStream fl = new FileInputStream(file2);
+            byte[] data = new byte[(int) file2.length()];
+            String iamge = file2.getName();
+            fl.read(data);
+            fl.close();
 
-        u.setImage(img);
+            FileInputStream f2 = new FileInputStream(file);
+            byte[] data1 = new byte[(int) file.length()];
+            String permis = file.getName();
+            f2.read(data1);
+            f2.close();
+
+            FileInputStream f3 = new FileInputStream(file1);
+            byte[] data2 = new byte[(int) file1.length()];
+            String permisBack = file1.getName();
+            f3.read(data2);
+            f3.close();
+
+        u.setImage(iamge);
+        u.setPhotopermis_arriere(permisBack);
+        u.setPhotopermis_avant(permis);
             us.ajouter(u);
             System.out.println(u);
             FXMLLoader loader = new FXMLLoader(getClass().getResource("authenticate.fxml"));
@@ -213,6 +310,9 @@ public class AjouterUserController implements Initializable {
     }
 
   
-    }}
+    }
+
+  
+}
 
    

@@ -20,6 +20,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import services.LocationService;
+import services.UserConn;
 
 /**
  * FXML Controller class
@@ -47,7 +48,7 @@ public class ListeMesLocationsController implements Initializable {
             int rowIndex = 1;
             int columnIndex = 0;
 
-            List<Location> locations = ls.recupererAllByIdUser(1);
+            List<Location> locations = ls.recupererAllByIdUser(UserConn.idutilisateur);
             
             for (int i = 0; i < locations.size(); i++) {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("CardLocation.fxml"));

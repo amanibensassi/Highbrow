@@ -112,7 +112,7 @@ public class AuthenticateController implements Initializable {
                     alert.show();
                     System.out.println("Alerte votre compte est désactivé");
                 } else {
-                    //UserConn.role=u.getRole();
+                    //authenticate.role=u.getRole();
                     System.out.println("authenticaaaate" + UserConn.role);
                     ClientProfileController controller = loader1.getController();
                     controller.setData(u);

@@ -40,7 +40,7 @@
                   <Font name="System Bold Italic" size="25.0" />
                </font>
             </Button>
-            <DatePicker fx:id="date_de_naissance" layoutX="880.0" layoutY="446.0" prefHeight="57.0" prefWidth="498.0" style="-fx-background-radius: 15; -fx-background-color: #FFFFFF;" />
+            <DatePicker fx:id="date_de_naissance" layoutX="880.0" layoutY="446.0" prefHeight="57.0" prefWidth="498.0" promptText="date naissance" style="-fx-background-radius: 15; -fx-background-color: #FFFFFF;" />
             <Button fx:id="image" layoutX="231.0" layoutY="735.0" mnemonicParsing="false" onAction="#AjouterImage" prefHeight="77.0" prefWidth="237.0" style="-fx-background-color: #d6e0d8;" text="ajouter_image">
                <font>
                   <Font size="30.0" />

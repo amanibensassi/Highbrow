@@ -454,6 +454,7 @@ public class CalendrierController implements Initializable {
 
     @FXML
     private void reserverVehicule(ActionEvent event) throws IOException {
+        System.out.println("looooooooooooooooooooooooooooooooooooooooooooooooo");
         java.sql.Date ddebut = java.sql.Date.valueOf(datedebut.getValue());
         System.out.println(ddebut);
         java.sql.Date dfin = java.sql.Date.valueOf(datefin.getValue());
@@ -466,15 +467,11 @@ public class CalendrierController implements Initializable {
         } else {
             opch = false;
         }
-        Location l = new Location(ddebut, dfin, opch, idv, 1);
+        Location l = new Location(ddebut, dfin, opch, idv, UserConn.idutilisateur);
         System.out.println(l);
         try {
             ls.ajouter(l);
-            Twilio.init("AC84ff7691013163d92fc31146ac61b9dc", "edd707b9aca44d01c33f87876d7b0db8");
-            Message message = Message.creator(
-                    new com.twilio.type.PhoneNumber("+21653723896"),
-                    new com.twilio.type.PhoneNumber("+12762888645"),
-                    "Bonjour " + UserConn.nom + " " + UserConn.prenom + " Votre reservation au vehicule " + veh.getMarque() + ", immatriculation: " + veh.getImmatriculation() + " du " + datedebut.getValue() + " au " + datefin.getValue() + " a éte effectuer avec succes.").create();
+           
             FXMLLoader loader = new FXMLLoader(getClass().getResource("SideBarUser.fxml"));
             Parent root1 = loader.load();
             BorderPane borderPane = new BorderPane();
@@ -495,6 +492,11 @@ public class CalendrierController implements Initializable {
             veh = vehservice.recupererVehiculeByid(idv);
 
             reserverVehicule.getScene().setRoot(borderPane);
+             Twilio.init("AC84ff7691013163d92fc31146ac61b9dc", "edd707b9aca44d01c33f87876d7b0db8");
+            Message message = Message.creator(
+                    new com.twilio.type.PhoneNumber("+21653723896"),
+                    new com.twilio.type.PhoneNumber("+12762888645"),
+                    "Bonjour " + UserConn.nom + " " + UserConn.prenom + " Votre reservation au vehicule " + veh.getMarque() + ", immatriculation: " + veh.getImmatriculation() + " du " + datedebut.getValue() + " au " + datefin.getValue() + " a éte effectuer avec succes.").create();
 
         } catch (SQLException ex) {
             // Logger.getLogger(FormLouerVehiculeController.class.getName()).log(Level.SEVERE, null, ex);

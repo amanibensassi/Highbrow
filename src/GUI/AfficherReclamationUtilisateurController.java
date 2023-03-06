@@ -60,6 +60,7 @@ public class AfficherReclamationUtilisateurController implements Initializable {
         try {
             
             if (UserConn.role.toString().equals("administrateur")){
+                 btnajouterreclamation.setVisible(false);
             List<Reclamation> reclamations = rs.recuperer();
             //List<Reclamation> reclamations = rs.recupererReclamation_Siege(ids);
             System.out.println("aa"+reclamations);
@@ -82,7 +83,7 @@ public class AfficherReclamationUtilisateurController implements Initializable {
             }
             
             if (UserConn.role.toString().equals("client") || UserConn.role.toString().equals("proprietaire_agence") ){
-                btnajouterreclamation.setVisible(false);
+               
             List<Reclamation> reclamations = rs.recupererReclamationUtilisateur(UserConn.idutilisateur);
             //List<Reclamation> reclamations = rs.recupererReclamation_Siege(ids);
             System.out.println("aa"+reclamations);

@@ -188,7 +188,6 @@ public class EntretienController implements Initializable {
         try {
             en.setEtat_entretien(cbetat.isSelected());
             es.modifierEtat(en);
-            
               FXMLLoader loader = new FXMLLoader(getClass().getResource("SideBarUser.fxml"));
         Parent root1 = loader.load();
         SideBarUserController cc = loader.getController();
