@@ -78,10 +78,14 @@ public class ResponsableAgenceLocationController implements Initializable {
                 }
             }
             if (k == "demmande") {
+                locations.clear();
                 locations = ls.recupererListeDemandech();
+                 
+                 System.out.println("affecterrrrr"+locations);
+                 grid.getChildren().clear();
                 for (int i = 0; i < locations.size(); i++) {
                     FXMLLoader loader = new FXMLLoader(getClass().getResource("RespoLocationCard.fxml"));
-
+                   
                     AnchorPane AnchorPane = loader.load();
                     RespoLocationCardController controllerch = loader.getController();
 
@@ -94,6 +98,8 @@ public class ResponsableAgenceLocationController implements Initializable {
                     }
 
                 }
+               
+               
             }
             if (k == "confirme") {
                 locations = ls.getLocationConfirmer();
@@ -122,7 +128,7 @@ public class ResponsableAgenceLocationController implements Initializable {
 
     public void intialautre() {
         try {
-            test("demmande");
+            test("confirme");
         } catch (IOException ex) {
             System.out.println(ex.getMessage());
         }
@@ -131,7 +137,7 @@ public class ResponsableAgenceLocationController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 //        try {
-//            test("demmande");
+//            test("confirme");
 //        } catch (IOException ex) {
 //            System.out.println(ex.getMessage());
 //        }

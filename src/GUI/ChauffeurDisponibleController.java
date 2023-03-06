@@ -96,22 +96,20 @@ public class ChauffeurDisponibleController implements Initializable {
     }
 
     @FXML
-    private void affecterLech(ActionEvent event) {
+    private void affecterLech(ActionEvent event) throws InterruptedException {
         try {
 
             ls.AffecterUnchauffeur(idL, idchauff);
-             // obtenir la référence de la fenêtre actuelle
-            
-//            FXMLLoader loader = new FXMLLoader(getClass().getResource("SideBarUser.fxml"));
-//            Parent root1 = loader.load();
-//            BorderPane borderPane = new BorderPane();
-////            List<Location> locations = new ArrayList<>();
-////            locations = ls.recupererListeDemandech();
-
+            System.out.println("aa");
             FXMLLoader loader1 = new FXMLLoader(getClass().getResource("ResponsableAgenceLocation.fxml"));
+            System.out.println("bb");
             Parent root2 = loader1.load();
+            System.out.println("cc");
             ResponsableAgenceLocationController rs = loader1.getController();
-            rs.UpdateListe();
+          rs.intialautre();
+            System.out.println("dd");
+           // rs.UpdateListe();
+            System.out.println("55");
 //            HBox hbox = new HBox(root1, new Pane(), root2);
 //            hbox.setSpacing(20);
 //

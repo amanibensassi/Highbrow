@@ -80,8 +80,8 @@ public class CalendrierController implements Initializable {
     private int idv;
     Utilisateur us = new Utilisateur();
     UserService userservice = new UserService();
-    
-    Vehicule veh= new Vehicule();
+
+    Vehicule veh = new Vehicule();
     VehiculeService vehservice = new VehiculeService();
 
     /**
@@ -236,7 +236,6 @@ public class CalendrierController implements Initializable {
 
                 });
 
-
                 button.setStyle("-fx-background-color: #F5F5F5; -fx-padding: 10px;");
                 button.getChildren().add(label);
                 buttons.add(button);
@@ -252,7 +251,7 @@ public class CalendrierController implements Initializable {
                 String moisString = month1 + "";
                 List<Location> locationFait = ls.recupererAllByIdVehicule(idv);
                 System.out.println("dcfvgbvfd");
-                System.out.println("essai nouveau calendrierrrr"+locationFait);
+                System.out.println("essai nouveau calendrierrrr" + locationFait);
                 for (int i = 0; i < locationFait.size(); i++) {
 
                     Date dateDebut = locationFait.get(i).getDate_debut();
@@ -405,10 +404,8 @@ public class CalendrierController implements Initializable {
 
     }
 
-    public void testCalendrier (int id)
-            
-    {  
-        idv=id;
+    public void testCalendrier(int id) {
+        idv = id;
         currentDate = LocalDate.now();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern(" MMMM yyyy");
         localDate.setText(currentDate.format(formatter));
@@ -417,11 +414,11 @@ public class CalendrierController implements Initializable {
         // Afficher les jours du mois en cours
         updateDaysGrid();
     }
+
     @Override
     public void initialize(URL url, ResourceBundle rb
     ) {
         // Afficher la date d'aujourd'hui
-      
 
     }
 
@@ -473,11 +470,18 @@ public class CalendrierController implements Initializable {
         System.out.println(l);
         try {
             ls.ajouter(l);
+            Twilio.init("AC84ff7691013163d92fc31146ac61b9dc", "edd707b9aca44d01c33f87876d7b0db8");
+            Message message = Message.creator(
+                    new com.twilio.type.PhoneNumber("+21653723896"),
+                    new com.twilio.type.PhoneNumber("+12762888645"),
+                    "Bonjour " + UserConn.nom + " " + UserConn.prenom + " Votre reservation au vehicule " + veh.getMarque() + ", immatriculation: " + veh.getImmatriculation() + " du " + datedebut.getValue() + " au " + datefin.getValue() + " a éte effectuer avec succes.").create();
             FXMLLoader loader = new FXMLLoader(getClass().getResource("SideBarUser.fxml"));
             Parent root1 = loader.load();
             BorderPane borderPane = new BorderPane();
             FXMLLoader loader1 = new FXMLLoader(getClass().getResource("ListeMesLocations.fxml"));
             Parent root2 = loader1.load();
+            ListeMesLocationsController cc = loader1.getController();
+            cc.listemeslocation();
 
             HBox hbox = new HBox(root1, new Pane(), root2);
             hbox.setSpacing(20);
@@ -488,24 +492,12 @@ public class CalendrierController implements Initializable {
 
             borderPane.setPadding(new Insets(10, 10, 30, 10));
 
-//        Scene scene = new Scene(borderPane);
-//        Stage stage = new Stage();
-//        stage.setScene(scene);
-//        stage.show();
+            veh = vehservice.recupererVehiculeByid(idv);
 
-
-
-
-    veh = vehservice.recupererVehiculeByid(idv);
- 
             reserverVehicule.getScene().setRoot(borderPane);
-            Twilio.init("AC84ff7691013163d92fc31146ac61b9dc", "edd707b9aca44d01c33f87876d7b0db8");
-            Message message = Message.creator(
-                    new com.twilio.type.PhoneNumber("+21653723896"),
-                    new com.twilio.type.PhoneNumber("+12762888645"),
-                   "Bonjour "+UserConn.nom+" "+UserConn.prenom+" Votre reservation au vehicule "+veh.getMarque()+", immatriculation: "+veh.getImmatriculation()+" du "+datedebut.getValue()+" au "+ datefin.getValue()+" a éte effectuer avec succes.").create();
+
         } catch (SQLException ex) {
-           // Logger.getLogger(FormLouerVehiculeController.class.getName()).log(Level.SEVERE, null, ex);
+            // Logger.getLogger(FormLouerVehiculeController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

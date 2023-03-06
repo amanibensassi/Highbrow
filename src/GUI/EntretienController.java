@@ -8,6 +8,7 @@ package GUI;
 import GUI.AfficherDetailEntretienController;
 import entities.Entretien;
 import entities.Mecanicien;
+import entities.Vehicule;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
@@ -31,6 +32,7 @@ import javafx.scene.layout.Pane;
 import services.EntretienService;
 import services.MecanicienService;
 import services.UserConn;
+import services.VehiculeService;
 
 /**
  * FXML Controller class
@@ -57,6 +59,8 @@ public class EntretienController implements Initializable {
     private Button btnmodifier;
     @FXML
     private CheckBox cbetat;
+    Vehicule v = new Vehicule();
+    VehiculeService vs = new VehiculeService();
 
     /**
      * Initializes the controller class.
@@ -91,7 +95,8 @@ public class EntretienController implements Initializable {
         int heure = Integer.valueOf(parts1[0]);
         lbldate.setText(String.valueOf(parts[0] + " à " + parts1[0] + "H"));
         //lblmec.setText(String.valueOf(e.getId_mecanicien())); 
-        lblvehicule.setText(String.valueOf(e.getId_vehicule()));
+        v = vs.recupererVehiculeByid(e.getId_vehicule());
+        lblvehicule.setText(v.getImmatriculation());
         cbetat.setSelected(e.isEtat_entretien());
         en.setDate_entretien(e.getDate_entretien());
         en.setId_mecanicien(e.getId_mecanicien());

@@ -6,6 +6,12 @@
 package GUI;
 
 import entities.Reclamation;
+import java.awt.AWTException;
+import java.awt.SystemTray;
+import java.awt.TrayIcon;
+import java.awt.TrayIcon.MessageType;
+import java.awt.image.BufferedImage;
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
@@ -18,6 +24,7 @@ import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -28,6 +35,7 @@ import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextArea;
+import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
@@ -94,7 +102,7 @@ public class AjouterReclamationController implements Initializable {
     }
 
     @FXML
-    private void ajouter(ActionEvent event) throws SQLException, ParseException, IOException {
+    private void ajouter(ActionEvent event) throws SQLException, ParseException, IOException, AWTException {
         r.setId_utilisateur(UserConn.idutilisateur);
         r.setType_reclamation(TypeReclamation.administrateur);
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
@@ -109,7 +117,7 @@ public class AjouterReclamationController implements Initializable {
         } else {
             rs.ajouterReclamationSiege(r);
         }
-        Stage stage = (Stage) btnajouter.getScene().getWindow();
+          Stage stage = (Stage) btnajouter.getScene().getWindow();
         stage.close();
 
         // Mettre à jour la liste des réclamations dans la fenêtre principale
@@ -117,7 +125,26 @@ public class AjouterReclamationController implements Initializable {
         Parent root = loader.load();
         AfficherReclamationUtilisateurController controller = loader.getController();
         controller.initialize(null, null);
+        if (SystemTray.isSupported()) {
+//         String img = "C:\\xampp\\htdocs\\pidev\\Highbrow\\src\\media\\full_down.png";
+//            File file = new File(img);
+//            Image img1 = new Image(file.toURI().toString());
+             String imagePath = "/media/full_up.png";
+            URL imageURL = getClass().getResource(imagePath);
+            Image img1 = new Image(imageURL.toString()); 
+            BufferedImage awtImage = SwingFXUtils.fromFXImage(img1, null);
+        TrayIcon trayIcon = new TrayIcon(awtImage, "Notification Title");
+        SystemTray tray = SystemTray.getSystemTray();
+        try {
+            tray.add(trayIcon);
+            trayIcon.displayMessage("Notification Message", "Notification Content", MessageType.INFO);
+        } catch (AWTException e) {
+            System.err.println("Could not add TrayIcon to SystemTray");}
+        
+       } else {
+        System.err.println("SystemTray is not supported");
+      
 
     }
 
-}
+}}
