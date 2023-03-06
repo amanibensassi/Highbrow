@@ -22,7 +22,9 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import services.UserConn;
 import services.UserService;
+import services.crypterPassword;
 import utils.MyDB;
 
 /**
@@ -31,6 +33,7 @@ import utils.MyDB;
  * @author Hamma
  */
 public class NewPwdController implements Initializable {
+    crypterPassword pass = new crypterPassword();
 
     @FXML
     private TextField txtemail1;
@@ -50,7 +53,7 @@ public class NewPwdController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+         
     }  
     
     public void ModifierMdp(String email, String pwd) {
@@ -89,7 +92,7 @@ public class NewPwdController implements Initializable {
             alert.setContentText("Enter the same password to confirm");
             alert.show();
         }else {
-           us.modifierPassword(email,new_pwd);
+           us.modifierPassword(email,pass.crypterPassword(txtnew.getText()));
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("DONE");
             alert.setHeaderText("PASSWORD UPDATED");

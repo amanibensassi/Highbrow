@@ -8,11 +8,16 @@
 
 <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="150.0" prefWidth="1260.0" style="-fx-border-color: #A5A5A5; -fx-border-width: 4;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.RdvCardController">
    <children>
-      <Label fx:id="iduser" prefHeight="150.0" prefWidth="287.0" text="ID_Utilisateur">
+      <Label fx:id="nom" prefHeight="142.0" prefWidth="176.0" text="nom">
          <font>
             <Font size="20.0" />
          </font></Label>
-      <Label fx:id="idveh" prefHeight="150.0" prefWidth="297.0" text="ID_Vehicule">
+      <Label fx:id="prenom" prefHeight="142.0" prefWidth="162.0" text="prenom">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <Label fx:id="nomv" prefHeight="142.0" prefWidth="206.0" text="nomvehicule">
          <font>
             <Font size="20.0" />
          </font></Label>

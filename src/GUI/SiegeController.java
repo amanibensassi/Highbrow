@@ -208,48 +208,48 @@ public class SiegeController implements Initializable {
         List<Vehicule> vehicules = aa.recupererVehiculeBySiege(siegeId);
         System.out.println(vehicules);
 
-        if (vehicules.isEmpty()) {
+        if (vehicules.isEmpty() && (UserConn.role.toString().equals("client") || UserConn.role.toString().equals("administrateur"))) {
             // Aucun véhicule n'a été trouvé pour ce siège
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Aucun véhicule trouvé");
             alert.setHeaderText(null);
             alert.setContentText("Il n'y a aucun véhicule associé à ce siège.");
             alert.showAndWait();
-                           try {
-                               
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("SideBarUser.fxml"));
-            Parent root1 = loader.load();
-            BorderPane borderPane = new BorderPane();
-            FXMLLoader loader1 = new FXMLLoader(getClass().getResource("afficherVehiculeBySiege.fxml"));
-            Parent root2 = loader1.load();
-              AfficherVehiculeBySiegeController controller = loader1.getController();
-            controller.dynamicinitialize(pe.getIdsiege());
-          
-            HBox hbox = new HBox(root1, new Pane(), root2);
-            hbox.setSpacing(20);
-
-            borderPane.setRight(hbox);
-
-            borderPane.setLeft(root1);
-
-            borderPane.setPadding(new Insets(10, 10, 30, 10));
-            affichervehiculesbtn.getScene().setRoot(borderPane);       
-                               
-                               
-                               
-                               
-                               
-                               
-                               
-//            FXMLLoader loader = new FXMLLoader(getClass().getResource("afficherVehiculeBySiege.fxml"));
-//            Parent root = loader.load();
-//            AfficherVehiculeBySiegeController controller = loader.getController();
+//                           try {
+//                               
+//            FXMLLoader loader = new FXMLLoader(getClass().getResource("SideBarUser.fxml"));
+//            Parent root1 = loader.load();
+//            BorderPane borderPane = new BorderPane();
+//            FXMLLoader loader1 = new FXMLLoader(getClass().getResource("afficherVehiculeBySiege.fxml"));
+//            Parent root2 = loader1.load();
+//              AfficherVehiculeBySiegeController controller = loader1.getController();
 //            controller.dynamicinitialize(pe.getIdsiege());
-//            affichervehiculesbtn.getScene().setRoot(root);
-            
-        } catch (IOException ex) {
-            System.out.println("error" + ex.getMessage());
-        }
+//          
+//            HBox hbox = new HBox(root1, new Pane(), root2);
+//            hbox.setSpacing(20);
+//
+//            borderPane.setRight(hbox);
+//
+//            borderPane.setLeft(root1);
+//
+//            borderPane.setPadding(new Insets(10, 10, 30, 10));
+//            affichervehiculesbtn.getScene().setRoot(borderPane);       
+//                               
+//                               
+//                               
+//                               
+//                               
+//                               
+//                               
+////            FXMLLoader loader = new FXMLLoader(getClass().getResource("afficherVehiculeBySiege.fxml"));
+////            Parent root = loader.load();
+////            AfficherVehiculeBySiegeController controller = loader.getController();
+////            controller.dynamicinitialize(pe.getIdsiege());
+////            affichervehiculesbtn.getScene().setRoot(root);
+//            
+//        } catch (IOException ex) {
+//            System.out.println("error" + ex.getMessage());
+//        }
         } else {
                try {
                          FXMLLoader loader = new FXMLLoader(getClass().getResource("SideBarUser.fxml"));

@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Line?>
@@ -36,5 +38,16 @@
          <Label fx:id="totaleSomme" prefHeight="20.0" prefWidth="265.0" text="Somme tout" />
       </children>
    </HBox>
+   <ImageView fx:id="facture" fitHeight="53.0" fitWidth="63.0" layoutX="120.0" onMouseClicked="#facturetelecharger" pickOnBounds="true" preserveRatio="true">
+      <VBox.margin>
+         <Insets right="12.0" />
+      </VBox.margin>
+      <image>
+         <Image url="@../images/telecharger.png" />
+      </image>
+   </ImageView>
+   <padding>
+      <Insets left="12.0" />
+   </padding>
    
 </VBox>

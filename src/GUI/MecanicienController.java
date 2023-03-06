@@ -28,6 +28,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import services.MecanicienService;
+import services.UserConn;
 
 /**
  * FXML Controller class
@@ -55,6 +56,12 @@ public class MecanicienController implements Initializable{
     //String role="user";
     String role="Administrateur";
     private int id;
+    @FXML
+    private Label lblspec;
+    @FXML
+    private ImageView update;
+    @FXML
+    private ImageView delete;
     /**
      * Initializes the controller class.
      */
@@ -67,17 +74,22 @@ public class MecanicienController implements Initializable{
          
     public void setIdVehicule(int id_v){
         this.id=id_v;
-        if (role=="user"){
-            btnmodifier.setVisible(false);
-            btnsupprimer.setVisible(false);
-        }
+       
+        
     }
     
     public void setPersonne(Mecanicien m) {
+         if (UserConn.role.toString().equals("proprietaire_agence")){
+            btnmodifier.setVisible(false);
+            btnsupprimer.setVisible(false);
+            update.setVisible(false);
+            delete.setVisible(false);
+        }
         nomPrenomLabel.setText(m.getNom_mecanicien());
         //ageLabel.setText(String.valueOf(m.getContact()) );
         ageLabel.setText(m.getPrenom_mecanicien()); 
        // System.out.println(m.getImage());
+       lblspec.setText(m.getSpecialite().toString());
         File file = new File(m.getImage());
         Image imagee = new Image(file.toURI().toString());
         img.setImage(imagee);

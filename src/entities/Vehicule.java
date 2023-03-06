@@ -42,11 +42,7 @@ public class Vehicule {
         this.id_siege = id_siege;
         this.prix_par_jour = prix_par_jour;
         this.marque = marque;
-//        Pattern pattern = Pattern.compile("^\\d{3}TUN\\d{4}$");
-//        Matcher matcher = pattern.matcher(immatriculation);
-//        if (!matcher.matches()) {
-//            throw new IllegalArgumentException("L'immatriculation saisie n'est pas valide. Elle doit être sous la forme ***TUN**** (les étoiles doivent être des chiffres).");
-//        }
+
         this.immatriculation = immatriculation;
         this.carburant = carburant;
         this.nbr_place = nbr_place;

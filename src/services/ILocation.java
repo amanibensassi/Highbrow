@@ -21,5 +21,5 @@ public interface ILocation <Location>{
     public void AffecterUnchauffeur(int t,int idChauffeur) throws SQLException;
     public void supprimerLocation(int t) throws SQLException;
      public void AnnulerLocation(int i) throws SQLException;
-      public boolean modifierch(Location l) throws SQLException;
+      public Location modifierch(Location l) throws SQLException;
 }

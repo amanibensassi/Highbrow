@@ -28,8 +28,6 @@ public class ModifycommentaireController implements Initializable {
     @FXML
     private Button modifierpub;
     @FXML
-    private Button supprimerpub;
-    @FXML
     private Button annulerselection;
     @FXML
     private TextField idmodifycom;
@@ -64,16 +62,6 @@ public class ModifycommentaireController implements Initializable {
         }
     }
 
-    @FXML
-    private void supprimercommentaire(ActionEvent event) {
-         try {
-            cs.supprimer(com);
-            dialog.setResult(null);
-            dialog.close();
-        } catch (SQLException ex) {
-            System.out.println("erreur modification de la publication");
-        }
-    }
 
     @FXML
     private void annulercommentaire(ActionEvent event) {

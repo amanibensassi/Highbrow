@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="160.0" prefWidth="1400.0" style="-fx-background-color: #F5F6FA;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.PublicationdesignController">
+   <children>
+      <Pane layoutX="-1.0" layoutY="3.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="160.0" prefWidth="854.0" style="-fx-background-color: FFFFFF; -fx-background-radius: 15;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <ImageView fx:id="like_image" fitHeight="26.0" fitWidth="31.0" layoutX="56.0" layoutY="114.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../media/up.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="dislike_image" fitHeight="26.0" fitWidth="33.0" layoutX="151.0" layoutY="116.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../media/down.png" />
+               </image>
+            </ImageView>
+            <Label fx:id="username_id" layoutX="91.0" layoutY="-2.0" prefHeight="46.0" prefWidth="151.0" style="-fx-background-color: transparent;" text="USER_NAME">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label fx:id="dateid" layoutX="93.0" layoutY="27.0" prefHeight="25.0" prefWidth="151.0" style="-fx-background-color: transparent;" text="date_time" textFill="#666666">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="publicationid" alignment="TOP_LEFT" layoutX="17.0" layoutY="65.0" lineSpacing="1.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="46.0" prefWidth="1474.0" text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis quis venenatis libero. In eu sagittis sapien, nec porta nisi. Nam sed massa quis lorem pulvinar mattis rutrum ultrices purus." textFill="#666666" wrapText="true">
+               <font>
+                  <Font name="Arial" size="15.0" />
+               </font>
+            </Label>
+            <Circle fill="DODGERBLUE" layoutX="50.0" layoutY="33.0" radius="29.0" stroke="BLACK" strokeType="INSIDE" />
+            <Button fx:id="dislike_button" layoutX="109.0" layoutY="118.0" mnemonicParsing="false" onAction="#adddislike" prefHeight="25.0" prefWidth="84.0" style="-fx-background-color: transparent;" />
+            <Label fx:id="id_likes" alignment="CENTER" layoutX="17.0" layoutY="118.0" text="Label">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="25.0" fitWidth="33.0" layoutX="1353.0" layoutY="126.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../media/commentaire.png" />
+               </image>
+            </ImageView>
+            <Label fx:id="nbr_commentaire" alignment="CENTER_RIGHT" layoutX="1310.0" layoutY="129.0" prefHeight="19.0" prefWidth="34.0" text="500">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="id_dislikes" alignment="CENTER_RIGHT" layoutX="109.0" layoutY="119.0" text="Label">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Button fx:id="like_button" layoutX="14.0" layoutY="118.0" mnemonicParsing="false" onAction="#addlike" prefHeight="20.0" prefWidth="84.0" style="-fx-background-color: transparent;" />
+            <Button fx:id="addcomment" layoutX="1310.0" layoutY="103.0" mnemonicParsing="false" onAction="#addcomment" prefHeight="58.0" prefWidth="84.0" style="-fx-background-color: transparent;" />
+            <AnchorPane layoutX="1301.0" layoutY="4.0" prefHeight="46.0" prefWidth="51.0">
+               <children>
+                  <ImageView fx:id="imageviewtobe_off" fitHeight="37.0" fitWidth="39.0" layoutX="6.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true" visible="false">
+                     <image>
+                        <Image url="@../media/settings.png" />
+                     </image>
+                  </ImageView>
+                  <Button fx:id="modifierpublication_id" alignment="CENTER_RIGHT" layoutX="1.0" layoutY="1.0" mnemonicParsing="false" onAction="#modifierPublication" prefHeight="36.0" prefWidth="49.0" style="-fx-background-color: transparent;">
+                     <font>
+                        <Font name="Arial Italic" size="12.0" />
+                     </font>
+                  </Button>
+               </children>
+            </AnchorPane>
+            <ImageView fx:id="id_trash" fitHeight="39.0" fitWidth="34.0" layoutX="1352.0" layoutY="10.0" onMouseClicked="#deletemethod" pickOnBounds="true" preserveRatio="true" visible="false">
+               <image>
+                  <Image url="@../media/trash.png" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>

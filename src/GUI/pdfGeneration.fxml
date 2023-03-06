@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.PdfGenerationController">
+   <children>
+      <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="404.0" prefWidth="863.0" style="-fx-background-color: FFFFFF; -fx-background-radius: 15;">
+         <children>
+            <ImageView fx:id="like_image" fitHeight="46.0" fitWidth="34.0" layoutX="108.0" layoutY="335.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../media/up.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="dislike_image" fitHeight="29.0" fitWidth="34.0" layoutX="192.0" layoutY="334.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../media/down.png" />
+               </image>
+            </ImageView>
+            <Label fx:id="username_id" layoutX="22.0" layoutY="76.0" prefHeight="46.0" prefWidth="151.0" style="-fx-background-color: transparent;" text="USER_NAME">
+               <font>
+                  <Font size="25.0" />
+               </font>
+            </Label>
+            <Label fx:id="dateid" layoutX="698.0" layoutY="11.0" prefHeight="25.0" prefWidth="151.0" style="-fx-background-color: transparent;" text="date_time" textFill="#666666">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Label fx:id="publicationid" alignment="TOP_LEFT" layoutX="57.0" layoutY="149.0" lineSpacing="1.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="131.0" prefWidth="763.0" text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis quis venenatis libero. In eu sagittis sapien, nec porta nisi. Nam sed massa quis lorem pulvinar mattis rutrum ultrices purus." textFill="#666666" wrapText="true">
+               <font>
+                  <Font name="Arial" size="20.0" />
+               </font>
+            </Label>
+            <Label fx:id="id_likes" alignment="CENTER" layoutX="75.0" layoutY="341.0" text="Label">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="25.0" fitWidth="33.0" layoutX="770.0" layoutY="336.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../media/commentaire.png" />
+               </image>
+            </ImageView>
+            <Label fx:id="nbr_commentaire" alignment="CENTER_RIGHT" layoutX="726.0" layoutY="341.0" prefHeight="19.0" prefWidth="34.0" text="500">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="id_dislikes" alignment="CENTER_RIGHT" layoutX="150.0" layoutY="341.0" text="Label">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <AnchorPane layoutX="1301.0" layoutY="4.0" prefHeight="46.0" prefWidth="51.0" />
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>

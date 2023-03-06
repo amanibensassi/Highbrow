@@ -32,6 +32,7 @@ import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.RowConstraints;
 import services.LocationService;
 import java.util.Date;
+import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
 import javafx.scene.Parent;
@@ -43,6 +44,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import javafx.util.Callback;
+import services.UserConn;
 
 /**
  * FXML Controller class
@@ -63,7 +65,7 @@ public class CalendrierModifierLocationController implements Initializable {
 
     LocationService ls = new LocationService();
     Location loca = new Location();
-  //  Location loca1 = new Location();
+    //  Location loca1 = new Location();
     @FXML
     private DatePicker dateDebut;
     @FXML
@@ -72,37 +74,29 @@ public class CalendrierModifierLocationController implements Initializable {
     private Button valider;
     @FXML
     private ComboBox<String> opchaffeur;
- 
+
     int idl;
+    private int idvehicule;
+
     /**
      * Initializes the controller class.
      */
- 
-  private boolean isDateReserved(LocalDate date) throws SQLException {
-   List<Location> lccc = ls.recupererAllByIdVehicule(1);
-   for (int z=0 ; z<lccc.size();z++ )
-   {
-    Date debut1 =lccc.get(z).getDate_debut();
-        Date fin1 =lccc.get(z).getDate_fin();
-    LocalDate debut = LocalDate.parse(debut1+"", DateTimeFormatter.ofPattern("yyyy-MM-dd"));
-        LocalDate fin = LocalDate.parse(fin1+"", DateTimeFormatter.ofPattern("yyyy-MM-dd"));
-        if (debut.isBefore(date) && fin.isAfter(date)) {
-            return true; // La date est réservée
+    private boolean isDateReserved(LocalDate date) throws SQLException {
+        List<Location> lccc = ls.recupererAllByIdVehicule(1);
+        for (int z = 0; z < lccc.size(); z++) {
+            Date debut1 = lccc.get(z).getDate_debut();
+            Date fin1 = lccc.get(z).getDate_fin();
+            LocalDate debut = LocalDate.parse(debut1 + "", DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+            LocalDate fin = LocalDate.parse(fin1 + "", DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+            if (debut.isBefore(date) && fin.isAfter(date)) {
+                return true; // La date est réservée
+            }
+
         }
-   
-   }
-//    for (Location reservation : lccc) {
-//        Date debut1 =reservation.getDate_debut();
-//        Date fin1 =reservation.getDate_fin();
-//        LocalDate debut = LocalDate.parse(debut1+"", DateTimeFormatter.ofPattern("yyyy-MM-dd"));
-//        LocalDate fin = LocalDate.parse(fin1+"", DateTimeFormatter.ofPattern("yyyy-MM-dd"));
-//        if (debut.isBefore(date) && fin.isAfter(date)) {
-//            return true; // La date est réservée
-//        }
-//    }
-    return false; // La date n'est pas réservée
-}
-      private Callback<DatePicker, DateCell> dayCellFactory = new Callback<DatePicker, DateCell>() {
+
+        return false; // La date n'est pas réservée
+    }
+    private Callback<DatePicker, DateCell> dayCellFactory = new Callback<DatePicker, DateCell>() {
         @Override
         public DateCell call(final DatePicker datePicker) {
             return new DateCell() {
@@ -139,7 +133,7 @@ public class CalendrierModifierLocationController implements Initializable {
                         setDisable(true);
                         setStyle("-fx-background-color: #EEEEEE;");
                     }
-                      try {
+                    try {
                         if (isDateReserved(item)) {
                             setDisable(true);
                             setStyle("-fx-background-color: #ffc0cb;"); // Couleur rose pour indiquer que la date est réservée
@@ -152,13 +146,9 @@ public class CalendrierModifierLocationController implements Initializable {
             };
         }
     };
-    
-    
-    
-    
-    
- public void setLocation(Location l) {
-       
+
+    public void setLocation(Location l) {
+
         Date db = l.getDate_debut();
         Date df = l.getDate_fin();
         String dbe = db.toString();
@@ -176,10 +166,11 @@ public class CalendrierModifierLocationController implements Initializable {
         idl = l.getIdlocation();
 
     }
+
     private void updateDaysGrid() {
 
         try {
-          //  loca1=loca;
+            //  loca1=loca;
             System.out.println("zzzzzzzzzzoooooook om location" + loca);
 //            BackgroundFill backgroundFill = new BackgroundFill(Color.GREY, null, null);
 //            Background background = new Background(backgroundFill);
@@ -252,9 +243,9 @@ public class CalendrierModifierLocationController implements Initializable {
                         //  datePicker.setValue(datezzz);
                     }
 
-                    
-                         dateDebut.setValue(datezzz1);
-                       dateDin.setDayCellFactory(dayCellFactory);
+                    dateDebut.setValue(datezzz1);
+                    dateDin.setValue(null);
+                    dateDin.setDayCellFactory(dayCellFactory);
 
 //        Scene scene = new Scene(borderPane);
 //        Stage stage = new Stage();
@@ -282,12 +273,10 @@ public class CalendrierModifierLocationController implements Initializable {
                 int month1 = Integer.parseInt(parts1[1]);
 
                 String moisString = month1 + "";
-                List<Location> locationFait = ls.recupererAllByIdVehicule(1);
+                List<Location> locationFait = ls.recupererAllByIdVehicule(idvehicule);
 
                 for (int i = 0; i < locationFait.size(); i++) {
 
-            
-                    
                     Date dateDebut = locationFait.get(i).getDate_debut();
                     Date dateFin = locationFait.get(i).getDate_fin();
                     String s = dateDebut.toString();
@@ -308,16 +297,6 @@ public class CalendrierModifierLocationController implements Initializable {
                     String moisL2 = month3 + "";
 
                     int rs = dayy3 - dayy;
-//                     List lbs = new ArrayList<>();
-//                    for (int kk = dayy; kk <= dayy3-1; kk++) {
-//                        Label label2 = new Label(String.valueOf(kk));
-//                        AnchorPane an = new AnchorPane();
-//                        an.getChildren().add(label2);
-//                    
-//                lbs.add(label2.getText());
-//                        
-//               }
-//******** date de but w fin andhoum nafs chhhar
                     rs = dayy3 - dayy;
                     if (moisString.equals(moisL) && moisString.equals(moisL2)) {
                         for (int hama = dayy; hama <= dayy3; hama++) {
@@ -441,6 +420,12 @@ public class CalendrierModifierLocationController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb
     ) {
+
+    }
+
+    public void testerCalendierModif(int idv) {
+        idvehicule = idv;
+
         dateDebut.setDayCellFactory(dayCellFactory2);
         // Afficher la date d'aujourd'hui
         currentDate = LocalDate.now();
@@ -478,10 +463,10 @@ public class CalendrierModifierLocationController implements Initializable {
     }
 
     @FXML
-    private void modifierLoactionValider(ActionEvent event) throws IOException {
-          System.out.println("click" + dateDebut);
+    private void modifierLoactionValider(ActionEvent event) throws IOException, SQLException {
+
         java.sql.Date ddebut = java.sql.Date.valueOf(dateDebut.getValue());
-        System.out.println("hotaadi " + dateDebut);
+
         java.sql.Date dfin = java.sql.Date.valueOf(dateDin.getValue());
         String txt = opchaffeur.getValue();
         Boolean opch;
@@ -490,18 +475,16 @@ public class CalendrierModifierLocationController implements Initializable {
         } else {
             opch = false;
         }
-        Location l = new Location(idl, ddebut, dfin, opch, 2, 1);
+        Location l = new Location(idl, ddebut, dfin, opch, idvehicule, UserConn.idutilisateur);
 
-        try {
-            ls.modifierch(l);
-
-            if (ls.modifierch(l)) {
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("SideBarUser.fxml"));
+        ls.modifierch(l);
+        /*FXMLLoader loader = new FXMLLoader(getClass().getResource("SideBarUser.fxml"));
                 Parent root1 = loader.load();
                 BorderPane borderPane = new BorderPane();
                 FXMLLoader loader1 = new FXMLLoader(getClass().getResource("ListeMesLocations.fxml"));
                 Parent root2 = loader1.load();
-
+                ListeMesLocationsController list = loader1.getController();
+                list.listemeslocation();
                 HBox hbox = new HBox(root1, new Pane(), root2);
                 hbox.setSpacing(20);
 
@@ -509,26 +492,36 @@ public class CalendrierModifierLocationController implements Initializable {
                 borderPane.setLeft(root1);
                 borderPane.setPadding(new Insets(10, 10, 30, 10));
 
-                // Fermer la modal
                 Stage stage = (Stage) valider.getScene().getWindow(); // obtenir la référence de la fenêtre actuelle
                 stage.close();
+                valider.getScene().setRoot(borderPane);*/
+        Stage stage = (Stage) valider.getScene().getWindow();
+        stage.close();
 
-                // Actualiser la page ListeMesLocations.fxml
-                ListeMesLocationsController listeMesLocationsController = loader1.getController();
-                listeMesLocationsController.initialize(null, null);
+//        ListeMesLocationsController lsc = new ListeMesLocationsController();
+//        lsc.listemeslocation();
+        // Mettre à jour la liste des réclamations dans la fenêtre principale
+        
+        /********************ancien*//////////////////////
+//        FXMLLoader loader = new FXMLLoader(getClass().getResource("ListeMesLocations.fxml"));
+//        Parent root = loader.load();
+//        ListeMesLocationsController controller = loader.getController();
+//        //controller.initialize(null, null);
+//        controller.listemeslocation();
+/********************************acien**********************/
+//  FXMLLoader loader = new FXMLLoader(getClass().getResource("CardLocation.fxml"));
+//        Parent root = loader.load();
+//        CardLocationController controller = loader.getController();
+        //controller.initialize(null, null);
+        //controller.setLocation(l);
 
-                // Afficher la nouvelle page ListeMesLocations.fxml
-                valider.getScene().setRoot(borderPane);
-            }
-        } catch (SQLException ex) {
-            Logger.getLogger(FormLouerVehiculeController.class.getName()).log(Level.SEVERE, null, ex);
-        }
+
     }
 
     @FXML
     private void setdatedebuttt(ActionEvent event) {
-         dateDin.setDayCellFactory(dayCellFactory);
-        
+        dateDin.setDayCellFactory(dayCellFactory);
+
     }
 
 }

@@ -77,7 +77,7 @@ public class AfficherVehiculeController implements Initializable {
 
         
         
-        String nomImage = "C://xampp//htdocs//img//" + c.getImage_vehicule();       
+        String nomImage = "C://Users//anasm//OneDrive//Documents//ImagesProjet//" + c.getImage_vehicule();       
         File file = new File(nomImage);
         Image img = new Image(file.toURI().toString());
         

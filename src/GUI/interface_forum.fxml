@@ -3,6 +3,7 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
@@ -18,24 +19,24 @@
          <children>
             <Pane fx:id="scrollbar_id" layoutX="-353.0" prefHeight="146.0" prefWidth="1502.0" style="-fx-background-color: transparent;">
                <children>
-                  <TextField fx:id="txtf_partagerpub1" layoutX="422.0" layoutY="25.0" prefHeight="62.0" prefWidth="1389.0" promptText="Comment vous vous sentez aujourd'hui?" style="-fx-background-color: FFFFFF; -fx-background-radius: 15; -fx-border-radius: 15;">
+                  <TextField fx:id="txtf_partagerpub1" layoutX="371.0" layoutY="25.0" prefHeight="62.0" prefWidth="1135.0" promptText="Comment vous vous sentez aujourd'hui?" style="-fx-background-color: FFFFFF; -fx-background-radius: 15; -fx-border-radius: 15;">
                      <font>
                         <Font size="16.0" />
                      </font>
                   </TextField>
-                  <ImageView fitHeight="56.0" fitWidth="71.0" layoutX="1745.0" layoutY="28.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="56.0" fitWidth="71.0" layoutX="1434.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../media/send_text.png" />
                      </image>
                   </ImageView>
-                  <Button fx:id="ajouterpublication" layoutX="1713.0" layoutY="17.0" mnemonicParsing="false" onAction="#ajouterpublication" prefHeight="62.0" prefWidth="64.0" style="-fx-background-color: transparent;" />
+                  <Button fx:id="ajouterpublication" layoutX="1422.0" layoutY="25.0" mnemonicParsing="false" onAction="#ajouterpublication" prefHeight="62.0" prefWidth="64.0" style="-fx-background-color: transparent;" />
                </children>
             </Pane>
             <ScrollPane fx:id="scrollPaneId" layoutY="125.0" prefHeight="815.0" prefWidth="1481.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="10.0">
               <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="820.0" prefWidth="1479.0">
                      <children>
-                        <VBox fx:id="vbox_id" accessibleRole="LIST_VIEW" fillWidth="false" layoutX="-336.0" maxHeight="730.4" maxWidth="1212.0" prefHeight="730.0" prefWidth="1212.0" spacing="10.0" style="-fx-background-color: #F5F6FA;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                        <VBox fx:id="vbox_id" accessibleRole="LIST_VIEW" fillWidth="false" layoutX="-336.0" maxHeight="820.0" maxWidth="1484.0" prefHeight="820.0" prefWidth="1484.0" spacing="10.0" style="-fx-background-color: #F5F6FA;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-5.0" AnchorPane.topAnchor="0.0">
                            <padding>
                               <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
                            </padding>
@@ -47,6 +48,21 @@
                   </AnchorPane>
               </content>
             </ScrollPane>
+            <RadioButton fx:id="trietendance" layoutX="1210.0" layoutY="23.0" mnemonicParsing="false" onAction="#trietendanceid" prefHeight="30.0" prefWidth="142.0" text="Tendance">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </RadioButton>
+            <RadioButton fx:id="triedate" layoutX="1212.0" layoutY="69.0" mnemonicParsing="false" onAction="#triedateid" prefHeight="18.0" prefWidth="86.0" text="Date ">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </RadioButton>
+            <Button fx:id="button_filtreiid" layoutX="1372.0" layoutY="32.0" mnemonicParsing="false" onAction="#filtrer" prefHeight="50.0" prefWidth="96.0" style="-fx-background-color: #378217; -fx-background-radius: 8;" text="Filtrer" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Button>
          </children>
       </AnchorPane>
       <AnchorPane prefHeight="62.0" prefWidth="1514.0" style="-fx-background-color: #378217;">

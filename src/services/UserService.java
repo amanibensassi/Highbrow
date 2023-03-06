@@ -37,6 +37,8 @@ import utils.MyDB;
  */
 public class UserService implements IService<Utilisateur>, IUser<Utilisateur> {
 
+    crypterPassword pass = new crypterPassword();
+
     Connection cnx;
 
     public UserService() {
@@ -218,7 +220,8 @@ public class UserService implements IService<Utilisateur>, IUser<Utilisateur> {
             String sql = "SELECT * FROM utilisateur WHERE mail = ? AND mot_de_passe = ?";
             PreparedStatement ps = cnx.prepareStatement(sql);
             ps.setString(1, mail);
-            ps.setString(2, password);
+            ps.setString(2, pass.crypterPassword(password));
+            
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
 
@@ -243,7 +246,6 @@ public class UserService implements IService<Utilisateur>, IUser<Utilisateur> {
                 u.setEtat(rs.getBoolean("etat"));
 
                 //METTRE LES VARIABLES STATIQUES!!!!!!!!!!!!!!!!!!!!!
-                
                 UserConn.role = Role.valueOf(rs.getString("role"));
                 UserConn.idutilisateur = rs.getInt("idutilisateur");
                 UserConn.num_tel = rs.getInt("num_tel");

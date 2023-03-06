@@ -40,9 +40,9 @@
                   <Label fx:id="nbr_reponse" layoutX="-5.0" layoutY="8.0" text="500" />
                </children>
             </AnchorPane>
-            <AnchorPane layoutX="1342.0" layoutY="13.0">
+            <AnchorPane layoutX="1301.0" layoutY="13.0">
                <children>
-                  <ImageView fitHeight="37.0" fitWidth="39.0" layoutX="1.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="imageviewtobeoff" fitHeight="37.0" fitWidth="39.0" layoutX="1.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true" visible="false">
                      <image>
                         <Image url="@../media/settings.png" />
                      </image>
@@ -54,6 +54,11 @@
                   </Button>
                </children>
             </AnchorPane>
+            <ImageView fx:id="id_trash" fitHeight="39.0" fitWidth="34.0" layoutX="1358.0" layoutY="13.0" onMouseClicked="#deletemethod" pickOnBounds="true" preserveRatio="true" visible="false">
+               <image>
+                  <Image url="@../media/trash.png" />
+               </image>
+            </ImageView>
          </children>
       </Pane>
    </children>

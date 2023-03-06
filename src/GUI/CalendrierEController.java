@@ -87,7 +87,6 @@ public class CalendrierEController implements Initializable {
     private DatePicker date_entre;
     Date da;
     String [] h={"9","10","11","12","14","15","16","17"};
-    @FXML
     private ChoiceBox<String> cbvehicules;
     VehiculeService vs = new VehiculeService();
     private int id_vehicule;

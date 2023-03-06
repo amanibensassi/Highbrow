@@ -25,7 +25,6 @@ import services.UserService;
  */
 public class AdminProfileController implements Initializable {
 
-    @FXML
     private Button lusers;
    UserService us = new UserService();
     Utilisateur u = new Utilisateur();
@@ -62,7 +61,6 @@ public class AdminProfileController implements Initializable {
         System.out.println("cientprofile"+ut);
     }
 
-    @FXML
     private void afficher(ActionEvent event) {
          try {
                                         

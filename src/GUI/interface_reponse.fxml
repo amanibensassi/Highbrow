@@ -91,11 +91,6 @@
                         <Font name="Arial Bold Italic" size="29.0" />
                      </font>
                   </Label>
-                  <ImageView fitHeight="34.0" fitWidth="49.0" layoutX="1443.0" layoutY="16.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../media/menu_bar.png" />
-                     </image>
-                  </ImageView>
                   <ImageView fitHeight="35.0" fitWidth="37.0" layoutX="26.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../media/back_icon.png" />

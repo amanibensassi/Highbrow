@@ -20,6 +20,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
+import services.UserConn;
 import services.VenteService;
 
 /**
@@ -31,6 +32,7 @@ public class AfficherRendezVousController implements Initializable {
 
     @FXML
     private GridPane grid;
+    private int id_v;
 
     /**
      * Initializes the controller class.
@@ -43,11 +45,18 @@ public class AfficherRendezVousController implements Initializable {
 
     }
 
-    public void setdata(int id) {
+    public void setidVehicule(int id){
+        id_v=id;
+    }
+    
+    public void setdata( ) throws IOException, FileNotFoundException, ParseException {
         int rowIndex = 1;
         int columnIndex = 0;
-        try {
-            List<Vente> Ventes = vs.recuperer();
+        List<Vente> Ventes;
+        if (UserConn.role.toString().equals("client")){
+            
+            try {
+            Ventes = vs.recupererAllvehiculesByidUtilisateur(UserConn.idutilisateur);
             System.out.println(Ventes);
             for (int i = 0; i < Ventes.size(); i++) {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("RdvCard.fxml"));
@@ -69,10 +78,35 @@ public class AfficherRendezVousController implements Initializable {
 
         } catch (SQLException ex) {
             Logger.getLogger(AfficherRendezVousController.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
+        }
+            
+        }
+        if (UserConn.role.toString().equals("proprietaire_agence")){
+            try {
+                System.out.println("IDVEEEEE"+id_v);
+            Ventes = vs.recupererAllvehiculesByidVehicule(id_v);
+            System.out.println(Ventes);
+            for (int i = 0; i < Ventes.size(); i++) {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("RdvCard.fxml"));
+
+                HBox AnchorPane = loader.load();
+                RdvCardController controllerch = loader.getController();
+
+                controllerch.setRdv(Ventes.get(i));
+                System.out.println("Liste" + Ventes.get(i));
+                System.out.println(Ventes.get(i));
+                grid.add(AnchorPane, columnIndex, rowIndex);
+                columnIndex++;
+                if (columnIndex == 1) {
+                    columnIndex = 0;
+                    rowIndex = rowIndex + 2;
+                }
+                // TODO
+            }
+
+        } catch (SQLException ex) {
             Logger.getLogger(AfficherRendezVousController.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (ParseException ex) {
-            Logger.getLogger(AfficherRendezVousController.class.getName()).log(Level.SEVERE, null, ex);
+        }
         }
     }
 

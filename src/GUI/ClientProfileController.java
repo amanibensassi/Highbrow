@@ -14,6 +14,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -25,7 +26,11 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import services.UserConn;
 import services.UserService;
 
 /**
@@ -118,17 +123,29 @@ public class ClientProfileController implements Initializable {
 
     @FXML
     private void modifier_user(ActionEvent event) throws IOException, SQLException {
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("modifierUser.fxml"));
-                Parent root;
-                u = us.recupererById(idclient);
-                System.out.println(u);
-                root = loader.load();
-                ModifierUserController controller = loader.getController();
-                controller.setData(u);
-                nom.getScene().setRoot(root);
 
 
-        
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("SideBarUser.fxml"));
+        Parent root1 = loader.load();
+        SideBarUserController cc = loader.getController();
+        cc.setRole(UserConn.role.toString());
+        BorderPane borderPane = new BorderPane();
+
+        FXMLLoader loader1 = new FXMLLoader(getClass().getResource("modifierUser.fxml"));
+        Parent root2 = loader1.load();
+        u = us.recupererById(UserConn.idutilisateur);
+        System.out.println("RRRRRRR"+u);
+        ModifierUserController controller = loader1.getController();
+        controller.setData(u);
+        HBox hbox = new HBox(root1, new Pane(), root2);
+        hbox.setSpacing(20);
+
+        borderPane.setRight(hbox);
+
+        borderPane.setLeft(root1);
+
+        borderPane.setPadding(new Insets(10, 10, 30, 10));
+        nom.getScene().setRoot(borderPane);
         
     }
 

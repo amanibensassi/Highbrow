@@ -5,7 +5,11 @@
  */
 package GUI;
 
+import com.twilio.Twilio;
+import com.twilio.rest.api.v2010.account.Message;
 import entities.Location;
+import entities.Utilisateur;
+import entities.Vehicule;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
@@ -32,10 +36,16 @@ import java.util.Date;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
 import javafx.scene.Parent;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.DateCell;
 import javafx.scene.control.DatePicker;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
+import javafx.util.Callback;
+import services.UserConn;
+import services.UserService;
+import services.VehiculeService;
 
 /**
  * FXML Controller class
@@ -55,17 +65,105 @@ public class CalendrierController implements Initializable {
     private GridPane daysGrid;
 
     LocationService ls = new LocationService();
+    @FXML
+    private Label label;
+    @FXML
+    private DatePicker datedebut;
+    @FXML
+    private DatePicker datefin;
+    @FXML
+    private Label label1;
+    @FXML
+    private ComboBox<String> optionCH;
+    @FXML
+    private Button reserverVehicule;
+    private int idv;
+    Utilisateur us = new Utilisateur();
+    UserService userservice = new UserService();
+    
+    Vehicule veh= new Vehicule();
+    VehiculeService vehservice = new VehiculeService();
 
     /**
      * Initializes the controller class.
      */
+    private boolean isDateReserved(LocalDate date) throws SQLException {
+        List<Location> lccc = ls.recupererAllByIdVehicule(1);
+        for (int z = 0; z < lccc.size(); z++) {
+            Date debut1 = lccc.get(z).getDate_debut();
+            Date fin1 = lccc.get(z).getDate_fin();
+            LocalDate debut = LocalDate.parse(debut1 + "", DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+            LocalDate fin = LocalDate.parse(fin1 + "", DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+            if (debut.isBefore(date) && fin.isAfter(date)) {
+                return true; // La date est réservée
+            }
+
+        }
+        return false; // La date n'est pas réservée
+    }
+    private Callback<DatePicker, DateCell> dayCellFactory = new Callback<DatePicker, DateCell>() {
+        @Override
+        public DateCell call(final DatePicker datePicker) {
+            return new DateCell() {
+                @Override
+                public void updateItem(LocalDate item, boolean empty) {
+                    super.updateItem(item, empty);
+
+                    if (item.isBefore(datedebut.getValue().plusDays(1))) {
+                        setDisable(true);
+                        setStyle("-fx-background-color: #EEEEEE;");
+                    }
+                    try {
+                        if (isDateReserved(item)) {
+                            setDisable(true);
+                            setStyle("-fx-background-color: #ffc0cb;"); // Couleur rose pour indiquer que la date est réservée
+                        }
+                    } catch (SQLException ex) {
+                        Logger.getLogger(CalendrierModifierLocationController.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+            };
+        }
+    };
+
+    private Callback<DatePicker, DateCell> dayCellFactory2 = new Callback<DatePicker, DateCell>() {
+        @Override
+        public DateCell call(final DatePicker datePicker) {
+            return new DateCell() {
+                @Override
+                public void updateItem(LocalDate item, boolean empty) {
+                    super.updateItem(item, empty);
+                    System.out.println("today" + LocalDate.now());
+                    if (item.isBefore(LocalDate.now())) {
+                        setDisable(true);
+                        setStyle("-fx-background-color: #EEEEEE;");
+                    }
+                    try {
+                        if (isDateReserved(item)) {
+                            setDisable(true);
+                            setStyle("-fx-background-color: #ffc0cb;"); // Couleur rose pour indiquer que la date est réservée
+                        }
+                    } catch (SQLException ex) {
+                        Logger.getLogger(CalendrierModifierLocationController.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+
+                }
+            };
+        }
+    };
+
+    public void setIdVehicule(int id) {
+        System.out.println(id);
+        idv = id;
+        datedebut.setDayCellFactory(dayCellFactory2);
+
+        System.out.println(idv);
+
+    }
+
     private void updateDaysGrid() {
 
         try {
-
-//            BackgroundFill backgroundFill = new BackgroundFill(Color.GREY, null, null);
-//            Background background = new Background(backgroundFill);
-            // Créer une liste de boutons pour chaque jour du mois en cours
             List<AnchorPane> buttons = new ArrayList<>();
             //afficher le mois
             YearMonth yearMonth = YearMonth.from(currentDate);
@@ -133,41 +231,12 @@ public class CalendrierController implements Initializable {
                         //  datePicker.setValue(datezzz);
                     }
 
-                    try {
-                        FXMLLoader loader = new FXMLLoader(getClass().getResource("SideBarUser.fxml"));
-                        Parent root1;
-                        root1 = loader.load();
-                        BorderPane borderPane = new BorderPane();
-                        FXMLLoader loader1 = new FXMLLoader(getClass().getResource("formLouerVehicule.fxml"));
-                        Parent root2 = loader1.load();
-                        FormLouerVehiculeController chauffeurr = loader1.getController();
-                        chauffeurr.setdatedebut(datezzz1);
-                        HBox hbox = new HBox(root1, new Pane(), root2);
-                        hbox.setSpacing(20);
+                    datedebut.setValue(datezzz1);
+                    datefin.setDayCellFactory(dayCellFactory);
 
-                        borderPane.setRight(hbox);
-
-                        borderPane.setLeft(root1);
-                        button.getScene().setRoot(borderPane);
-
-                        borderPane.setPadding(new Insets(10, 10, 30, 10));
-                    } catch (IOException ex) {
-                        Logger.getLogger(CalendrierController.class.getName()).log(Level.SEVERE, null, ex);
-                    }
-
-//        Scene scene = new Scene(borderPane);
-//        Stage stage = new Stage();
-//        stage.setScene(scene);
-//        stage.show();
-                    //modifier.getScene().setRoot(root);
-                    //System.out.println(datePicker);
-                    // Ajouter le code que vous souhaitez exécuter ici
                 });
 
-                //   button.setBackground(background);
-                // button.setPrefSize(200, 200);
-                // button.setId("list-anchor-pane");
-                // button.setStyle("-fx-background-color: #F5F5F5; -fx-border-color: black;");
+
                 button.setStyle("-fx-background-color: #F5F5F5; -fx-padding: 10px;");
                 button.getChildren().add(label);
                 buttons.add(button);
@@ -181,9 +250,9 @@ public class CalendrierController implements Initializable {
                 int month1 = Integer.parseInt(parts1[1]);
 
                 String moisString = month1 + "";
-                List<Location> locationFait = ls.recupererAllByIdVehicule(1);
+                List<Location> locationFait = ls.recupererAllByIdVehicule(idv);
                 System.out.println("dcfvgbvfd");
-                System.out.println(locationFait);
+                System.out.println("essai nouveau calendrierrrr"+locationFait);
                 for (int i = 0; i < locationFait.size(); i++) {
 
                     Date dateDebut = locationFait.get(i).getDate_debut();
@@ -336,16 +405,23 @@ public class CalendrierController implements Initializable {
 
     }
 
+    public void testCalendrier (int id)
+            
+    {  
+        idv=id;
+        currentDate = LocalDate.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern(" MMMM yyyy");
+        localDate.setText(currentDate.format(formatter));
+        optionCH.getItems().add("non");
+        optionCH.getItems().add("oui");
+        // Afficher les jours du mois en cours
+        updateDaysGrid();
+    }
     @Override
     public void initialize(URL url, ResourceBundle rb
     ) {
         // Afficher la date d'aujourd'hui
-        currentDate = LocalDate.now();
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern(" MMMM yyyy");
-        localDate.setText(currentDate.format(formatter));
-
-        // Afficher les jours du mois en cours
-        updateDaysGrid();
+      
 
     }
 
@@ -371,6 +447,66 @@ public class CalendrierController implements Initializable {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MMMM yyyy");
         localDate.setText(currentDate.format(formatter));
         updateDaysGrid();
+    }
+
+    @FXML
+    private void setdatedebut(ActionEvent event) {
+        datefin.setDayCellFactory(dayCellFactory);
+        LocalDate myDate = datedebut.getValue();
+    }
+
+    @FXML
+    private void reserverVehicule(ActionEvent event) throws IOException {
+        java.sql.Date ddebut = java.sql.Date.valueOf(datedebut.getValue());
+        System.out.println(ddebut);
+        java.sql.Date dfin = java.sql.Date.valueOf(datefin.getValue());
+        System.out.println(dfin);
+        String txt = optionCH.getValue();
+        System.out.println(txt);
+        Boolean opch;
+        if (txt.equals("oui")) {
+            opch = true;
+        } else {
+            opch = false;
+        }
+        Location l = new Location(ddebut, dfin, opch, idv, 1);
+        System.out.println(l);
+        try {
+            ls.ajouter(l);
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("SideBarUser.fxml"));
+            Parent root1 = loader.load();
+            BorderPane borderPane = new BorderPane();
+            FXMLLoader loader1 = new FXMLLoader(getClass().getResource("ListeMesLocations.fxml"));
+            Parent root2 = loader1.load();
+
+            HBox hbox = new HBox(root1, new Pane(), root2);
+            hbox.setSpacing(20);
+
+            borderPane.setRight(hbox);
+
+            borderPane.setLeft(root1);
+
+            borderPane.setPadding(new Insets(10, 10, 30, 10));
+
+//        Scene scene = new Scene(borderPane);
+//        Stage stage = new Stage();
+//        stage.setScene(scene);
+//        stage.show();
+
+
+
+
+    veh = vehservice.recupererVehiculeByid(idv);
+ 
+            reserverVehicule.getScene().setRoot(borderPane);
+            Twilio.init("AC84ff7691013163d92fc31146ac61b9dc", "edd707b9aca44d01c33f87876d7b0db8");
+            Message message = Message.creator(
+                    new com.twilio.type.PhoneNumber("+21653723896"),
+                    new com.twilio.type.PhoneNumber("+12762888645"),
+                   "Bonjour "+UserConn.nom+" "+UserConn.prenom+" Votre reservation au vehicule "+veh.getMarque()+", immatriculation: "+veh.getImmatriculation()+" du "+datedebut.getValue()+" au "+ datefin.getValue()+" a éte effectuer avec succes.").create();
+        } catch (SQLException ex) {
+           // Logger.getLogger(FormLouerVehiculeController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
 }

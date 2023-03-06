@@ -30,6 +30,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import services.EntretienService;
 import services.MecanicienService;
+import services.UserConn;
 
 /**
  * FXML Controller class
@@ -182,9 +183,32 @@ public class EntretienController implements Initializable {
         try {
             en.setEtat_entretien(cbetat.isSelected());
             es.modifierEtat(en);
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("AfficherEntretien.fxml"));
-            Parent root = loader.load();
-            btnsupprimer.getScene().setRoot(root);
+            
+              FXMLLoader loader = new FXMLLoader(getClass().getResource("SideBarUser.fxml"));
+        Parent root1 = loader.load();
+        SideBarUserController cc = loader.getController();
+        cc.setRole(UserConn.role.toString());
+        BorderPane borderPane = new BorderPane();
+        FXMLLoader loader1 = new FXMLLoader(getClass().getResource("AfficherEntretien.fxml"));
+        Parent root2 = loader1.load();
+    
+        HBox hbox = new HBox(root1, new Pane(), root2);
+        hbox.setSpacing(20);
+
+        borderPane.setRight(hbox);
+
+        borderPane.setLeft(root1);
+
+        borderPane.setPadding(new Insets(10, 10, 30, 10));
+
+        btnsupprimer.getScene().setRoot(borderPane);
+            
+            
+            
+//            
+//            FXMLLoader loader = new FXMLLoader(getClass().getResource("AfficherEntretien.fxml"));
+//            Parent root = loader.load();
+//            btnsupprimer.getScene().setRoot(root);
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }

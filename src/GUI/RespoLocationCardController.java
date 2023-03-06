@@ -67,6 +67,7 @@ public class RespoLocationCardController implements Initializable {
         modalStage.initModality(Modality.APPLICATION_MODAL.APPLICATION_MODAL);
         modalStage.setScene(new Scene(root));
         modalStage.showAndWait();
+       
     }
 
 }

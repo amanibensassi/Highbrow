@@ -20,12 +20,14 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.scene.Parent;
+import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
+import services.UserConn;
 import services.VenteService;
 
 /**
@@ -35,10 +37,7 @@ import services.VenteService;
  */
 public class AjouterRendezVousVenteController implements Initializable {
 
-    @FXML
     private TextField iduser;
-    @FXML
-    private TextField idveh;
     @FXML
     private DatePicker date_rendezvous;
     String lsheures[]={"9","10","11","12","14","15","16","17","18"};
@@ -49,6 +48,8 @@ public class AjouterRendezVousVenteController implements Initializable {
     @FXML
     private ChoiceBox<String> heure;
     private int idv;
+    @FXML
+    private Button valider;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -69,7 +70,7 @@ public class AjouterRendezVousVenteController implements Initializable {
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-DD HH:mm:ss");
         format.parse(dd);
         Vente v = new Vente();
-        v.setId_utilisateur(1);
+        v.setId_utilisateur(UserConn.idutilisateur);
         v.setId_vehicule(idv);
         v.setDate_rendez_vous(format.parse(dd));
 
@@ -78,9 +79,13 @@ public class AjouterRendezVousVenteController implements Initializable {
 
             FXMLLoader loader = new FXMLLoader(getClass().getResource("SideBarUser.fxml"));
             Parent root1 = loader.load();
+            SideBarUserController  cc=loader.getController();
+             cc.setRole(UserConn.role.toString());
             BorderPane borderPane = new BorderPane();
             FXMLLoader loader1 = new FXMLLoader(getClass().getResource("AfficherRendezVous.fxml"));
             Parent root2 = loader1.load();
+            AfficherRendezVousController rv = loader1.getController();
+            rv.setdata();
             HBox hbox = new HBox(root1, new Pane(), root2);
             hbox.setSpacing(20);
 
@@ -90,7 +95,7 @@ public class AjouterRendezVousVenteController implements Initializable {
 
             borderPane.setPadding(new Insets(10, 10, 30, 10));
 
-            iduser.getScene().setRoot(borderPane);
+            valider.getScene().setRoot(borderPane);
 
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());

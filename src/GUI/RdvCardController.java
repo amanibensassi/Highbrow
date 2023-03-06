@@ -5,6 +5,8 @@
  */
 package GUI;
 
+import entities.Utilisateur;
+import entities.Vehicule;
 import entities.Vente;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -19,9 +21,16 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Insets;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.Pane;
+import services.UserConn;
+import services.UserService;
+import services.VehiculeService;
 import services.VenteService;
 
 /**
@@ -29,12 +38,9 @@ import services.VenteService;
  *
  * @author Hamma
  */
-
 public class RdvCardController implements Initializable {
 
-    @FXML
     private Label iduser;
-    @FXML
     private Label idveh;
     @FXML
     private Label date_rendez_vous;
@@ -42,62 +48,92 @@ public class RdvCardController implements Initializable {
     private Button detail;
     @FXML
     private Button delete;
-    
-   Vente ve = new Vente();
-   VenteService vs = new VenteService();
-   
 
+    Vente ve = new Vente();
+    VenteService vs = new VenteService();
+    @FXML
+    private Label nom;
+    @FXML
+    private Label prenom;
+    @FXML
+    private Label nomv;
+    Utilisateur u = new Utilisateur();
+    Vehicule vh = new Vehicule();
+    VehiculeService vhs = new VehiculeService();
+    UserService us = new UserService();
+    
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
-    }    
-    
-     public void setRdv(Vente v) throws FileNotFoundException, ParseException {
-                 iduser.setText(String.valueOf(v.getId_utilisateur()));
-                 idveh.setText(String.valueOf(v.getId_vehicule()));  
-         ve=v ;
-         SimpleDateFormat sdf=new SimpleDateFormat("yyyy/MM/dd hh:mm:ss");
-         String dateString=sdf.format(v.getDate_rendez_vous());
-         System.out.println(dateString);
-        
-         date_rendez_vous.setText(v.getDate_rendez_vous().toString()); 
+        if(UserConn.role.toString().equals("proprietaire_agence"))
+        {detail.setVisible(false);
+        delete.setVisible(false);
+      
+        }
+    }
+
+    public void setRdv(Vente v) throws FileNotFoundException, ParseException, SQLException {
+        u= us.recupererById(v.getId_utilisateur());
+        nom.setText(u.getNom());
+        prenom.setText(u.getPrenom());
+        vh = vhs.recupererVehiculeByid(v.getId_vehicule());
+        nomv.setText(vh.getImmatriculation());
+       // iduser.setText(String.valueOf(v.getId_utilisateur()));
+       // idveh.setText(String.valueOf(v.getId_vehicule()));
+        ve = v;
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd hh:mm:ss");
+        String dateString = sdf.format(v.getDate_rendez_vous());
+        System.out.println(dateString);
+
+        date_rendez_vous.setText(v.getDate_rendez_vous().toString());
 
     }
 
     @FXML
     private void Rdvdetail(ActionEvent event) {
         try {
-                                        System.out.println(ve);
-                                        FXMLLoader loader = new FXMLLoader(getClass().getResource("ModifierRendezVous.fxml"));
-                                        Parent root = loader.load();
-                                        ModifierRendezVousController controller = loader.getController();
-                                        controller.setData(ve);
-                                        date_rendez_vous.getScene().setRoot(root);     
-                                    } catch (IOException ex) {
-                                        System.out.println("error1" + ex.getMessage());
-                                    }
-        
-        
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("SideBarUser.fxml"));
+            Parent root1 = loader.load();
+            SideBarUserController cc = loader.getController();
+            cc.setRole(UserConn.role.toString());
+            BorderPane borderPane = new BorderPane();
+            FXMLLoader loader1 = new FXMLLoader(getClass().getResource("ModifierRendezVous.fxml"));
+            Parent root2 = loader1.load();
+            ModifierRendezVousController ac = loader1.getController();
+            ac.setData(ve);;
+            HBox hbox = new HBox(root1, new Pane(), root2);
+            hbox.setSpacing(20);
+            borderPane.setRight(hbox);
+            borderPane.setLeft(root1);
+            borderPane.setPadding(new Insets(10, 10, 30, 10));
+            detail.getScene().setRoot(borderPane);
+        } catch (IOException ex) {
+            System.out.println("error1" + ex.getMessage());
+        }
+
     }
 
     @FXML
-    private void SupprimerRdv(ActionEvent event) throws IOException {
-        try{
-           vs.supprimer(ve);
-           FXMLLoader loader = new FXMLLoader(getClass().getResource("AfficherRendezVous.fxml"));
-           Parent root = loader.load();
-           delete.getScene().setRoot(root);
-        }
-        catch(SQLException ex){
-            System.out.println(ex.getMessage());
-        }
-        
+    private void SupprimerRdv(ActionEvent event) throws IOException, FileNotFoundException, ParseException, SQLException {
+        vs.supprimer(ve);
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("SideBarUser.fxml"));
+        Parent root1 = loader.load();
+        SideBarUserController cc = loader.getController();
+        cc.setRole(UserConn.role.toString());
+        BorderPane borderPane = new BorderPane();
+        FXMLLoader loader1 = new FXMLLoader(getClass().getResource("AfficherRendezVous.fxml"));
+        Parent root2 = loader1.load();
+        AfficherRendezVousController rv = loader1.getController();
+        rv.setdata();
+        HBox hbox = new HBox(root1, new Pane(), root2);
+        hbox.setSpacing(20);
+        borderPane.setRight(hbox);
+        borderPane.setLeft(root1);
+        borderPane.setPadding(new Insets(10, 10, 30, 10));
+        delete.getScene().setRoot(borderPane);
+
     }
 
-        
-    }
-    
-
+}

@@ -23,10 +23,16 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.control.Dialog;
 import javafx.scene.control.DialogPane;
 import javafx.scene.control.Label;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
+import services.CommentaireService;
+import services.OtherServices;
 import services.ReponseService;
+import services.UserConn;
+import services.UserService;
 
 /**
  * FXML Controller class
@@ -49,6 +55,14 @@ public class CommentairecardController implements Initializable {
     @FXML
     private Button modifiercommentaire_id;
     ReponseService rs = new ReponseService();
+    CommentaireService cs = new CommentaireService();
+        UserService us = new UserService();
+
+     OtherServices os = new OtherServices();
+    @FXML
+    private ImageView id_trash;
+    @FXML
+    private ImageView imageviewtobeoff;
     /**
      * Initializes the controller class.
      */
@@ -57,19 +71,24 @@ public class CommentairecardController implements Initializable {
         // TODO
     }    
     
-     public void setdesign(Commentaire c){
+     public void setdesign(Commentaire c) {
      this.comment=c;
-//     username_id.setId(c.getIdcommentaire();
-     dateid.setText(c.getDate_commentaire().toString());
+      try{
+     username_id.setText(us.recupererById(c.getId_utilisateur()).getNom()+" "+us.recupererById(c.getId_utilisateur()).getPrenom());
+     dateid.setText(os.DateFilter(c.getDate_commentaire()));
      publicationid.setText(c.getCommentaire());
-     try{
     nbr_reponse.setText(String.valueOf(rs.countCommentaire(c.getIdcommentaire())));
+    
+    if(c.getId_utilisateur()==UserConn.idutilisateur){
+            imageviewtobeoff.setVisible(true);
+            modifiercommentaire_id.setVisible(true);
+            id_trash.setVisible(true);
+            }
      }catch (SQLException ex){System.out.println("setting error in comment design card");}
     }
 
     @FXML
     private void addcomment(ActionEvent event) {
-        System.out.println("not supported");
            try{
                
                FXMLLoader loader = new FXMLLoader(getClass().getResource("SideBarUser.fxml"));
@@ -134,11 +153,42 @@ public class CommentairecardController implements Initializable {
 
         // lezma for l'affichage mtee dialog pane
        dialog.showAndWait();
-    } catch (IOException ex) {
+      
+       comment= cs.recupererParIdCommentaire(comment.getIdcommentaire());
+//     username_id.setId(c.getIdcommentaire();
+     dateid.setText(comment.getDate_commentaire().toString());
+     publicationid.setText(comment.getCommentaire());
+    } catch (IOException | SQLException ex) {
         System.out.println("Erreur modification de la publication");
     }
         
         
+    }
+
+    @FXML
+    private void deletemethod(MouseEvent event) {
+        try{
+            cs.supprimer(comment);
+              FXMLLoader loader = new FXMLLoader(getClass().getResource("SideBarUser.fxml"));
+            Parent root1 = loader.load();
+            BorderPane borderPane = new BorderPane();
+            FXMLLoader loader1 = new FXMLLoader(getClass().getResource("interface_commentaires.fxml"));
+            Parent root2 = loader1.load();
+            Interface_commentairesController controller = loader1.getController();
+            controller.dynamicinitialize(comment.getId_publication());
+          
+            HBox hbox = new HBox(root1, new Pane(), root2);
+            hbox.setSpacing(20);
+
+            borderPane.setRight(hbox);
+
+            borderPane.setLeft(root1);
+
+            borderPane.setPadding(new Insets(10, 10, 30, 10));
+            publicationid.getScene().setRoot(borderPane); 
+        } catch (SQLException | IOException ex) {
+        System.out.println("Erreur modification de la publication");
+    }
     }
     
 }

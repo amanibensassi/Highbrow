@@ -6,6 +6,7 @@
 package GUI;
 
 import GUI.AfficherEntretienController;
+import entities.Chauffeur;
 import entities.Mecanicien;
 import java.io.IOException;
 import java.net.URL;
@@ -14,11 +15,13 @@ import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.stream.Collectors;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -27,6 +30,7 @@ import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
@@ -35,6 +39,7 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import services.MecanicienService;
+import services.UserConn;
 import typeenumeration.Region;
 import typeenumeration.Specialite;
 import static typeenumeration.Specialite.electricien;
@@ -63,11 +68,13 @@ public class AfficherMecaniciensProfController implements Initializable {
     List<Mecanicien> personnes;
     @FXML
     private ChoiceBox<String> cbregion;
-    @FXML
-    private ChoiceBox<String> cbspecialite;
     Specialite tabspes []={electricien,mecanicien,tolier};
     Region tabreg []={Region.ariana,Region.beja,Region.ben_Arous,Region.bizerte,Region.gabes,Region.gafsa,Region.jendouba,Region.kairouan,Region.kasserine,Region.kebili,Region.kef,Region.mahdia,Region.manouba,Region.medenine,Region.monastir,Region.monastir,Region.nabeul,Region.sfax,Region.sidi_Bouzid,Region.siliana,Region.sousse,Region.tataouine,Region.tozeur,Region.tunis,Region.zaghouan};
     private int id;
+    @FXML
+    private ImageView cal;
+    @FXML
+    private ImageView plus;
     /**
      * Initializes the controller class.
      */
@@ -112,9 +119,22 @@ public class AfficherMecaniciensProfController implements Initializable {
     }
     
     
-    private void getData(){
+    public void getData(){
+        if (UserConn.role.toString().equals("administrateur")){
+            btnlister.setVisible(false);
+            cal.setVisible(false);
+        }
+        
+         if (UserConn.role.toString().equals("proprietaire_agence")){
+            btnlister.setVisible(false);
+            ajouterMec.setVisible(false);
+            cal.setVisible(false);
+            plus.setVisible(false);
+        }
         try {
+            System.out.println("DKHALLLL");
             List<Mecanicien> personnes = ms.recuperer();
+            System.out.println("DDDDDD"+personnes);
             int row = 1;
             int column = 0;
             for (int i = 0; i < personnes.size(); i++) {
@@ -220,30 +240,77 @@ public class AfficherMecaniciensProfController implements Initializable {
     }*/
 
     @FXML
-    private void rechercheMecanicien(KeyEvent event) {
+    private void rechercheMecanicien(KeyEvent event) throws IOException {
+        
+        
         grid.getChildren().clear();
+         int row = 1;
+           int column = 0;
+            String recherche = txtrecherche.getText();
+        List<Mecanicien> ch = null;
         try {
-            List<Mecanicien> personnes = ms.rechercherMecanicien(txtrecherche.getText());
-            int row = 1;
-            int column = 0;
-            for (int i = 0; i < personnes.size(); i++) {
-                //chargement dynamique d'une interface
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("Mecanicien.fxml"));
-                AnchorPane pane = loader.load();
-                //passage de parametres
-                MecanicienController controller = loader.getController();
-                controller.setPersonne(personnes.get(i));
+            ch = ms.recuperer();
+        } catch (SQLException ex) {
+            Logger.getLogger(AfficherSiegeController.class.getName()).log(Level.SEVERE, null, ex);
+        }
 
-                grid.add(pane, column, row);
+        List<Mecanicien> resultatsRecherche = ch.stream()
+                .filter(s -> s.getNom_mecanicien().toLowerCase().startsWith(recherche.toLowerCase()))
+                .collect(Collectors.toList());
+
+        grid.getChildren().clear();
+        int rowIndex = 1;
+        int columnIndex = 0;
+
+        for (int i = 0; i < resultatsRecherche.size(); i++) {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("Mecanicien.fxml"));
+
+            AnchorPane AnchorPane = loader.load();
+              MecanicienController controller = loader.getController();
+                controller.setPersonne(resultatsRecherche.get(i));
+            System.out.println(resultatsRecherche.get(i));
+             grid.add(AnchorPane, column, row);
                 column++;
                 if (column > 0) {
                     column = 0;
                     row++;
                 }
-            }
-        } catch (SQLException | IOException ex) {
-            System.out.println(ex.getMessage());
+
         }
+        txtrecherche.setOnKeyReleased(new EventHandler<KeyEvent>() {
+            @Override
+            public void handle(KeyEvent event) {
+                try {
+                    rechercheMecanicien(event);
+                } catch (IOException ex) {
+                    //Logger.getLogger(AfficherChauffeurController.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+
+        });
+//        grid.getChildren().clear();
+//        try {
+//            List<Mecanicien> personnes = ms.rechercherMecanicien(txtrecherche.getText());
+//            int row = 1;
+//            int column = 0;
+//            for (int i = 0; i < personnes.size(); i++) {
+//                //chargement dynamique d'une interface
+//                FXMLLoader loader = new FXMLLoader(getClass().getResource("Mecanicien.fxml"));
+//                AnchorPane pane = loader.load();
+//                //passage de parametres
+//                MecanicienController controller = loader.getController();
+//                controller.setPersonne(personnes.get(i));
+//
+//                grid.add(pane, column, row);
+//                column++;
+//                if (column > 0) {
+//                    column = 0;
+//                    row++;
+//                }
+//            }
+//        } catch (SQLException | IOException ex) {
+//            System.out.println(ex.getMessage());
+//        }
     }
     
     public void trie(){

@@ -52,7 +52,7 @@ String nomImage;
             prenom.setText(c.getPrenom());
             email.setText(c.getAdresse());
             numtel.setText(String.valueOf(c.getContact()));
-             nomImage = "C://xampp//htdocs//img//" + c.getImage();
+             nomImage = "C://Users//anasm//OneDrive//Documents//ImagesProjet//" + c.getImage();
               File file = new File(nomImage);
 
         Image imagee = new Image(file.toURI().toString());

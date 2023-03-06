@@ -37,6 +37,8 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import services.CommentaireService;
 import services.PublicationService;
+import services.UserConn;
+import services.UserService;
 
 /**
  * FXML Controller class
@@ -82,6 +84,7 @@ import services.PublicationService;
     private ImageView like_img;
     @FXML
     private ImageView dislike_img;
+     UserService us = new UserService();
     /**
      * Initializes the controller class.
      */
@@ -90,16 +93,17 @@ import services.PublicationService;
            
     }  
     
-    public void dynamicinitialize(Publication p) {
+    public void dynamicinitialize(int p) {
           try{
+            pp= ps.recupererParId(p);
+            username_id.setText(us.recupererById(pp.getId_utilisateur()).getPrenom()+ " "+us.recupererById(pp.getId_utilisateur()).getNom() );
             this.txtf_partagerpub1.setCursor(Cursor.TEXT);
-            this.dateid.setText(p.getDate_publication().toString());
-            this.publicationid.setText(p.getPublication());
-            id_like.setText(String.valueOf(cs.countLikes(p.getIdpublication())));
-            id_dislike.setText(String.valueOf(cs.countDislikes(p.getIdpublication())));
-            nbr_commentaire.setText(String.valueOf(cs.countCommentaire(p.getIdpublication())));
+            this.dateid.setText(pp.getDate_publication().toString());
+            this.publicationid.setText(pp.getPublication());
+            id_like.setText(String.valueOf(cs.countLikes(pp.getIdpublication())));
+            id_dislike.setText(String.valueOf(cs.countDislikes(pp.getIdpublication())));
+            nbr_commentaire.setText(String.valueOf(cs.countCommentaire(pp.getIdpublication())));
 
-            pp =p;
           
          List<Commentaire> pub = cs.recupererParpublication(pp.getIdpublication());
             if (pub.isEmpty())
@@ -116,26 +120,26 @@ import services.PublicationService;
                     vboxcommentid.getChildren().add(card); 
                      scrollbarid.setContent(vboxcommentid);     
                       }
-                    
+             com.setId_utilisateur(UserConn.idutilisateur);
                     
                         /*********************session id********************/
-//     if ((com.getId_utilisateur()==1)&&(cs.recupererInteractionUser(com).getNbr_like()==true)){
-//                 
-//            String img = "C:\\xampp\\htdocs\\pidev\\Highbrow\\src\\media\\full_up.png";
-//            File file = new File(img);
-//            Image img1 = new Image(file.toURI().toString());
-//            this.like_img.setImage(img1);
-//            this.like_button.setDisable(true);
-//           
-//           }else if((cs.recupererInteractionUser(com).getId_utilisateur()==1)&&(cs.recupererInteractionUser(com).getNbr_dislike()==true)){
-//               
-//            String img = "C:\\xampp\\htdocs\\pidev\\Highbrow\\src\\media\\full_down.png";
-//            File file = new File(img);
-//            Image img1 = new Image(file.toURI().toString());
-//            this.dislike_img.setImage(img1);
-//            this.dislike_button.setDisable(true);
-//            
-//           }
+     if (cs.recupererInteractionUser(com).getNbr_like()==true){
+                 
+            String img = "C:\\xampp\\htdocs\\pidev\\Highbrow\\src\\media\\full_up.png";
+            File file = new File(img);
+            Image img1 = new Image(file.toURI().toString());
+            this.like_img.setImage(img1);
+            this.like_button.setDisable(true);
+             this.dislike_button.setDisable(true);
+           }else if(cs.recupererInteractionUser(com).getNbr_dislike()==true){
+               
+            String img = "C:\\xampp\\htdocs\\pidev\\Highbrow\\src\\media\\full_down.png";
+            File file = new File(img);
+            Image img1 = new Image(file.toURI().toString());
+            this.dislike_img.setImage(img1);
+            this.dislike_button.setDisable(true);
+              this.like_button.setDisable(true);
+           }
                    
                 }
 
@@ -153,21 +157,19 @@ import services.PublicationService;
     @FXML
     private void addLike(ActionEvent event) {
          try{
-        String img= "D:\\Anas INFO\\XAMPP\\htdocs\\Highbrow\\src\\media\\full_up.png";
-        File file = new File(img);
-        Image img1= new Image(file.toURI().toString());
+             String imagePath = "/media/full_up.png";
+            URL imageURL = getClass().getResource(imagePath);
+            Image img1 = new Image(imageURL.toString());
         this.like_img.setImage(img1);
         this.like_button.setDisable(true);
         
         
         Commentaire com = new Commentaire();
-        c.setId_utilisateur(1);
+        c.setId_utilisateur(UserConn.idutilisateur);
         c.setId_publication(pp.getIdpublication());
         cs.ajouterLike(c);
         id_like.setText(String.valueOf(cs.countLikes(c.getId_publication())));
-             System.out.println("avant récupération"+com);
               c = cs.recupererInteractionUser(com);
-             System.out.println(c);
        
         
         }catch (SQLException ex)
@@ -177,15 +179,15 @@ import services.PublicationService;
     @FXML
     private void addDislike(ActionEvent event) {
             try{
-        String img= "D:\\Anas INFO\\XAMPP\\htdocs\\Highbrow\\src\\media\\full_down.png";	
-        File file = new File(img);
-        Image img1= new Image(file.toURI().toString());
+                String imagePath = "/media/full_up.png";
+            URL imageURL = getClass().getResource(imagePath);
+            Image img1 = new Image(imageURL.toString());
+        
          this.dislike_img.setImage(img1);
         this.dislike_button.setDisable(true);
         
         
-        System.out.println("user session");
-        c.setId_utilisateur(1);
+        c.setId_utilisateur(UserConn.idutilisateur);
         c.setId_publication(pp.getIdpublication());
         cs.ajouterDislike(c);
         id_dislike.setText(String.valueOf(cs.countDislikes(c.getId_publication())));
@@ -203,7 +205,6 @@ import services.PublicationService;
 
     @FXML
     private void ajoutercommentaire(ActionEvent event) {
-        System.out.println("clickkk ");
             if (txtf_partagerpub1.getText().isEmpty()){
                 txtf_partagerpub1.setStyle("-fx-border-radius: 15 ; -fx-border-color: #E31937  ; ");
             }else{
@@ -212,23 +213,21 @@ import services.PublicationService;
             c.setCommentaire(txtf_partagerpub1.getText());
             c.setDate_commentaire(d);
             c.setId_publication(pp.getIdpublication());
-            c.setId_utilisateur(1);
-              System.out.println("the user");
+            c.setId_utilisateur(UserConn.idutilisateur);
             cs.ajouter(c);
-              System.out.println("done");
+           List<Commentaire> com = cs.recuperer();
+            c= com.get(com.size()-1);
             txtf_partagerpub1.setText(null);
             txtf_partagerpub1.setStyle("-fx-border-radius: 15 ; -fx-border-color: transparent ;  -fx-background-radius: 15 ; ");
-           //  pp =ps.recupererParUtilisateurDate(pp);
             //adding the card to the vbox
             
-                    CommentairecardController  cc = new CommentairecardController ();
                     FXMLLoader loader = new FXMLLoader(getClass().getResource("commentairecard.fxml"));
                     Node card = loader.load();
-                    cc = loader.getController();
+                    CommentairecardController  cc = loader.getController();
                     cc.setdesign(c);
                     vboxcommentid.getChildren().add(0, card);
                     scrollbarid.setContent(vboxcommentid);
-            nbr_commentaire.setText(String.valueOf(cs.countCommentaire(pp.getIdpublication())));
+                    nbr_commentaire.setText(String.valueOf(cs.countCommentaire(pp.getIdpublication())));
 //            PublicationdesignController pd = new PublicationdesignController();
 //            FXMLLoader loader = new FXMLLoader(getClass().getResource("publicationdesign.fxml"));
 //            Node card = loader.load();

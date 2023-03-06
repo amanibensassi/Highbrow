@@ -16,7 +16,7 @@
       <HBox prefHeight="100.0" prefWidth="200.0" />
       <Button fx:id="supprimerbtn" alignment="CENTER" contentDisplay="CENTER" layoutX="896.0" layoutY="452.0" mnemonicParsing="false" onAction="#supprimerVehicule" prefHeight="46.0" prefWidth="197.0" styleClass="btnsupprimer" stylesheets="@../values/values.css" text="Supprimer" textFill="WHITE" />
       <Button fx:id="modifierbtn" layoutX="1132.0" layoutY="451.0" mnemonicParsing="false" onAction="#modifierVehicule" prefHeight="46.0" prefWidth="170.0" styleClass="modifierButton" stylesheets="@../values/values.css" text="Modifier" textAlignment="CENTER" textFill="#eaeaea" />
-      <ImageView fx:id="imageLabel" fitHeight="231.0" fitWidth="219.0" layoutX="21.0" layoutY="18.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="imageLabel" fitHeight="275.0" fitWidth="288.0" layoutX="964.0" layoutY="59.0" pickOnBounds="true" preserveRatio="true" />
       <Button fx:id="reserverbtn" alignment="CENTER" contentDisplay="CENTER" layoutX="625.0" layoutY="452.0" mnemonicParsing="false" onAction="#reserverVehicule" prefHeight="46.0" prefWidth="234.0" styleClass="affichervehiculesbtn" stylesheets="@../values/values.css" text="Reserver " textAlignment="CENTER" textFill="WHITE" />
       <HBox fx:id="hboxavis" layoutX="293.0" layoutY="455.0" prefHeight="46.0" prefWidth="200.0">
          <children>
@@ -31,7 +31,7 @@
          <font>
             <Font size="25.0" />
          </font></Label>
-      <VBox layoutX="93.0" layoutY="58.0" prefHeight="200.0" prefWidth="100.0" spacing="25.0">
+      <VBox layoutX="10.0" layoutY="49.0" prefHeight="200.0" prefWidth="100.0" spacing="25.0">
          <children>
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="L'immtriculation : " textAlignment="CENTER">
                <font>
@@ -64,7 +64,7 @@
             </HBox>
          </children>
       </VBox>
-      <VBox layoutX="384.0" layoutY="68.0" prefHeight="251.0" prefWidth="262.0" spacing="35.0">
+      <VBox layoutX="247.0" layoutY="53.0" prefHeight="251.0" prefWidth="262.0" spacing="35.0">
          <children>
             <Label fx:id="immatriculationLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="30.0" prefWidth="263.0" style="-fx-background-color: white; -fx-background-radius: 15;" stylesheets="@../values/values.css" text="Label" textAlignment="CENTER" textFill="#a5a5a5">
                <font>
@@ -93,7 +93,7 @@
             </Label>
          </children>
       </VBox>
-      <VBox layoutX="653.0" layoutY="73.0" prefHeight="200.0" prefWidth="100.0" spacing="25.0">
+      <VBox layoutX="530.0" layoutY="64.0" prefHeight="200.0" prefWidth="100.0" spacing="25.0">
          <children>
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Kilometrage :" textAlignment="CENTER">
                <font>
@@ -117,7 +117,7 @@
             </Text>
          </children>
       </VBox>
-      <VBox layoutX="998.0" layoutY="75.0" prefHeight="245.0" prefWidth="207.0" spacing="30.0">
+      <VBox layoutX="740.0" layoutY="60.0" prefHeight="245.0" prefWidth="207.0" spacing="30.0">
          <children>
             <Label fx:id="kilometrageLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="30.0" prefWidth="215.0" style="-fx-background-radius: 15;" stylesheets="@../values/values.css" text="Label" textAlignment="CENTER" textFill="#a5a5a5">
                <font>
@@ -147,12 +147,12 @@
          </image>
       </ImageView>
       <Label fx:id="lblnbretoiles" layoutX="1312.0" layoutY="100.0" text="0" />
-      <ImageView fx:id="rendezvousVente" fitHeight="56.0" fitWidth="70.0" layoutX="1267.0" layoutY="186.0" onMouseClicked="#AjouterRendezVousVente" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="rendezvousVente" fitHeight="56.0" fitWidth="70.0" layoutX="1295.0" layoutY="186.0" onMouseClicked="#AjouterRendezVousVente" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/etiquette-de-vente.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="voirRendezVous" fitHeight="56.0" fitWidth="70.0" layoutX="1274.0" layoutY="265.0" onMouseClicked="#ConsulterLesRendezVous" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="voirRendezVous" fitHeight="56.0" fitWidth="70.0" layoutX="1301.0" layoutY="265.0" onMouseClicked="#ConsulterLesRendezVous" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/programme.png" />
          </image>

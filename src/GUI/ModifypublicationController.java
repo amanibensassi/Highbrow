@@ -37,8 +37,6 @@ public class ModifypublicationController implements Initializable {
     private TextField idmodifypub;
     @FXML
     private Button modifierpub;
-    @FXML
-    private Button supprimerpub;
     private Publication pub = new Publication();
     PublicationService ps = new PublicationService();
     @FXML
@@ -80,16 +78,6 @@ public class ModifypublicationController implements Initializable {
         }
     }
 
-    @FXML
-    private void supprimerpublication(ActionEvent event) {
-        try {
-            ps.supprimer(pub);
-            dialog.setResult(null);
-            dialog.close();
-        } catch (SQLException ex) {
-            System.out.println("erreur suppression de la publication");
-        }
-    }
 
     @FXML
     private void annulerselection(ActionEvent event) {

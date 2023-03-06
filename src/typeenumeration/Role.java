@@ -13,6 +13,6 @@ public enum Role {
     
     administrateur,
     client,
-    proprietaire_agence
+    proprietaire_agence,
     
 }

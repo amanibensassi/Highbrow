@@ -101,6 +101,51 @@ public class VenteService implements IService<Vente>,Ivente<Vente> {
         return Ventes;
 
     }
+    
+    
+    public List<Vente> recupererAllvehiculesByidVehicule(int id) throws SQLException {
+        List<Vente> Ventes = new ArrayList<>();
+        String s = "select * from vente where id_vehicule =?";
+        PreparedStatement ps = cnx.prepareCall(s);
+        ps.setInt(1, id);
+        System.out.println("REQUETE"+ps);
+        ResultSet rs = ps.executeQuery();
+        while (rs.next()) {
+            Vente ve = new Vente();
+            ve.setIdvente(rs.getInt(1));
+            ve.setDate_rendez_vous(rs.getTimestamp("date_rendez_vous"));
+            ve.setId_vehicule(rs.getInt("id_vehicule"));
+            ve.setId_utilisateur(rs.getInt("id_utilisateur"));
+           
+            Ventes.add(ve);
+
+        }
+
+        return Ventes;
+
+    }
+    
+    public List<Vente> recupererAllvehiculesByidUtilisateur(int id) throws SQLException {
+        List<Vente> Ventes = new ArrayList<>();
+        String s = "select * from vente where id_utilisateur = ?";
+        PreparedStatement ps = cnx.prepareCall(s);
+        ps.setInt(1, id);
+        ResultSet rs = ps.executeQuery();
+        while (rs.next()) {
+            Vente ve = new Vente();
+            ve.setIdvente(rs.getInt(1));
+            ve.setDate_rendez_vous(rs.getTimestamp("date_rendez_vous"));
+            ve.setId_vehicule(rs.getInt("id_vehicule"));
+            ve.setId_utilisateur(rs.getInt("id_utilisateur"));
+           
+            Ventes.add(ve);
+
+        }
+
+        return Ventes;
+
+    }
+    
 
      @Override
     public void modifier(Vente v) throws SQLException {

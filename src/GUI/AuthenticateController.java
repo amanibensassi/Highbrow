@@ -43,6 +43,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import services.UserConn;
 import services.UserService;
+import services.crypterPassword;
 import utils.MyDB;
 
 /**
@@ -66,10 +67,13 @@ public class AuthenticateController implements Initializable {
      */
     UserService us = new UserService();
     Utilisateur u = new Utilisateur();
+    
 
     Connection cnx;
     @FXML
     private Button login;
+    @FXML
+    private Button inscription;
 
     @Override
 
@@ -222,5 +226,19 @@ public class AuthenticateController implements Initializable {
         } catch (IOException ex) {
             System.out.println(ex.getMessage());
         }
+    }
+
+    @FXML
+    private void inscriptionajoutcompte(ActionEvent event) throws IOException {
+       
+
+        BorderPane borderPane = new BorderPane();
+        FXMLLoader loader1 = new FXMLLoader(getClass().getResource("AjouterUser.fxml"));
+        Parent root2 = loader1.load();
+
+       
+
+        
+        inscription.getScene().setRoot(root2);
     }
 }

@@ -9,11 +9,12 @@
    <children>
     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="90.0" prefWidth="722.0">
          <children>
-            <Label fx:id="type_rec" layoutX="35.0" layoutY="41.0" text="Label" />
+            <Label fx:id="nom" layoutX="35.0" layoutY="41.0" text="nom" />
             <Label fx:id="corp" layoutX="207.0" layoutY="41.0" text="Label" />
             <Label fx:id="date" layoutX="368.0" layoutY="41.0" text="Label" />
             <CheckBox fx:id="etat" layoutX="491.0" layoutY="41.0" mnemonicParsing="false" onAction="#changeretat" text="Traité" />
             <Label fx:id="lbltypereclamation" layoutX="640.0" layoutY="41.0" text="Label" />
+            <Label fx:id="prenom" layoutX="91.0" layoutY="41.0" text="prenom" />
          </children>
       </AnchorPane>
    </children>

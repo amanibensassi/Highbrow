@@ -127,8 +127,26 @@ public class ReclamationService implements IService<Reclamation> ,IReclamation<R
 
     @Override
     public List<Reclamation> recuperer() throws SQLException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
+        List<Reclamation> reclamation = new ArrayList<>();
+        String s = "select * from reclamation";
+        PreparedStatement st = cnx.prepareStatement(s);
+        ResultSet rs = st.executeQuery();
+        while (rs.next()) {
+            Reclamation r = new Reclamation();
+            r.setIdreclamation(rs.getInt("idreclamation"));
+            r.setId_utilisateur(rs.getInt("id_utilisateur"));
+            r.setId_siege(rs.getInt("id_siege"));
+            r.setType_reclamation(TypeReclamation.valueOf(rs.getString("type_reclamation")));
+            r.setDate_reclamation(rs.getDate("date_reclamation"));
+            r.setEtat(rs.getBoolean("etat"));
+            r.setCorps(rs.getString("corps"));
+            reclamation.add(r);
+        }
+        return reclamation;
+        
     }
+        
     }
 
  

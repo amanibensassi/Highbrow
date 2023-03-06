@@ -3,8 +3,14 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/Anas%20INFO/XAMPP/htdocs/Highbrow/src/GUI/AfficherMecaniciensProfController.java</file>
-            <file>file:/D:/Anas%20INFO/XAMPP/htdocs/Highbrow/src/GUI/Vehicule.fxml</file>
+            <file>file:/D:/Anas%20INFO/XAMPP/htdocs/Highbrow/src/GUI/VehiculeController.java</file>
+            <file>file:/D:/Anas%20INFO/XAMPP/htdocs/Highbrow/src/GUI/AuthenticateController.java</file>
+            <file>file:/D:/Anas%20INFO/XAMPP/htdocs/Highbrow/src/GUI/SideBarUserController.java</file>
+            <file>file:/D:/Anas%20INFO/XAMPP/htdocs/Highbrow/src/GUI/AfficherVehiculeBySiegeController.java</file>
+            <file>file:/D:/Anas%20INFO/XAMPP/htdocs/Highbrow/src/GUI/AjouterSiegeController.java</file>
+            <file>file:/D:/Anas%20INFO/XAMPP/htdocs/Highbrow/src/GUI/ClientProfileController.java</file>
+            <file>file:/D:/Anas%20INFO/XAMPP/htdocs/Highbrow/src/GUI/AfficherSiegeController.java</file>
+            <file>file:/D:/Anas%20INFO/XAMPP/htdocs/Highbrow/src/GUI/SiegeController.java</file>
         </group>
     </open-files>
 </project-private>

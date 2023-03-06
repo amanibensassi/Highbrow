@@ -48,7 +48,7 @@ public class LocationService implements IService<Location>, ILocation<Location> 
         ps.executeUpdate();
     }
 
-    public TreeMap<Integer,Integer> nombreLocationParVehicule() throws SQLException {
+    public TreeMap<Integer, Integer> nombreLocationParVehicule() throws SQLException {
 
         TreeMap<Integer, Integer> Locations = new TreeMap<Integer, Integer>();
         String req = "SELECT vehicule.idvehicule, COUNT(location.idlocation) as nombre_de_locations\n"
@@ -119,7 +119,7 @@ public class LocationService implements IService<Location>, ILocation<Location> 
     }
 
     @Override
-    public boolean modifierch(Location l) throws SQLException {
+    public Location modifierch(Location l) throws SQLException {
         String req = "UPDATE location SET date_debut=?,date_fin=?,opt_chauffeur=? where idlocation = ?";
         PreparedStatement ps = cnx.prepareStatement(req);
         ps.setTimestamp(1, new Timestamp(l.getDate_debut().getTime()));
@@ -128,7 +128,7 @@ public class LocationService implements IService<Location>, ILocation<Location> 
         ps.setInt(4, l.getIdlocation());
         System.out.println(ps);
         ps.executeUpdate();
-        return true;
+        return l;
     }
 
     @Override
@@ -237,18 +237,35 @@ public class LocationService implements IService<Location>, ILocation<Location> 
 
     @Override
     public void AnnulerLocation(int i) throws SQLException {
-        String req = "UPDATE location SET etat= ?  where idlocation = ?";
+        String req = "UPDATE location SET etat = 'annuler', id_chauffeur = null , opt_chauffeur=0 WHERE idlocation = ?;";
         PreparedStatement ps = cnx.prepareStatement(req);
-        ps.setString(1, "annuler");
-        ps.setInt(2, i);
-        System.out.println(ps);
+
+        ps.setInt(1, i);
+
+        System.out.println("anullation" + ps);
         ps.executeUpdate();
     }
 
     //Not To USE   
     @Override
     public Location recupererById(int t) throws SQLException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Location l = new Location();
+        String req = "select * from location where idlocation = ? ";
+        PreparedStatement ps = cnx.prepareStatement(req);
+        ps.setInt(1, t);
+        ResultSet rs = ps.executeQuery();
+        while (rs.next()) {
+
+            l.setIdlocation(rs.getInt("Idlocation"));
+            l.setId_vehicule(rs.getInt("Id_vehicule"));
+            l.setId_chauffeur(rs.getInt("Id_chauffeur"));
+            l.setId_utilisateur(rs.getInt("Id_utilisateur"));
+            l.setDate_debut(rs.getDate("date_debut"));
+            l.setDate_fin(rs.getDate("date_fin"));
+            l.setOpt_chauffeur(rs.getBoolean("opt_chauffeur"));
+        }
+
+        return l;
     }
 
     @Override

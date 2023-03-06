@@ -10,10 +10,12 @@ import GUI.AfficherVehiculeBySiegeController;
 import entities.Avis;
 import entities.Vehicule;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Date;
 import java.sql.SQLException;
+import java.text.ParseException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -117,18 +119,6 @@ public class VehiculeController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        if (UserConn.role.toString().equals("client")){
-            supprimerbtn.setVisible(false);
-            modifierbtn.setVisible(false);
-            id_entretient.setVisible(false);
-            voirRendezVous.setVisible(false);
-            lblnbretoiles.setVisible(false);
-        }
-        if (UserConn.role.toString().equals("proprietaire_agence")){
-            reserverbtn.setVisible(false);
-            hboxavis.setVisible(false);
-            lblavis.setVisible(false);
-        }
 
     }
     private int idVehicule;
@@ -163,7 +153,7 @@ public class VehiculeController implements Initializable {
             float res = (key / value) * 100;
             lblnbretoiles.setText(String.valueOf(res) + "%");
         }
-        String nomImage = "C://xampp//htdocs//img//" + c.getImage_vehicule();
+        String nomImage = "C://Users//anasm//OneDrive//Documents//ImagesProjet//" + c.getImage_vehicule();
         File file = new File(nomImage);
         Image img = new Image(file.toURI().toString());
         imageLabel.setImage(img);
@@ -179,110 +169,106 @@ public class VehiculeController implements Initializable {
         pe.setPrix_vente(c.getPrix_vente());
         pe.setNbr_place(c.getNbr_place());
         pe.setKilometrage(c.getKilometrage());
+        if (UserConn.role.toString().equals("client")) {
+            supprimerbtn.setVisible(false);
+            modifierbtn.setVisible(false);
+            id_entretient.setVisible(false);
+            lblnbretoiles.setVisible(false);
+        }
+        if (UserConn.role.toString().equals("proprietaire_agence")) {
+            reserverbtn.setVisible(false);
+            hboxavis.setVisible(false);
+            lblavis.setVisible(false);
+        }
+        List<Avis> avis = new ArrayList<>();
+        avis = as.testAvisVehicule(c.getIdvehicule(), UserConn.idutilisateur);
+        if (avis.size() == 0) {
 
-        try {
-            List<Avis> avis = new ArrayList<>();
-
-            avis = as.testAvisVehicule(c.getIdvehicule(), 1);
-            if (avis.size() == 0) {
-
-                for (int k = 0; k < 5; k++) {
-                    nom_img = "D:\\Anas INFO\\XAMPP\\htdocs\\Highbrow\\src\\images\\star.png";
-                    File file1 = new File(nom_img);
+            for (int k = 0; k < 5; k++) {
+                nom_img = "D:\\Anas INFO\\XAMPP\\htdocs\\Highbrow\\src\\images\\star.png";
+                File file1 = new File(nom_img);
+                Image image1 = new Image(file1.toURI().toString());
+                star1.setImage(image1);
+                star2.setImage(image1);
+                star3.setImage(image1);
+                star4.setImage(image1);
+                star5.setImage(image1);
+            }
+        } else {
+            for (int s = 0; s < avis.size(); s++) {
+                Note n = avis.get(s).getNote();
+                if (n.equals(n1)) {
+                    nom_img1 = "D:\\Anas INFO\\XAMPP\\htdocs\\Highbrow\\src\\images\\star.png";
+                    File file1 = new File(nom_img1);
                     Image image1 = new Image(file1.toURI().toString());
-                    star1.setImage(image1);
+                    nom_img = "D:\\Anas INFO\\XAMPP\\htdocs\\Highbrow\\src\\images\\starp.png";
+                    File file2 = new File(nom_img);
+                    Image image = new Image(file2.toURI().toString());
+                    star1.setImage(image);
                     star2.setImage(image1);
                     star3.setImage(image1);
                     star4.setImage(image1);
                     star5.setImage(image1);
+
                 }
-            } else {
-                for (int s = 0; s < avis.size(); s++) {
-                    Note n = avis.get(s).getNote();
-                    if (n.equals(n1)) {
-                        nom_img1 = "D:\\Anas INFO\\XAMPP\\htdocs\\Highbrow\\src\\images\\star.png";
-                        File file1 = new File(nom_img1);
-                        Image image1 = new Image(file.toURI().toString());
-                        nom_img = "D:\\Anas INFO\\XAMPP\\htdocs\\Highbrow\\src\\images\\starp.png";
-                        File file2 = new File(nom_img);
-                        Image image = new Image(file1.toURI().toString());
-                        star1.setImage(image);
-                        star2.setImage(image1);
-                        star3.setImage(image1);
-                        star4.setImage(image1);
-                        star5.setImage(image1);
+                if (n.equals(n2)) {
+                    nom_img1 = "D:\\Anas INFO\\XAMPP\\htdocs\\Highbrow\\src\\images\\star.png";
+                    File file1 = new File(nom_img1);
+                    Image image1 = new Image(file1.toURI().toString());
+                    nom_img = "D:\\Anas INFO\\XAMPP\\htdocs\\Highbrow\\src\\images\\starp.png";
+                    File file2 = new File(nom_img);
+                    Image image = new Image(file2.toURI().toString());
+                    star1.setImage(image);
+                    star2.setImage(image);
+                    star3.setImage(image1);
+                    star4.setImage(image1);
+                    star5.setImage(image1);
 
-                    }
-                    if (n.equals(n2)) {
-                        nom_img1 = "D:\\Anas INFO\\XAMPP\\htdocs\\Highbrow\\src\\images\\star.png";
-                        File file1 = new File(nom_img1);
-                        Image image1 = new Image(file1.toURI().toString());
-                        nom_img = "D:\\Anas INFO\\XAMPP\\htdocs\\Highbrow\\src\\images\\starp.png";
-                        File file2 = new File(nom_img);
-                        Image image = new Image(file2.toURI().toString());
-                        star1.setImage(image);
-                        star2.setImage(image);
-                        star3.setImage(image1);
-                        star4.setImage(image1);
-                        star5.setImage(image1);
+                }
+                if (n.equals(n3)) {
+                    nom_img1 = "D:\\Anas INFO\\XAMPP\\htdocs\\Highbrow\\src\\images\\star.png";
+                    File file1 = new File(nom_img1);
+                    Image image1 = new Image(file1.toURI().toString());
+                    nom_img = "D:\\Anas INFO\\XAMPP\\htdocs\\Highbrow\\src\\images\\starp.png";
+                    File file2 = new File(nom_img);
+                    Image image = new Image(file2.toURI().toString());
+                    star1.setImage(image);
+                    star2.setImage(image);
+                    star3.setImage(image);
+                    star4.setImage(image1);
+                    star5.setImage(image1);
 
-                    }
-                    if (n.equals(n3)) {
-                        nom_img1 = "D:\\Anas INFO\\XAMPP\\htdocs\\Highbrow\\src\\images\\star.png";
-                        File file1 = new File(nom_img1);
-                        Image image1 = new Image(file1.toURI().toString());
-                        nom_img = "D:\\Anas INFO\\XAMPP\\htdocs\\Highbrow\\src\\images\\starp.png";
-                        File file2 = new File(nom_img);
-                        Image image = new Image(file2.toURI().toString());
-                        star1.setImage(image);
-                        star2.setImage(image);
-                        star3.setImage(image);
-                        star4.setImage(image1);
-                        star5.setImage(image1);
+                }
+                if (n.equals(n4)) {
+                    nom_img1 = "D:\\Anas INFO\\XAMPP\\htdocs\\Highbrow\\src\\images\\star.png";
+                    File file1 = new File(nom_img1);
+                    Image image1 = new Image(file1.toURI().toString());
+                    nom_img = "D:\\Anas INFO\\XAMPP\\htdocs\\Highbrow\\src\\images\\starp.png";
+                    File file2 = new File(nom_img);
+                    Image image = new Image(file2.toURI().toString());
+                    star1.setImage(image);
+                    star2.setImage(image);
+                    star3.setImage(image);
+                    star4.setImage(image);
+                    star5.setImage(image1);
 
-                    }
-                    if (n.equals(n4)) {
-                        nom_img1 = "D:\\Anas INFO\\XAMPP\\htdocs\\Highbrow\\src\\images\\star.png";
-                        File file1 = new File(nom_img1);
-                        Image image1 = new Image(file1.toURI().toString());
-                        nom_img = "D:\\Anas INFO\\XAMPP\\htdocs\\Highbrow\\src\\images\\starp.png";
-                        File file2 = new File(nom_img);
-                        Image image = new Image(file2.toURI().toString());
-                        star1.setImage(image);
-                        star2.setImage(image);
-                        star3.setImage(image);
-                        star4.setImage(image);
-                        star5.setImage(image1);
+                }
+                if (n.equals(n5)) {
+                    nom_img1 = "D:\\Anas INFO\\XAMPP\\htdocs\\Highbrow\\src\\images\\star.png";
+                    File file1 = new File(nom_img1);
+                    Image image1 = new Image(file1.toURI().toString());
+                    nom_img = "D:\\Anas INFO\\XAMPP\\htdocs\\Highbrow\\src\\images\\starp.png";
+                    File file2 = new File(nom_img);
+                    Image image = new Image(file2.toURI().toString());
+                    star1.setImage(image);
+                    star2.setImage(image);
+                    star3.setImage(image);
+                    star4.setImage(image);
+                    star5.setImage(image);
 
-                    }
-                    if (n.equals(n5)) {
-                        nom_img1 = "D:\\Anas INFO\\XAMPP\\htdocs\\Highbrow\\src\\images\\star.png";
-                        File file1 = new File(nom_img1);
-                        Image image1 = new Image(file1.toURI().toString());
-                        nom_img = "D:\\Anas INFO\\XAMPP\\htdocs\\Highbrow\\src\\images\\starp.png";
-                        File file2 = new File(nom_img);
-                        Image image = new Image(file2.toURI().toString());
-                        star1.setImage(image);
-                        star2.setImage(image);
-                        star3.setImage(image);
-                        star4.setImage(image);
-                        star5.setImage(image);
-
-                    }
                 }
             }
-        } catch (SQLException ex) {
-            Logger.getLogger(AjouterAvisController.class.getName()).log(Level.SEVERE, null, ex);
         }
-
-//        AjouterAvisVehiculeController cc = new AjouterAvisVehiculeController();
-//        cc.setIdv(c.getIdvehicule());
-//        cc.setUser(1);
-        // cc.setavis(idVehicule, 1);
-//        FXMLLoader loader1 = new FXMLLoader(getClass().getResource("AjouterAvisVehicule.fxml"));
-//        AjouterAvisVehiculeController cc= loader1.getController();
-//        id_star.getChildren().add(id_star);
-//        cc.setavis(c.getIdvehicule(),1);
     }
 
     @FXML
@@ -361,10 +347,12 @@ public class VehiculeController implements Initializable {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("SideBarUser.fxml"));
         Parent root1 = loader.load();
         BorderPane borderPane = new BorderPane();
-        FXMLLoader loader1 = new FXMLLoader(getClass().getResource("formLouerVehicule.fxml"));
+        FXMLLoader loader1 = new FXMLLoader(getClass().getResource("Calendrier.fxml"));
         Parent root2 = loader1.load();
-        FormLouerVehiculeController fc = loader1.getController();
+        CalendrierController fc = loader1.getController();
+        fc.testCalendrier(idVehicule);
         fc.setIdVehicule(idVehicule);
+
         HBox hbox = new HBox(root1, new Pane(), root2);
         hbox.setSpacing(20);
 
@@ -662,14 +650,18 @@ public class VehiculeController implements Initializable {
     }
 
     @FXML
-    private void ConsulterLesRendezVous(MouseEvent event) throws IOException {
+    private void ConsulterLesRendezVous(MouseEvent event) throws IOException, FileNotFoundException, ParseException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("SideBarUser.fxml"));
         Parent root1 = loader.load();
+         SideBarUserController cc = loader.getController();
+        cc.setRole(UserConn.role.toString());
         BorderPane borderPane = new BorderPane();
         FXMLLoader loader1 = new FXMLLoader(getClass().getResource("AfficherRendezVous.fxml"));
         Parent root2 = loader1.load();
-        AfficherRendezVousController controller = loader1.getController();
-        //controller.setidVehicule(idVehicule);
+        AfficherRendezVousController rv = loader1.getController();
+        rv.setidVehicule(idVehicule);
+        rv.setdata();
+        
         HBox hbox = new HBox(root1, new Pane(), root2);
         hbox.setSpacing(20);
 

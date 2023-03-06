@@ -39,13 +39,16 @@ public class ListeMesLocationsController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 
+    }
+
+    public void listemeslocation() {
         try {
 
             int rowIndex = 1;
             int columnIndex = 0;
 
             List<Location> locations = ls.recupererAllByIdUser(1);
-            System.out.println(locations);
+            
             for (int i = 0; i < locations.size(); i++) {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("CardLocation.fxml"));
 
@@ -53,8 +56,8 @@ public class ListeMesLocationsController implements Initializable {
                 CardLocationController controllerch = loader.getController();
 
                 controllerch.setLocation(locations.get(i));
-                System.out.println("Liste"+locations.get(i));
-                System.out.println(locations.get(i));
+                
+               
                 grid.add(AnchorPane, columnIndex, rowIndex);
                 columnIndex++;
                 if (columnIndex == 1) {

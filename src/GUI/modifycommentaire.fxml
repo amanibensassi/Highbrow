@@ -21,17 +21,12 @@
       </TextField>
       <AnchorPane layoutX="32.0" layoutY="158.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="40.0" prefWidth="501.0" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="44.0" AnchorPane.rightAnchor="44.0">
          <children>
-            <Button fx:id="modifierpub" layoutX="389.0" mnemonicParsing="false" onAction="#modifiercommentaire" prefHeight="43.0" prefWidth="122.0" style="-fx-background-color: #06C17A; -fx-background-radius: 8;" text="Valider" textAlignment="CENTER" textFill="WHITE">
+            <Button fx:id="modifierpub" layoutX="330.0" mnemonicParsing="false" onAction="#modifiercommentaire" prefHeight="43.0" prefWidth="122.0" style="-fx-background-color: #06C17A; -fx-background-radius: 8;" text="Valider" textAlignment="CENTER" textFill="WHITE">
                <font>
                   <Font size="18.0" />
                </font>
             </Button>
-            <Button fx:id="supprimerpub" layoutX="188.0" mnemonicParsing="false" onAction="#supprimercommentaire" prefHeight="43.0" prefWidth="122.0" style="-fx-background-color: #E31937; -fx-background-radius: 8;" text="supprimer" textAlignment="CENTER" textFill="WHITE" visible="false">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Button>
-            <Button fx:id="annulerselection" mnemonicParsing="false" onAction="#annulercommentaire" prefHeight="30.0" prefWidth="110.0" style="-fx-background-color: #A5A5A5; -fx-background-radius: 8;" text="Annuler" textAlignment="CENTER" textFill="WHITE">
+            <Button fx:id="annulerselection" layoutX="61.0" mnemonicParsing="false" onAction="#annulercommentaire" prefHeight="30.0" prefWidth="110.0" style="-fx-background-color: #A5A5A5; -fx-background-radius: 8;" text="Annuler" textAlignment="CENTER" textFill="WHITE">
                <font>
                   <Font size="20.0" />
                </font>

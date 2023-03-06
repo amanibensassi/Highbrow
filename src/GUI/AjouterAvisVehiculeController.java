@@ -27,6 +27,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import services.AvisService;
+import services.UserConn;
 import typeenumeration.Note;
 import static typeenumeration.Note.n1;
 import static typeenumeration.Note.n2;
@@ -83,7 +84,7 @@ public class AjouterAvisVehiculeController implements Initializable {
         try {
             List<Avis> avis = new ArrayList<>();
 
-            avis = as.testAvisVehicule(idv, user);
+            avis = as.testAvisVehicule(idv, UserConn.idutilisateur);
             if (avis.size() == 0) {
 
                 for (int k = 0; k < 5; k++) {

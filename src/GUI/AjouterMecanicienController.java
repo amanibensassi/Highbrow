@@ -84,7 +84,7 @@ public class AjouterMecanicienController implements Initializable {
     @FXML
     private void ajouterMecanicien(ActionEvent event) throws IOException, SQLException {
 
-        if (txtNom.getText().isEmpty() || txtPrenom.getText().isEmpty() || txtContact.getText().isEmpty() || txtAdresse.getText().isEmpty() || txtImage.getText().isEmpty() || cbregion.getValue() == null || cbspecialite.getValue() == null) {
+        if (txtNom.getText().isEmpty() || txtPrenom.getText().isEmpty() || txtContact.getText().isEmpty() || txtAdresse.getText().isEmpty() || txtImage.getText().isEmpty() || cbregion.getValue() == null || cbspecialite.getValue() == null || txtImage.getText().equals("") || txtImage.getText().equals(null)) {
             //JOptionPane.showMessageDialog(null, "Remplir les champs vides");
             Alert al = new Alert(Alert.AlertType.ERROR);
             al.setHeaderText(null);

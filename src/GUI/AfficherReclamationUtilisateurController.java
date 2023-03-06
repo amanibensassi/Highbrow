@@ -28,6 +28,7 @@ import javafx.scene.layout.HBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import services.ReclamationService;
+import services.UserConn;
 
 /**
  * FXML Controller class
@@ -57,8 +58,32 @@ public class AfficherReclamationUtilisateurController implements Initializable {
     
     public void getData() throws ParseException{
         try {
-            if (role=="User"){
-            List<Reclamation> reclamations = rs.recupererReclamationUtilisateur(1);
+            
+            if (UserConn.role.toString().equals("administrateur")){
+            List<Reclamation> reclamations = rs.recuperer();
+            //List<Reclamation> reclamations = rs.recupererReclamation_Siege(ids);
+            System.out.println("aa"+reclamations);
+            int row = 1;
+            int column = 0;
+            for (int i = 0; i < reclamations.size(); i++) {
+                //chargement dynamique d'une interface
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("Reclamation.fxml"));
+                HBox AnchorPane  = loader.load();
+                //passage de parametres
+                ReclamationController controller = loader.getController();
+                controller.setReclamation(reclamations.get(i));
+                grid.add(AnchorPane, column, row);
+                column++;
+                if (column > 0) {
+                    column = 0;
+                    row++;
+                }
+            }
+            }
+            
+            if (UserConn.role.toString().equals("client") || UserConn.role.toString().equals("proprietaire_agence") ){
+                btnajouterreclamation.setVisible(false);
+            List<Reclamation> reclamations = rs.recupererReclamationUtilisateur(UserConn.idutilisateur);
             //List<Reclamation> reclamations = rs.recupererReclamation_Siege(ids);
             System.out.println("aa"+reclamations);
             int row = 1;
@@ -79,7 +104,7 @@ public class AfficherReclamationUtilisateurController implements Initializable {
             }
             }
            
-            if (role=="proprietaire_agence"){
+            if (UserConn.role.toString().equals("proprietaire_agence")){
             //List<Reclamation> reclamations = rs.recupererReclamationUtilisateur(1);
                 System.out.println("IDS"+ids);
             List<Reclamation> reclamations = rs.recupererReclamation_Siege(ids);
@@ -114,6 +139,9 @@ public class AfficherReclamationUtilisateurController implements Initializable {
 //        } catch (ParseException ex) {
 //            Logger.getLogger(AfficherReclamationController.class.getName()).log(Level.SEVERE, null, ex);
 //        }
+            if (UserConn.role.toString().equals("administrateur")){
+            btnajouterreclamation.setVisible(false);
+            }
     }  
 
     @FXML

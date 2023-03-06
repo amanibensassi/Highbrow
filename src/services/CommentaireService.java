@@ -156,9 +156,31 @@ public class CommentaireService implements IService<Commentaire> {
             p.setNbr_dislike(rs.getBoolean("nbr_dislike"));
             p.setNbr_like(rs.getBoolean("nbr_like"));
         } else {
+            p.setNbr_like(Boolean.FALSE);
+            p.setNbr_dislike(Boolean.FALSE);
             System.out.println("found 0");
         }
         return p;
+    }
+    
+     public Commentaire recupererParIdCommentaire(int t) throws SQLException {
+        List<Commentaire> commentaire = new ArrayList<>();
+        String req = "SELECT * FROM commentaire WHERE idcommentaire = " + t ;
+        Statement st = cnx.createStatement();
+        ResultSet rs = st.executeQuery(req);
+
+        Commentaire com = new Commentaire();
+        //remplissage
+        System.out.println("state of table" + rs.first());
+        com.setCommentaire(rs.getString("commentaire"));
+        com.setDate_commentaire(rs.getTimestamp("date_commentaire"));
+        com.setId_publication(rs.getInt("id_publication"));
+        com.setId_utilisateur(rs.getInt("id_utilisateur"));
+        com.setIdcommentaire(rs.getInt("idcommentaire"));
+        com.setNbr_dislike(rs.getBoolean("nbr_like"));
+        com.setNbr_dislike(rs.getBoolean("nbr_dislike"));
+        commentaire.add(com);
+        return com;
     }
 
     public Commentaire recupererParUtilisateurDate(Commentaire t) throws SQLException {

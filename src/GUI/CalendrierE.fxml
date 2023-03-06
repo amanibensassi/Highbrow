@@ -59,7 +59,6 @@
             <Button fx:id="btnConfirmer" layoutX="430.0" layoutY="497.0" mnemonicParsing="false" onAction="#ajouterEntretien" text="Confirmer" />
             <DatePicker fx:id="date_entre" layoutX="212.0" layoutY="497.0" />
             <ChoiceBox fx:id="heures" layoutX="137.0" layoutY="496.0" onMousePressed="#maj" prefHeight="26.0" prefWidth="54.0" />
-            <ChoiceBox fx:id="cbvehicules" layoutX="535.0" layoutY="497.0" prefWidth="150.0" />
          </children>
       </AnchorPane>
    </children>

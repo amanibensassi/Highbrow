@@ -37,7 +37,7 @@
                         <Font name="System Bold Italic" size="20.0" />
                      </font>
                   </Button>
-                  <ImageView fitHeight="40.0" fitWidth="38.0" layoutX="518.0" layoutY="133.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="cal" fitHeight="40.0" fitWidth="38.0" layoutX="518.0" layoutY="133.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../images/liste.png" />
                      </image>
@@ -47,7 +47,7 @@
                         <Font name="System Bold Italic" size="20.0" />
                      </font>
                   </Button>
-                  <ImageView fitHeight="26.0" fitWidth="26.0" layoutX="746.0" layoutY="139.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="plus" fitHeight="26.0" fitWidth="26.0" layoutX="746.0" layoutY="139.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../images/plus-removebg-preview.png" />
                      </image>

@@ -6,11 +6,15 @@
 package GUI;
 
 import entities.Location;
+import entities.Vehicule;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
+import java.text.ParseException;
 import java.util.Optional;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -31,6 +35,7 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import services.LocationService;
+import services.VehiculeService;
 
 /**
  * FXML Controller class
@@ -38,7 +43,7 @@ import services.LocationService;
  * @author eya
  */
 public class CardLocationController implements Initializable {
-
+    
     @FXML
     private Label nomVeh;
     @FXML
@@ -62,8 +67,13 @@ public class CardLocationController implements Initializable {
     private ImageView img;
     @FXML
     private Button Modifier;
-
-    public void setLocation(Location c) {
+    private int idvehi ;
+    VehiculeService vs = new VehiculeService();
+    public void setLocation(Location c) throws SQLException {
+        Vehicule v = new Vehicule();
+        idvehi=c.getId_vehicule();
+        v= vs.recupererVehiculeByid(c.getId_vehicule());
+        nomVeh.setText(v.getMarque());
         loca = c;
         String dateDebut = c.getDate_debut() + "";
         db.setText(dateDebut);
@@ -76,83 +86,85 @@ public class CardLocationController implements Initializable {
         System.out.println("tabbb location " + loca);
         idch = c.getId_chauffeur();
         loca.setId_chauffeur(idch);
-loca.setDate_fin(c.getDate_fin());
+        loca.setDate_fin(c.getDate_fin());
     }
-
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }
-
+    
     @FXML
     private void annuler(ActionEvent event) throws SQLException, IOException {
-
+        
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Confirmation de suppression");
         alert.setHeaderText("Êtes-vous sûr de vouloir anuuler cet reservation ?");
-
+        
         Optional<ButtonType> result = alert.showAndWait();
-
+        
         if (result.isPresent() && result.get() == ButtonType.OK) {
             lS.AnnulerLocation(idL);
-
+            
             Alert confirm = new Alert(Alert.AlertType.INFORMATION);
             confirm.setTitle("Suppression réussie");
             confirm.setHeaderText(null);
             FXMLLoader loader = new FXMLLoader(getClass().getResource("SideBarUser.fxml"));
-        Parent root1 = loader.load();
-        BorderPane borderPane = new BorderPane();
-       FXMLLoader loader1 = new FXMLLoader(getClass().getResource("ListeMesLocations.fxml"));
+            Parent root1 = loader.load();
+            BorderPane borderPane = new BorderPane();
+            FXMLLoader loader1 = new FXMLLoader(getClass().getResource("ListeMesLocations.fxml"));
             Parent root2 = loader1.load();
-      
+            
             HBox hbox = new HBox(root1, new Pane(), root2);
             hbox.setSpacing(20);
-
+            
             borderPane.setRight(hbox);
-       
+            
             borderPane.setLeft(root1);
-        
-
-        borderPane.setPadding(new Insets(10, 10, 30, 10));
+            
+            borderPane.setPadding(new Insets(10, 10, 30, 10));
 //        Scene scene = new Scene(borderPane);
 //        Stage stage = new Stage();
 //        stage.setScene(scene);
 //        stage.show();
-        
-      
 
             annuler.getScene().setRoot(borderPane);
             confirm.setContentText("votre reservation a été supprimé avec succès.");
             confirm.showAndWait();
         }
-
+        
     }
-
+    
     @FXML
-    private void ModifierLocation(ActionEvent event) throws IOException {
+    private void ModifierLocation(ActionEvent event) throws IOException, SQLException {
 //        BoxBlur blur = new BoxBlur(5, 5, 2);
 //        hbox.setEffect(blur);
 
-        
         FXMLLoader loader2 = new FXMLLoader(getClass().getResource("CalendrierModifierLocation.fxml"));
         Parent root2 = loader2.load();
         CalendrierModifierLocationController md1 = loader2.getController();
-        
-       
+        md1.testerCalendierModif(loca.getId_vehicule());
         md1.setLocation(loca);
         Stage modalStage = new Stage();
         modalStage.initModality(Modality.APPLICATION_MODAL.APPLICATION_MODAL);
         modalStage.setScene(new Scene(root2));
         modalStage.showAndWait();
-
+        
+        loca = lS.recupererById(idL);
+        db.setText(loca.getDate_debut().toString());
+        df.setText(loca.getDate_fin().toString());
+        
+        
     }
-
+    
     @FXML
     private void afficherChDetail(MouseEvent event) throws IOException, SQLException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("detailLocation_pfChau.fxml"));
         Parent root1 = loader.load();
+        DetailLocation_pfChauController facturecontroller = loader.getController();
+        facturecontroller.facture(idvehi, idL);
         BorderPane borderPane = new BorderPane();
-
+        
         if (loca.getId_chauffeur() != 0) {
             FXMLLoader loader1 = new FXMLLoader(getClass().getResource("detailChProfil.fxml"));
             Parent root2 = loader1.load();
@@ -162,12 +174,12 @@ loca.setDate_fin(c.getDate_fin());
             // Utiliser un HBox pour placer root1 et root2 côte à côte avec un espacement de 20 pixels
             HBox hbox = new HBox(root1, new Pane(), root2);
             hbox.setSpacing(20);
-
+            
             borderPane.setRight(hbox);
         } else {
             borderPane.setLeft(root1);
         }
-
+        
         borderPane.setPadding(new Insets(10, 10, 30, 10));
         Scene scene = new Scene(borderPane);
         Stage stage = new Stage();
@@ -176,5 +188,5 @@ loca.setDate_fin(c.getDate_fin());
         stage.initOwner(img.getScene().getWindow());
         stage.show();
     }
-
+    
 }

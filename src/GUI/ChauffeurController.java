@@ -85,7 +85,7 @@ private String img;
 //        region.setText(String.valueOf(c.getRegion()));
 //        prix.setText(String.valueOf(c.getPrix_par_jour()));
         numtel.setText(String.valueOf(c.getContact()));
-        nomImage = "C://xampp//htdocs//img//" + c.getImage();
+        nomImage = "C://Users//anasm//OneDrive//Documents//ImagesProjet//" + c.getImage();
         id = c.getIdchauffeur();
         File file = new File(nomImage);
 

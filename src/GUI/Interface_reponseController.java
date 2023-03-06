@@ -34,8 +34,11 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import services.CommentaireService;
+import services.OtherServices;
 import services.PublicationService;
 import services.ReponseService;
+import services.UserConn;
+import services.UserService;
 
 /**
  * FXML Controller class
@@ -71,8 +74,8 @@ public class Interface_reponseController implements Initializable {
     private Label nbrcomment_id;
     @FXML
     private Button backButton_id;
-    
-
+    OtherServices os = new OtherServices();
+     UserService us = new UserService();
     /**
      * Initializes the controller class.
      */
@@ -86,13 +89,13 @@ public class Interface_reponseController implements Initializable {
              com=p;
             this.txtf_partagerpub1.setCursor(Cursor.TEXT);
             // add the user accordinally to the publisher!!
-            this.username_id.setText("mayoucha");
-            this.dateid.setText(p.getDate_commentaire().toString());
+            this.username_id.setText(us.recupererById(com.getId_utilisateur()).getPrenom() + " " + us.recupererById(com.getId_utilisateur()).getNom());
+            this.dateid.setText( os.DateFilter(p.getDate_commentaire()));
             this.commentaireid.setText(p.getCommentaire());
             this.nbr_reponse.setText(String.valueOf(rs.countCommentaire(com.getIdcommentaire())));
-            com =cs.recupererParUtilisateurDate(p);
+//            com =cs.recupererParUtilisateurDate(p);
             System.out.println(com);
-         List<Reponse> reponse = rs.recupererParCommentaire(p.getIdcommentaire());
+         List<Reponse> reponse = rs.recupererParCommentaire(com.getIdcommentaire());
             if (reponse.isEmpty())
                 {System.out.println("no responses found");}
             else {
@@ -127,8 +130,10 @@ public class Interface_reponseController implements Initializable {
             rep.setReponse(txtf_partagerpub1.getText());
             rep.setId_commentaire(com.getIdcommentaire());
             rep.setDate_reponse(d);
-            rep.setId_utilisateur(1);
+            rep.setId_utilisateur(UserConn.idutilisateur);
             rs.ajouter(rep);
+            List<Reponse> reponse = rs.recuperer();
+            rep= reponse.get(reponse.size()-1);
             txtf_partagerpub1.setText(null);
              txtf_partagerpub1.setStyle("-fx-border-radius: 15 ; -fx-border-color: transparent ;  -fx-background-radius: 15 ; ");
             this.nbr_reponse.setText(String.valueOf(rs.countCommentaire(com.getIdcommentaire())));
@@ -159,7 +164,7 @@ public class Interface_reponseController implements Initializable {
             FXMLLoader loader1 = new FXMLLoader(getClass().getResource("interface_commentaires.fxml"));
             Parent root2 = loader1.load();
               Interface_commentairesController controller = loader1.getController();
-          controller.dynamicinitialize(p);
+          controller.dynamicinitialize(p.getIdpublication());
             HBox hbox = new HBox(root1, new Pane(), root2);
             hbox.setSpacing(20);
 

@@ -34,6 +34,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import services.ReclamationService;
+import services.UserConn;
 import typeenumeration.TypeReclamation;
 
 /**
@@ -52,7 +53,6 @@ public class AjouterReclamationController implements Initializable {
     private String corps;
     
      */
-
     private ChoiceBox<TypeReclamation> cbrecl;
     @FXML
     private TextArea rec;
@@ -60,37 +60,42 @@ public class AjouterReclamationController implements Initializable {
     Reclamation r = new Reclamation();
     @FXML
     private Button btnajouter;
-private int ids;
+    private int ids;
+
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
     }
-    public void setIdSiege(int id){ids=id;}
- public void refreshPage() throws IOException {
-    FXMLLoader loader = new FXMLLoader(getClass().getResource("SideBarUser.fxml"));
-    Parent root1 = loader.load();
-    BorderPane borderPane = new BorderPane();
-    FXMLLoader loader1 = new FXMLLoader(getClass().getResource("AfficherReclamationUtilisateur.fxml"));
-    Parent root2 = loader1.load();
-    AfficherReclamationUtilisateurController controller = loader1.getController();
-    controller.initialize(null, null);
-    HBox hbox = new HBox(root1, new Pane(), root2);
-    hbox.setSpacing(20);
 
-    borderPane.setRight(hbox);
+    public void setIdSiege(int id) {
+        ids = id;
+    }
 
-    borderPane.setLeft(root1);
+    public void refreshPage() throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("SideBarUser.fxml"));
+        Parent root1 = loader.load();
+        BorderPane borderPane = new BorderPane();
+        FXMLLoader loader1 = new FXMLLoader(getClass().getResource("AfficherReclamationUtilisateur.fxml"));
+        Parent root2 = loader1.load();
+        AfficherReclamationUtilisateurController controller = loader1.getController();
+        controller.initialize(null, null);
+        HBox hbox = new HBox(root1, new Pane(), root2);
+        hbox.setSpacing(20);
 
-    borderPane.setPadding(new Insets(10, 10, 30, 10));
+        borderPane.setRight(hbox);
 
-    rec.getScene().setRoot(borderPane);   
-}
+        borderPane.setLeft(root1);
+
+        borderPane.setPadding(new Insets(10, 10, 30, 10));
+
+        rec.getScene().setRoot(borderPane);
+    }
 
     @FXML
     private void ajouter(ActionEvent event) throws SQLException, ParseException, IOException {
-        r.setId_utilisateur(1);
+        r.setId_utilisateur(UserConn.idutilisateur);
         r.setType_reclamation(TypeReclamation.administrateur);
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
         LocalDateTime now = LocalDateTime.now();
@@ -99,31 +104,20 @@ private int ids;
         r.setEtat(false);
         r.setId_siege(ids);
         r.setCorps(rec.getText());
-        if(ids==0)
-        { rs.ajouterReclamationAdmin(r);}
-        else
-        {rs.ajouterReclamationSiege(r);}
-    Stage stage=(Stage) btnajouter.getScene().getWindow();
-    stage.close();
+        if (ids == 0) {
+            rs.ajouterReclamationAdmin(r);
+        } else {
+            rs.ajouterReclamationSiege(r);
+        }
+        Stage stage = (Stage) btnajouter.getScene().getWindow();
+        stage.close();
 
-    // Mettre à jour la liste des réclamations dans la fenêtre principale
-    FXMLLoader loader = new FXMLLoader(getClass().getResource("AfficherReclamationUtilisateur.fxml"));
-    Parent root = loader.load();
-    AfficherReclamationUtilisateurController controller = loader.getController();
-    controller.initialize(null, null);
-//        }
-//        else if (cbrecl.getValue().toString().equals("siege")){
-//            r.setId_utilisateur(1);
-//            r.setId_siege(2);
-//            r.setType_reclamation(TypeReclamation.siege);
-//            DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");  
-//            LocalDateTime now = LocalDateTime.now(); 
-//            Date date = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(dtf.format(now));
-//            r.setDate_reclamation(date);
-//            r.setEtat(false);
-//            r.setCorps(rec.getText());
-//            rs.ajouterReclamationSiege(r);
-//        }
+        // Mettre à jour la liste des réclamations dans la fenêtre principale
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("AfficherReclamationUtilisateur.fxml"));
+        Parent root = loader.load();
+        AfficherReclamationUtilisateurController controller = loader.getController();
+        controller.initialize(null, null);
+
     }
 
 }

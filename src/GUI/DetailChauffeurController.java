@@ -121,7 +121,7 @@ public class DetailChauffeurController implements Initializable {
         combobox.setValue(c.getRegion().toString());
         numtel.setText(String.valueOf(c.getContact()));
         prix.setText(String.valueOf(c.getPrix_par_jour()));
-        nomImage = "C://xampp//htdocs//img//" + c.getImage();
+        nomImage = "C://Users//anasm//OneDrive//Documents//ImagesProjet//" + c.getImage();
         img = c.getImage();
         pAvant = c.getPermis();
         pBack = c.getPermis_arriere();
@@ -132,14 +132,14 @@ public class DetailChauffeurController implements Initializable {
 
         imageview.setImage(imagee);
         imageview.getStyleClass().add("detail.css");
-        pa = "C://xampp//htdocs//img//" + c.getPermis();
+        pa = "C://Users//anasm//OneDrive//Documents//ImagesProjet//" + c.getPermis();
         File file2 = new File(pa);
         
         Image image2 = new Image(file2.toURI().toString());
         
         pavant.setImage(image2);
         
-        pb = "C://xampp//htdocs//img//" + c.getPermis_arriere();
+        pb = "C://Users//anasm//OneDrive//Documents//ImagesProjet//" + c.getPermis_arriere();
         
         File file3 = new File(pb);
         

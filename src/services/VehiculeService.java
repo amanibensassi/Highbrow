@@ -337,5 +337,48 @@ public class VehiculeService implements IService<Vehicule>, IVehicule<Vehicule> 
     });
     return vehiculesByEtatAndPlaceAndCarburant;
 }
+        
+        
+        
+        public Vehicule recupererVehiculeByid(int id) throws SQLException {
+
+        Vehicule p= new Vehicule();
+        String req = "select * from vehicule where idvehicule = ? ";
+        PreparedStatement ps = cnx.prepareStatement(req);
+        ps.setInt(1, id);
+        ResultSet rs = ps.executeQuery();
+
+        if (rs.next()) {
+
+           p.setMarque(rs.getString("marque"));
+            p.setKilometrage(rs.getInt("kilometrage"));
+            p.setImmatriculation(rs.getString("immatriculation"));
+            p.setCarburant(Carburant.valueOf(rs.getString("carburant")));
+            switch (rs.getString("nbr_place")) {
+                case "2":
+                    p.setNbr_place(NbrPlace.deux);
+                    break;
+                case "5":
+                    p.setNbr_place(NbrPlace.cinq);
+                    break;
+                case "7":
+                    p.setNbr_place(NbrPlace.sept);
+                    break;
+                case "9":
+                    p.setNbr_place(NbrPlace.neuf);
+                    break;
+            }
+            p.setPrix_par_jour(rs.getFloat("prix_par_jour"));
+            p.setEtat(Etat.valueOf(rs.getString("etat")));
+            p.setPrix_vente(rs.getFloat("prix_vente"));
+            p.setId_siege(rs.getInt("id_siege"));
+            p.setDate_circulation(rs.getDate("date_circulation"));
+            p.setImage_vehicule(rs.getString("image_vehicule"));
+            p.setIdvehicule(rs.getInt("idvehicule"));
+
+        }
+        return p;
+
+    }
 
 }

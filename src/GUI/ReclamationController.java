@@ -7,6 +7,7 @@ package GUI;
 
 import entities.Reclamation;
 import entities.Siege;
+import entities.Utilisateur;
 import java.io.File;
 import java.net.URL;
 import java.sql.SQLException;
@@ -20,9 +21,12 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import services.ReclamationService;
 import services.SiegeService;
+import services.UserConn;
+import services.UserService;
 
 /**
  * FXML Controller class
@@ -31,7 +35,6 @@ import services.SiegeService;
  */
 public class ReclamationController implements Initializable {
 
-    @FXML
     private Label type_rec;
     @FXML
     private Label corp;
@@ -47,7 +50,12 @@ public class ReclamationController implements Initializable {
     String role="Administrateur";
     @FXML
     private Label lbltypereclamation;
-    
+    @FXML
+    private Label prenom;
+    @FXML
+    private Label nom;
+    Utilisateur user = new Utilisateur();
+    UserService us = new UserService();
     /**
      * Initializes the controller class.
      */
@@ -57,7 +65,10 @@ public class ReclamationController implements Initializable {
     }    
     
      public void setReclamation(Reclamation r) throws ParseException, SQLException {
-        type_rec.setText(r.getType_reclamation().toString());
+         user=us.recupererById(r.getId_utilisateur());
+         nom.setText(user.getNom());
+         prenom.setText(user.getPrenom());
+       // type_rec.setText(r.getType_reclamation().toString());
         corp.setText(r.getCorps());
         etat.setSelected(r.isEtat());
         date.setText(r.getDate_reclamation().toString());
@@ -66,12 +77,12 @@ public class ReclamationController implements Initializable {
         //Date datee = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(r.getDate_reclamation().toString());
         //re.setDate_reclamation(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(r.getDate_reclamation()));
         re.setEtat(r.isEtat());
-        if (role=="User"){
+        if (UserConn.role.toString().equals("client") || UserConn.role.toString().equals("proprietaire_agence") ){
             //if (re.isEtat()) {
             etat.setDisable(true);
         //}
         }
-        if (role=="Administrateur" && r.getId_siege()!=0){
+        if (UserConn.role.toString().equals("administrateur") && r.getId_siege()!=0){
             etat.setDisable(true);
         }
          System.out.println("id siege ggggggg"+re.getId_siege());

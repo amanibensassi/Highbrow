@@ -38,13 +38,6 @@
          <font>
             <Font size="18.0" />
          </font></Label>
-      <Button fx:id="approuved" mnemonicParsing="false" onAction="#approuvez" prefHeight="60.0" prefWidth="120.0" style="-fx-background-color: #06C17A; -fx-background-radius: 15;" text="approuver" textFill="WHITE">
-         <font>
-            <Font name="System Bold" size="15.0" />
-         </font>
-         <HBox.margin>
-            <Insets right="10.0" top="40.0" />
-         </HBox.margin></Button>
       <Button fx:id="detail" mnemonicParsing="false" onAction="#Userdetails" prefHeight="60.0" prefWidth="120.0" style="-fx-background-color: #A5A5A5; -fx-background-radius: 15;" text="Detail" textFill="WHITE">
          <font>
             <Font name="System Bold" size="15.0" />
