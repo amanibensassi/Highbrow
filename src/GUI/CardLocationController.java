@@ -114,7 +114,8 @@ public class CardLocationController implements Initializable {
             BorderPane borderPane = new BorderPane();
             FXMLLoader loader1 = new FXMLLoader(getClass().getResource("ListeMesLocations.fxml"));
             Parent root2 = loader1.load();
-            
+            ListeMesLocationsController ls = loader1.getController();
+            ls.listemeslocation();
             HBox hbox = new HBox(root1, new Pane(), root2);
             hbox.setSpacing(20);
             

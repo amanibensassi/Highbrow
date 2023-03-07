@@ -91,7 +91,7 @@ public class ReclamationService implements IService<Reclamation> ,IReclamation<R
     @Override
       public List<Reclamation> recupererReclamation_Siege (int idSiege) throws SQLException {
         List<Reclamation> reclamation = new ArrayList<>();
-        String s = "select * from reclamation where id_siege =? ";
+        String s = "select * from reclamation where id_siege =?  ";
         PreparedStatement st = cnx.prepareStatement(s);
          st.setInt(1, idSiege);
         ResultSet rs = st.executeQuery();

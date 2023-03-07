@@ -19,11 +19,6 @@
          <font>
             <Font size="25.0" />
          </font></Label>
-      <Button layoutX="70.0" layoutY="1028.0" mnemonicParsing="false" onAction="#modifier_prop" prefHeight="96.0" prefWidth="394.0" style="-fx-background-color: #A5A5A5; -fx-background-radius: 15;" text="Modifier vos données" textFill="WHITE">
-         <font>
-            <Font name="System Bold Italic" size="25.0" />
-         </font>
-      </Button>
       <Label layoutX="66.0" layoutY="467.0" text="Votre numéro de téléphone">
          <font>
             <Font name="System Bold" size="25.0" />
@@ -54,16 +49,21 @@
             <Font name="System Bold Italic" size="25.0" />
          </font>
       </Label>
-      <Label fx:id="nom_id2" layoutX="69.0" layoutY="237.0" prefHeight="18.0" prefWidth="60.0" text="Label" wrapText="true">
+      <Label fx:id="nom_id2" layoutX="69.0" layoutY="237.0" prefHeight="36.0" prefWidth="138.0" text="Label" wrapText="true">
          <font>
             <Font size="25.0" />
          </font>
       </Label>
-      <AnchorPane layoutX="271.0" layoutY="94.0" prefHeight="991.0" prefWidth="1197.0" AnchorPane.bottomAnchor="205.0" AnchorPane.leftAnchor="271.0" AnchorPane.rightAnchor="329.0" AnchorPane.topAnchor="94.0">
+      <AnchorPane layoutX="185.0" layoutY="72.0" prefHeight="991.0" prefWidth="1197.0" AnchorPane.bottomAnchor="227.0" AnchorPane.leftAnchor="185.0" AnchorPane.rightAnchor="415.0" AnchorPane.topAnchor="72.0">
          <children>
                    <fx:include layoutY="200.0" prefHeight="1000.0" prefWidth="1500.0" source="Statistiques.fxml" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="0.40000000000009095" AnchorPane.topAnchor="200.0" />
          </children>
       </AnchorPane>
+      <Button layoutX="1111.0" layoutY="902.0" mnemonicParsing="false" onAction="#modifier_prop" prefHeight="72.0" prefWidth="330.0" style="-fx-background-color: #A5A5A5; -fx-background-radius: 15;" text="Modifier vos données" textFill="WHITE">
+         <font>
+            <Font name="System Bold Italic" size="25.0" />
+         </font>
+      </Button>
 
    </children>
 </AnchorPane>

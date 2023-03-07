@@ -341,7 +341,7 @@ public class SiegeController implements Initializable {
     }
 
     @FXML
-    private void AjouterReclamation(MouseEvent event) throws IOException, ParseException {
+    private void AjouterReclamation(MouseEvent event) throws IOException, ParseException, SQLException {
         
         if (UserConn.role.toString().equals("client")){
         FXMLLoader loader2 = new FXMLLoader(getClass().getResource("ajouterReclamation.fxml"));
@@ -360,8 +360,7 @@ public class SiegeController implements Initializable {
         Parent root2 = loader2.load();
         System.out.println("IIIIDIDIDIDIDI"+ids);
         AfficherReclamationUtilisateurController md1 = loader2.getController();
-        md1.setIds(ids);
-        md1.getData();
+        md1.getReclamationSiege(ids);
         Stage modalStage = new Stage();
         modalStage.initModality(Modality.APPLICATION_MODAL.APPLICATION_MODAL);
         modalStage.setScene(new Scene(root2));

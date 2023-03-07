@@ -36,7 +36,7 @@
                               <Font name="Arial" size="15.0" />
                            </font>
                         </Label>
-                        <Circle fill="DODGERBLUE" layoutX="53.0" layoutY="42.0" radius="32.0" stroke="BLACK" strokeType="INSIDE" />
+                        <Circle fill="#4cad50" layoutX="53.0" layoutY="42.0" radius="32.0" stroke="#0f2231" strokeType="INSIDE" />
                         <ImageView fitHeight="46.0" fitWidth="54.0" layoutX="1372.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../media/reponse.png" />

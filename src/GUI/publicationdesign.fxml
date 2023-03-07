@@ -38,7 +38,7 @@
                   <Font name="Arial" size="15.0" />
                </font>
             </Label>
-            <Circle fill="DODGERBLUE" layoutX="50.0" layoutY="33.0" radius="29.0" stroke="BLACK" strokeType="INSIDE" />
+            <Circle fill="#4cad50" layoutX="50.0" layoutY="33.0" radius="29.0" stroke="#0f2231" strokeType="INSIDE" strokeWidth="2.0" />
             <Button fx:id="dislike_button" layoutX="109.0" layoutY="118.0" mnemonicParsing="false" onAction="#adddislike" prefHeight="25.0" prefWidth="84.0" style="-fx-background-color: transparent;" />
             <Label fx:id="id_likes" alignment="CENTER" layoutX="17.0" layoutY="118.0" text="Label">
                <font>

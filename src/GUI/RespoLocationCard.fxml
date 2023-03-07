@@ -3,15 +3,31 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
 <AnchorPane id="AnchorPane" prefHeight="189.0" prefWidth="325.0" stylesheets="@../styles/CardRespoAgenceLocation.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.RespoLocationCardController">
   
    <children>
-      <Label id="nomVehiculeLabel" layoutX="9.0" layoutY="130.0" prefHeight="26.0" prefWidth="175.0" text="Nom du véhicule" />
+      <Label fx:id="idvehi" layoutX="9.0" layoutY="130.0" prefHeight="26.0" prefWidth="175.0" text="Nom du véhicule">
+         <font>
+            <Font name="System Bold Italic" size="15.0" />
+         </font></Label>
       <Button id="button" fx:id="choisirch" layoutX="218.0" layoutY="128.0" onAction="#choisirchauffeur" text="Affecter" />
-      <Label id="nomVehiculeLabel" fx:id="df" layoutX="155.0" layoutY="67.0" prefHeight="26.0" prefWidth="151.0" text="df" />
-      <Label id="nomVehiculeLabel" fx:id="db" layoutX="153.0" layoutY="29.0" prefHeight="26.0" prefWidth="151.0" text="db" />
-      <Label id="nomVehiculeLabel" layoutX="38.0" layoutY="67.0" text="date fin :" />
-      <Label id="nomVehiculeLabel" layoutX="33.0" layoutY="29.0" text="date début :" />
+      <Label fx:id="df" layoutX="155.0" layoutY="67.0" prefHeight="26.0" prefWidth="151.0" text="df">
+         <font>
+            <Font name="System Bold Italic" size="15.0" />
+         </font></Label>
+      <Label fx:id="db" layoutX="153.0" layoutY="29.0" prefHeight="26.0" prefWidth="151.0" text="db">
+         <font>
+            <Font name="System Bold Italic" size="15.0" />
+         </font></Label>
+      <Label layoutX="38.0" layoutY="67.0" text="date fin :">
+         <font>
+            <Font name="System Bold Italic" size="15.0" />
+         </font></Label>
+      <Label layoutX="33.0" layoutY="29.0" text="date début :">
+         <font>
+            <Font name="System Bold Italic" size="15.0" />
+         </font></Label>
    </children>
 </AnchorPane>

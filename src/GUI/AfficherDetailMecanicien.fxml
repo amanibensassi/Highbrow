@@ -11,27 +11,27 @@
    <children>
       <AnchorPane id="AnchorPane" layoutX="-4.0" prefHeight="1000.0" prefWidth="1000.0" style="-fx-background-color: F5F6FA;">
          <children>
-            <Label fx:id="lblspecialite" layoutX="913.0" layoutY="643.0" prefHeight="30.0" prefWidth="127.0" text="Label">
+            <Label fx:id="lblspecialite" layoutX="913.0" layoutY="643.0" prefHeight="46.0" prefWidth="282.0" text="Label">
                <font>
                   <Font name="System Bold Italic" size="30.0" />
                </font></Label>
-            <Label fx:id="lblregion" layoutX="915.0" layoutY="457.0" prefHeight="30.0" prefWidth="110.0" text="Label">
+            <Label fx:id="lblregion" layoutX="915.0" layoutY="457.0" prefHeight="46.0" prefWidth="238.0" text="Label">
                <font>
                   <Font name="System Bold Italic" size="30.0" />
                </font></Label>
-            <Label fx:id="lblcontact" layoutX="1066.0" layoutY="581.0" prefHeight="30.0" prefWidth="127.0" text="Label">
+            <Label fx:id="lblcontact" layoutX="1066.0" layoutY="581.0" prefHeight="46.0" prefWidth="255.0" text="Label">
                <font>
                   <Font name="System Bold Italic" size="30.0" />
                </font></Label>
-            <Label fx:id="lbladresse" layoutX="918.0" layoutY="519.0" prefHeight="30.0" prefWidth="110.0" text="Label">
+            <Label fx:id="lbladresse" layoutX="918.0" layoutY="519.0" prefHeight="46.0" prefWidth="317.0" text="Label">
                <font>
                   <Font name="System Bold Italic" size="30.0" />
                </font></Label>
-            <Label fx:id="lblprenom" layoutX="919.0" layoutY="398.0" prefHeight="30.0" prefWidth="110.0" text="Label">
+            <Label fx:id="lblprenom" layoutX="919.0" layoutY="398.0" prefHeight="46.0" prefWidth="213.0" text="Label">
                <font>
                   <Font name="System Bold Italic" size="30.0" />
                </font></Label>
-            <Label fx:id="lblnom" layoutX="922.0" layoutY="330.0" prefHeight="30.0" prefWidth="110.0" text="Label">
+            <Label fx:id="lblnom" layoutX="922.0" layoutY="330.0" prefHeight="46.0" prefWidth="205.0" text="Label">
                <font>
                   <Font name="System Bold Italic" size="30.0" />
                </font></Label>

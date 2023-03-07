@@ -6,8 +6,10 @@
 package GUI;
 
 import entities.Location;
+import entities.Vehicule;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -20,6 +22,7 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import services.VehiculeService;
 
 /**
  * FXML Controller class
@@ -36,7 +39,10 @@ public class RespoLocationCardController implements Initializable {
     private Button choisirch;
     int idL;
     Location loca = new Location();
-
+ Vehicule v = new Vehicule();
+    VehiculeService vs = new VehiculeService();
+    @FXML
+    private Label idvehi;
     /**
      * Initializes the controller class.
      */
@@ -46,7 +52,9 @@ public class RespoLocationCardController implements Initializable {
         // TODO
     }
 
-    public void setLocation(Location c) {
+    public void setLocation(Location c) throws SQLException {
+           v = vs.recupererVehiculeByid(c.getId_vehicule());
+           idvehi.setText(v.getImmatriculation());
         loca = c;
         String dateDebut = c.getDate_debut() + "";
         db.setText(dateDebut);

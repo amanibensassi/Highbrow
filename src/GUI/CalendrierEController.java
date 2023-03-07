@@ -139,6 +139,7 @@ public class CalendrierEController implements Initializable {
             for (int day = 1; day <= daysInMonth; day++) {
                 Label label = new Label(String.valueOf(day));
                 label.setFont(new Font(20));
+                label.setMinSize(30,30);
                 String d=String.valueOf(day);
                 if (d.length()==1){
                             d="0"+d;

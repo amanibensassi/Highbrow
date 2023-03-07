@@ -18,9 +18,9 @@
          <children>
             <ScrollPane layoutX="9.0" layoutY="289.0" prefHeight="705.0" prefWidth="1484.0">
                <content>
-                  <GridPane fx:id="grid" prefHeight="115.0" prefWidth="1481.0" style="-fx-background-radius: 20; -fx-border-radius: 20;">
+                  <GridPane fx:id="grid" prefHeight="115.0" prefWidth="1500.0" style="-fx-background-radius: 20; -fx-border-radius: 20;">
                     <columnConstraints>
-                      <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="200.0" />
+                        <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="200.0" />
                     </columnConstraints>
                     <rowConstraints>
                       <RowConstraints maxHeight="184.20001220703125" minHeight="10.0" prefHeight="138.60000610351562" vgrow="SOMETIMES" />

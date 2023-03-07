@@ -124,7 +124,8 @@ public class AjouterReclamationController implements Initializable {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("AfficherReclamationUtilisateur.fxml"));
         Parent root = loader.load();
         AfficherReclamationUtilisateurController controller = loader.getController();
-        controller.initialize(null, null);
+        controller.getData();
+        //controller.initialize(null, null);
         if (SystemTray.isSupported()) {
 //         String img = "C:\\xampp\\htdocs\\pidev\\Highbrow\\src\\media\\full_down.png";
 //            File file = new File(img);

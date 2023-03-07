@@ -60,7 +60,7 @@ public class AfficherEntretienController implements Initializable {
         try {
             List<Entretien> entretiens = es.recuperelesEntretientByUserConnecte(UserConn.idutilisateur);
             int row = 1;
-            int column = 0;
+            int column = 1;
             for (int i = 0; i < entretiens.size(); i++) {
                 //chargement dynamique d'une interface
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("Entretien.fxml"));
@@ -71,8 +71,8 @@ public class AfficherEntretienController implements Initializable {
 
                 grid.add(pane, column, row);
                 column++;
-                if (column > 2) {
-                    column = 0;
+                if (column >4) {
+                    column = 1;
                     row++;
                 }
             }

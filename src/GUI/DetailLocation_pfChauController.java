@@ -16,8 +16,10 @@ import com.itextpdf.text.Phrase;
 import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
+import com.twilio.rest.chat.v1.service.User;
 import entities.Chauffeur;
 import entities.Location;
+import entities.Utilisateur;
 import entities.Vehicule;
 import java.io.File;
 import java.io.FileOutputStream;
@@ -33,6 +35,8 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import services.ChauffeurService;
 import services.LocationService;
+import services.UserConn;
+import services.UserService;
 import services.VehiculeService;
 
 /**
@@ -70,7 +74,9 @@ public class DetailLocation_pfChauController implements Initializable {
     ChauffeurService cs = new ChauffeurService();
     @FXML
     private ImageView facture;
-String n;
+
+    String n;
+
     /**
      * Initializes the controller class.
      */
@@ -82,8 +88,9 @@ String n;
         int nbrjourr;
         v = vs.recupererVehiculeByid(idv);
         l = ls.recupererById(idl);
-        if(l.getId_chauffeur()!=0)
-        {c=cs.recupererById(l.getId_chauffeur());};
+        if (l.getId_chauffeur() != 0) {
+            c = cs.recupererById(l.getId_chauffeur());
+        };
         marque.setText(v.getMarque());
         String db = l.getDate_debut().toString();
         String df = l.getDate_fin().toString();
@@ -103,8 +110,8 @@ String n;
         int monthdf = Integer.parseInt(moisdf);
         int daydf = Integer.parseInt(jourdf);
 
-        nbrjourr = daydf - daydb +1;
-         n = nbrjourr + "";
+        nbrjourr = daydf - daydb + 1;
+        n = nbrjourr + "";
         nbrjour.setText(n);
 
         float prix = nbrjourr * v.getPrix_par_jour();
@@ -142,96 +149,105 @@ String n;
 
     @FXML
     private void facturetelecharger(MouseEvent event) {
-          Document document = new Document(PageSize.A4);
+        Document document = new Document(PageSize.A4);
 
         try {
             String filePath = "D:\\Anas INFO\\XAMPP\\htdocs\\Highbrow\\facture.pdf";
             //System.out.println("Working Directory = " + System.getProperty("C:\\xampp\\htdocs\\Highbrow"));
             PdfWriter writer = PdfWriter.getInstance(document, new FileOutputStream(new File(filePath)));
             document.open();
-          // Créer un Chunk avec le texte "Nom : " suivi du texte du Label nom
-        Chunk nomChunk = new Chunk("Nom : ");
-        nomChunk.setFont(FontFactory.getFont(FontFactory.HELVETICA_BOLD, 12));
-        Paragraph nomParagraph = new Paragraph(nomChunk);
-        nomParagraph.add(new Chunk(nom.getText()));
+            // Créer un Chunk avec le texte "Nom : " suivi du texte du Label nom
+            Chunk nomChunk = new Chunk("Nom : ");
+            nomChunk.setFont(FontFactory.getFont(FontFactory.HELVETICA_BOLD, 12));
+            Paragraph nomParagraph = new Paragraph(nomChunk);
+            nomParagraph.add(new Chunk(UserConn.nom));
 
-        // Créer un Chunk avec le texte "Email : " suivi du texte du Label email
-        Chunk emailChunk = new Chunk("Email : ");
-        emailChunk.setFont(FontFactory.getFont(FontFactory.HELVETICA_BOLD, 12));
-        Paragraph emailParagraph = new Paragraph(emailChunk);
-        emailParagraph.add(new Chunk(email.getText()));
+            Chunk prenomChunk = new Chunk("Prenom : ");
+            prenomChunk.setFont(FontFactory.getFont(FontFactory.HELVETICA_BOLD, 12));
+            Paragraph prenomParagraph = new Paragraph(prenomChunk);
+            
+            prenomParagraph.add(new Chunk(UserConn.prenom));
+            
+             Chunk prenomChunkk = new Chunk("Prenom : ");
+            prenomChunkk.setFont(FontFactory.getFont(FontFactory.HELVETICA_BOLD, 12));
+            Paragraph prenomParagraphh = new Paragraph(prenomChunkk);
+            
+            prenomParagraphh.add(new Chunk(UserConn.prenom));
 
-        // Créer un Chunk avec le texte "Marque : " suivi du texte du Label marque
-        Chunk marqueChunk = new Chunk("Marque : ");
-        marqueChunk.setFont(FontFactory.getFont(FontFactory.HELVETICA_BOLD, 12));
-        Paragraph marqueParagraph = new Paragraph(marqueChunk);
-        marqueParagraph.add(new Chunk(marque.getText()));
+            // Créer un Chunk avec le texte "Email : " suivi du texte du Label email
+            Chunk emailChunk = new Chunk("Email : ");
+            emailChunk.setFont(FontFactory.getFont(FontFactory.HELVETICA_BOLD, 12));
+            Paragraph emailParagraph = new Paragraph(emailChunk);
+            emailParagraph.add(new Chunk(UserConn.mail));
 
-        // Créer un Chunk avec le texte "Nombre de jours : " suivi du texte du Label nbrjour
-        Chunk nbrjourChunk = new Chunk("Nombre de jours : ");
-        nbrjourChunk.setFont(FontFactory.getFont(FontFactory.HELVETICA_BOLD, 12));
-        Paragraph nbrjourParagraph = new Paragraph(nbrjourChunk);
-        nbrjourParagraph.add(new Chunk(nbrjour.getText()));
+            // Créer un Chunk avec le texte "Marque : " suivi du texte du Label marque
+            Chunk marqueChunk = new Chunk("Marque : ");
+            marqueChunk.setFont(FontFactory.getFont(FontFactory.HELVETICA_BOLD, 12));
+            Paragraph marqueParagraph = new Paragraph(marqueChunk);
+            marqueParagraph.add(new Chunk(marque.getText()));
 
-        Chunk optionch = new Chunk("Option Chauffeur : ");
-        optionch.setFont(FontFactory.getFont(FontFactory.HELVETICA_BOLD, 12));
-        Paragraph optionch1 = new Paragraph(optionch);
-        optionch1.add(new Chunk(oui_non.getText()));
-        
-        
-        // Créer une Table avec deux colonnes pour afficher les totaux
-        
-        
-        
+            // Créer un Chunk avec le texte "Nombre de jours : " suivi du texte du Label nbrjour
+            Chunk nbrjourChunk = new Chunk("Nombre de jours : ");
+            nbrjourChunk.setFont(FontFactory.getFont(FontFactory.HELVETICA_BOLD, 12));
+            Paragraph nbrjourParagraph = new Paragraph(nbrjourChunk);
+            nbrjourParagraph.add(new Chunk(nbrjour.getText()));
+
+            Chunk optionch = new Chunk("Option Chauffeur : ");
+            optionch.setFont(FontFactory.getFont(FontFactory.HELVETICA_BOLD, 12));
+            Paragraph optionch1 = new Paragraph(optionch);
+            optionch1.add(new Chunk(oui_non.getText()));
+
+            // Créer une Table avec deux colonnes pour afficher les totaux
 //          Chunk sommech = new Chunk("Prix chauffeur   : ");
 //        nbrjourChunk.setFont(FontFactory.getFont(FontFactory.HELVETICA_BOLD, 12));
 //        Paragraph optionch2 = new Paragraph(sommech);
 //        optionch2.add(new Chunk(calcule2.getText()));
-        
-        
-        // Créer une Table avec deux colonnes pour afficher les totaux
-        PdfPTable table = new PdfPTable(2);
-        table.setWidthPercentage(100);
+            // Créer une Table avec deux colonnes pour afficher les totaux
+            PdfPTable table = new PdfPTable(2);
+            table.setWidthPercentage(100);
 
-        PdfPCell cell1 = new PdfPCell(new Phrase("Prix chauffeur"));
-        cell1.setHorizontalAlignment(Element.ALIGN_LEFT);
-        cell1.setVerticalAlignment(Element.ALIGN_MIDDLE);
-        table.addCell(cell1);
+            PdfPCell cell1 = new PdfPCell(new Phrase("Prix chauffeur"));
+            cell1.setHorizontalAlignment(Element.ALIGN_LEFT);
+            cell1.setVerticalAlignment(Element.ALIGN_MIDDLE);
+            table.addCell(cell1);
 
-        PdfPCell cell2 = new PdfPCell(new Phrase(calcule2.getText()));
-        cell2.setHorizontalAlignment(Element.ALIGN_RIGHT);
-        cell2.setVerticalAlignment(Element.ALIGN_MIDDLE);
-        table.addCell(cell2);
+            PdfPCell cell2 = new PdfPCell(new Phrase(calcule2.getText()+" D"));
+            cell2.setHorizontalAlignment(Element.ALIGN_RIGHT);
+            cell2.setVerticalAlignment(Element.ALIGN_MIDDLE);
+            table.addCell(cell2);
 
-        PdfPCell cell3 = new PdfPCell(new Phrase("prix location"));
-        cell3.setHorizontalAlignment(Element.ALIGN_LEFT);
-        cell3.setVerticalAlignment(Element.ALIGN_MIDDLE);
-        table.addCell(cell3);
+            PdfPCell cell3 = new PdfPCell(new Phrase("prix location"));
+            cell3.setHorizontalAlignment(Element.ALIGN_LEFT);
+            cell3.setVerticalAlignment(Element.ALIGN_MIDDLE);
+            table.addCell(cell3);
 
-        PdfPCell cell4 = new PdfPCell(new Phrase(calcule1.getText()));
-        cell4.setHorizontalAlignment(Element.ALIGN_RIGHT);
-        cell4.setVerticalAlignment(Element.ALIGN_MIDDLE);
-        table.addCell(cell4);
-        
-           PdfPCell cell5 = new PdfPCell(new Phrase("Somme Total"));
-        cell3.setHorizontalAlignment(Element.ALIGN_LEFT);
-        cell3.setVerticalAlignment(Element.ALIGN_MIDDLE);
-        table.addCell(cell5);
+            PdfPCell cell4 = new PdfPCell(new Phrase(calcule1.getText()+" D"));
+            cell4.setHorizontalAlignment(Element.ALIGN_RIGHT);
+            cell4.setVerticalAlignment(Element.ALIGN_MIDDLE);
+            table.addCell(cell4);
 
-        PdfPCell cell6 = new PdfPCell(new Phrase(totaleSomme.getText()));
-        cell4.setHorizontalAlignment(Element.ALIGN_RIGHT);
-        cell4.setVerticalAlignment(Element.ALIGN_MIDDLE);
-        table.addCell(cell6);
+            PdfPCell cell5 = new PdfPCell(new Phrase("Somme Total"));
+            cell3.setHorizontalAlignment(Element.ALIGN_LEFT);
+            cell3.setVerticalAlignment(Element.ALIGN_MIDDLE);
+            table.addCell(cell5);
 
-        // Ajouter les Paragraphs et la Table au Document
-        document.add(nomParagraph);
-        document.add(emailParagraph);
-        document.add(marqueParagraph);
-        document.add(nbrjourParagraph);
-        document.add(table);
+            PdfPCell cell6 = new PdfPCell(new Phrase(totaleSomme.getText()+" D"));
+            cell4.setHorizontalAlignment(Element.ALIGN_RIGHT);
+            cell4.setVerticalAlignment(Element.ALIGN_MIDDLE);
+            table.addCell(cell6);
 
-        document.close();
-        writer.close();
+            // Ajouter les Paragraphs et la Table au Document
+            document.add(nomParagraph);
+            document.add(prenomChunk);
+            document.add(emailParagraph);
+            document.add(marqueParagraph);
+            document.add(nbrjourParagraph);
+            document.add(optionch1);
+            
+            document.add(table);
+
+            document.close();
+            writer.close();
             System.out.println("PDF has been created successfully!");
         } catch (DocumentException | IOException e) {
             e.printStackTrace();

@@ -6,12 +6,15 @@
 package GUI;
 
 import entities.Location;
+import entities.Vehicule;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
+import services.VehiculeService;
 
 /**
  * FXML Controller class
@@ -28,12 +31,15 @@ public class CardLocationRespoAgenceController implements Initializable {
     private Label db;
     @FXML
     private Label df;
+    Vehicule v = new Vehicule();
+    VehiculeService vs = new VehiculeService();
 
     /**
      * Initializes the controller class.
      */
-     public void setLocation(Location c) {
-        
+     public void setLocation(Location c) throws SQLException {
+        v = vs.recupererVehiculeByid(c.getId_vehicule());
+        nomVeh.setText(v.getImmatriculation());
         String dateDebut = c.getDate_debut() + "";
         db.setText(dateDebut);
         String dateFin = c.getDate_fin() + "";

@@ -42,22 +42,74 @@ public class AfficherReclamationUtilisateurController implements Initializable {
     ReclamationService rs = new ReclamationService();
     @FXML
     private Button btnajouterreclamation;
-    private int ids;
-    String role="User";
+    private int idsiege;
     /**
      * Initializes the controller class.
      */
  
     public int getIds() {
-        return ids;
+        return idsiege;
     }
 
     public void setIds(int ids) {
-        this.ids = ids;
+        this.idsiege = ids;
+    }
+    
+    public void getReclamationSiege(int idSie) throws SQLException, IOException, ParseException{
+        btnajouterreclamation.setVisible(false);
+        if (UserConn.role.toString().equals("proprietaire_agence")){
+            //List<Reclamation> reclamations = rs.recupererReclamationUtilisateur(1);
+                System.out.println("IDS"+idsiege);
+            List<Reclamation> reclamations = rs.recupererReclamation_Siege(idSie);
+              System.out.println("butnnnnn"+idsiege);
+            System.out.println("ssssaa"+reclamations);
+            int row = 1;
+            int column = 0;
+            for (int i = 0; i < reclamations.size(); i++) {
+                //chargement dynamique d'une interface
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("ReclamationSiege.fxml"));
+                AnchorPane AnchorPane  = loader.load();
+                //passage de parametres
+                ReclamationSiegeController controller = loader.getController();
+                controller.setReclamation(reclamations.get(i));
+                grid.add(AnchorPane, column, row);
+                column++;
+                if (column > 0) {
+                    column = 0;
+                    row++;
+                }
+            }
+            }
+        
     }
     
     public void getData() throws ParseException{
         try {
+            
+            if (UserConn.role.toString().equals("proprietaire_agence")){
+            //List<Reclamation> reclamations = rs.recupererReclamationUtilisateur(1);
+                System.out.println("IDS"+idsiege);
+            //List<Reclamation> reclamations = rs.recupererReclamation_Siege(idsiege);
+            List<Reclamation> reclamations = rs.recupererReclamationUtilisateur(UserConn.idutilisateur);
+              System.out.println("butnnnnn"+idsiege);
+            System.out.println("ssssaa"+reclamations);
+            int row = 1;
+            int column = 0;
+            for (int i = 0; i < reclamations.size(); i++) {
+                //chargement dynamique d'une interface
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("ReclamationSiege.fxml"));
+                AnchorPane AnchorPane  = loader.load();
+                //passage de parametres
+                ReclamationSiegeController controller = loader.getController();
+                controller.setReclamation(reclamations.get(i));
+                grid.add(AnchorPane, column, row);
+                column++;
+                if (column > 0) {
+                    column = 0;
+                    row++;
+                }
+            }
+            }
             
             if (UserConn.role.toString().equals("administrateur")){
                  btnajouterreclamation.setVisible(false);
@@ -81,8 +133,8 @@ public class AfficherReclamationUtilisateurController implements Initializable {
                 }
             }
             }
-            
-            if (UserConn.role.toString().equals("client") || UserConn.role.toString().equals("proprietaire_agence") ){
+            //|| UserConn.role.toString().equals("proprietaire_agence") 
+            if (UserConn.role.toString().equals("client") ){
                
             List<Reclamation> reclamations = rs.recupererReclamationUtilisateur(UserConn.idutilisateur);
             //List<Reclamation> reclamations = rs.recupererReclamation_Siege(ids);
@@ -105,28 +157,28 @@ public class AfficherReclamationUtilisateurController implements Initializable {
             }
             }
            
-            if (UserConn.role.toString().equals("proprietaire_agence")){
-            //List<Reclamation> reclamations = rs.recupererReclamationUtilisateur(1);
-                System.out.println("IDS"+ids);
-            List<Reclamation> reclamations = rs.recupererReclamation_Siege(ids);
-            System.out.println("ssssaa"+reclamations);
-            int row = 1;
-            int column = 0;
-            for (int i = 0; i < reclamations.size(); i++) {
-                //chargement dynamique d'une interface
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("ReclamationSiege.fxml"));
-                AnchorPane AnchorPane  = loader.load();
-                //passage de parametres
-                ReclamationSiegeController controller = loader.getController();
-                controller.setReclamation(reclamations.get(i));
-                grid.add(AnchorPane, column, row);
-                column++;
-                if (column > 0) {
-                    column = 0;
-                    row++;
-                }
-            }
-            }
+//            if (UserConn.role.toString().equals("proprietaire_agence")){
+//            //List<Reclamation> reclamations = rs.recupererReclamationUtilisateur(1);
+//                System.out.println("IDS"+ids);
+//            List<Reclamation> reclamations = rs.recupererReclamation_Siege(ids);
+//            System.out.println("ssssaa"+reclamations);
+//            int row = 1;
+//            int column = 0;
+//            for (int i = 0; i < reclamations.size(); i++) {
+//                //chargement dynamique d'une interface
+//                FXMLLoader loader = new FXMLLoader(getClass().getResource("ReclamationSiege.fxml"));
+//                AnchorPane AnchorPane  = loader.load();
+//                //passage de parametres
+//                ReclamationSiegeController controller = loader.getController();
+//                controller.setReclamation(reclamations.get(i));
+//                grid.add(AnchorPane, column, row);
+//                column++;
+//                if (column > 0) {
+//                    column = 0;
+//                    row++;
+//                }
+//            }
+//            }
         } catch (SQLException | IOException ex) {
             System.out.println(ex.getMessage());
         }
@@ -140,13 +192,15 @@ public class AfficherReclamationUtilisateurController implements Initializable {
 //        } catch (ParseException ex) {
 //            Logger.getLogger(AfficherReclamationController.class.getName()).log(Level.SEVERE, null, ex);
 //        }
-            if (UserConn.role.toString().equals("administrateur")){
-            btnajouterreclamation.setVisible(false);
-            }
+           
     }  
 
     @FXML
-    private void AjouterReclamation(ActionEvent event) throws IOException {
+    private void AjouterReclamation(ActionEvent event) throws IOException, SQLException, ParseException {
+  
+          
+          if(UserConn.role.toString().equals("client") || UserConn.role.toString().equals("proprietaire_agence"))
+          {
         FXMLLoader loader2 = new FXMLLoader(getClass().getResource("ajouterReclamation.fxml"));
         Parent root2 = loader2.load();
         AjouterReclamationController md1 = loader2.getController();
@@ -161,6 +215,10 @@ public class AfficherReclamationUtilisateurController implements Initializable {
             Logger.getLogger(AfficherReclamationUtilisateurController.class.getName()).log(Level.SEVERE, null, ex);
         }
 
+    }
+          
+          
+    
     }
     
 }

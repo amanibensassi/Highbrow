@@ -28,7 +28,7 @@
                   <Font name="Arial" size="13.0" />
                </font>
             </Label>
-            <Circle fill="DODGERBLUE" layoutX="37.0" layoutY="31.0" radius="23.0" stroke="BLACK" strokeType="INSIDE" />
+            <Circle fill="#4cad50" layoutX="37.0" layoutY="31.0" radius="23.0" stroke="#0f2231" strokeType="INSIDE" />
             <AnchorPane layoutX="1337.0" layoutY="99.0">
                <children>
                   <ImageView fitHeight="33.0" fitWidth="43.0" layoutX="10.0" pickOnBounds="true" preserveRatio="true">

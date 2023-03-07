@@ -27,7 +27,7 @@
                   <Font name="Arial" size="13.0" />
                </font>
             </Label>
-            <Circle fill="DODGERBLUE" layoutX="37.0" layoutY="31.0" radius="23.0" stroke="BLACK" strokeType="INSIDE" />
+            <Circle fill="#4cad50" layoutX="37.0" layoutY="31.0" radius="23.0" stroke="#0f2231" strokeType="INSIDE" />
          </children>
       </Pane>
       <ImageView fx:id="id_trash" fitHeight="39.0" fitWidth="34.0" layoutX="1368.0" layoutY="8.0" onMouseClicked="#deletemethod" pickOnBounds="true" preserveRatio="true" visible="false">
