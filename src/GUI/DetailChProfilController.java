@@ -39,12 +39,14 @@ public class DetailChProfilController implements Initializable {
     @FXML
     private Label numtel;
     ChauffeurService ch = new ChauffeurService();
-String nomImage;
+    String nomImage;
+  
+
     /**
      * Initializes the controller class.
      */
     public void setChauffeurDetail(int id) {
-        System.out.println("cfghgfdsdfgthyj");
+        
         Chauffeur c;
         try {
             c = ch.recupererById(id);
@@ -52,12 +54,12 @@ String nomImage;
             prenom.setText(c.getPrenom());
             email.setText(c.getAdresse());
             numtel.setText(String.valueOf(c.getContact()));
-             nomImage = "C://Users//anasm//OneDrive//Documents//ImagesProjet//" + c.getImage();
-              File file = new File(nomImage);
+            nomImage = "C://Users//anasm//OneDrive//Documents//ImagesProjet//" + c.getImage();
+            File file = new File(nomImage);
 
-        Image imagee = new Image(file.toURI().toString());
+            Image imagee = new Image(file.toURI().toString());
 
-        profileImage.setImage(imagee);
+            profileImage.setImage(imagee);
         } catch (SQLException ex) {
             Logger.getLogger(DetailChProfilController.class.getName()).log(Level.SEVERE, null, ex);
         }

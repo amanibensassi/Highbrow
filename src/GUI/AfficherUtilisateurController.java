@@ -39,15 +39,15 @@ public class AfficherUtilisateurController implements Initializable {
     /**
      * Initializes the controller class.
      */
-            UserService us = new UserService();
+    UserService us = new UserService();
     @FXML
     private TextField txtrecherche;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        
+
         int rowIndex = 1;
-          int columnIndex = 0;
+        int columnIndex = 0;
         try {
             List<Utilisateur> utilisateurs = us.recuperer();
             System.out.println(utilisateurs);
@@ -58,7 +58,7 @@ public class AfficherUtilisateurController implements Initializable {
                 UserCardController controllerch = loader.getController();
 
                 controllerch.setUser(utilisateurs.get(i));
-                System.out.println("Liste"+utilisateurs.get(i));
+                System.out.println("Liste" + utilisateurs.get(i));
                 System.out.println(utilisateurs.get(i));
                 grid.add(AnchorPane, columnIndex, rowIndex);
                 columnIndex++;
@@ -68,23 +68,19 @@ public class AfficherUtilisateurController implements Initializable {
                 }
 
             }
-            
+
             // TODO
         } catch (SQLException ex) {
             Logger.getLogger(AfficherUtilisateurController.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException ex) {
             Logger.getLogger(AfficherUtilisateurController.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }    
+    }
 
     @FXML
     private void rechercheUser(KeyEvent event) throws IOException {
-        
-        
-        grid.getChildren().clear();
-         int row = 1;
-           int column = 0;
-            String recherche = txtrecherche.getText();
+
+        String recherche = txtrecherche.getText();
         List<Utilisateur> ch = null;
         try {
             ch = us.recuperer();
@@ -102,19 +98,18 @@ public class AfficherUtilisateurController implements Initializable {
 
         for (int i = 0; i < resultatsRecherche.size(); i++) {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("UserCard.fxml"));
-
+           // AnchorPane AnchorPane = loader.load();
             HBox AnchorPane = loader.load();
-                UserCardController controllerch = loader.getController();
+            UserCardController controllerch = loader.getController();
 
-                controllerch.setUser(ch.get(i));
-                System.out.println("Liste"+ch.get(i));
-                System.out.println(ch.get(i));
-                grid.add(AnchorPane, columnIndex, rowIndex);
-                columnIndex++;
-                if (columnIndex == 1) {
-                    columnIndex = 0;
-                    rowIndex = rowIndex + 2;
-                }
+            controllerch.setUser(resultatsRecherche.get(i));
+
+            grid.add(AnchorPane, columnIndex, rowIndex);
+            columnIndex++;
+            if (columnIndex == 1) {
+                columnIndex = 0;
+                rowIndex = rowIndex + 2;
+            }
 
         }
         txtrecherche.setOnKeyReleased(new EventHandler<KeyEvent>() {
@@ -126,8 +121,8 @@ public class AfficherUtilisateurController implements Initializable {
                     //Logger.getLogger(AfficherChauffeurController.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
-        
-    });
-    
-}
+
+        });
+
+    }
 }

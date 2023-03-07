@@ -34,7 +34,6 @@ import services.UserService;
  */
 public class EtatCardController implements Initializable {
 
-    @FXML
     private ImageView image;
     @FXML
     private Label nom;
@@ -49,15 +48,13 @@ public class EtatCardController implements Initializable {
     @FXML
     private Label role;
     @FXML
-    private ImageView photo_permis_avant;
-    @FXML
-    private ImageView photo_permis_arriere;
-    @FXML
     private Button approuved;
     UserService us = new UserService();
     Utilisateur u = new Utilisateur();
     int iduser;
     Utilisateur usercnnecter = new Utilisateur();
+    @FXML
+    private Button Details;
 
     /**
      * Initializes the controller class.
@@ -85,10 +82,7 @@ public class EtatCardController implements Initializable {
         date_naissance.setText(ut.getDate_naissance().toString());      
         mail.setText(ut.getMail());
         role.setText(String.valueOf(ut.getRole()));
-        u.setImage(ut.getImage());
-        image.setImage(imagee);
-       // etat.setText(String.valueOf(ut.getetat()));
-        System.out.println("Imageee"+imagee.toString());
+   
         iduser=ut.getIdutilisateur();
         u=ut;
         
@@ -127,6 +121,27 @@ public class EtatCardController implements Initializable {
         catch(SQLException ex){
             System.out.println(ex.getMessage());
         }
+    }
+
+    @FXML
+    private void Details(ActionEvent event) throws IOException {
+        
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("SideBarUser.fxml"));
+            Parent root1 = loader.load();
+            SideBarUserController cc = loader.getController();
+            cc.setRole(UserConn.role.toString());
+            BorderPane borderPane = new BorderPane();
+            FXMLLoader loader1 = new FXMLLoader(getClass().getResource("DetailAdmin.fxml"));
+            Parent root2 = loader1.load();
+             DetailAdminController controller = loader1.getController();
+            controller.setData(u);
+            HBox hbox = new HBox(root1, new Pane(), root2);
+            hbox.setSpacing(20);
+            borderPane.setRight(hbox);
+            borderPane.setLeft(root1);
+            borderPane.setPadding(new Insets(10, 10, 30, 10));
+            nom.getScene().setRoot(borderPane);
+            
     }
     
 }

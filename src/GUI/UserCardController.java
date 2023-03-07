@@ -55,7 +55,6 @@ public class UserCardController implements Initializable {
     UserService us = new UserService();
     Role tabrole[] = {client, proprietaire_agence};
     int iduser;
-    @FXML
     private ImageView image;
     @FXML
     private Label role;
@@ -89,15 +88,15 @@ public class UserCardController implements Initializable {
         date_naissance.setText(ut.getDate_naissance().toString());
         mail.setText(ut.getMail());
         role.setText(String.valueOf(ut.getRole()));
-        u.setImage(ut.getImage());
-        image.setImage(imagee);
+        
+       
 
         if (ut.getetat() == true) {
             etat.setText("approuvé");
         } else {
             etat.setText("désactivé");
         }
-        System.out.println("Imageee" + imagee.toString());
+      
         iduser = ut.getIdutilisateur();
         u = ut;
 
