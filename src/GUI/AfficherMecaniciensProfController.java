@@ -114,7 +114,7 @@ public class AfficherMecaniciensProfController implements Initializable {
         if (role=="User"){
             ajouterMec.setVisible(false);
         }
-        this.trie();
+       
     }
     
     
@@ -312,36 +312,36 @@ public class AfficherMecaniciensProfController implements Initializable {
 //        }
     }
     
-    public void trie(){
-        cbregion.getSelectionModel().selectedItemProperty().addListener(new ChangeListener() {
-            @Override
-            public void changed(ObservableValue observable, Object oldValue, Object newValue) {
-                grid.getChildren().clear();
-                try {
-                    List<Mecanicien> personnes=ms.recupererMecanicienByRegion(String.valueOf(String.valueOf(cbregion.getValue().toString())));
-                    int row = 1;
-                    int column = 0;
-                    for (int i = 0; i < personnes.size(); i++) {
-                        //chargement dynamique d'une interface
-                        FXMLLoader loader = new FXMLLoader(getClass().getResource("Mecanicien.fxml"));
-                        AnchorPane pane = loader.load();
-                        //passage de parametres
-                        MecanicienController controller = loader.getController();
-                        controller.setPersonne(personnes.get(i));
-
-                        grid.add(pane, column, row);
-                        column++;
-                        if (column > 0) {
-                            column = 0;
-                            row++;
-                        }
-                    }
-                } catch (SQLException ex) {
-                    Logger.getLogger(AfficherMecaniciensProfController.class.getName()).log(Level.SEVERE, null, ex);
-                } catch (IOException ex) {
-                    Logger.getLogger(AfficherMecaniciensProfController.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            }
-        });
-    }
+//    public void trie(){
+//        cbregion.getSelectionModel().selectedItemProperty().addListener(new ChangeListener() {
+//            @Override
+//            public void changed(ObservableValue observable, Object oldValue, Object newValue) {
+//                grid.getChildren().clear();
+//                try {
+//                    List<Mecanicien> personnes=ms.recupererMecanicienByRegion(String.valueOf(String.valueOf(cbregion.getValue().toString())));
+//                    int row = 1;
+//                    int column = 0;
+//                    for (int i = 0; i < personnes.size(); i++) {
+//                        //chargement dynamique d'une interface
+//                        FXMLLoader loader = new FXMLLoader(getClass().getResource("Mecanicien.fxml"));
+//                        AnchorPane pane = loader.load();
+//                        //passage de parametres
+//                        MecanicienController controller = loader.getController();
+//                        controller.setPersonne(personnes.get(i));
+//
+//                        grid.add(pane, column, row);
+//                        column++;
+//                        if (column > 0) {
+//                            column = 0;
+//                            row++;
+//                        }
+//                    }
+//                } catch (SQLException ex) {
+//                    Logger.getLogger(AfficherMecaniciensProfController.class.getName()).log(Level.SEVERE, null, ex);
+//                } catch (IOException ex) {
+//                    Logger.getLogger(AfficherMecaniciensProfController.class.getName()).log(Level.SEVERE, null, ex);
+//                }
+//            }
+//        });
+//    }
 }

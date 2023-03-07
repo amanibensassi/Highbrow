@@ -5,21 +5,21 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="710.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.StatistiquesController">
+<AnchorPane id="AnchorPane" prefHeight="791.0" prefWidth="816.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.StatistiquesController">
    <children>
-      <HBox layoutX="5.0" layoutY="212.0" prefHeight="579.0" prefWidth="991.0" spacing="10.0">
+      <Label layoutX="61.0" layoutY="67.0" text="Statistique nombre des location par vehicule">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font></Label>
+      <Label layoutX="528.0" layoutY="67.0" text="Nombre des chauffeur par siege">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font></Label>
+      <HBox layoutX="5.0" layoutY="212.0" prefHeight="579.0" prefWidth="800.0" spacing="10.0">
          <children>
             <AnchorPane fx:id="chartPane" prefHeight="600.0" prefWidth="501.0" />
             <AnchorPane fx:id="chartpanepie" prefHeight="566.0" prefWidth="557.0" />
          </children>
       </HBox>
-      <Label layoutX="61.0" layoutY="67.0" text="Statistique nombre des location par vehicule">
-         <font>
-            <Font name="System Bold" size="16.0" />
-         </font></Label>
-      <Label layoutX="653.0" layoutY="70.0" text="Nombre des chauffeur par siege">
-         <font>
-            <Font name="System Bold" size="16.0" />
-         </font></Label>
    </children>
 </AnchorPane>

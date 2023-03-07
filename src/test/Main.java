@@ -51,7 +51,7 @@ public class Main extends Application {
           //FXMLLoader loader = new FXMLLoader(getClass().getResource("../GUI/AfficherRendezVous.fxml"));
           //FXMLLoader loader = new FXMLLoader(getClass().getResource("../GUI/AjouterRendezVousVente.fxml"));
             Parent root = loader.load();
-            Scene sc = new Scene(root, 900, 500);
+            Scene sc = new Scene(root, 1900, 1000);
             primaryStage.setTitle("GestionChauffeurs + Location");
             primaryStage.setScene(sc);
             primaryStage.show();

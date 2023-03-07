@@ -6,6 +6,7 @@
 package services;
 
 import entities.Entretien;
+import entities.Location;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -25,6 +26,27 @@ public class EntretienService implements IService<Entretien>,IEntretienService<E
     public EntretienService() {
         
          cnx = MyDB.getInstance().getCnx();
+    }
+    
+    public List<Entretien> recuperelesEntretientByUserConnecte(int idu) throws SQLException {
+        List<Entretien> Entretients = new ArrayList<>();
+        String req = "SELECT e.* FROM siege s JOIN vehicule v ON s.idsiege = v.id_siege "
+                + "JOIN entretien e ON v.idvehicule = e.id_vehicule "
+                + "WHERE s.id_utilisateur = ?";
+    PreparedStatement ps = cnx.prepareStatement(req);
+    ps.setInt(1, idu);
+        ResultSet rs =  ps.executeQuery();
+        while(rs.next()){
+            Entretien e = new Entretien();
+            e.setIdentretien(rs.getInt("identretien"));
+            e.setDate_entretien(rs.getTimestamp("date_entretien"));
+            e.setId_mecanicien(rs.getInt("id_mecanicien"));
+            e.setId_vehicule(rs.getInt("id_vehicule"));
+            e.setEtat_entretien(rs.getBoolean("etat_entretien"));
+            Entretients.add(e);
+            
+        }
+        return Entretients;
     }
 
     @Override

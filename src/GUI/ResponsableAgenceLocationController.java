@@ -30,6 +30,7 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import services.LocationService;
+import services.UserConn;
 
 /**
  * FXML Controller class
@@ -51,6 +52,16 @@ public class ResponsableAgenceLocationController implements Initializable {
     /**
      * Initializes the controller class.
      */
+    
+    @Override
+    public void initialize(URL url, ResourceBundle rb) {
+        try {
+            test("confirme");
+        } catch (IOException ex) {
+            System.out.println(ex.getMessage());
+        }
+    }
+    
     public void test(String k) throws IOException {
         try {
 
@@ -58,7 +69,8 @@ public class ResponsableAgenceLocationController implements Initializable {
             int columnIndex = 0;
             List<Location> locations = new ArrayList<>();
             if (k == "annuler") {
-                locations = ls.getLocationAnnuler();
+                grid.getChildren().clear();
+                locations = ls.recupereleslocationdechaquepropagenceAnnulee(UserConn.idutilisateur);
                 for (int i = 0; i < locations.size(); i++) {
                     FXMLLoader loader = new FXMLLoader(getClass().getResource("cardLocationRespoAgence.fxml"));
 
@@ -78,11 +90,12 @@ public class ResponsableAgenceLocationController implements Initializable {
                 }
             }
             if (k == "demmande") {
-                locations.clear();
-                locations = ls.recupererListeDemandech();
+                grid.getChildren().clear();
+               
+                locations = ls.recupereleslocationdechaquepropagenceDemande(UserConn.idutilisateur);
                  
                  System.out.println("affecterrrrr"+locations);
-                 grid.getChildren().clear();
+                 
                 for (int i = 0; i < locations.size(); i++) {
                     FXMLLoader loader = new FXMLLoader(getClass().getResource("RespoLocationCard.fxml"));
                    
@@ -102,7 +115,8 @@ public class ResponsableAgenceLocationController implements Initializable {
                
             }
             if (k == "confirme") {
-                locations = ls.getLocationConfirmer();
+                 grid.getChildren().clear();
+                locations = ls.recupereleslocationdechaquepropagenceConfirmer(UserConn.idutilisateur);
                 for (int i = 0; i < locations.size(); i++) {
                     FXMLLoader loader = new FXMLLoader(getClass().getResource("cardLocationRespoAgence.fxml"));
 
@@ -127,15 +141,6 @@ public class ResponsableAgenceLocationController implements Initializable {
     }
 
     public void intialautre() {
-        try {
-            test("confirme");
-        } catch (IOException ex) {
-            System.out.println(ex.getMessage());
-        }
-    }
-
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {
 //        try {
 //            test("confirme");
 //        } catch (IOException ex) {

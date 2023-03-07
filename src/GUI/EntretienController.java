@@ -137,6 +137,7 @@ public class EntretienController implements Initializable {
 
         try {
             es.supprimer(en);
+            System.out.println("EEEEEEESuPPRIMER"+en.getIdentretien());
             FXMLLoader loader = new FXMLLoader(getClass().getResource("SideBarUser.fxml"));
             Parent root1 = loader.load();
             BorderPane borderPane = new BorderPane();

@@ -32,6 +32,7 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import services.EntretienService;
+import services.UserConn;
 
 /**
  * FXML Controller class
@@ -57,7 +58,7 @@ public class AfficherEntretienController implements Initializable {
 
     private void getData() {
         try {
-            List<Entretien> entretiens = es.recuperer();
+            List<Entretien> entretiens = es.recuperelesEntretientByUserConnecte(UserConn.idutilisateur);
             int row = 1;
             int column = 0;
             for (int i = 0; i < entretiens.size(); i++) {

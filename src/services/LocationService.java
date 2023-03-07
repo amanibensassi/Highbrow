@@ -35,6 +35,77 @@ public class LocationService implements IService<Location>, ILocation<Location> 
         cnx = MyDB.getInstance().getCnx();
     }
     
+    public List<Location> recupereleslocationdechaquepropagenceConfirmer(int idu) throws SQLException {
+        List<Location> Locations = new ArrayList<>();
+        String req = "SELECT l.* FROM siege s JOIN vehicule v ON s.idsiege = v.id_siege "
+                + "JOIN location l ON v.idvehicule = l.id_vehicule "
+                + "WHERE s.id_utilisateur = ? AND l.etat = 'confirmer' "
+                + "AND (l.opt_chauffeur = false OR l.id_chauffeur IS NOT NULL);";
+        PreparedStatement ps = cnx.prepareStatement(req);
+        ps.setInt(1, idu);
+        ResultSet rs = ps.executeQuery();
+        while (rs.next()) {
+            Location l = new Location();
+            l.setIdlocation(rs.getInt("Idlocation"));
+            l.setId_vehicule(rs.getInt("Id_vehicule"));
+            l.setId_chauffeur(rs.getInt("Id_chauffeur"));
+            l.setId_utilisateur(rs.getInt("Id_utilisateur"));
+            l.setDate_debut(rs.getDate("date_debut"));
+            l.setDate_fin(rs.getDate("date_fin"));
+            l.setOpt_chauffeur(rs.getBoolean("opt_chauffeur"));
+            Locations.add(l);
+        }
+        
+        return Locations;
+    }
+    
+    public List<Location> recupereleslocationdechaquepropagenceAnnulee(int idu) throws SQLException {
+        List<Location> Locations = new ArrayList<>();
+        String req = "SELECT l.* FROM siege s JOIN vehicule v ON s.idsiege = v.id_siege "
+                + "JOIN location l ON v.idvehicule = l.id_vehicule"
+                + " WHERE s.id_utilisateur =? and l.etat ='annuler';;";
+        PreparedStatement ps = cnx.prepareStatement(req);
+        ps.setInt(1, idu);
+        ResultSet rs = ps.executeQuery();
+        while (rs.next()) {
+            Location l = new Location();
+            l.setIdlocation(rs.getInt("Idlocation"));
+            l.setId_vehicule(rs.getInt("Id_vehicule"));
+            l.setId_chauffeur(rs.getInt("Id_chauffeur"));
+            l.setId_utilisateur(rs.getInt("Id_utilisateur"));
+            l.setDate_debut(rs.getDate("date_debut"));
+            l.setDate_fin(rs.getDate("date_fin"));
+            l.setOpt_chauffeur(rs.getBoolean("opt_chauffeur"));
+            Locations.add(l);
+        }
+        
+        return Locations;
+    }
+    
+    public List<Location> recupereleslocationdechaquepropagenceDemande(int idu) throws SQLException {
+        List<Location> Locations = new ArrayList<>();
+        String req = "SELECT l.* FROM siege s JOIN vehicule v ON s.idsiege = v.id_siege JOIN location l ON v.idvehicule = l.id_vehicule "
+                + "WHERE s.id_utilisateur = ? AND l.id_chauffeur IS NULL AND l.etat = 'confirmer' AND l.opt_chauffeur = true;;";
+        PreparedStatement ps = cnx.prepareStatement(req);
+        ps.setInt(1, idu);
+//        ps.setBoolean(2, true);
+//        ps.setString(3, EtatLocation.confirmer.toString());
+        ResultSet rs = ps.executeQuery();
+        while (rs.next()) {
+            Location l = new Location();
+            l.setIdlocation(rs.getInt("Idlocation"));
+            l.setId_vehicule(rs.getInt("Id_vehicule"));
+            l.setId_chauffeur(rs.getInt("Id_chauffeur"));
+            l.setId_utilisateur(rs.getInt("Id_utilisateur"));
+            l.setDate_debut(rs.getDate("date_debut"));
+            l.setDate_fin(rs.getDate("date_fin"));
+            l.setOpt_chauffeur(rs.getBoolean("opt_chauffeur"));
+            Locations.add(l);
+        }
+        System.out.println("srvieeeeeeeeeeeeee "+Locations);
+        return Locations;
+    }
+    
     @Override
     public void ajouter(Location l) throws SQLException {
         String req = "INSERT INTO location(date_debut,date_fin,opt_chauffeur,id_vehicule,id_utilisateur,etat)VALUES(?,?,?,?,?,?)";

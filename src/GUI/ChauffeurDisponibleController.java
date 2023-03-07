@@ -96,42 +96,25 @@ public class ChauffeurDisponibleController implements Initializable {
     }
 
     @FXML
-    private void affecterLech(ActionEvent event) throws InterruptedException {
-        try {
-
+    private void affecterLech(ActionEvent event) throws InterruptedException, SQLException, IOException {
             ls.AffecterUnchauffeur(idL, idchauff);
-            System.out.println("aa");
-            FXMLLoader loader1 = new FXMLLoader(getClass().getResource("ResponsableAgenceLocation.fxml"));
-            System.out.println("bb");
-            Parent root2 = loader1.load();
-            System.out.println("cc");
-            ResponsableAgenceLocationController rs = loader1.getController();
-          rs.intialautre();
-            System.out.println("dd");
-           // rs.UpdateListe();
-            System.out.println("55");
-//            HBox hbox = new HBox(root1, new Pane(), root2);
-//            hbox.setSpacing(20);
-//
-//            borderPane.setRight(hbox);
-//
-//            borderPane.setLeft(root1);
-//
-//            borderPane.setPadding(new Insets(10, 10, 30, 10));
-//        Scene scene = new Scene(borderPane);
-//        Stage stage = new Stage();
-//        stage.setScene(scene);
-//        stage.show();
-
-//            affecter.getScene().setRoot(borderPane);
-            Stage stage = (Stage) affecter.getScene().getWindow();
-            stage.close();
-
-        } catch (SQLException ex) {
-            Logger.getLogger(ChauffeurController.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(ChauffeurController.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        // Appeler la méthode pour rafraîchir la page
+       
+        Stage stage = (Stage) affecter.getScene().getWindow();
+        stage.close();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("SideBarUser.fxml"));
+        Parent root1 = loader.load();
+        BorderPane borderPane = new BorderPane();
+        FXMLLoader loader1 = new FXMLLoader(getClass().getResource("ResponsableAgenceLocation.fxml"));
+        Parent root2 = loader1.load();
+        ResponsableAgenceLocationController rs = loader1.getController();
+        rs.test("confirme");
+        HBox hbox = new HBox(root1, new Pane(), root2);
+        hbox.setSpacing(20);
+        borderPane.setRight(hbox);
+        borderPane.setLeft(root1);
+        borderPane.setPadding(new Insets(10, 10, 30, 10));
+        affecter.getScene().setRoot(borderPane);
     }
 
 }

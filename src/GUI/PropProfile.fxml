@@ -59,7 +59,7 @@
             <Font size="25.0" />
          </font>
       </Label>
-      <AnchorPane layoutX="100.0" layoutY="333.0" prefHeight="938.0" prefWidth="1197.0" AnchorPane.bottomAnchor="80.0" AnchorPane.leftAnchor="500.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="200.0">
+      <AnchorPane layoutX="271.0" layoutY="94.0" prefHeight="991.0" prefWidth="1197.0" AnchorPane.bottomAnchor="205.0" AnchorPane.leftAnchor="271.0" AnchorPane.rightAnchor="329.0" AnchorPane.topAnchor="94.0">
          <children>
                    <fx:include layoutY="200.0" prefHeight="1000.0" prefWidth="1500.0" source="Statistiques.fxml" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="0.40000000000009095" AnchorPane.topAnchor="200.0" />
          </children>

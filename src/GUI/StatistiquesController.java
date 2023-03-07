@@ -5,6 +5,9 @@
  */
 package GUI;
 
+import entities.Chauffeur;
+import entities.Siege;
+import entities.Vehicule;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.Initializable;
@@ -34,6 +37,9 @@ import org.jfree.data.general.DefaultPieDataset;
 import org.jfree.ui.ApplicationFrame;
 import services.ChauffeurService;
 import services.LocationService;
+import services.SiegeService;
+import services.UserConn;
+import services.VehiculeService;
 
 /**
  * FXML Controller class
@@ -54,6 +60,10 @@ public class StatistiquesController implements Initializable {
     private AnchorPane chartpanepie;
     LocationService ls = new LocationService();
     ChauffeurService ch = new ChauffeurService();
+    VehiculeService vs = new VehiculeService();
+    SiegeService ss = new SiegeService();
+    Vehicule v = new Vehicule();
+    Siege s =new Siege();
     /**
      * Initializes the controller class.
      */
@@ -65,8 +75,9 @@ public class StatistiquesController implements Initializable {
             DefaultCategoryDataset dataset = new DefaultCategoryDataset();
              for (Map.Entry<Integer, Integer> entry : nbrLocatioByvehicule.entrySet()) {
             Integer key = entry.getKey();
+            v=vs.recupererVehiculeByid(key);
             int value = entry.getValue();
-           dataset.addValue(value,"vehicule",key );
+           dataset.addValue(value,"vehicule",v.getMarque() );
         }
           
             
@@ -75,15 +86,15 @@ public class StatistiquesController implements Initializable {
 //            dataset.addValue(2.0, "Series 2", "Category 1");
 //            dataset.addValue(3.0, "Series 2", "Category 2");
 //            dataset.addValue(2.0, "Series 2", "Category 3");
- TreeMap<Integer,Integer> nbrchauffeurParSiege = ch.nombrechauffeurBysiege();
+ TreeMap<Integer,Integer> nbrchauffeurParSiege = ch.nombrechauffeurBysiege(UserConn.idutilisateur);
             DefaultPieDataset dataset2 = new DefaultPieDataset();
                for (Map.Entry<Integer, Integer> entry : nbrchauffeurParSiege.entrySet()) {
             Integer key = entry.getKey();
             int value = entry.getValue();
-            
+            s=ss.recupererById(key);
             String v = key+"";
                    System.out.println(key);
-            dataset2.setValue(v, value);
+            dataset2.setValue(s.getNom_siege(), value);
         }
            
 

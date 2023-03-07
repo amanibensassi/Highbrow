@@ -9,7 +9,7 @@
 
 <AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.AfficherDetailMecanicienController">
    <children>
-      <AnchorPane id="AnchorPane" layoutX="-4.0" prefHeight="1000.0" prefWidth="1500.0" style="-fx-background-color: F5F6FA;">
+      <AnchorPane id="AnchorPane" layoutX="-4.0" prefHeight="1000.0" prefWidth="1000.0" style="-fx-background-color: F5F6FA;">
          <children>
             <Label fx:id="lblspecialite" layoutX="913.0" layoutY="643.0" prefHeight="30.0" prefWidth="127.0" text="Label">
                <font>
@@ -67,8 +67,8 @@
                   <Font name="System Bold Italic" size="30.0" />
                </font>
             </Label>
-            <ImageView fx:id="img" fitHeight="188.0" fitWidth="258.0" layoutX="944.0" layoutY="284.0" pickOnBounds="true" preserveRatio="true" />
-            <ImageView fitHeight="69.0" fitWidth="83.0" layoutX="1793.0" layoutY="210.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="img" fitHeight="279.0" fitWidth="324.0" layoutX="204.0" layoutY="383.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fitHeight="69.0" fitWidth="83.0" layoutX="1267.0" layoutY="202.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../images/programme.png" />
                </image>
@@ -78,7 +78,7 @@
                   <Image url="@../images/liste.png" />
                </image>
             </ImageView>
-            <Button fx:id="calendrier" layoutX="1769.0" layoutY="182.0" mnemonicParsing="false" onAction="#afficherCalendrier" prefHeight="117.0" prefWidth="126.0" style="-fx-background-color: transparent;">
+            <Button fx:id="calendrier" layoutX="1239.0" layoutY="172.0" mnemonicParsing="false" onAction="#afficherCalendrier" prefHeight="117.0" prefWidth="126.0" style="-fx-background-color: transparent;">
                <font>
                   <Font name="System Bold Italic" size="20.0" />
                </font>

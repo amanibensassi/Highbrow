@@ -6,6 +6,7 @@
 package GUI;
 
 import entities.Utilisateur;
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
@@ -24,6 +25,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
@@ -46,6 +48,7 @@ public class ClientProfileController implements Initializable {
     private Label prenom;
     @FXML
     private Label num;
+    String pa,pb;
 
     UserService us = new UserService();
     Utilisateur u = new Utilisateur();
@@ -73,6 +76,20 @@ public class ClientProfileController implements Initializable {
         
     }
     public void setData(Utilisateur ut){
+        
+         pa = "C://Users//anasm//OneDrive//Documents//ImagesProjet//" + ut.getPhotopermis_avant();
+        File file2 = new File(pa);
+        
+        Image image2 = new Image(file2.toURI().toString());
+        
+        permis_avant.setImage(image2);
+        
+        pb = "C://Users//anasm//OneDrive//Documents//ImagesProjet//" + ut.getPhotopermis_arriere();
+        
+        File file3 = new File(pb);
+        
+        Image image3 = new Image(file3.toURI().toString());
+        permis_arriere.setImage(image3);
         
         nom.setText(ut.getNom());
         prenom.setText(ut.getPrenom());

@@ -70,7 +70,7 @@ public class DetailLocation_pfChauController implements Initializable {
     ChauffeurService cs = new ChauffeurService();
     @FXML
     private ImageView facture;
-
+String n;
     /**
      * Initializes the controller class.
      */
@@ -104,7 +104,7 @@ public class DetailLocation_pfChauController implements Initializable {
         int daydf = Integer.parseInt(jourdf);
 
         nbrjourr = daydf - daydb +1;
-        String n = nbrjourr + "";
+         n = nbrjourr + "";
         nbrjour.setText(n);
 
         float prix = nbrjourr * v.getPrix_par_jour();
@@ -173,29 +173,55 @@ public class DetailLocation_pfChauController implements Initializable {
         Paragraph nbrjourParagraph = new Paragraph(nbrjourChunk);
         nbrjourParagraph.add(new Chunk(nbrjour.getText()));
 
+        Chunk optionch = new Chunk("Option Chauffeur : ");
+        optionch.setFont(FontFactory.getFont(FontFactory.HELVETICA_BOLD, 12));
+        Paragraph optionch1 = new Paragraph(optionch);
+        optionch1.add(new Chunk(oui_non.getText()));
+        
+        
+        // Créer une Table avec deux colonnes pour afficher les totaux
+        
+        
+        
+//          Chunk sommech = new Chunk("Prix chauffeur   : ");
+//        nbrjourChunk.setFont(FontFactory.getFont(FontFactory.HELVETICA_BOLD, 12));
+//        Paragraph optionch2 = new Paragraph(sommech);
+//        optionch2.add(new Chunk(calcule2.getText()));
+        
+        
         // Créer une Table avec deux colonnes pour afficher les totaux
         PdfPTable table = new PdfPTable(2);
         table.setWidthPercentage(100);
 
-        PdfPCell cell1 = new PdfPCell(new Phrase("Taux de TVA"));
+        PdfPCell cell1 = new PdfPCell(new Phrase("Prix chauffeur"));
         cell1.setHorizontalAlignment(Element.ALIGN_LEFT);
         cell1.setVerticalAlignment(Element.ALIGN_MIDDLE);
         table.addCell(cell1);
 
-        PdfPCell cell2 = new PdfPCell(new Phrase(calcule1.getText()));
+        PdfPCell cell2 = new PdfPCell(new Phrase(calcule2.getText()));
         cell2.setHorizontalAlignment(Element.ALIGN_RIGHT);
         cell2.setVerticalAlignment(Element.ALIGN_MIDDLE);
         table.addCell(cell2);
 
-        PdfPCell cell3 = new PdfPCell(new Phrase("Total HT"));
+        PdfPCell cell3 = new PdfPCell(new Phrase("prix location"));
         cell3.setHorizontalAlignment(Element.ALIGN_LEFT);
         cell3.setVerticalAlignment(Element.ALIGN_MIDDLE);
         table.addCell(cell3);
 
-        PdfPCell cell4 = new PdfPCell(new Phrase(calcule2.getText()));
+        PdfPCell cell4 = new PdfPCell(new Phrase(calcule1.getText()));
         cell4.setHorizontalAlignment(Element.ALIGN_RIGHT);
         cell4.setVerticalAlignment(Element.ALIGN_MIDDLE);
         table.addCell(cell4);
+        
+           PdfPCell cell5 = new PdfPCell(new Phrase("Somme Total"));
+        cell3.setHorizontalAlignment(Element.ALIGN_LEFT);
+        cell3.setVerticalAlignment(Element.ALIGN_MIDDLE);
+        table.addCell(cell5);
+
+        PdfPCell cell6 = new PdfPCell(new Phrase(totaleSomme.getText()));
+        cell4.setHorizontalAlignment(Element.ALIGN_RIGHT);
+        cell4.setVerticalAlignment(Element.ALIGN_MIDDLE);
+        table.addCell(cell6);
 
         // Ajouter les Paragraphs et la Table au Document
         document.add(nomParagraph);

@@ -3,21 +3,29 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
 <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1000.0" prefWidth="1500.0" spacing="30.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.AfficherUtilisateurController">
    <children>
-      <Label prefHeight="46.0" prefWidth="350.0" text="Liste des Utilisateurs :">
+      <HBox prefHeight="100.0" prefWidth="200.0" spacing="500.0">
+         <children>
+            <Label prefHeight="46.0" prefWidth="350.0" text="Liste des Utilisateurs :">
+               <font>
+                  <Font name="System Bold" size="25.0" />
+               </font>
+            </Label>
+            <TextField fx:id="txtrecherche" onKeyPressed="#rechercheUser" prefHeight="48.0" prefWidth="279.0" promptText="Chercher" style="-fx-background-radius: 20;" />
+         </children>
          <VBox.margin>
             <Insets top="20.0" />
          </VBox.margin>
-         <font>
-            <Font name="System Bold" size="25.0" />
-         </font></Label>
+      </HBox>
       <ScrollPane prefHeight="908.0" prefWidth="1500.0">
          <content>
             <GridPane fx:id="grid" prefHeight="70.0" prefWidth="1500.0">
