@@ -7,9 +7,9 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="225.0" prefWidth="280.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.EntretienController">
+<AnchorPane id="AnchorPane" prefHeight="250.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.EntretienController">
    <children>
-      <AnchorPane fx:id="detailEntre" layoutX="5.0" layoutY="14.0" onMouseClicked="#detail" prefHeight="144.0" prefWidth="271.0">
+      <AnchorPane fx:id="detailEntre" layoutX="17.0" layoutY="15.0" onMouseClicked="#detail" prefHeight="144.0" prefWidth="271.0">
          <children>
             <Label fx:id="lbldate" layoutX="66.0" layoutY="42.0" prefHeight="31.0" prefWidth="163.0" text="Label">
                <font>
@@ -31,11 +31,11 @@
             <Separator layoutX="-1.0" layoutY="1.0" orientation="VERTICAL" prefHeight="162.0" prefWidth="6.0" />
          </children>
       </AnchorPane>
-      <Button fx:id="btnsupprimer" layoutX="42.0" layoutY="179.0" mnemonicParsing="false" onAction="#supprimer" style="-fx-background-radius: 20; -fx-background-color: #E31937;" text="Supprimer">
+      <Button fx:id="btnsupprimer" layoutX="31.0" layoutY="194.0" mnemonicParsing="false" onAction="#supprimer" style="-fx-background-radius: 10; -fx-background-color: #E31937;" text="Supprimer" textFill="WHITE">
          <font>
             <Font name="System Bold Italic" size="15.0" />
          </font></Button>
-      <Button fx:id="btnmodifier" layoutX="169.0" layoutY="179.0" mnemonicParsing="false" onAction="#modifier" style="-fx-background-radius: 20; -fx-background-color: #06C17A;" text="Modifier">
+      <Button fx:id="btnmodifier" layoutX="178.0" layoutY="194.0" mnemonicParsing="false" onAction="#modifier" style="-fx-background-radius: 10; -fx-background-color: #06C17A;" text="Modifier" textFill="WHITE">
          <font>
             <Font name="System Bold Italic" size="15.0" />
          </font></Button>

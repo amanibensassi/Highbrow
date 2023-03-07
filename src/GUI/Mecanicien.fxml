@@ -7,40 +7,40 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="131.0" prefWidth="919.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.MecanicienController">
+<AnchorPane id="AnchorPane" prefHeight="131.0" prefWidth="1400.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.MecanicienController">
    <children>
-      <AnchorPane id="AnchorPane" fx:id="mec" onMouseClicked="#detailMeca" prefHeight="131.0" prefWidth="582.0" style="-fx-background-radius: 20;">
+      <AnchorPane id="AnchorPane" fx:id="mec" onMouseClicked="#detailMeca" prefHeight="131.0" prefWidth="818.0" style="-fx-background-radius: 20;">
          <children>
-            <Label fx:id="nomPrenomLabel" layoutX="165.0" layoutY="46.0" prefHeight="39.0" prefWidth="125.0" text="Label">
+            <Label fx:id="nomPrenomLabel" layoutX="274.0" layoutY="46.0" prefHeight="39.0" prefWidth="125.0" text="Label">
                <font>
                   <Font name="System Bold Italic" size="20.0" />
                </font></Label>
-            <Label fx:id="ageLabel" layoutX="291.0" layoutY="46.0" prefHeight="39.0" prefWidth="125.0" text="Label">
+            <Label fx:id="ageLabel" layoutX="428.0" layoutY="44.0" prefHeight="39.0" prefWidth="125.0" text="Label">
                <font>
                   <Font name="System Bold Italic" size="20.0" />
                </font></Label>
-            <ImageView fx:id="img" fitHeight="109.0" fitWidth="147.0" layoutX="14.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true" />
-            <Label fx:id="lblspec" layoutX="442.0" layoutY="46.0" prefHeight="39.0" prefWidth="125.0" text="Label">
+            <ImageView fx:id="img" fitHeight="120.0" fitWidth="216.0" layoutX="14.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true" />
+            <Label fx:id="lblspec" layoutX="615.0" layoutY="44.0" prefHeight="39.0" prefWidth="125.0" text="Label">
                <font>
                   <Font name="System Bold Italic" size="20.0" />
                </font>
             </Label>
          </children>
       </AnchorPane>
-      <Button fx:id="btnmodifier" layoutX="744.0" layoutY="44.0" mnemonicParsing="false" onAction="#modifier" style="-fx-background-radius: 20; -fx-background-color: #06C17A;" text="Modifier">
+      <Button fx:id="btnmodifier" layoutX="1132.0" layoutY="39.0" mnemonicParsing="false" onAction="#modifier" prefHeight="55.0" prefWidth="158.0" style="-fx-background-radius: 15; -fx-background-color: #06C17A;" text="Modifier" textFill="WHITE">
          <font>
             <Font name="System Bold Italic" size="20.0" />
          </font></Button>
-      <Button fx:id="btnsupprimer" layoutX="582.0" layoutY="44.0" mnemonicParsing="false" onAction="#supprimer" style="-fx-background-color: #E31937; -fx-background-radius: 20;" text="Supprimer">
+      <Button fx:id="btnsupprimer" layoutX="833.0" layoutY="41.0" mnemonicParsing="false" onAction="#supprimer" prefHeight="55.0" prefWidth="146.0" style="-fx-background-color: #E31937; -fx-background-radius: 15;" text="Supprimer" textFill="WHITE">
          <font>
             <Font name="System Bold Italic" size="20.0" />
          </font></Button>
-      <ImageView fx:id="update" fitHeight="29.0" fitWidth="30.0" layoutX="862.0" layoutY="51.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="update" fitHeight="48.0" fitWidth="74.0" layoutX="1315.0" layoutY="42.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/bouton-modifier.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="delete" fitHeight="29.0" fitWidth="30.0" layoutX="707.0" layoutY="51.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="delete" fitHeight="55.0" fitWidth="73.0" layoutX="992.0" layoutY="39.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/supprimer.png" />
          </image>

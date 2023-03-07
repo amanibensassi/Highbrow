@@ -50,8 +50,6 @@ public class ClientProfileController implements Initializable {
     UserService us = new UserService();
     Utilisateur u = new Utilisateur();
     int idclient = 0 ;
-    @FXML
-    private Button logout;
     /**
      * Initializes the controller class.
      */
@@ -64,6 +62,10 @@ public class ClientProfileController implements Initializable {
     private Label nom1;
     @FXML
     private Label num1;
+    @FXML
+    private ImageView permis_avant;
+    @FXML
+    private ImageView permis_arriere;
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 
@@ -88,7 +90,6 @@ public class ClientProfileController implements Initializable {
         
     }
    
-    @FXML
     private void logout(ActionEvent event) {
          try {
                      Parent root = FXMLLoader.load(getClass().getResource("authenticate.fxml"));

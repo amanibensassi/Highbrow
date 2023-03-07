@@ -71,7 +71,6 @@ public class ModifierEntretienController implements Initializable {
     MecanicienService ms = new MecanicienService();
     Mecanicien me = new Mecanicien();
     //Mecanicien m=new Mecanicien(5, 0, Specialite.mecanicien, Region.kebili, "adresse", "image", "nom_mecanicien", "prenom_mecanicien");
-    @FXML
     private GridPane grid;
     @FXML
     private Button btnConfirmer;

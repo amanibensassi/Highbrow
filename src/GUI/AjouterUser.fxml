@@ -44,17 +44,17 @@
          </font></PasswordField>
       <ChoiceBox id="7" fx:id="role" layoutX="1322.0" layoutY="314.0" prefHeight="57.0" prefWidth="498.0" style="-fx-background-color: ffffff; -fx-background-radius: 15;" />
       <DatePicker fx:id="date_de_naissance" layoutX="1324.0" layoutY="455.0" prefHeight="57.0" prefWidth="498.0" style="-fx-background-color: #d6e0d8; -fx-background-radius: 15;" />
-      <Button fx:id="img" layoutX="743.0" layoutY="698.0" mnemonicParsing="false" onAction="#AjouterImage" prefHeight="77.0" prefWidth="237.0" text="ajouter_image">
+      <Button fx:id="img" layoutX="743.0" layoutY="710.0" mnemonicParsing="false" onAction="#AjouterImage" prefHeight="77.0" prefWidth="237.0" style="-fx-background-color: #0E2132; -fx-background-radius: 15;" text="ajouter_image" textFill="WHITE">
          <font>
-            <Font size="25.0" />
+            <Font name="System Bold" size="25.0" />
          </font></Button>
-      <Button fx:id="imagearrire" layoutX="1184.0" layoutY="707.0" mnemonicParsing="false" onAction="#ajoutarrire" prefHeight="78.0" prefWidth="289.0" text="ajouter permis arriére">
+      <Button fx:id="imagearrire" layoutX="1126.0" layoutY="710.0" mnemonicParsing="false" onAction="#ajoutarrire" prefHeight="78.0" prefWidth="289.0" style="-fx-background-color: #0E2132; -fx-background-radius: 15;" text="ajouter permis arriére" textFill="WHITE">
          <font>
-            <Font size="25.0" />
+            <Font name="System Bold" size="25.0" />
          </font></Button>
-      <Button fx:id="imageavant" layoutX="1545.0" layoutY="705.0" mnemonicParsing="false" onAction="#ajouterimageavant" prefHeight="78.0" prefWidth="267.0" text="ajouter image avant">
+      <Button fx:id="imageavant" layoutX="1517.0" layoutY="711.0" mnemonicParsing="false" onAction="#ajouterimageavant" prefHeight="78.0" prefWidth="296.0" style="-fx-background-color: #0E2132; -fx-background-radius: 15;" text="ajouter image avant" textFill="WHITE">
          <font>
-            <Font size="25.0" />
+            <Font name="System Bold" size="25.0" />
          </font></Button>
       <ImageView fitHeight="70.0" fitWidth="148.0" layoutX="771.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true">
          <image>

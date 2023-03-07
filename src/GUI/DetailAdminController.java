@@ -35,10 +35,6 @@ public class DetailAdminController implements Initializable {
     @FXML
     private Label role;
     @FXML
-    private ImageView photo_permis_avant;
-    @FXML
-    private ImageView photo_permis_arriere;
-    @FXML
     private ImageView image;
     int idclient ;
 

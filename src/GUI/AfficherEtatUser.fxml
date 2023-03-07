@@ -18,7 +18,7 @@
          <VBox.margin>
             <Insets top="20.0" />
          </VBox.margin></Label>
-      <ScrollPane prefHeight="911.0" prefWidth="1500.0">
+      <ScrollPane prefHeight="913.0" prefWidth="1500.0">
          <content>
             <GridPane fx:id="grid" prefHeight="70.0" prefWidth="1499.0">
                <columnConstraints>

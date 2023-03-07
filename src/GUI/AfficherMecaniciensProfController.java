@@ -66,7 +66,6 @@ public class AfficherMecaniciensProfController implements Initializable {
     private Button btnlister;
 
     List<Mecanicien> personnes;
-    @FXML
     private ChoiceBox<String> cbregion;
     Specialite tabspes []={electricien,mecanicien,tolier};
     Region tabreg []={Region.ariana,Region.beja,Region.ben_Arous,Region.bizerte,Region.gabes,Region.gafsa,Region.jendouba,Region.kairouan,Region.kasserine,Region.kebili,Region.kef,Region.mahdia,Region.manouba,Region.medenine,Region.monastir,Region.monastir,Region.nabeul,Region.sfax,Region.sidi_Bouzid,Region.siliana,Region.sousse,Region.tataouine,Region.tozeur,Region.tunis,Region.zaghouan};

@@ -136,7 +136,6 @@ public class AjouterMecanicienController implements Initializable {
 
     }
 
-    @FXML
     private void afficherMecaniciens(ActionEvent event) {
 
         try {

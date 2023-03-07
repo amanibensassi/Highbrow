@@ -23,12 +23,12 @@
        <Button fx:id="next" layoutX="338.0" layoutY="23.0" mnemonicParsing="false" onAction="#next" text="next" />
       <Button fx:id="prev" layoutX="77.0" layoutY="23.0" mnemonicParsing="false" onAction="#prev" text="prev" />
       <Label fx:id="localDate" layoutX="210.0" layoutY="23.0" prefHeight="40.0" prefWidth="142.0" text="localDate" />
-      <DatePicker fx:id="dateDebut" layoutX="495.0" layoutY="414.0" onAction="#setdatedebuttt" stylesheets="@../styles/ModifierLocation.css" />
-      <DatePicker fx:id="dateDin" layoutX="503.0" layoutY="458.0" stylesheets="@../styles/ModifierLocation.css" />
-      <Label id="label_modif" layoutX="403.0" layoutY="418.0" style="-fx-background-size: 12px; -fx-border-color: #f0f0f0;" text="date début" />
-      <Button fx:id="valider" layoutX="759.0" layoutY="453.0" mnemonicParsing="false" onAction="#modifierLoactionValider" text="Modifier" />
-      <Label layoutX="422.0" layoutY="463.0" stylesheets="@../styles/ModifierLocation.css" text="date fin " />
-      <ComboBox fx:id="opchaffeur" layoutX="561.0" layoutY="492.0" prefWidth="150.0" />
-      <Label layoutX="406.0" layoutY="497.0" stylesheets="@../styles/ModifierLocation.css" text="chauffeur!" />
+      <DatePicker fx:id="dateDebut" layoutX="540.0" layoutY="148.0" onAction="#setdatedebuttt" stylesheets="@../styles/ModifierLocation.css" />
+      <DatePicker fx:id="dateDin" layoutX="548.0" layoutY="255.0" stylesheets="@../styles/ModifierLocation.css" />
+      <Label id="label_modif" layoutX="584.0" layoutY="104.0" style="-fx-background-size: 12px; -fx-border-color: #f0f0f0;" text="date début" />
+      <Button fx:id="valider" layoutX="610.0" layoutY="459.0" mnemonicParsing="false" onAction="#modifierLoactionValider" text="Modifier" />
+      <Label layoutX="594.0" layoutY="212.0" stylesheets="@../styles/ModifierLocation.css" text="date fin " />
+      <ComboBox fx:id="opchaffeur" layoutX="548.0" layoutY="344.0" prefHeight="31.0" prefWidth="235.0" />
+      <Label layoutX="560.0" layoutY="316.0" stylesheets="@../styles/ModifierLocation.css" text="chauffeur" />
    </children>
 </AnchorPane>

@@ -5,14 +5,14 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.HBox?>
 
-<HBox id="car-details" fx:id="hbox" prefHeight="84.0" prefWidth="694.0" spacing="10.0" stylesheets="@../styles/CardLocation.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.ChauffeurDisponibleController">
+<HBox id="car-details" fx:id="hbox" prefHeight="84.0" prefWidth="900.0" spacing="20.0" stylesheets="@../styles/CardLocation.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.ChauffeurDisponibleController">
      
-    <ImageView fx:id="userImage" fitHeight="36.0" fitWidth="46.0" onMouseEntered="#afficherChDetail" pickOnBounds="true" preserveRatio="true" />
+    <ImageView fx:id="userImage" fitHeight="77.0" fitWidth="62.0" onMouseEntered="#afficherChDetail" pickOnBounds="true" preserveRatio="true" />
       
     <Label id="car-label" fx:id="nom" prefHeight="20.0" prefWidth="70.0" text="nom:" />
    <Label id="car-label1" fx:id="prenom" prefHeight="19.0" prefWidth="81.0" text="prenom" />
-        <Label id="start-date-label" fx:id="numtel" prefHeight="20.0" prefWidth="110.0" text="numtel" />
-   <Label id="start-date-label1" fx:id="mail" prefHeight="19.0" prefWidth="130.0" text="mail" />
+        <Label id="start-date-label" fx:id="numtel" prefHeight="26.0" prefWidth="139.0" text="numtel" />
+   <Label id="start-date-label1" fx:id="mail" prefHeight="22.0" prefWidth="198.0" text="mail" />
         <Label id="end-date-label" fx:id="cin" prefHeight="20.0" prefWidth="103.0" text="cin" />
             
    <Button id="modifier-button" fx:id="affecter" onAction="#affecterLech" prefHeight="40.0" prefWidth="106.0" text="affecter" />

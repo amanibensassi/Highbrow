@@ -9,6 +9,7 @@
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
 
 <AnchorPane id="AnchorPane" fx:id="btnrecherche" prefHeight="1000.0" prefWidth="1500.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.ListeChauffeurController">
    <children>
@@ -29,16 +30,19 @@
             </GridPane>
          </content>
       </ScrollPane>
-      <ImageView fx:id="loadToAjoutCh" fitHeight="85.0" fitWidth="124.0" layoutX="265.0" layoutY="3.0" onMouseClicked="#loadToAjoutCh" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="loadToAjoutCh" fitHeight="85.0" fitWidth="124.0" layoutX="45.0" layoutY="4.0" onMouseClicked="#loadToAjoutCh" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/add-user.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="42.0" fitWidth="483.0" layoutX="514.0" layoutY="37.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="42.0" fitWidth="483.0" layoutX="509.0" layoutY="31.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/listeChauffeur.PNG" />
          </image>
       </ImageView>
-      <TextField fx:id="rechercher" layoutX="1086.0" layoutY="34.0" onKeyPressed="#rechercheChauffeur" onKeyReleased="#rechercherch" prefHeight="26.0" prefWidth="247.0" text="recherche" />
+      <TextField fx:id="rechercher" layoutX="1037.0" layoutY="34.0" onKeyPressed="#rechercheChauffeur" onKeyReleased="#rechercherch" prefHeight="39.0" prefWidth="410.0" promptText="rechercher" style="-fx-background-color: ffffff; -fx-border-color: A5A5A5; -fx-border-radius: 10;">
+         <font>
+            <Font size="15.0" />
+         </font></TextField>
    </children>
 </AnchorPane>

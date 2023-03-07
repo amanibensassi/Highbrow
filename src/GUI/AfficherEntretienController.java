@@ -42,8 +42,6 @@ public class AfficherEntretienController implements Initializable {
 
     @FXML
     private GridPane grid;
-    @FXML
-    private TextField txtrecherche;
     EntretienService es = new EntretienService();
     @FXML
     private ImageView imgtrie;
@@ -83,9 +81,6 @@ public class AfficherEntretienController implements Initializable {
     }
 
 
-    @FXML
-    private void rechercheMecanicien(KeyEvent event) {
-    }
 
     private void listerMecaniciens(ActionEvent event) throws IOException {
 

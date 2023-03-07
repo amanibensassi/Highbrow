@@ -11,19 +11,19 @@
 
 <AnchorPane id="AnchorPane" prefHeight="1000.0" prefWidth="1900.0" style="-fx-background-color: #F5F6FA;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.NewPwdController">
    <children>
-      <Text layoutX="931.0" layoutY="201.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Veuillez saisir votre nouveau mot de passe :" wrappingWidth="509.9619445800781">
+      <Text layoutX="953.0" layoutY="228.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Veuillez saisir votre nouveau mot de passe :" wrappingWidth="788.3619689941406">
          <font>
-            <Font size="25.0" />
+            <Font name="System Bold" size="30.0" />
          </font></Text>
-      <TextField fx:id="txtemail1" layoutX="1109.0" layoutY="366.0" prefHeight="57.0" prefWidth="498.0" promptText="votre mail" style="-fx-background-color: ffffff; -fx-background-radius: 15;">
+      <TextField fx:id="txtemail1" layoutX="1109.0" layoutY="366.0" prefHeight="57.0" prefWidth="498.0" promptText="votre mail" style="-fx-background-color: ffffff; -fx-background-radius: 15; -fx-border-radius: 15; -fx-border-width: 0.5; -fx-border-color: #378217;">
          <font>
             <Font size="25.0" />
          </font></TextField>
-      <TextField fx:id="txtnew" layoutX="1108.0" layoutY="467.0" prefHeight="57.0" prefWidth="498.0" promptText="new password" style="-fx-background-color: ffffff; -fx-background-radius: 15;">
+      <TextField fx:id="txtnew" layoutX="1108.0" layoutY="467.0" prefHeight="57.0" prefWidth="498.0" promptText="new password" style="-fx-background-color: ffffff; -fx-background-radius: 15; -fx-border-radius: 15; -fx-border-width: 0.5; -fx-border-color: #378217;">
          <font>
             <Font size="25.0" />
          </font></TextField>
-      <TextField fx:id="txtconfirm" layoutX="1109.0" layoutY="567.0" prefHeight="57.0" prefWidth="498.0" promptText="confirmer password" style="-fx-background-color: ffffff; -fx-background-radius: 15;">
+      <TextField fx:id="txtconfirm" layoutX="1109.0" layoutY="567.0" prefHeight="57.0" prefWidth="498.0" promptText="confirmer password" style="-fx-background-color: ffffff; -fx-background-radius: 15; -fx-border-radius: 15; -fx-border-width: 0.5; -fx-border-color: #378217;">
          <font>
             <Font size="25.0" />
          </font></TextField>

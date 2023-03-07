@@ -53,8 +53,6 @@ public class EtatCardController implements Initializable {
     @FXML
     private ImageView photo_permis_arriere;
     @FXML
-    private Label etat;
-    @FXML
     private Button approuved;
     UserService us = new UserService();
     Utilisateur u = new Utilisateur();

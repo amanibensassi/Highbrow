@@ -19,6 +19,11 @@
                   <Font name="System Bold Italic" size="25.0" />
                </font>
             </Label>
+            <Label layoutX="185.0" layoutY="54.0" prefHeight="500.0" prefWidth="550.0" text="F A S T R E N T,  le choix parfait pour tous vos déplacements " textAlignment="CENTER" textFill="WHITE" wrapText="true">
+               <font>
+                  <Font name="System Bold Italic" size="50.0" />
+               </font>
+            </Label>
          </children>
       </AnchorPane>
       <ImageView fitHeight="144.0" fitWidth="188.0" layoutX="1704.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true">
@@ -26,12 +31,12 @@
             <Image url="@../image_Hamma/logo.png" />
          </image>
       </ImageView>
-      <Button fx:id="login" layoutX="1588.0" layoutY="653.0" mnemonicParsing="false" onAction="#authenticate" prefHeight="77.0" prefWidth="237.0" style="-fx-background-color: #378217; -fx-background-radius: 15;" text="Login " textFill="WHITE">
+      <Button fx:id="login" layoutX="1190.0" layoutY="697.0" mnemonicParsing="false" onAction="#authenticate" prefHeight="77.0" prefWidth="237.0" style="-fx-background-color: #378217; -fx-background-radius: 15;" text="Login " textFill="WHITE">
          <font>
             <Font name="System Bold Italic" size="25.0" />
          </font>
       </Button>
-      <TextField fx:id="mail" layoutX="1152.0" layoutY="308.0" prefHeight="57.0" prefWidth="498.0" promptText="e-mail" style="-fx-background-color: ffffff; -fx-background-radius: 15;">
+      <TextField fx:id="mail" layoutX="1152.0" layoutY="308.0" prefHeight="57.0" prefWidth="498.0" promptText="e-mail" style="-fx-background-color: ffffff; -fx-background-radius: 15; -fx-border-width: 1; -fx-border-radius: 15; -fx-border-color: #378217;">
          <font>
             <Font name="System Bold Italic" size="30.0" />
          </font>
@@ -41,12 +46,12 @@
             <Font name="System Bold Italic" size="20.0" />
          </font>
       </Text>
-      <PasswordField fx:id="mot_de_passe" layoutX="1156.0" layoutY="461.0" prefHeight="64.0" prefWidth="498.0" promptText="Mot De passe" style="-fx-background-color: ffffff; -fx-background-radius: 15;">
+      <PasswordField fx:id="mot_de_passe" layoutX="1156.0" layoutY="461.0" prefHeight="64.0" prefWidth="498.0" promptText="Mot De passe" style="-fx-background-color: ffffff; -fx-background-radius: 15; -fx-border-radius: 15; -fx-border-color: #378217; -fx-border-width: 1;">
          <font>
             <Font name="System Bold Italic" size="30.0" />
          </font>
       </PasswordField>
-      <Button fx:id="inscription" layoutX="1588.0" layoutY="745.0" mnemonicParsing="false" onAction="#inscriptionajoutcompte" prefHeight="77.0" prefWidth="237.0" style="-fx-background-color: #378217; -fx-background-radius: 15;" text="S'inscrire" textFill="WHITE">
+      <Button fx:id="inscription" layoutX="1551.0" layoutY="710.0" mnemonicParsing="false" onAction="#inscriptionajoutcompte" prefHeight="77.0" prefWidth="237.0" style="-fx-background-color: #378217; -fx-background-radius: 15;" text="S'inscrire" textFill="WHITE">
          <font>
             <Font name="System Bold Italic" size="25.0" />
          </font>

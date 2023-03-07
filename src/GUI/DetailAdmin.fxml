@@ -27,8 +27,6 @@
          <font>
             <Font name="System Bold Italic" size="30.0" />
          </font></Label>
-      <ImageView fx:id="photo_permis_avant" fitHeight="276.0" fitWidth="570.0" layoutX="117.0" layoutY="706.0" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fx:id="photo_permis_arriere" fitHeight="294.0" fitWidth="565.0" layoutX="802.0" layoutY="691.0" pickOnBounds="true" preserveRatio="true" />
       <ImageView fx:id="image" fitHeight="281.0" fitWidth="389.0" layoutX="20.0" layoutY="52.0" pickOnBounds="true" preserveRatio="true" />
       <Label fx:id="date_de_naissance" layoutX="326.0" layoutY="565.0" text="Date De Naissance" wrapText="true">
          <font>
@@ -60,16 +58,6 @@
          </font>
       </Label>
       <Label layoutX="59.0" layoutY="570.0" text="Date de naissance :" wrapText="true">
-         <font>
-            <Font name="System Bold" size="25.0" />
-         </font>
-      </Label>
-      <Label layoutX="116.0" layoutY="650.0" text="Photo de permis de profile :" wrapText="true">
-         <font>
-            <Font name="System Bold" size="25.0" />
-         </font>
-      </Label>
-      <Label layoutX="801.0" layoutY="649.0" text="Photo de permis de derriére :" wrapText="true">
          <font>
             <Font name="System Bold" size="25.0" />
          </font>

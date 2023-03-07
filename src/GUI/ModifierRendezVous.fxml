@@ -9,7 +9,7 @@
 
 <AnchorPane id="AnchorPane" prefHeight="1000.0" prefWidth="1500.0" style="-fx-background-color: #F5F6FA;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.ModifierRendezVousController">
    <children>
-      <DatePicker fx:id="date_rendezvous" layoutX="305.0" layoutY="262.0" prefHeight="57.0" prefWidth="498.0" promptText="Date Rendez Vous" style="-fx-background-color: ffffff; -fx-background-radius: 15;" />
+      <DatePicker fx:id="date_rendezvous" layoutX="876.0" layoutY="231.0" prefHeight="57.0" prefWidth="498.0" promptText="Date Rendez Vous" style="-fx-background-color: ffffff; -fx-background-radius: 15;" />
       <Button fx:id="mod" layoutX="970.0" layoutY="676.0" mnemonicParsing="false" onAction="#modifier" prefHeight="78.0" prefWidth="214.0" style="-fx-background-color: #06C17A; -fx-background-radius: 15;" text="Valider" textFill="WHITE">
          <font>
             <Font name="System Bold Italic" size="25.0" />
@@ -19,16 +19,16 @@
             <Font name="System Bold Italic" size="25.0" />
          </font>
       </Button>
-      <Label layoutX="233.0" layoutY="147.0" prefHeight="91.0" prefWidth="593.0" text="Veuillez saisir votre nouvelle date choisit :">
+      <Label layoutX="147.0" layoutY="222.0" prefHeight="91.0" prefWidth="593.0" text="Veuillez saisir votre nouvelle date choisit :">
          <font>
-            <Font size="30.0" />
+            <Font name="System Bold" size="30.0" />
          </font>
       </Label>
-      <Label layoutX="230.0" layoutY="400.0" prefHeight="91.0" prefWidth="593.0" text="Veuillez saisir votre nouvelle heure :">
+      <Label layoutX="155.0" layoutY="395.0" prefHeight="91.0" prefWidth="593.0" text="Veuillez saisir votre nouvelle heure :">
          <font>
-            <Font size="30.0" />
+            <Font name="System Bold" size="30.0" />
          </font>
       </Label>
-      <ChoiceBox fx:id="heure" layoutX="305.0" layoutY="508.0" prefHeight="58.0" prefWidth="131.0" />
+      <ChoiceBox fx:id="heure" layoutX="915.0" layoutY="420.0" prefHeight="58.0" prefWidth="131.0" />
    </children>
 </AnchorPane>

@@ -13,8 +13,11 @@
 
 <AnchorPane id="AnchorPane" prefHeight="1000.0" prefWidth="1400.0" stylesheets="@../styles/AjouterChauffeur.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.AddChauffeurController">
    <children>
-      <Button fx:id="ajouterch" alignment="BOTTOM_RIGHT" contentDisplay="RIGHT" layoutX="1021.0" layoutY="843.0" onAction="#AjouterCh" prefHeight="71.0" prefWidth="238.0" text="Ajouter" />
-      <ComboBox fx:id="combobox" layoutX="240.0" layoutY="781.0" prefHeight="78.0" prefWidth="492.0" promptText="region" />
+      <Button fx:id="ajouterch" alignment="BOTTOM_RIGHT" contentDisplay="RIGHT" layoutX="1021.0" layoutY="843.0" onAction="#AjouterCh" prefHeight="71.0" prefWidth="238.0" text="Ajouter">
+         <font>
+            <Font size="20.0" />
+         </font></Button>
+      <ComboBox fx:id="combobox" layoutX="229.0" layoutY="728.0" prefHeight="78.0" prefWidth="492.0" promptText="region" />
       <ImageView fitHeight="119.0" fitWidth="138.0" layoutX="905.0" layoutY="821.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/chauffeur.png" />
@@ -27,7 +30,7 @@
       </ImageView>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#bfc9c426" height="364.0" layoutX="899.0" layoutY="399.0" stroke="BLACK" strokeType="INSIDE" width="444.0" />
       <Label layoutX="1047.0" layoutY="446.0" text="Ajouter permis ici" />
-      <ImageView fitHeight="128.0" fitWidth="134.0" layoutX="961.0" layoutY="541.0" onMouseClicked="#AjouterPermisAvant" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="128.0" fitWidth="134.0" layoutX="961.0" layoutY="527.0" onMouseClicked="#AjouterPermisAvant" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/images.png" />
          </image>
@@ -37,14 +40,14 @@
             <Image url="@../images/images.png" />
          </image>
       </ImageView>
-      <Label layoutX="1013.0" layoutY="700.0" text="Avant" />
-      <Label layoutX="1212.0" layoutY="691.0" prefHeight="43.0" prefWidth="82.0" text="Arriere" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#bfc9c426" height="126.0" layoutX="890.0" layoutY="198.0" stroke="BLACK" strokeType="INSIDE" width="431.0" />
+      <Label layoutX="1005.0" layoutY="700.0" text="Avant" />
+      <Label layoutX="1194.0" layoutY="691.0" prefHeight="43.0" prefWidth="82.0" text="Arriere" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#bfc9c426" height="126.0" layoutX="903.0" layoutY="198.0" stroke="BLACK" strokeType="INSIDE" width="431.0" />
       <Label layoutX="970.0" layoutY="250.0" text="Ajouter image ici">
          <font>
             <Font size="25.0" />
          </font></Label>
-      <ImageView fitHeight="106.0" fitWidth="125.0" layoutX="1179.0" layoutY="215.0" onMouseClicked="#AjouterImage" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="106.0" fitWidth="125.0" layoutX="1179.0" layoutY="207.0" onMouseClicked="#AjouterImage" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/images.png" />
          </image>
