@@ -4,17 +4,36 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
 
-<HBox fx:id="grid" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="90.0" prefWidth="714.0" spacing="20.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.ReclamationController">
+<HBox fx:id="grid" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="100.0" prefWidth="900.0" spacing="50.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.ReclamationController">
    <children>
-    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="90.0" prefWidth="722.0">
+    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="900.0">
          <children>
-            <Label fx:id="nom" layoutX="35.0" layoutY="41.0" text="nom" />
-            <Label fx:id="corp" layoutX="207.0" layoutY="41.0" text="Label" />
-            <Label fx:id="date" layoutX="368.0" layoutY="41.0" text="Label" />
-            <CheckBox fx:id="etat" layoutX="491.0" layoutY="41.0" mnemonicParsing="false" onAction="#changeretat" text="Traité" />
-            <Label fx:id="lbltypereclamation" layoutX="640.0" layoutY="41.0" text="Label" />
-            <Label fx:id="prenom" layoutX="91.0" layoutY="41.0" text="prenom" />
+            <Label fx:id="nom" layoutX="35.0" layoutY="41.0" text="nom">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font></Label>
+            <Label fx:id="corp" layoutX="207.0" layoutY="41.0" text="Label">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font></Label>
+            <Label fx:id="date" layoutX="368.0" layoutY="41.0" text="Label">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font></Label>
+            <CheckBox fx:id="etat" layoutX="491.0" layoutY="41.0" mnemonicParsing="false" onAction="#changeretat" text="Traité">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font></CheckBox>
+            <Label fx:id="lbltypereclamation" layoutX="640.0" layoutY="41.0" text="Label">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font></Label>
+            <Label fx:id="prenom" layoutX="91.0" layoutY="41.0" text="prenom">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font></Label>
          </children>
       </AnchorPane>
    </children>

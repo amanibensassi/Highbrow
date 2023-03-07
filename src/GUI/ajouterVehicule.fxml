@@ -10,37 +10,60 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="650.0" prefWidth="870.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.AjouterVehiculeController">
+<AnchorPane id="AnchorPane" prefHeight="1000.0" prefWidth="1500.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.AjouterVehiculeController">
    <children>
-      <Label layoutX="183.0" layoutY="43.0" text="Veuillez remplir ce formulaire pour ajouter un vehicule" textAlignment="CENTER" textFill="#2b6b20">
+      <TextField fx:id="marqueid" alignment="CENTER" layoutX="84.0" layoutY="273.0" prefHeight="52.0" prefWidth="345.0" promptText="marque" style="-fx-background-radius: 10; -fx-border-color: #378217; -fx-border-radius: 10; -fx-background-color: #ffffff;" styleClass="labelTitreSieges" stylesheets="@../values/values.css">
          <font>
-            <Font size="21.0" />
-         </font></Label>
-      <TextField fx:id="marqueid" alignment="CENTER" layoutX="76.0" layoutY="116.0" prefHeight="42.0" prefWidth="242.0" promptText="marque" styleClass="labelTitreSieges" stylesheets="@../values/values.css" />
-      <TextField fx:id="kilometrageid" alignment="CENTER" layoutX="507.0" layoutY="116.0" prefHeight="42.0" prefWidth="242.0" promptText="kilometrage" styleClass="labelTitreSieges" stylesheets="@../values/values.css" />
-      <TextField fx:id="prixjourid" alignment="CENTER" layoutX="76.0" layoutY="210.0" prefHeight="42.0" prefWidth="242.0" promptText="prix de location par jour " styleClass="labelTitreSieges" stylesheets="@../values/values.css" />
-      <TextField fx:id="immatriculationid" alignment="CENTER" layoutX="76.0" layoutY="304.0" prefHeight="42.0" prefWidth="242.0" promptText="immatriculation" styleClass="labelTitreSieges" stylesheets="@../values/values.css" />
-      <ComboBox fx:id="nombreplaceid" layoutX="76.0" layoutY="401.0" prefHeight="42.0" prefWidth="242.0" promptText="nombre de place" styleClass="labelTitreSieges" stylesheets="@../values/values.css">
+            <Font size="15.0" />
+         </font></TextField>
+      <TextField fx:id="kilometrageid" alignment="CENTER" layoutX="84.0" layoutY="646.0" prefHeight="62.0" prefWidth="352.0" promptText="kilometrage" style="-fx-background-radius: 10; -fx-border-color: #378217; -fx-border-radius: 10; -fx-background-color: #ffffff;" styleClass="labelTitreSieges" stylesheets="@../values/values.css">
+         <font>
+            <Font size="15.0" />
+         </font></TextField>
+      <TextField fx:id="prixjourid" alignment="CENTER" layoutX="83.0" layoutY="359.0" prefHeight="61.0" prefWidth="346.0" promptText="prix de location par jour " style="-fx-background-radius: 10; -fx-border-color: #378217; -fx-border-radius: 10; -fx-background-color: #ffffff;" styleClass="labelTitreSieges" stylesheets="@../values/values.css">
+         <font>
+            <Font size="15.0" />
+         </font></TextField>
+      <TextField fx:id="immatriculationid" alignment="CENTER" layoutX="86.0" layoutY="458.0" prefHeight="55.0" prefWidth="343.0" promptText="immatriculation" style="-fx-background-radius: 10; -fx-border-color: #378217; -fx-border-radius: 10; -fx-background-color: #ffffff;" styleClass="labelTitreSieges" stylesheets="@../values/values.css">
+         <font>
+            <Font size="15.0" />
+         </font></TextField>
+      <ComboBox fx:id="nombreplaceid" layoutX="584.0" layoutY="371.0" prefHeight="54.0" prefWidth="289.0" promptText="nombre de place" styleClass="labelTitreSieges" stylesheets="@../values/values.css">
          <padding>
             <Insets left="65.0" />
          </padding></ComboBox>
-      <Button fx:id="ajouterbtn" alignment="CENTER" contentDisplay="CENTER" layoutX="264.0" layoutY="585.0" mnemonicParsing="false" onAction="#ajouter" prefHeight="42.0" prefWidth="108.0" stylesheets="@../values/values.css" text="Ajouter" textAlignment="CENTER" textFill="WHITE">
+      <Button fx:id="ajouterbtn" alignment="CENTER" contentDisplay="CENTER" graphicTextGap="10.0" layoutX="826.0" layoutY="791.0" mnemonicParsing="false" onAction="#ajouter" prefHeight="64.0" prefWidth="183.0" stylesheets="@../values/values.css" text="Ajouter" textAlignment="CENTER" textFill="WHITE">
          <styleClass>
             <String fx:value="affichervehiculesbtn" />
             <String fx:value="modifierButton" />
          </styleClass></Button>
-      <Button fx:id="afficherbtn" layoutX="476.0" layoutY="585.0" mnemonicParsing="false" onAction="#Affciher" prefHeight="42.0" prefWidth="108.0" styleClass="affichervehiculesbtn" stylesheets="@../values/values.css" text="Afficher" textAlignment="CENTER" textFill="WHITE" />
+      <Button fx:id="afficherbtn" graphicTextGap="10.0" layoutX="1172.0" layoutY="791.0" mnemonicParsing="false" onAction="#Affciher" prefHeight="62.0" prefWidth="175.0" styleClass="affichervehiculesbtn" stylesheets="@../values/values.css" text="Afficher" textAlignment="CENTER" textFill="WHITE">
+         <font>
+            <Font size="15.0" />
+         </font></Button>
       <Label layoutX="66.0" layoutY="309.0" />
-      <TextField fx:id="prixventeid" alignment="CENTER" layoutX="507.0" layoutY="210.0" prefHeight="42.0" prefWidth="242.0" promptText="prix de vente " styleClass="labelTitreSieges" stylesheets="@../values/values.css" />
-      <ComboBox fx:id="carburantid" layoutX="507.0" layoutY="309.0" prefHeight="42.0" prefWidth="242.0" promptText="carburant" styleClass="labelTitreSieges" stylesheets="@../values/values.css">
+      <TextField fx:id="prixventeid" alignment="CENTER" layoutX="86.0" layoutY="556.0" prefHeight="56.0" prefWidth="348.0" promptText="prix de vente " style="-fx-background-radius: 10; -fx-border-color: #378217; -fx-border-radius: 10; -fx-background-color: #ffffff;" styleClass="labelTitreSieges" stylesheets="@../values/values.css">
+         <font>
+            <Font size="15.0" />
+         </font></TextField>
+      <ComboBox fx:id="carburantid" layoutX="995.0" layoutY="373.0" prefHeight="52.0" prefWidth="279.0" promptText="carburant" styleClass="labelTitreSieges" stylesheets="@../values/values.css">
          <padding>
             <Insets left="88.0" />
          </padding></ComboBox>
-      <ComboBox fx:id="etatid" layoutX="507.0" layoutY="410.0" prefHeight="42.0" prefWidth="242.0" promptText="etat" styleClass="labelTitreSieges" stylesheets="@../values/values.css">
+      <ComboBox fx:id="etatid" layoutX="589.0" layoutY="454.0" prefHeight="58.0" prefWidth="286.0" promptText="etat" styleClass="labelTitreSieges" stylesheets="@../values/values.css">
          <padding>
             <Insets left="100.0" />
          </padding></ComboBox>
-      <DatePicker fx:id="datecirculationid" layoutX="76.0" layoutY="489.0" prefHeight="42.0" prefWidth="242.0" promptText="date de circulation" styleClass="labelTitreSieges" stylesheets="@../values/values.css" />
-      <Button fx:id="image" layoutX="507.0" layoutY="489.0" mnemonicParsing="false" onAction="#ajouterImage" prefHeight="42.0" prefWidth="242.0" styleClass="labelTitreSieges" stylesheets="@../values/values.css" text="ajouter image" />
+      <DatePicker fx:id="datecirculationid" layoutX="787.0" layoutY="560.0" prefHeight="60.0" prefWidth="350.0" promptText="date de circulation" styleClass="labelTitreSieges" stylesheets="@../values/values.css" />
+      <Button fx:id="image" layoutX="992.0" layoutY="455.0" mnemonicParsing="false" onAction="#ajouterImage" prefHeight="54.0" prefWidth="273.0" styleClass="labelTitreSieges" stylesheets="@../values/values.css" text="ajouter image" />
+      <AnchorPane layoutX="-7.0" layoutY="-2.0" prefHeight="162.0" prefWidth="1525.0" style="-fx-background-color: #378217;">
+         <children>
+            <Label layoutX="85.0" layoutY="56.0" text="Veuillez remplir ce formulaire pour ajouter un vehicule" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font name="System Bold Italic" size="30.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
    </children>
 </AnchorPane>

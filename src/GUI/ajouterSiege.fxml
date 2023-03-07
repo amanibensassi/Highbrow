@@ -10,21 +10,29 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="650.0" prefWidth="870.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.AjouterSiegeController">
+<AnchorPane id="AnchorPane" prefHeight="1000.0" prefWidth="1500.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.AjouterSiegeController">
    <children>
-      <Label fx:id="labelTitreSieges" alignment="CENTER" contentDisplay="CENTER" layoutX="112.0" layoutY="35.0" prefHeight="54.0" prefWidth="646.0" stylesheets="@../values/values.css" text="Veuillez remplir ce formulaire pour ajouter un siége" textAlignment="CENTER" textFill="#2b6b20">
+      <TextField fx:id="nomsiegetf" alignment="CENTER" layoutX="173.0" layoutY="464.0" prefHeight="70.0" prefWidth="369.0" promptText="Nom du siége" style="-fx-background-radius: 10; -fx-border-color: #378217; -fx-border-radius: 10; -fx-background-color: #ffffff;" styleClass="labelTitreSieges" stylesheets="@../values/values.css">
          <font>
-            <Font size="26.0" />
-         </font></Label>
-      <TextField fx:id="nomsiegetf" alignment="CENTER" layoutX="301.0" layoutY="140.0" prefHeight="54.0" prefWidth="258.0" promptText="Nom du siége" styleClass="labelTitreSieges" stylesheets="@../values/values.css" />
-      <TextField fx:id="numerodeteltf" alignment="CENTER" layoutX="301.0" layoutY="224.0" prefHeight="54.0" prefWidth="258.0" promptText="Numéro de telephone" styleClass="labelTitreSieges" stylesheets="@../values/values.css" />
-      <TextField fx:id="emailtf" alignment="CENTER" layoutX="301.0" layoutY="391.0" prefHeight="54.0" prefWidth="258.0" promptText="Email" styleClass="labelTitreSieges" stylesheets="@../values/values.css" />
-      <TextField fx:id="adressetf" alignment="CENTER" layoutX="301.0" layoutY="309.0" prefHeight="54.0" prefWidth="258.0" promptText="Adresse" styleClass="labelTitreSieges" stylesheets="@../values/values.css" />
-      <ComboBox fx:id="regiontf" layoutX="301.0" layoutY="471.0" prefHeight="54.0" prefWidth="258.0" promptText="Region" styleClass="labelTitreSieges" stylesheets="@../values/values.css" AnchorPane.leftAnchor="301.0">
+            <Font size="20.0" />
+         </font></TextField>
+      <TextField fx:id="numerodeteltf" alignment="CENTER" layoutX="179.0" layoutY="329.0" prefHeight="70.0" prefWidth="370.0" promptText="Numéro de telephone" style="-fx-background-radius: 10; -fx-border-color: #378217; -fx-border-radius: 10; -fx-background-color: #ffffff;" styleClass="labelTitreSieges" stylesheets="@../values/values.css">
+         <font>
+            <Font size="20.0" />
+         </font></TextField>
+      <TextField fx:id="emailtf" alignment="CENTER" layoutX="876.0" layoutY="517.0" prefHeight="70.0" prefWidth="359.0" promptText="Email" style="-fx-background-radius: 10; -fx-border-color: #378217; -fx-border-radius: 10; -fx-background-color: #ffffff;" styleClass="labelTitreSieges" stylesheets="@../values/values.css">
+         <font>
+            <Font size="20.0" />
+         </font></TextField>
+      <TextField fx:id="adressetf" alignment="CENTER" layoutX="169.0" layoutY="592.0" prefHeight="70.0" prefWidth="376.0" promptText="Adresse" style="-fx-background-radius: 10; -fx-border-color: #378217; -fx-border-radius: 10; -fx-background-color: #ffffff;" styleClass="labelTitreSieges" stylesheets="@../values/values.css">
+         <font>
+            <Font size="20.0" />
+         </font></TextField>
+      <ComboBox fx:id="regiontf" layoutX="874.0" layoutY="389.0" prefHeight="70.0" prefWidth="358.0" promptText="Region" style="-fx-background-radius: 10; -fx-border-color: #378217; -fx-border-radius: 10; -fx-background-color: #ffffff;" styleClass="labelTitreSieges" stylesheets="@../values/values.css" AnchorPane.leftAnchor="874.0">
          <padding>
             <Insets left="100.0" right="20.0" />
          </padding></ComboBox>
-      <Button fx:id="ajouterbtn" alignment="CENTER" contentDisplay="RIGHT" layoutX="210.0" layoutY="562.0" mnemonicParsing="false" onAction="#ajouter" prefHeight="43.0" prefWidth="162.0" styleClass="affichervehiculesbtn" stylesheets="@../values/values.css" text="Ajouter" textAlignment="CENTER" textFill="WHITE">
+      <Button fx:id="ajouterbtn" alignment="CENTER" contentDisplay="RIGHT" layoutX="452.0" layoutY="770.0" mnemonicParsing="false" onAction="#ajouter" prefHeight="70.0" prefWidth="185.0" style="-fx-background-radius: 15;" styleClass="affichervehiculesbtn" stylesheets="@../values/values.css" text="Ajouter" textAlignment="CENTER" textFill="WHITE">
          <font>
             <Font size="16.0" />
          </font>
@@ -34,7 +42,7 @@
          <padding>
             <Insets left="18.0" />
          </padding></Button>
-      <Button fx:id="afficherbtn" alignment="CENTER" contentDisplay="CENTER" layoutX="473.0" layoutY="562.0" mnemonicParsing="false" onAction="#recuperer" prefHeight="43.0" prefWidth="162.0" styleClass="modifierButton" stylesheets="@../values/values.css" text="Afficher" textAlignment="CENTER" textFill="WHITE">
+      <Button fx:id="afficherbtn" alignment="CENTER" contentDisplay="CENTER" layoutX="762.0" layoutY="769.0" mnemonicParsing="false" onAction="#recuperer" prefHeight="70.0" prefWidth="185.0" style="-fx-background-radius: 15;" styleClass="modifierButton" stylesheets="@../values/values.css" text="Afficher" textAlignment="CENTER" textFill="WHITE">
          <font>
             <Font size="16.0" />
          </font>
@@ -50,6 +58,19 @@
       <ImageView layoutX="487.0" layoutY="568.0">
          <image>
             <Image url="@../images/show.png" />
+         </image>
+      </ImageView>
+      <AnchorPane layoutX="-2.0" layoutY="-4.0" prefHeight="139.0" prefWidth="1520.0" style="-fx-background-color: #378217;">
+         <children>
+            <Label fx:id="labelTitreSieges" alignment="CENTER" contentDisplay="CENTER" layoutX="61.0" layoutY="41.0" prefHeight="54.0" prefWidth="646.0" stylesheets="@../values/values.css" text="Veuillez remplir ce formulaire pour ajouter un siége" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font name="System Bold Italic" size="26.0" />
+               </font>
+            </Label>
+         </children></AnchorPane>
+      <ImageView fitHeight="161.0" fitWidth="179.0" layoutX="1319.0" layoutY="127.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/id-card.png" />
          </image>
       </ImageView>
    </children>

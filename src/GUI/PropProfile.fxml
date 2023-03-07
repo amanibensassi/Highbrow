@@ -19,7 +19,7 @@
          <font>
             <Font size="25.0" />
          </font></Label>
-      <Button layoutX="1221.0" layoutY="896.0" mnemonicParsing="false" onAction="#modifier_prop" prefHeight="77.0" prefWidth="237.0" style="-fx-background-color: #A5A5A5; -fx-background-radius: 15;" text="Modifier" textFill="WHITE">
+      <Button layoutX="70.0" layoutY="1028.0" mnemonicParsing="false" onAction="#modifier_prop" prefHeight="96.0" prefWidth="394.0" style="-fx-background-color: #A5A5A5; -fx-background-radius: 15;" text="Modifier vos données" textFill="WHITE">
          <font>
             <Font name="System Bold Italic" size="25.0" />
          </font>
@@ -49,7 +49,7 @@
             <Font name="System Bold Italic" size="25.0" />
          </font>
       </Label>
-      <Label layoutX="680.0" layoutY="166.0" prefHeight="66.0" prefWidth="216.0" text="Vos activités:">
+      <Label layoutX="1179.0" layoutY="140.0" prefHeight="66.0" prefWidth="216.0" text="Vos activités:">
          <font>
             <Font name="System Bold Italic" size="25.0" />
          </font>
@@ -59,7 +59,11 @@
             <Font size="25.0" />
          </font>
       </Label>
-             <fx:include layoutX="10.0" layoutY="200.0" prefHeight="1000.0" prefWidth="1500.0" source="Statistiques.fxml" />
+      <AnchorPane layoutX="100.0" layoutY="333.0" prefHeight="938.0" prefWidth="1197.0" AnchorPane.bottomAnchor="80.0" AnchorPane.leftAnchor="500.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="200.0">
+         <children>
+                   <fx:include layoutY="200.0" prefHeight="1000.0" prefWidth="1500.0" source="Statistiques.fxml" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="0.40000000000009095" AnchorPane.topAnchor="200.0" />
+         </children>
+      </AnchorPane>
 
    </children>
 </AnchorPane>

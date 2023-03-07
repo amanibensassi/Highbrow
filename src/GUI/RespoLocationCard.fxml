@@ -4,14 +4,14 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane id="AnchorPane" prefHeight="150.0" prefWidth="300.0" stylesheets="@../styles/CardRespoAgenceLocation.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.RespoLocationCardController">
+<AnchorPane id="AnchorPane" prefHeight="189.0" prefWidth="325.0" stylesheets="@../styles/CardRespoAgenceLocation.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.RespoLocationCardController">
   
    <children>
-      <Label id="nomVehiculeLabel" layoutX="20.0" layoutY="100.0" text="Nom du véhicule" />
-      <Button id="button" fx:id="choisirch" layoutX="220.0" layoutY="100.0" onAction="#choisirchauffeur" text="Affecter" />
-      <Label id="nomVehiculeLabel" fx:id="df" layoutX="134.0" layoutY="67.0" text="df" />
-      <Label id="nomVehiculeLabel" fx:id="db" layoutX="134.0" layoutY="29.0" text="db" />
-      <Label id="nomVehiculeLabel" layoutX="8.0" layoutY="67.0" text="date fin :" />
-      <Label id="nomVehiculeLabel" layoutX="8.0" layoutY="29.0" text="date début :" />
+      <Label id="nomVehiculeLabel" layoutX="9.0" layoutY="130.0" prefHeight="26.0" prefWidth="175.0" text="Nom du véhicule" />
+      <Button id="button" fx:id="choisirch" layoutX="218.0" layoutY="128.0" onAction="#choisirchauffeur" text="Affecter" />
+      <Label id="nomVehiculeLabel" fx:id="df" layoutX="155.0" layoutY="67.0" prefHeight="26.0" prefWidth="151.0" text="df" />
+      <Label id="nomVehiculeLabel" fx:id="db" layoutX="153.0" layoutY="29.0" prefHeight="26.0" prefWidth="151.0" text="db" />
+      <Label id="nomVehiculeLabel" layoutX="38.0" layoutY="67.0" text="date fin :" />
+      <Label id="nomVehiculeLabel" layoutX="33.0" layoutY="29.0" text="date début :" />
    </children>
 </AnchorPane>
