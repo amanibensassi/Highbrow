@@ -19,6 +19,7 @@ import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 import services.ReclamationService;
+import services.UserConn;
 import services.UserService;
 
 /**
@@ -55,6 +56,7 @@ public class ReclamationSiegeController implements Initializable {
     
     
     public void setReclamation(Reclamation r) throws ParseException, SQLException {
+        
         Utilisateur u =new Utilisateur();
         u=us.recupererById(r.getId_utilisateur());
         nom.setText(u.getNom());
@@ -64,9 +66,12 @@ public class ReclamationSiegeController implements Initializable {
         corp.setText(r.getCorps());
         re.setCorps(r.getCorps());
         re.setType_reclamation(r.getType_reclamation());
-        if (re.isEtat()) {
+        if (UserConn.role.toString().equals("proprietaire_agence") && r.getType_reclamation().toString().equals("administrateur") || UserConn.role.toString().equals("client")){
             etat.setDisable(true);
         }
+//        if (re.isEtat()) {
+//            etat.setDisable(true);
+//        }
         re.setIdreclamation(r.getIdreclamation());
          System.out.println("rrrr"+re);
     }
